@@ -1,4 +1,4 @@
-#' Add Habitat Information for each Species
+#' Add Habitat Information for each Species to Database
 #'
 #' Aggregate the sub habitat info from the tests table for each species.
 #' Habitats are classified into three main groups: freshwater, brackish and
