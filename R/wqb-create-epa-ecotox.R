@@ -4,7 +4,7 @@
 #' @export
 #'
 #' @examples
-wqb_create_epa_ecotox <- function(file_path = ".", ) {
+wqb_create_epa_ecotox <- function(file_path = ".") {
   
 }
 
