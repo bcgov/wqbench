@@ -12,9 +12,16 @@
 #' @details You have the option of downloading older version of the database 
 #'  but only up to the four most recent version. The most recent version is set
 #'  as 1 and the older version you can download is version 4. 
+#'  
+#'  The downloaded folder will contain various files that are needed to compile 
+#'  the database. 
 #' 
-#'
 #' @examples
+#' \dontrun{
+#' wqb_download_epa_ecotox()
+#' 
+#' wqb_download_epa_ecotox("data")
+#' }
 wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
   chk::chk_string(file_path)
   chk::chk_whole_number(version)
@@ -55,11 +62,26 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
     file_info$name[version]
   )
   
+  temp_zip <- file.path(
+    tempdir(),
+    file_info$name[version]
+  )
+    
+  message("File about to download...")
   httr::GET(
     url = file_info$file[version],
-    httr::write_disk(local_download_path),
+    httr::write_disk(temp_zip, overwrite = TRUE),
     httr::progress("down")
+  )
+  
+  message("Unzipping file...")
+  utils::unzip(
+    zipfile = temp_zip,
+    exdir = file_path
   )
   
   local_download_path
 }
+
+### working for now with method that only allows the most recent pull
+

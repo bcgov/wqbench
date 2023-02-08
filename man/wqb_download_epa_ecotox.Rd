@@ -24,4 +24,14 @@ download the most recent version of the database.
 You have the option of downloading older version of the database
 but only up to the four most recent version. The most recent version is set
 as 1 and the older version you can download is version 4.
+
+The downloaded folder will contain various files that are needed to compile
+the database.
+}
+\examples{
+\dontrun{
+wqb_download_epa_ecotox()
+
+wqb_download_epa_ecotox("data")
+}
 }
