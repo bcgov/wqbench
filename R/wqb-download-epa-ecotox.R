@@ -7,7 +7,7 @@
 #'   files. The default is your current working directory. 
 #' @param version An integer to indicate which version you want to download.
 #'   The default is 1 which downloads the most recent version.
-#' @return A string of the file location
+#' @return Invisible string of the file path the downloaded files were saved.
 #' @export
 #' @details You have the option of downloading older version of the database 
 #'  but only up to the four most recent version. The most recent version is set
@@ -67,20 +67,24 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
     file_info$name[version]
   )
     
-  message("File about to download...")
+  message("Downloading...")
   httr::GET(
     url = file_info$file[version],
     httr::write_disk(temp_zip, overwrite = TRUE),
     httr::progress("down")
   )
   
-  message("Unzipping file...")
   utils::unzip(
     zipfile = temp_zip,
     exdir = file_path
   )
   
-  local_download_path
+  output_folder <- stringr::str_extract(
+    "data/ecotox_ascii_12_15_2022.zip", 
+    "[^\\.]+"
+  )
+  
+  invisible(output_folder)
 }
 
 ### working for now with method that only allows the most recent pull
