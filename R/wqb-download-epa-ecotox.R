@@ -27,20 +27,13 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
   chk::chk_whole_number(version)
   chk::chk_range(version, range = c(1, 4))
   
-  ### getting timeout error... try tomorrow
-  # ftp_url <- "ftp://newftp.epa.gov/ECOTOX/"
-  # ftp_html_body <- ftp_url %>%
-  #   rvest::read_html() %>% 
-  #   rvest::html_text() %>% 
-  #   strsplit(split = "\\s+") %>% 
-  #   unlist()
-  ### use other method for now that just pulls only the most recent from homepage
-  ftp_url <- "https://cfpub.epa.gov/ecotox/index.cfm" |>
+  ftp_url <- "https://gaftp.epa.gov/ecotox/"
+  ftp_data <- ftp_url |>
     rvest::read_html() |>
-    rvest::html_elements("a.ascii-link") |>
+    rvest::html_nodes("a") |>
     rvest::html_attr("href")
   closeAllConnections()
-  zip_files <- grep("\\.zip$", ftp_url, value = TRUE)
+  zip_files <- grep("\\.zip$", ftp_data, value = TRUE)
   file_info <- data.frame(file = zip_files)
   
   file_info$dates <- as.Date(
@@ -50,26 +43,24 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
     ), 
     format = "%m_%d_%Y"
   )
-  file_info$name <- stringr::str_extract(zip_files, "ecotox_.*")
   
   file_info <- file_info[order(file_info$date, decreasing = TRUE),] 
   most_recent_version <- file_info$file[version] 
-  ### change pending other download ability
-  #file_url <- file.path(ftp_url, most_recent_version)
+  file_url <- file.path(ftp_url, most_recent_version)
   
   local_download_path <- file.path(
     file_path, 
-    file_info$name[version]
+    file_info$file[version]
   )
   
   temp_zip <- file.path(
     tempdir(),
-    file_info$name[version]
+    file_info$file[version]
   )
     
   message("Downloading...")
   httr::GET(
-    url = file_info$file[version],
+    url = file_url,
     httr::write_disk(temp_zip, overwrite = TRUE),
     httr::progress("down")
   )
@@ -80,7 +71,7 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
   )
   
   output_folder <- stringr::str_extract(
-    "data/ecotox_ascii_12_15_2022.zip", 
+    local_download_path, 
     "[^\\.]+"
   )
   
