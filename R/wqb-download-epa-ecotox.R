@@ -43,21 +43,18 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
     ), 
     format = "%m_%d_%Y"
   )
+  file_info$file_name <- tools::file_path_sans_ext(zip_files)
   
   file_info <- file_info[order(file_info$date, decreasing = TRUE),] 
   most_recent_version <- file_info$file[version] 
   file_url <- file.path(ftp_url, most_recent_version)
-  
-  local_download_path <- file.path(
-    file_path, 
-    file_info$file[version]
-  )
+  file_name <-  file_info$file_name[version] 
   
   temp_zip <- file.path(
     tempdir(),
     file_info$file[version]
   )
-    
+  
   message("Downloading...")
   httr::GET(
     url = file_url,
@@ -65,18 +62,18 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
     httr::progress("down")
   )
   
+  unzip_location_sub <- file.path(tempdir(), "unzip")
+
   utils::unzip(
     zipfile = temp_zip,
-    exdir = file_path
+    exdir = unzip_location_sub
   )
   
-  output_folder <- stringr::str_extract(
-    local_download_path, 
-    "[^\\.]+"
+  output_folder <- unzip_folder_correction(
+    unzip_location_sub, 
+    file_name,
+    file_path
   )
   
   invisible(output_folder)
 }
-
-### working for now with method that only allows the most recent pull
-
