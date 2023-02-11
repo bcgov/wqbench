@@ -20,7 +20,10 @@
 #' \dontrun{
 #' wqb_download_epa_ecotox()
 #' 
-#' wqb_download_epa_ecotox("data")
+#' wqb_download_epa_ecotox("data_download")
+#' 
+#' # pull previous version of the database
+#' wqb_download_epa_ecotox("data_download", version = 2)
 #' }
 wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
   chk::chk_string(file_path)
