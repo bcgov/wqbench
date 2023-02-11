@@ -2,10 +2,24 @@
 % Please edit documentation in R/wqb-create-epa-ecotox.R
 \name{wqb_create_epa_ecotox}
 \alias{wqb_create_epa_ecotox}
-\title{Create a SQLite/PostgreSQL Database from the US EPA ECOTOX data}
+\title{Create a SQLite Database from the US EPA ECOTOX data}
 \usage{
-wqb_create_epa_ecotox(file_path = ".")
+wqb_create_epa_ecotox(file_path = ".", data_path)
+}
+\arguments{
+\item{file_path}{A string of the file path location to save the SQLite
+database}
+
+\item{data_path}{A string of the location the downloaded ECOTOX data folder}
+}
+\value{
+Invisible string of the file path of the database.
 }
 \description{
-Create a SQLite/PostgreSQL Database from the US EPA ECOTOX data
+Use this function to create a local SQLite database of the ECOTOX data.
+}
+\examples{
+\dontrun{
+wqb_create_epa_ecotox(data_path = "ecotox_ascii_12_15_2022")
+}
 }

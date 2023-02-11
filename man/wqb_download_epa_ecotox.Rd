@@ -32,6 +32,9 @@ the database.
 \dontrun{
 wqb_download_epa_ecotox()
 
-wqb_download_epa_ecotox("data")
+wqb_download_epa_ecotox("data_download")
+
+# pull previous version of the database
+wqb_download_epa_ecotox("data_download", version = 2)
 }
 }
