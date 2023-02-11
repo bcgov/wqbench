@@ -14,7 +14,7 @@ files. The default is your current working directory.}
 The default is 1 which downloads the most recent version.}
 }
 \value{
-A string of the file location
+Invisible string of the file path the downloaded files were saved.
 }
 \description{
 Download the EPA ECOTOX database files from their FTP site. The default is to
