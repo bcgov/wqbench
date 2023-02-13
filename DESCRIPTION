@@ -18,4 +18,5 @@ Imports:
     chk,
     httr,
     rvest,
-    stringr
+    stringr,
+    withr
