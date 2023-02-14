@@ -18,6 +18,10 @@ Invisible string of the file path of the database.
 \description{
 Use this function to create a local SQLite database of the ECOTOX data.
 }
+\details{
+This functions creates each base table from the ecotox download as
+well as populates each table and sets the primary key relationships.
+}
 \examples{
 \dontrun{
 wqb_create_epa_ecotox(data_path = "ecotox_ascii_12_15_2022")
