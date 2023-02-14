@@ -1,9 +1,8 @@
 #' Add BC Species to Database
 #' 
-#' Read in the list of BC species and then categorize each species as either 
-#' present in BC or not. 
+#' Read in the list of BC species and add the list the SQLite database. 
 #'
-#' @param file_path A string of the file location for the file that contains
+#' @param file_path A string of the file location for the csv file that contains
 #'  the list of BC Species. 
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -12,11 +11,51 @@
 #' The latin_name column must consist of the genus and species separated by a 
 #' space.
 #' 
-#' The output table contains two columns: species_number and bc_species 
+#' The output table that is written to the database contains two columns: 
+#' species_number and bc_species 
 #' 
-#' The output table is added to the database with the name `species_bc_species`.
+#' The output table is added to the database with the name 
+#' `species_british_columbia`.
 #' @examples
 wqb_add_bc_species <- function(file_path, database) {
-  chk::chk_string(file_path)
-  chk::chk_string(database)
+  chk::chk_file(file_path)
+  chk::chk_ext(file_path, "csv")
+  chk::chk_file(database)
+  chk::chk_ext(database, "sqlite")
+  
+  # read in bc species 
+  bc_species <- readr::read_csv(file_path, show_col_types = FALSE) 
+  chk::check_data(bc_species, list(latin_name = ""))
+  bc_species$present_in_bc <- TRUE
+  
+  # read in species from db
+  on.exit(DBI::dbDisconnect(con))
+  con  <- DBI::dbConnect(
+    RSQLite::SQLite(), 
+    database
+  )
+  db_species <- DBI::dbReadTable(con, "species")
+  
+  # combine and filter to only bc species 
+  ecotox_bc_species <- db_species |>
+    dplyr::left_join(bc_species, by = "latin_name") |>
+    dplyr::select(species_number, present_in_bc) |>
+    tidyr::drop_na(present_in_bc)
+  
+  DBI::dbExecute(
+    con,
+    paste0("CREATE TABLE species_british_columbia ",
+           "(species_number, present_in_bc, PRIMARY KEY (species_number))"
+    )
+  )
+  
+  DBI::dbWriteTable(
+    con, 
+    "species_british_columbia", 
+    value = ecotox_bc_species, 
+    append = TRUE, 
+    row.names = FALSE
+  )
+  
+  invisible(ecotox_bc_species)
 }
