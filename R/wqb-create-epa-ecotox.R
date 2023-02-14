@@ -1,6 +1,7 @@
 #' Create a SQLite Database from the US EPA ECOTOX data
 #'
 #'  Use this function to create a local SQLite database of the ECOTOX data.
+#'  
 #'
 #' @param file_path A string of the file path location to save the SQLite 
 #'  database
@@ -8,6 +9,8 @@
 #'
 #' @return Invisible string of the file path of the database.
 #' @export
+#' @details This functions creates each base table from the ecotox download as 
+#'  well as populates each table and sets the primary key relationships.  
 #'
 #' @examples
 #' \dontrun{
@@ -17,13 +20,15 @@ wqb_create_epa_ecotox <- function(file_path = ".", data_path) {
   chk::chk_string(file_path)
   chk::chk_string(data_path)
   
-  dbname <- paste0(basename(source), ".sqlite")
-  dbfile <- file_path(file_path, dbname)
+  dbname <- paste0(basename(data_path), ".sqlite")
+  dbfile <- file.path(file_path, dbname)
+  dir.create(file_path, showWarnings = FALSE)
+  
+  
   con  <- DBI::dbConnect(
     RSQLite::SQLite(), 
     dbfile
   )
-  
   
   files <- list.files(
     data_path,
@@ -33,16 +38,121 @@ wqb_create_epa_ecotox <- function(file_path = ".", data_path) {
   
   files_data <- files[!grepl('release', files)]
   name_data <- gsub(".txt", "", basename(files_data))
+  tbl_data <- db_tbl_core_structure()
   
-  DBI::dbDisconnect(conn)
+  for (i in seq_along(files_data)) {
+    message("Create table: ", files_data[i], "\n")
+    dt <- utils::read.table(
+      files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
+    )
+    query <- paste0(
+      "CREATE TABLE ", names(tbl_data[i]), 
+      "(", paste(colnames(dt), collapse = ", "), 
+      ", PRIMARY KEY (", tbl_data[i], "))"
+    )
+    DBI::dbExecute(con, query)
+    DBI::dbWriteTable(con, 
+      names(tbl_data[i]), value = dt, append = TRUE, row.names = FALSE
+    )
+  }
   
+  # Create validation tables
+  files_validation <- list.files(
+    file.path(data_path, "validation"), pattern = "*.txt", full.names = TRUE
+  )
+  name_validation <- gsub(".txt", "", basename(files_validation))
+  validation_data <- db_tbl_validation_structure()
+
+  for (i in seq_along(files_validation)) {
+    message("Create table: ", files_validation[i], "\n")
+    dt <- utils::read.table(
+      files_validation[i],
+      header = TRUE,
+      sep = "|",
+      comment.char = "",
+      quote = ""
+    )
+    if (!is.null(validation_data[[i]])) {
+      query <- paste0(
+        "CREATE TABLE [", names(validation_data[i]), 
+        "] (", paste(colnames(dt), collapse = ", "), 
+        ", PRIMARY KEY (", validation_data[[i]], "))"
+      )
+      DBI::dbExecute(con, query)
+    }
+    DBI::dbWriteTable(con, 
+      names(validation_data[i]), value = dt, append = TRUE, row.names = FALSE
+    )
+  }
+
+  DBI::dbDisconnect(con)
   invisible(dbfile)
 }
 
-### Inputs
-# - location of downloaded files
-# -  SQLite or Postgres - need to down for other inputs (I think SQLite as local file cause why not)
-#    - if SQLite then just need a second location for where the db will be made
+### if so add in index otherwise don't
 
-### Outputs
-# - if sqlite then path of output file 
+
+
+db_tbl_core_structure <- function() {
+  # names are table names, values are primary keys 
+  list(
+    "chemical_carriers" = "carrier_id",
+    "dose_response_details" = "dose_resp_detail_id",
+    "dose_response_links" = "dose_resp_link_id",
+    "dose_responses" = "dose_resp_id",
+    "doses" = "dose_id",
+    "media_characteristics" = "result_id",
+    "results" = "result_id",
+    "tests" = "test_id"
+  )
+}
+
+### there are about 40 reference/validation tables but not all being pk'ed
+db_tbl_validation_structure <- function() {
+  # names are table names, values are primary keys 
+  list(
+    "application_frequency_codes" = "code",
+    "application_type_codes" = "code",
+    "chemical_analysis_codes" = "code",
+    "chemical_formulation_codes" = NULL,
+    "chemical_grade_codes" = NULL,
+    "chemicals" = "cas_number",
+    "concentration_type_codes" = NULL,
+    "concentration_unit_codes" = NULL,
+    "control_type_codes" = NULL,
+    "dose_stat_method_codes" = NULL,
+    "duration_unit_codes" = NULL, 
+    "effect_codes" = "code",
+    "endpoint_assigned_codes" = NULL,
+    "endpoint_codes" = NULL,
+    "exposure_type_codes" = "code",
+    "field_study_type_codes" = "code",
+    "gender_codes" = "code",
+    "geographic_codes" = NULL,
+    "habitat_codes" = NULL,
+    "ion_codes" = NULL,
+    "lifestage_codes" = "code",
+    "measurement_codes" = "code",
+    "media_char_unit_codes" = NULL,
+    "media_type_codes" = "code",
+    "organic_matter_type_codes" = NULL,
+    "organism_source_codes" = "code",
+    "radio_label_codes" = NULL,
+    "references" = "reference_number", # make sure tbl name isnt issue
+    "response_site_codes" = "code",
+    "sample_size_unit_codes" = NULL,
+    "season_codes" = NULL,
+    "species_synonyms" = NULL, 
+    "species" = "species_number",
+    "statistical_significance_codes" = NULL,
+    "substrate_codes" = NULL,
+    "test_location_codes" = "code",
+    "test_method_codes" = "code",
+    "test_type_codes" = "code",
+    "trend_codes" = "code",
+    "weight_unit_codes" = NULL
+  )
+}
+
+
+
