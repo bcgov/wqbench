@@ -15,5 +15,16 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(wqbench)
-## basic example code
+```
+
+Download the most recent database 
+
+```r
+download_path <- wqb_download_epa_ecotox("data_download")
+```
+
+Create a SQLite database 
+
+```r
+database_path <- wqb_create_epa_ecotox(ecotox, download_path)
 ```
