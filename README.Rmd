@@ -26,5 +26,25 @@ download_path <- wqb_download_epa_ecotox("data_download")
 Create a SQLite database 
 
 ```r
-database_path <- wqb_create_epa_ecotox(ecotox, download_path)
+database_path <- wqb_create_epa_ecotox(
+  file_path = "ecotox_db",
+  data_path = "data_dl/ecotox_ascii_09_15_2022"
+)
+```
+
+Add external data sources
+
+```r
+# trophic groups
+wqb_add_trophic_group(
+ file_path = "lookups/trophic-group.csv",
+ database = database_path
+) 
+
+# british columbia species 
+bc_species <- wqb_add_bc_species(
+  file_path = "lookups/bc-species.csv",
+  database = database_path
+) 
+
 ```
