@@ -38,11 +38,13 @@ wqb_add_trophic_group <- function(file_path, database) {
   # read in trophic groups 
   trophic_groups <- readr::read_csv(file_path, show_col_types = FALSE)
   chk::check_data(
-    trophic_groups, 
-    class = c("", NA), 
-    order = c("", NA), 
-    ecological_group = "", 
-    ecological_group_class = ""
+    trophic_groups,
+    list(
+      class = c("", NA),
+      order = c("", NA),
+      ecological_group = "",
+      ecological_group_class = ""
+    )
   )
   
   # select group where both have class and order 
