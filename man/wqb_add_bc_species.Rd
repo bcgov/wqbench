@@ -7,7 +7,7 @@
 wqb_add_bc_species(file_path, database)
 }
 \arguments{
-\item{file_path}{A string of the file location for the file that contains
+\item{file_path}{A string of the file location for the csv file that contains
 the list of BC Species.}
 
 \item{database}{A string to the location of the database.}
@@ -16,15 +16,31 @@ the list of BC Species.}
 Invisible data frame
 }
 \description{
-Read in the list of BC species and then categorize each species as either
-present in BC or not.
+Read in the list of BC species and add the list the SQLite database.
 }
 \details{
 The BC species list must contain a single column called latin_name.
 The latin_name column must consist of the genus and species separated by a
 space.
 
-The output table contains two columns: species_number and bc_species
+The output table that is written to the database contains two columns:
+species_number and bc_species
 
-The output table is added to the database with the name \code{species_bc_species}.
+The output table is added to the database with the name
+\code{species_british_columbia}.
+}
+\examples{
+\dontrun{
+# all files in root directory
+bc_species <- wqb_add_bc_species(
+ file_path = "bc-species.csv",
+ database = "ecotox_ascii_09_15_2022.sqlite"
+) 
+
+# files in subdirectories 
+bc_species <- wqb_add_bc_species(
+ file_path = "lookups/bc-species.csv",
+ database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+) 
+}
 }
