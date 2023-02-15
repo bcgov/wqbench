@@ -28,3 +28,18 @@ and ecological_group_class.
 The output table is added to the database with the name
 \code{species_trophic_group}.
 }
+\examples{
+\dontrun{
+# all files in root directory
+bc_species <- wqb_add_trophic_group(
+ file_path = "trophic-group.csv",
+ database = "ecotox_ascii_09_15_2022.sqlite"
+) 
+
+# files in subdirectories 
+bc_species <- wqb_add_trophic_group(
+ file_path = "lookups/trophic-group.csv",
+ database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+) 
+}
+}
