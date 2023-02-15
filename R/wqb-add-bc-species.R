@@ -17,6 +17,19 @@
 #' The output table is added to the database with the name 
 #' `species_british_columbia`.
 #' @examples
+#' \dontrun{
+#' # all files in root directory
+#' bc_species <- wqb_add_bc_species(
+#'  file_path = "bc-species.csv",
+#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' 
+#' # files in subdirectories 
+#' bc_species <- wqb_add_bc_species(
+#'  file_path = "lookups/bc-species.csv",
+#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' }
 wqb_add_bc_species <- function(file_path, database) {
   chk::chk_file(file_path)
   chk::chk_ext(file_path, "csv")
@@ -39,8 +52,9 @@ wqb_add_bc_species <- function(file_path, database) {
   # combine and filter to only bc species 
   ecotox_bc_species <- db_species |>
     dplyr::left_join(bc_species, by = "latin_name") |>
-    dplyr::select(species_number, present_in_bc) |>
-    tidyr::drop_na(present_in_bc)
+    dplyr::select("species_number", "present_in_bc") |>
+    tidyr::drop_na("present_in_bc") |>
+    tibble::tibble()
   
   DBI::dbExecute(
     con,
