@@ -20,7 +20,8 @@ groups and class level groups.
 }
 \details{
 The trophic groups file must contain the columns: class, order,
-ecological_group, ecological_group_class.
+ecological_group, ecological_group_class. The column names are case
+sensitive, ensure they are lower case.
 
 The output table contains three columns: species_number, ecological_group,
 and ecological_group_class.
