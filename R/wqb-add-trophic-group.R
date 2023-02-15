@@ -51,22 +51,22 @@ wqb_add_trophic_group <- function(file_path, database) {
   trophic_levels_class_order <- trophic_groups |> 
     dplyr::filter(!is.na(class) & !is.na(order)) |>
     dplyr::rename(
-      ecological_group_co = ecological_group,
-      ecological_group_class_co = ecological_group_class
+      ecological_group_co = "ecological_group",
+      ecological_group_class_co = "ecological_group_class"
     )
   # select groups with only class 
   trophic_levels_class <- trophic_groups |> 
     dplyr::filter(is.na(order)) |>
     dplyr::rename(
-      ecological_group_c = ecological_group,
-      ecological_group_class_c = ecological_group_class
+      ecological_group_c = "ecological_group",
+      ecological_group_class_c = "ecological_group_class"
     )
   # select groups with only order 
   trophic_levels_order <- trophic_groups |> 
     dplyr::filter(is.na(class)) |>
     dplyr::rename(
-      ecological_group_o = ecological_group,
-      ecological_group_class_o = ecological_group_class
+      ecological_group_o = "ecological_group",
+      ecological_group_class_o = "ecological_group_class"
     )
 
   # read in species from db
@@ -83,20 +83,20 @@ wqb_add_trophic_group <- function(file_path, database) {
     dplyr::left_join(trophic_levels_order, by = c("tax_order" = "order")) |>
     dplyr::mutate(
       ecological_group_class = dplyr::case_when(
-        is.na(ecological_group_class_c) & is.na(ecological_group_class_co) ~ ecological_group_class_o,
-        !is.na(ecological_group_class_c) & is.na(ecological_group_class_co) ~ ecological_group_class_c,
-        !is.na(ecological_group_class_c) & !is.na(ecological_group_class_co) ~ ecological_group_class_co
+        is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_class_o,
+        !is.na(.data$ecological_group_class_c) & is.na(ecological_group_class_co) ~ .data$ecological_group_class_c,
+        !is.na(.data$ecological_group_class_c) & !is.na(ecological_group_class_co) ~ .data$ecological_group_class_co
       ),
       ecological_group = dplyr::case_when(
-        is.na(ecological_group_class_c) & is.na(ecological_group_class_co) ~ ecological_group_o,
-        !is.na(ecological_group_class_c) & is.na(ecological_group_class_co) ~ ecological_group_c,
-        !is.na(ecological_group_class_c) & !is.na(ecological_group_class_co) ~ ecological_group_co
+        is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_o,
+        !is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_c,
+        !is.na(.data$ecological_group_class_c) & !is.na(.data$ecological_group_class_co) ~ .data$ecological_group_co
       )
     ) |>
     dplyr::select(
-      species_number, ecological_group_class, ecological_group
+      "species_number", "ecological_group_class", "ecological_group"
     ) |>
-    tidyr::drop_na(ecological_group_class, ecological_group) |>
+    tidyr::drop_na("ecological_group_class", "ecological_group") |>
     tibble::tibble()
   
   DBI::dbExecute(
