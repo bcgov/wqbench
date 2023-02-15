@@ -4,7 +4,7 @@
 #' Habitats are classified into three main groups: freshwater, brackish and
 #' marine. Adds the resulting table into the database. 
 #'
-#' @param database 
+#' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
 #' @details This function reads in the test table and aggregates the sub 
@@ -17,6 +17,15 @@
 #' 
 #'  The output table is added to the database with the name `species_habitat`.
 #' @examples
+#' \dontrun{
+#' habitat_info <- wqb_add_habitat(
+#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' 
+#' habitat_info <- wqb_add_habitat(
+#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' }
 wqb_add_habitat <- function(database) {
   chk::chk_string(database)
 }
