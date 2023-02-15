@@ -80,18 +80,27 @@ wqb_add_trophic_group <- function(file_path, database) {
   
   species_trophic_group <- db_species |>
     dplyr::left_join(trophic_levels_class, by = "class") |>
-    dplyr::left_join(trophic_levels_class_order, by = c("class", "tax_order" = "order")) |>
+    dplyr::left_join(
+      trophic_levels_class_order, 
+      by = c("class", "tax_order" = "order")
+    ) |>
     dplyr::left_join(trophic_levels_order, by = c("tax_order" = "order")) |>
     dplyr::mutate(
       ecological_group_class = dplyr::case_when(
-        is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_class_o,
-        !is.na(.data$ecological_group_class_c) & is.na(ecological_group_class_co) ~ .data$ecological_group_class_c,
-        !is.na(.data$ecological_group_class_c) & !is.na(ecological_group_class_co) ~ .data$ecological_group_class_co
+        is.na(.data$ecological_group_class_c) & 
+          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_class_o,
+        !is.na(.data$ecological_group_class_c) & 
+          is.na(ecological_group_class_co) ~ .data$ecological_group_class_c,
+        !is.na(.data$ecological_group_class_c) & 
+          !is.na(ecological_group_class_co) ~ .data$ecological_group_class_co
       ),
       ecological_group = dplyr::case_when(
-        is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_o,
-        !is.na(.data$ecological_group_class_c) & is.na(.data$ecological_group_class_co) ~ .data$ecological_group_c,
-        !is.na(.data$ecological_group_class_c) & !is.na(.data$ecological_group_class_co) ~ .data$ecological_group_co
+        is.na(.data$ecological_group_class_c) & 
+          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_o,
+        !is.na(.data$ecological_group_class_c) & 
+          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_c,
+        !is.na(.data$ecological_group_class_c) & 
+          !is.na(.data$ecological_group_class_co) ~ .data$ecological_group_co
       )
     ) |>
     dplyr::select(
