@@ -3,7 +3,6 @@
 #' Read in and add the trophic groups to the species. Species are classed into
 #' groups and class level groups. 
 #'
-#' @param file_path A string to the file that contains the trophic information.  
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
@@ -20,24 +19,27 @@
 #' \dontrun{
 #' # all files in root directory
 #' trophic_group <- wqb_add_trophic_group(
-#'  file_path = "trophic-group.csv",
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' 
 #' # files in subdirectories 
 #' trophic_group <- wqb_add_trophic_group(
-#'  file_path = "lookups/trophic-group.csv",
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' }
-wqb_add_trophic_group <- function(file_path, database) {
-  chk::chk_file(file_path)
-  chk::chk_ext(file_path, "csv")
+wqb_add_trophic_group <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
   # read in trophic groups 
-  trophic_groups <- readr::read_csv(file_path, show_col_types = FALSE)
+  trophic_groups_file_path <- system.file(
+    "extdata/trophic-group.csv",
+    package = "wqbench"
+  )
+  trophic_groups <- readr::read_csv(
+    trophic_groups_file_path, 
+    show_col_types = FALSE
+  )
   chk::check_data(
     trophic_groups,
     list(
