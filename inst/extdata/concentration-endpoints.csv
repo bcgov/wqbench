@@ -1,0 +1,68 @@
+code,description
+(log)EC50,Log transformed effective concentration to 50% of test organisms
+(log)LC50 ,Log transformed lethal concentration to 50% of test organisms
+EC05,Effective concentration to 5% of test organisms
+EC08,Effective concentration to 8% of test organisms
+EC10,Effective concentration to 10% of test organisms
+EC12.5,Effective concentration to 12.5% of test organisms
+EC13,Effective concentration to 13% of test organisms
+EC15,Effective concentration to 15% of test organisms
+EC16,Effective concentration to 16% of test organisms
+EC18,Effective concentration to 18% of test organisms
+EC20,Effective concentration to 20% of test organisms
+EC22,Effective concentration to 22% of test organisms
+EC23,Effective concentration to 23% of test organisms
+EC24,Effective concentration to 24% of test organisms
+EC25,Effective concentration to 25% of test organisms
+EC30,Effective concentration to 30% of test organisms
+EC31,Effective concentration to 31% of test organisms
+EC32,Effective concentration to 32% of test organisms
+EC34,Effective concentration to 34% of test organisms
+EC35,Effective concentration to 35% of test organisms
+EC37,Effective concentration to 37% of test organisms
+EC38,Effective concentration to 38% of test organisms
+EC40,Effective concentration to 40% of test organisms
+EC41,Effective concentration to 41% of test organisms
+EC45,Effective concentration to 45% of test organisms
+EC46,Effective concentration to 46% of test organisms
+EC50,Effective concentration to 50% of test organisms
+EC50*,Effective concentration to 50% of test organisms
+EC52,Effective concentration to 52% of test organisms
+EC55,Effective concentration to 55% of test organisms
+EC58,Effective concentration to 58% of test organisms
+IC05,Inhibition concentration to 5% of test organisms
+IC07,Inhibition concentration to 7% of test organisms
+IC10,Inhibition concentration to 10% of test organisms
+IC15,Inhibition concentration to 15% of test organisms
+IC16,Inhibition concentration to 16% of test organisms
+IC20,Inhibition concentration to 20% of test organisms
+IC25,Inhibition concentration to 25% of test organisms
+IC27,Inhibition concentration to 27% of test organisms
+IC30,Inhibition concentration to 30% of test organisms
+IC40,Inhibition concentration to 40% of test organisms
+IC50,Inhibition concentration to 50% of test organisms
+LC05,Lethal concentration to 5% of test organisms
+LC08,Lethal concentration to 8% of test organisms
+LC10,Lethal concentration to 10% of test organisms
+LC10*,Lethal concentration to 10% of test organisms
+LC15,Lethal concentration to 15% of test organisms
+LC16,Lethal concentration to 16% of test organisms
+LC20,Lethal concentration to 20% of test organisms
+LC25,Lethal concentration to 25% of test organisms
+LC30,Lethal concentration to 30% of test organisms
+LC31,Lethal concentration to 31% of test organisms
+LC34,Lethal concentration to 34% of test organisms
+LC35,Lethal concentration to 35% of test organisms
+LC38,Lethal concentration to 38% of test organisms
+LC40,Lethal concentration to 40% of test organisms
+LC45,Lethal concentration to 45% of test organisms
+LC50,Lethal concentration to 50% of test organisms
+LC50*,Lethal concentration to 50% of test organisms
+LC51,Lethal concentration to 51% of test organisms
+LOEC,Lowest observable effect concentration
+LOEL,Lowest-observable-effect-level
+MATC,Maximum acceptable toxicant concentration
+MATC*,Maximum Acceptable Toxicant Concentration
+MCIG,Minimum concentration to inhibit growth.
+NOEC,No-observable-effect-concentration
+NOEL,No-observable-effect-level
