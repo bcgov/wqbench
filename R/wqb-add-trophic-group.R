@@ -1,14 +1,19 @@
-#' Add Trophic Group to Species in the Database
+#' Add Trophic Groups to Database
 #' 
-#' Read in and add the trophic groups to the species. Species are classed into
-#' groups and class level groups. 
+#' Read in the trophic groups and add them to the SQLite database. Species are 
+#' classed into groups and class level groups. 
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details The trophic groups file must contain the columns: class, order, 
-#' ecological_group, ecological_group_class. The column names are case 
-#' sensitive, ensure they are lower case. 
+#' @details The trophic group data is contained in a csv file in the extdata 
+#' folder of the package. This file can be edited by adding or removing groups 
+#' and classes. Do not add new columns, rename columns or rename the file.
+#' 
+#' The trophic groups file must contain the columns: `class`, `order`, 
+#' `ecological_group`, and `ecological_group_class`. The `class` and `order`
+#' columns are matched to the `class` and `tax_order` columns in the `species`
+#' table of the ECOTOX downloaded data. 
 #' 
 #' The output table contains three columns: species_number, ecological_group, 
 #' and ecological_group_class.
@@ -17,12 +22,10 @@
 #' `species_trophic_group`.
 #' @examples
 #' \dontrun{
-#' # all files in root directory
 #' trophic_group <- wqb_add_trophic_group(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' 
-#' # files in subdirectories 
 #' trophic_group <- wqb_add_trophic_group(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 

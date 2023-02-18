@@ -1,17 +1,20 @@
 #' Add BC Species to Database
 #' 
-#' Read in the list of BC species and add the list the SQLite database. 
+#' Read in the British Columbia species values and add them to the SQLite 
+#' database. 
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details The BC species list lives in the package in the extdata folder. 
+#' @details The BC species data is contained in a csv file in the extdata 
+#' folder of the package.
 #' This file can be edited by adding new species or removing species. Do not
 #' add new columns, rename columns or rename the file. The file must only 
 #' contain a single column named `latin_name`.
 #' 
 #' The `latin_name` column must consist of the genus and species separated by a 
-#' space.
+#' space. The `latin_name` column in the bc-species file are matched to the
+#' `latin_name` column in the species table of the ECOTOX downloaded data.
 #' 
 #' The output table that is written to the database contains two columns: 
 #' species_number and bc_species 
@@ -20,12 +23,10 @@
 #' `species_british_columbia`.
 #' @examples
 #' \dontrun{
-#' # all files in root directory
 #' bc_species <- wqb_add_bc_species(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' 
-#' # files in subdirectories 
 #' bc_species <- wqb_add_bc_species(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 

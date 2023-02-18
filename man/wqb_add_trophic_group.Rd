@@ -2,26 +2,29 @@
 % Please edit documentation in R/wqb-add-trophic-group.R
 \name{wqb_add_trophic_group}
 \alias{wqb_add_trophic_group}
-\title{Add Trophic Group to Species in the Database}
+\title{Add Trophic Groups to Database}
 \usage{
-wqb_add_trophic_group(file_path, database)
+wqb_add_trophic_group(database)
 }
 \arguments{
-\item{file_path}{A string to the file that contains the trophic information.}
-
 \item{database}{A string to the location of the database.}
 }
 \value{
 Invisible data frame
 }
 \description{
-Read in and add the trophic groups to the species. Species are classed into
-groups and class level groups.
+Read in the trophic groups and add them to the SQLite database. Species are
+classed into groups and class level groups.
 }
 \details{
-The trophic groups file must contain the columns: class, order,
-ecological_group, ecological_group_class. The column names are case
-sensitive, ensure they are lower case.
+The trophic group data is contained in a csv file in the extdata
+folder of the package. This file can be edited by adding or removing groups
+and classes. Do not add new columns, rename columns or rename the file.
+
+The trophic groups file must contain the columns: \code{class}, \code{order},
+\code{ecological_group}, and \code{ecological_group_class}. The \code{class} and \code{order}
+columns are matched to the \code{class} and \code{tax_order} columns in the \code{species}
+table of the ECOTOX downloaded data.
 
 The output table contains three columns: species_number, ecological_group,
 and ecological_group_class.
@@ -31,15 +34,11 @@ The output table is added to the database with the name
 }
 \examples{
 \dontrun{
-# all files in root directory
 trophic_group <- wqb_add_trophic_group(
- file_path = "trophic-group.csv",
  database = "ecotox_ascii_09_15_2022.sqlite"
 ) 
 
-# files in subdirectories 
 trophic_group <- wqb_add_trophic_group(
- file_path = "lookups/trophic-group.csv",
  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 ) 
 }

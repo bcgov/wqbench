@@ -4,24 +4,28 @@
 \alias{wqb_add_bc_species}
 \title{Add BC Species to Database}
 \usage{
-wqb_add_bc_species(file_path, database)
+wqb_add_bc_species(database)
 }
 \arguments{
-\item{file_path}{A string of the file location for the csv file that contains
-the list of BC Species.}
-
 \item{database}{A string to the location of the database.}
 }
 \value{
 Invisible data frame
 }
 \description{
-Read in the list of BC species and add the list the SQLite database.
+Read in the British Columbia species values and add them to the SQLite
+database.
 }
 \details{
-The BC species list must contain a single column called latin_name.
-The latin_name column must consist of the genus and species separated by a
-space.
+The BC species data is contained in a csv file in the extdata
+folder of the package.
+This file can be edited by adding new species or removing species. Do not
+add new columns, rename columns or rename the file. The file must only
+contain a single column named \code{latin_name}.
+
+The \code{latin_name} column must consist of the genus and species separated by a
+space. The \code{latin_name} column in the bc-species file are matched to the
+\code{latin_name} column in the species table of the ECOTOX downloaded data.
 
 The output table that is written to the database contains two columns:
 species_number and bc_species
@@ -31,15 +35,11 @@ The output table is added to the database with the name
 }
 \examples{
 \dontrun{
-# all files in root directory
 bc_species <- wqb_add_bc_species(
- file_path = "bc-species.csv",
  database = "ecotox_ascii_09_15_2022.sqlite"
 ) 
 
-# files in subdirectories 
 bc_species <- wqb_add_bc_species(
- file_path = "lookups/bc-species.csv",
  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 ) 
 }
