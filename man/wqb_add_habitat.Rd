@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-habitat.R
 \name{wqb_add_habitat}
 \alias{wqb_add_habitat}
-\title{Add Habitat Information for each Species to Database}
+\title{Code Media Type to Salt or Fresh Water by Species and Test}
 \usage{
 wqb_add_habitat(database)
 }
@@ -13,20 +13,15 @@ wqb_add_habitat(database)
 Invisible data frame
 }
 \description{
-Aggregate the sub habitat info from the tests table for each species.
-Habitats are classified into three main groups: freshwater, brackish and
-marine. Adds the resulting table into the database.
+The media type code for each species and test has been coded to either salt water,
+fresh water or not reported.
 }
 \details{
-This function reads in the test table and aggregates the sub
-habitat column data for each aquatic species.
+This function reads in the test table and codes each value to one
+of three options: salt water, fresh water or not reported.
 
-The output table contains four columns: species number, freshwater, brackish
-and marine. If the species was reported to be from a certain habitat the
-value has been coded as TRUE. Species can be reported to be from more then
-one habitat type.
-
-The output table is added to the database with the name \code{species_habitat}.
+The output table is added to the database with the name
+\code{species_tests_media}.
 }
 \examples{
 \dontrun{

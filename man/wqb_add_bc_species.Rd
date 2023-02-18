@@ -17,14 +17,13 @@ Read in the British Columbia species values and add them to the SQLite
 database.
 }
 \details{
-The BC species data is contained in a csv file in the extdata
-folder of the package.
-This file can be edited by adding new species or removing species. Do not
-add new columns, rename columns or rename the file. The file must only
-contain a single column named \code{latin_name}.
+The BC species data is contained in a csv file in the extdata folder
+of the package. This file can be edited by adding new species or removing
+species. Do not add new columns, rename columns or rename the file. The
+file must only contain a single column named \code{latin_name}.
 
-The \code{latin_name} column must consist of the genus and species separated by a
-space. The \code{latin_name} column in the bc-species file are matched to the
+The \code{latin_name} column must consist of the genus and species separated by
+a space. The \code{latin_name} column in the bc-species file are matched to the
 \code{latin_name} column in the species table of the ECOTOX downloaded data.
 
 The output table that is written to the database contains two columns:
