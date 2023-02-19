@@ -19,12 +19,12 @@ concentration endpoints that are in the log format.
 \details{
 The concentration endpoints that have been selected are contained in
 the extdata folder of the package in a file named
-\code{concentration-endpoints.csv}. This file can be edited by adding or deleting rows.
-Do not add new columns, rename columns or rename the file.  The
-file must contain the columns named \code{code} and \code{description}.
+\code{concentration-endpoints.csv}. This file can be edited by adding or
+deleting rows. Do not add new columns, rename columns or rename the file.
+The file must contain the columns named \code{code} and \code{description}.
 
-The full list of all possible endpoints is contained in the \code{endpoint_codes} table
-in the ECOTOX downloaded data.
+The full list of all possible endpoints is contained in the
+\code{endpoint_codes} table in the ECOTOX downloaded data.
 
 The output table that is written to the database is the results table
 filtered to only contain the selected endpoints as listed in the

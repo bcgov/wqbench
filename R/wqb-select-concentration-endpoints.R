@@ -1,22 +1,22 @@
 #' Filter Results to Concentration Endpoint
 #'
 #' Determine the result ID's from concentration based endpoint tests. Logs the
-#'  concentration endpoints that are in the log format. 
+#' concentration endpoints that are in the log format.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
 #' @details The concentration endpoints that have been selected are contained in
 #'   the extdata folder of the package in a file named
-#'   `concentration-endpoints.csv`. This file can be edited by adding or deleting rows. 
-#'   Do not add new columns, rename columns or rename the file.  The
-#'   file must contain the columns named `code` and `description`.
-#'   
-#'   The full list of all possible endpoints is contained in the `endpoint_codes` table
-#'   in the ECOTOX downloaded data. 
-#'   
+#'   `concentration-endpoints.csv`. This file can be edited by adding or
+#'   deleting rows. Do not add new columns, rename columns or rename the file.
+#'   The file must contain the columns named `code` and `description`.
+#'
+#'   The full list of all possible endpoints is contained in the
+#'   `endpoint_codes` table in the ECOTOX downloaded data.
+#'
 #'   The output table that is written to the database is the results table
-#'   filtered to only contain the selected endpoints as listed in the 
+#'   filtered to only contain the selected endpoints as listed in the
 #'   `concentration-endpoints.csv`.
 #'
 #'   The output table is added to the database with the name
@@ -48,7 +48,7 @@ wqb_select_concentration_endpoints  <- function(database) {
   chk::check_data(conc_endpoints, list(code = ""))
   conc_endpoints <- conc_endpoints |>
     dplyr::mutate(
-      code = stringr::str_squish(code)
+      code = stringr::str_squish(.data$code)
     )
   # read in results from db
   on.exit(DBI::dbDisconnect(con))
@@ -61,7 +61,7 @@ wqb_select_concentration_endpoints  <- function(database) {
   # filter to selected endpoints
   results_endpoint_concentration <- db_results |> 
     dplyr::mutate(
-      endpoint = stringr::str_squish(endpoint)
+      endpoint = stringr::str_squish(.data$endpoint)
     ) |>
     dplyr::filter(.data[["endpoint"]] %in% conc_endpoints$code) |>
     dplyr::mutate(
