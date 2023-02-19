@@ -9,7 +9,7 @@ The goal of wqbench is to ...
 ## Installation
 
 
-## Example
+## Workflow
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -37,14 +37,40 @@ Add external data sources
 ```r
 # trophic groups
 wqb_add_trophic_group(
- file_path = "lookups/trophic-group.csv",
  database = database_path
 ) 
 
 # british columbia species 
 bc_species <- wqb_add_bc_species(
-  file_path = "lookups/bc-species.csv",
   database = database_path
 ) 
 
 ```
+
+Filter ECOTOX database to concentration endpoints and aquatic tests 
+
+```r
+results_conc_endpoints <- wqb_select_concentration_endpoints(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+
+tests_aquatic <- wqb_filter_aquatic_tests(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+```
+
+Clean up Media Test types to be salt water, fresh water or not reported
+
+```r
+media_test <- wqb_add_habitat(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+```
+
+## External Data Additions and Filters
+
+The extdata folder contains a list of British Columbia species, trophic groups,
+and the endpoints selected for the data set. 
+
+These files can be changed to allow for an easy way to make adjustments to the
+final outputed dataset. 
