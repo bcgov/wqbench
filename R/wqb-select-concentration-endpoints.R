@@ -46,7 +46,10 @@ wqb_select_concentration_endpoints  <- function(database) {
     show_col_types = FALSE
   ) 
   chk::check_data(conc_endpoints, list(code = ""))
-  
+  conc_endpoints <- conc_endpoints |>
+    dplyr::mutate(
+      code = stringr::str_squish(code)
+    )
   # read in results from db
   on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
@@ -57,6 +60,9 @@ wqb_select_concentration_endpoints  <- function(database) {
   
   # filter to selected endpoints
   results_endpoint_concentration <- db_results |> 
+    dplyr::mutate(
+      endpoint = stringr::str_squish(endpoint)
+    ) |>
     dplyr::filter(.data[["endpoint"]] %in% conc_endpoints$code) |>
     dplyr::mutate(
       ### need to deal with logged endpoints
@@ -83,6 +89,3 @@ wqb_select_concentration_endpoints  <- function(database) {
   
   invisible(results_endpoint_concentration)
 }
-
-### need to str_squich
-
