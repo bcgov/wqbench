@@ -4,7 +4,6 @@
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
-#' @return
 #' @export
 #'
 #' @examples
@@ -40,8 +39,8 @@ wqb_add_lifestage <- function(database) {
   
   lifestage_codes <- lifestage_codes |>
     dplyr::mutate(
-      description_lifestage = stringr::str_squish(description_lifestage),
-      simple_lifestage = stringr::str_squish(simple_lifestage)
+      description_lifestage = stringr::str_squish(.data$description_lifestage),
+      simple_lifestage = stringr::str_squish(.data$simple_lifestage)
     )
   
   # read in tables from db
