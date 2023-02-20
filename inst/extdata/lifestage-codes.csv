@@ -1,0 +1,65 @@
+code,description_lifestage,simple_lifestage
+--,Unspecified,Adult
+AD,Adult,Adult
+AL,Alevin,ELS
+BL,Blastula,ELS
+CS,Cleavage stage,ELS
+EG,Egg,ELS
+EL,Elver,Juvenile
+EM,Embryo,ELS
+EX,Exponential growth phase (log),Adult
+EY,"Eyed egg or stage, eyed embryo",ELS
+F0,F0 generation,Adult
+F1,F1 generation,Adult
+FI,Fingerling,Juvenile
+FY,Fry,Juvenile
+GA,Gastrula,ELS
+GE,Gestation,ELS
+GM,Gamete,ELS
+IM,Immature,Juvenile
+JV,Juvenile,Juvenile
+LC,Lactational,Adult
+LR,Prolarva,ELS
+LV,Larva,ELS
+MA,Mature,Adult
+ML,Morula,ELS
+MX,Multiple,Adult
+NB,Newborn,ELS
+NC,Not coded,Adult
+NE,Neonate,ELS
+NH,"New, newly or recent hatch",ELS
+NL,Neurala,ELS
+NOINT,Not intact,Adult
+OO,"Oocyte, ova",ELS
+PA,Parr,Juvenile
+PC,Pre-hatch,ELS
+PG,Post-spawning,Adult
+PHT,Post-hatch,ELS
+PI,Post-molt,Adult
+PJ,"Pre-, sub-, semi-, near adult, or peripubertal",Juvenile
+PK,Post-smolt,Juvenile
+PQ,Pre-larva,ELS
+PS,Pre-smolt,Juvenile
+PT,Protolarvae,ELS
+PV,Post-larva,Juvenile
+PW,Pre-spawning,Adult
+RP,Mature reproductive,Adult
+SA,Subadult,Juvenile
+SC,"Yolk sac larvae, sac larvae",ELS
+SF,"Sac fry, yolk sac fry",ELS
+SI,Sexually immature,Juvenile
+SM,Sexually mature,Adult
+SMT,Smolt,Juvenile
+SO,Sporeling,Adult
+SP,Sperm,ELS
+SU,Swim-up,ELS
+SW,Spawning,Adult
+TA,Tadpole,ELS
+UY,Underyearling,Juvenile
+VI,Virgin,Adult
+YA,Young adult,Adult
+YE,Yearling,Juvenile
+YO,Young,Juvenile
+YY,Young of year,Juvenile
+ZY,Zygote,ELS
+NA,NA,Adult
