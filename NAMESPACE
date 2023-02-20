@@ -2,8 +2,11 @@
 
 export(wqb_add_bc_species)
 export(wqb_add_habitat)
+export(wqb_add_lifestage)
 export(wqb_add_trophic_group)
+export(wqb_compile_dataset)
 export(wqb_create_epa_ecotox)
 export(wqb_download_epa_ecotox)
 export(wqb_filter_aquatic_tests)
 export(wqb_select_concentration_endpoints)
+importFrom(rlang,.data)
