@@ -71,7 +71,6 @@ wqb_add_lifestage <- function(database) {
   )
   db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes")
   
-  
   lifestage_groups <- db_lifestage_codes |>
     dplyr::mutate(
       code = stringr::str_squish(.data$code)
