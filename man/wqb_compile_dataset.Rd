@@ -16,3 +16,14 @@ Invisible data frame
 Compile data from the database to make the completed data set from the
 external sources and US EPA ECOTOX database.
 }
+\examples{
+\dontrun{
+data_compiled <- wqb_compile_dataset(
+ database = "ecotox_ascii_09_15_2022.sqlite"
+) 
+
+data_compiled <- wqb_compile_dataset(
+ database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+) 
+}
+}
