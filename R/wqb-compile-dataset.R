@@ -5,11 +5,18 @@
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
-#'
-#' @return
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data_compiled <- wqb_compile_dataset(
+#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' 
+#' data_compiled <- wqb_compile_dataset(
+#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#' ) 
+#' }
 wqb_compile_dataset <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
@@ -25,11 +32,15 @@ wqb_compile_dataset <- function(database) {
   db_species_tests_media  <- DBI::dbReadTable(con, "species_tests_media")
   db_tests_aquatic <- DBI::dbReadTable(con, "tests_aquatic")
   db_results_endpoint_concentration <- DBI::dbReadTable(con, "results_endpoint_concentration")
+  db_lifestage_groups <- DBI::dbReadTable(con, "lifestage_groups")
   
   db_references <- DBI::dbReadTable(con, "references")
   db_species <- DBI::dbReadTable(con, "species")
   db_chemicals <- DBI::dbReadTable(con, "chemicals")
   db_effect_codes <- DBI::dbReadTable(con, "effect_codes") 
+  db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") 
+  
+  
   
   
 }
