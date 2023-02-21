@@ -26,7 +26,7 @@ download_path <- wqb_download_epa_ecotox("data_download")
 Create a SQLite database 
 
 ```r
-database_path <- wqb_create_epa_ecotox(
+database_09_22 <- wqb_create_epa_ecotox(
   file_path = "ecotox_db",
   data_path = "data_dl/ecotox_ascii_09_15_2022"
 )
@@ -37,12 +37,12 @@ Add external data sources
 ```r
 # trophic groups
 wqb_add_trophic_group(
- database = database_path
+ database = database_09_22
 ) 
 
 # british columbia species 
 bc_species <- wqb_add_bc_species(
-  database = database_path
+  database = database_09_22
 ) 
 
 ```
@@ -51,11 +51,11 @@ Filter ECOTOX database to concentration endpoints and aquatic tests
 
 ```r
 results_conc_endpoints <- wqb_select_concentration_endpoints(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = database_09_22
 )
 
 tests_aquatic <- wqb_filter_aquatic_tests(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = database_09_22
 )
 ```
 
@@ -63,14 +63,27 @@ Clean up Media Test types to be salt water, fresh water or not reported
 
 ```r
 media_test <- wqb_add_habitat(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = database_09_22
 )
 ```
 
 ## External Data Additions and Filters
 
 The extdata folder contains a list of British Columbia species, trophic groups,
-and the endpoints selected for the data set. 
+life stages groups, and the endpoints selected for the data set. 
 
 These files can be changed to allow for an easy way to make adjustments to the
-final outputed dataset. 
+final outputted data set. 
+
+```r
+habitat_info <- wqb_add_habitat(
+  database = "ecotox_ascii_09_15_2022.sqlite"
+) 
+```
+
+```r
+lifestage_codes <- wqb_add_lifestage(
+  database = database_09_22
+) 
+```
+
