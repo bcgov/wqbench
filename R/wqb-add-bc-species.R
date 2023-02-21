@@ -62,7 +62,7 @@ wqb_add_bc_species <- function(database) {
       present_in_bc = TRUE
     ) 
   
-  # combine and filter to only bc species 
+  # add bc species flag to species table
   species_british_columbia <- db_species |>
     dplyr::mutate(latin_name = stringr::str_squish(.data$latin_name)) |> 
     dplyr::left_join(bc_species, by = "latin_name") |>

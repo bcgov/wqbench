@@ -65,3 +65,9 @@ wqb_compile_dataset <- function(database) {
   # 
   
 }
+
+
+### To Do
+
+# unlog logged Endpoints
+# remove * on endpoints 
