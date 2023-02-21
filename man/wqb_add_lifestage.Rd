@@ -13,7 +13,28 @@ wqb_add_lifestage(database)
 Invisible data frame
 }
 \description{
-The corresponding life stage codes for fish and amphibians.
+Code the ECOTOX life stage code values into three simple life stages: ELS
+(early life stage), juveniles and adults.
+}
+\details{
+Only life stages related to fish or amphibians have been coded. The
+purpose of the coding is to be able to simplify the many life stages into
+three main categories.
+
+The life stage data is contained in a csv file in the extdata folder of the
+package. The csv file can be edited by adding or removing rows.  To add new
+rows get the \code{code} and \code{description} values from the \code{lifestage_code}
+table in the ECOTOX data and paste them into the csv file and then add the
+value to the \code{simple_lifestage} column.
+
+Do not add new columns, rename columns or rename the file. The file must
+only contain the \code{code}, \code{description_lifestage} and \code{simple_lifestage}
+column.
+
+The output table that is written to the database contains two columns:
+\code{code} and \code{simple_lifestage}
+
+The output table is added to the database with the name \code{lifestage_groups}.
 }
 \examples{
 \dontrun{
