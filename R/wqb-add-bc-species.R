@@ -45,7 +45,7 @@ wqb_add_bc_species <- function(database) {
   )
   bc_species <- bc_species |>
     dplyr::mutate(
-      latin_name = stringr::str_squish(latin_name),
+      latin_name = stringr::str_squish(.data$latin_name),
       present_in_bc = TRUE
     ) 
   # read in species from db
@@ -58,9 +58,11 @@ wqb_add_bc_species <- function(database) {
   
   # combine and filter to only bc species 
   species_british_columbia <- db_species |>
-    dplyr::mutate(latin_name = stringr::str_squish(latin_name)) |> 
+    dplyr::mutate(latin_name = stringr::str_squish(.data$latin_name)) |> 
     dplyr::left_join(bc_species, by = "latin_name") |>
-    dplyr::mutate(present_in_bc =  tidyr::replace_na(present_in_bc, FALSE)) |>
+    dplyr::mutate(
+      present_in_bc =  tidyr::replace_na(.data$present_in_bc, FALSE)
+    ) |>
     tibble::tibble()
   
   DBI::dbExecute(
