@@ -31,6 +31,19 @@ wqb_add_bc_species <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
+  # read in species from db
+  on.exit(DBI::dbDisconnect(con))
+  con  <- DBI::dbConnect(
+    RSQLite::SQLite(), 
+    database
+  )
+  db_species <- DBI::dbReadTable(con, "species")
+  
+  if ("present_in_bc" %in% colnames(db_species)) {
+    stop(
+      "British Columbia species have already been added to the database"
+    )
+  }
   # read in bc species 
   bc_species_file_path <- system.file(
     "extdata/bc-species.csv",
@@ -48,13 +61,6 @@ wqb_add_bc_species <- function(database) {
       latin_name = stringr::str_squish(.data$latin_name),
       present_in_bc = TRUE
     ) 
-  # read in species from db
-  on.exit(DBI::dbDisconnect(con))
-  con  <- DBI::dbConnect(
-    RSQLite::SQLite(), 
-    database
-  )
-  db_species <- DBI::dbReadTable(con, "species")
   
   # combine and filter to only bc species 
   species_british_columbia <- db_species |>
@@ -64,30 +70,30 @@ wqb_add_bc_species <- function(database) {
       present_in_bc =  tidyr::replace_na(.data$present_in_bc, FALSE)
     ) |>
     tibble::tibble()
-  
+
   DBI::dbExecute(
-    con, 
+    con,
     paste0(
-      "CREATE TABLE species_british_columbia ", 
-      "(", paste(colnames(species_british_columbia), collapse = ", "), 
+      "CREATE TABLE species_british_columbia ",
+      "(", paste(colnames(species_british_columbia), collapse = ", "),
       ", PRIMARY KEY (species_number))"
     )
   )
-  
+
   DBI::dbWriteTable(
-    con, 
-    "species_british_columbia", 
-    value = species_british_columbia, 
-    append = TRUE, 
+    con,
+    "species_british_columbia",
+    value = species_british_columbia,
+    append = TRUE,
     row.names = FALSE
   )
-  
+
   DBI::dbExecute(con, "DROP TABLE species;")
   DBI::dbExecute(
     con,
     "ALTER TABLE species_british_columbia
   RENAME TO species;"
   )
-  
+
   invisible(species_british_columbia)
 }
