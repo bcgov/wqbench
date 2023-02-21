@@ -13,7 +13,7 @@ wqb_add_bc_species(database)
 Invisible data frame
 }
 \description{
-Read in the British Columbia species values and add them to the SQLite
+Read in the British Columbia species and add to the \code{species} table in the
 database.
 }
 \details{
@@ -24,13 +24,9 @@ file must only contain a single column named \code{latin_name}.
 
 The \code{latin_name} column must consist of the genus and species separated by
 a space. The \code{latin_name} column in the bc-species file are matched to the
-\code{latin_name} column in the species table of the ECOTOX downloaded data.
-
-The output table that is written to the database contains two columns:
-species_number and bc_species
-
-The output table is added to the database with the name
-\code{species_british_columbia}.
+\code{latin_name} column in the species table of the ECOTOX downloaded data. A
+new column \code{present_in_bc} is added to the species table that codes each
+species as either TRUE or FALSE.
 }
 \examples{
 \dontrun{

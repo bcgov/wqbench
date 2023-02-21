@@ -1,6 +1,6 @@
 #' Add BC Species to Database
 #'
-#' Read in the British Columbia species values and add them to the SQLite
+#' Read in the British Columbia species and add to the `species` table in the
 #' database.
 #'
 #' @param database A string to the location of the database.
@@ -13,13 +13,10 @@
 #'
 #'   The `latin_name` column must consist of the genus and species separated by
 #'   a space. The `latin_name` column in the bc-species file are matched to the
-#'   `latin_name` column in the species table of the ECOTOX downloaded data.
+#'   `latin_name` column in the species table of the ECOTOX downloaded data. A
+#'   new column `present_in_bc` is added to the species table that codes each
+#'   species as either TRUE or FALSE.
 #'
-#'   The output table that is written to the database contains two columns:
-#'   species_number and bc_species
-#'
-#'   The output table is added to the database with the name
-#'   `species_british_columbia`.
 #' @examples
 #' \dontrun{
 #' bc_species <- wqb_add_bc_species(
@@ -40,9 +37,17 @@ wqb_add_bc_species <- function(database) {
     package = "wqbench"
   )
   bc_species <- readr::read_csv(bc_species_file_path, show_col_types = FALSE) 
-  chk::check_data(bc_species, list(latin_name = ""))
-  bc_species$present_in_bc <- TRUE
-  
+  chk::check_data(
+    bc_species, 
+    list(
+      latin_name = ""
+    )
+  )
+  bc_species <- bc_species |>
+    dplyr::mutate(
+      latin_name = stringr::str_squish(latin_name),
+      present_in_bc = TRUE
+    ) 
   # read in species from db
   on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
@@ -52,26 +57,35 @@ wqb_add_bc_species <- function(database) {
   db_species <- DBI::dbReadTable(con, "species")
   
   # combine and filter to only bc species 
-  ecotox_bc_species <- db_species |>
+  species_british_columbia <- db_species |>
+    dplyr::mutate(latin_name = stringr::str_squish(latin_name)) |> 
     dplyr::left_join(bc_species, by = "latin_name") |>
-    dplyr::select("species_number", "present_in_bc") |>
-    tidyr::drop_na("present_in_bc") |>
+    dplyr::mutate(present_in_bc =  tidyr::replace_na(present_in_bc, FALSE)) |>
     tibble::tibble()
   
   DBI::dbExecute(
-    con,
-    paste0("CREATE TABLE species_british_columbia ",
-           "(species_number, present_in_bc, PRIMARY KEY (species_number))"
+    con, 
+    paste0(
+      "CREATE TABLE species_british_columbia ", 
+      "(", paste(colnames(species_british_columbia), collapse = ", "), 
+      ", PRIMARY KEY (species_number))"
     )
   )
   
   DBI::dbWriteTable(
     con, 
     "species_british_columbia", 
-    value = ecotox_bc_species, 
+    value = species_british_columbia, 
     append = TRUE, 
     row.names = FALSE
   )
   
-  invisible(ecotox_bc_species)
+  DBI::dbExecute(con, "DROP TABLE species;")
+  DBI::dbExecute(
+    con,
+    "ALTER TABLE species_british_columbia
+  RENAME TO species;"
+  )
+  
+  invisible(species_british_columbia)
 }
