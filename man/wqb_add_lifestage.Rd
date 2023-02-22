@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-lifestage.R
 \name{wqb_add_lifestage}
 \alias{wqb_add_lifestage}
-\title{Add corrected Life stage codes to Database}
+\title{Add Life Stage groups to Database}
 \usage{
 wqb_add_lifestage(database)
 }
@@ -13,13 +13,15 @@ wqb_add_lifestage(database)
 Invisible data frame
 }
 \description{
-Code the ECOTOX life stage code values into three simple life stages: ELS
-(early life stage), juveniles and adults.
+Read in the life stage simple groups and mark those values in the
+lifestage_code table in the database by adding a \code{simple_lifestage} column to
+the table.
 }
 \details{
 Only life stages related to fish or amphibians have been coded. The
 purpose of the coding is to be able to simplify the many life stages into
-three main categories.
+three categories: els (early life stage), juveniles and adults. Not all
+life stages have been coded into these three groups.
 
 The life stage data is contained in a csv file in the extdata folder of the
 package. The csv file can be edited by adding or removing rows.  To add new
@@ -31,10 +33,9 @@ Do not add new columns, rename columns or rename the file. The file must
 only contain the \code{code}, \code{description_lifestage} and \code{simple_lifestage}
 column.
 
-The output table that is written to the database contains two columns:
-\code{code} and \code{simple_lifestage}
-
-The output table is added to the database with the name \code{lifestage_groups}.
+The \code{code} values in the lifestage-codes.csv file are matched to the \code{code}
+values in the lifestage_code table in the ECOTOX downloaded data. Any codes
+that match are coded in a new column called \code{simple_lifestage}.
 }
 \examples{
 \dontrun{
