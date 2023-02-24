@@ -33,7 +33,12 @@ wqb_add_bc_wqg <- function(database) {
     RSQLite::SQLite(), 
     database
   )
-  db_chemicals <- DBI::dbReadTable(con, "chemicals")
+  
+  db_chemicals <- DBI::dbReadTable(con, "chemicals") |>
+    dplyr::mutate(
+      cas_number = as.character(.data$cas_number),
+    ) |>
+    tibble::tibble()
   
   if ("present_in_bc_wqg" %in% colnames(db_chemicals)) {
     stop(
@@ -51,7 +56,7 @@ wqb_add_bc_wqg <- function(database) {
   # )
   
   bc_wqg_file_path <- system.file(
-    "extdata/all-wqg.csv",
+    "extdata/all-wqgs.csv",
     package = "wqbench"
   )
   bc_wqg <- readr::read_csv(bc_wqg_file_path, show_col_types = FALSE) 
@@ -64,13 +69,26 @@ wqb_add_bc_wqg <- function(database) {
   bc_wqg <- bc_wqg |>
     dplyr::select("CAS_number") |>
     dplyr::mutate(
-      CAS_number = stringr::str_replace_all(.data$CAS_number, "\\("),
+      CAS_number = stringr::str_squish(.data$CAS_number),
+      CAS_number = stringr::str_replace(.data$CAS_number, "^\\(", ""),
+      CAS_number = stringr::str_replace(.data$CAS_number, "\\)$", ""),
+      CAS_number = stringr::str_replace_all(.data$CAS_number, "\\-", ""),
+      CAS_number = stringr::str_replace_all(.data$CAS_number, "[:alpha:]|[:space:]", ""),
+      CAS_number = dplyr::na_if(.data$CAS_number, ""),
       present_in_bc_wqg = TRUE
-    )
+    ) |> 
+    tidyr::drop_na("CAS_number") |>
+    dplyr::rename(cas_number = "CAS_number") |>
+    dplyr::distinct()
+  
   # add bc wqg flag to chemicals table
   chemicals_bc_wqg <- db_chemicals |>
-    dplyr::left_join(bc_wqg, by = c("cas_number" = "CAS_number")) |>
-    tibble::tibble()
+    dplyr::left_join(bc_wqg, by = "cas_number") |>
+    dplyr::mutate(
+      cas_number = as.numeric(.data$cas_number),
+      present_in_bc_wqg = tidyr::replace_na(.data$present_in_bc_wqg, FALSE)
+    ) |>
+    tibble::tibble() 
   
   # create db tables
   DBI::dbExecute(
@@ -78,7 +96,7 @@ wqb_add_bc_wqg <- function(database) {
     paste0(
       "CREATE TABLE chemicals_bc_wqg ",
       "(", paste(colnames(chemicals_bc_wqg), collapse = ", "),
-      ", PRIMARY KEY ())"
+      ", PRIMARY KEY (cas_number))"
     )
   )
   
@@ -99,5 +117,3 @@ wqb_add_bc_wqg <- function(database) {
   
   invisible(chemicals_bc_wqg)
 }
-
-
