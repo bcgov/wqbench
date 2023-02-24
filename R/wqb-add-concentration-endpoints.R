@@ -1,7 +1,7 @@
 #' Add the Concentration Endpoints to Database
 #'
 #' Read in the selected concentration endpoints and mark those values in the
-#' endpoint_code table in the database by adding a `concentration_flag` column
+#' endpoint_codes table in the database by adding a `concentration_flag` column
 #' to the table.
 #'
 #' @param database A string to the location of the database.
@@ -10,7 +10,7 @@
 #' @details The list of concentration endpoints to be used is contained in a csv
 #'   file in the extdata folder of the package. The csv file can be edited by
 #'   adding or removing rows.  To add new rows get the `code` and `description`
-#'   values from the `endpoint_code` table in the ECOTOX data and paste them
+#'   values from the `endpoint_codes` table in the ECOTOX data and paste them
 #'   into the csv file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
