@@ -16,6 +16,15 @@ Invisible data frame
 Compile data from the database to make the completed data set from the
 external sources and US EPA ECOTOX database.
 }
+\details{
+Combine XXX tables.
+
+Select a subset of columns.
+
+Removes rows with no genus, no concentration, no duration.
+
+Cleans data by removing asterisks in concentration values and endpoints.
+}
 \examples{
 \dontrun{
 data_compiled <- wqb_compile_dataset(
