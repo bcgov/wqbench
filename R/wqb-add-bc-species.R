@@ -14,7 +14,7 @@
 #'   The `latin_name` column must consist of the genus and species separated by
 #'   a space. The `latin_name` column in the bc-species file are matched to the
 #'   `latin_name` column in the species table of the ECOTOX downloaded data. A
-#'   new column `present_in_bc` is added to the species table that codes each
+#'   new column `species_present_in_bc` is added to the species table that codes each
 #'   species as either TRUE or FALSE.
 #'
 #' @examples
@@ -39,7 +39,7 @@ wqb_add_bc_species <- function(database) {
   )
   db_species <- DBI::dbReadTable(con, "species")
   
-  if ("present_in_bc" %in% colnames(db_species)) {
+  if ("species_present_in_bc" %in% colnames(db_species)) {
     stop(
       "British Columbia species have already been added to the database"
     )
@@ -59,7 +59,7 @@ wqb_add_bc_species <- function(database) {
   bc_species <- bc_species |>
     dplyr::mutate(
       latin_name = stringr::str_squish(.data$latin_name),
-      present_in_bc = TRUE
+      species_present_in_bc = TRUE
     ) 
   
   # add bc species flag to species table
@@ -67,7 +67,7 @@ wqb_add_bc_species <- function(database) {
     dplyr::mutate(latin_name = stringr::str_squish(.data$latin_name)) |> 
     dplyr::left_join(bc_species, by = "latin_name") |>
     dplyr::mutate(
-      present_in_bc =  tidyr::replace_na(.data$present_in_bc, FALSE)
+      species_present_in_bc =  tidyr::replace_na(.data$species_present_in_bc, FALSE)
     ) |>
     tibble::tibble()
 

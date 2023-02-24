@@ -25,7 +25,7 @@ file must only contain a single column named \code{latin_name}.
 The \code{latin_name} column must consist of the genus and species separated by
 a space. The \code{latin_name} column in the bc-species file are matched to the
 \code{latin_name} column in the species table of the ECOTOX downloaded data. A
-new column \code{present_in_bc} is added to the species table that codes each
+new column \code{species_present_in_bc} is added to the species table that codes each
 species as either TRUE or FALSE.
 }
 \examples{
