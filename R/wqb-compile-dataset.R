@@ -44,7 +44,9 @@ wqb_compile_dataset <- function(database) {
     tibble::tibble()
   db_species <- DBI::dbReadTable(con, "species") |>
     dplyr::mutate(
-      present_in_bc = as.logical(as.numeric(.data$present_in_bc))
+      species_present_in_bc = as.logical(
+        as.numeric(.data$species_present_in_bc)
+      )
     ) |>
     tibble::tibble()
   db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
@@ -102,7 +104,7 @@ wqb_compile_dataset <- function(database) {
       "species_number", "latin_name", "common_name", "kingdom", 
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
       "family", "genus", "species", "subspecies", "variety",
-      "species_in_bc" = "present_in_bc", 
+      "species_present_in_bc", 
       "ecological_group_class", "ecological_group",
       "lifestage_description", "simple_lifestage", 
       "media_type", "media_description", "media_type_group",
