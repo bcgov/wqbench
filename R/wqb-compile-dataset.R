@@ -6,6 +6,13 @@
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
+#' @details Combine XXX tables.
+#' 
+#' Select a subset of columns.
+#' 
+#' Removes rows with no genus, no concentration, no duration.
+#' 
+#' Cleans data by removing asterisks in concentration values and endpoints. 
 #'
 #' @examples
 #' \dontrun{
@@ -18,56 +25,128 @@
 #' ) 
 #' }
 wqb_compile_dataset <- function(database) {
-  # chk::chk_file(database)
-  # chk::chk_ext(database, "sqlite")
-  # 
-  # on.exit(DBI::dbDisconnect(con))
-  # con  <- DBI::dbConnect(
-  #   RSQLite::SQLite(),
-  #   database
-  # )
-  # 
-  # db_species_british_columbia <- DBI::dbReadTable(con, "species_british_columbia")
-  # db_species_trophic_group <- DBI::dbReadTable(con, "species_trophic_group")
-  # db_species_tests_media  <- DBI::dbReadTable(con, "species_tests_media")
-  # db_tests_aquatic <- DBI::dbReadTable(con, "tests_aquatic")
-  # db_endpoint_concentration <- DBI::dbReadTable(con, "endpoint_concentration")
-  # #db_results_endpoint_concentration <- DBI::dbReadTable(con, "results_endpoint_concentration")
-  # db_lifestage_groups <- DBI::dbReadTable(con, "lifestage_groups")
-  # 
-  # db_results <- DBI::dbReadTable(con, "results")
-  # db_tests <- DBI::dbReadTable(con, "tests")
-  # db_references <- DBI::dbReadTable(con, "references")
-  # db_species <- DBI::dbReadTable(con, "species")
-  # db_chemicals <- DBI::dbReadTable(con, "chemicals")
-  # db_effect_codes <- DBI::dbReadTable(con, "effect_codes")
-  # db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes")
-  # 
-  # 
-  # x <- db_results |>
-  #   dplyr::left_join(db_tests, by = "test_id") |>
-  #   dplyr::filter(organism_habitat == "Water") |> # filter to only water tests
-  #   dplyr::filter(endpoint %in% db_endpoint_concentration$code) |>
-  #   dplyr::select(
-  #     test_id, test_cas, result_id, endpoint,
-  #     effect, conc1_mean, conc1_unit,
-  #     obs_duration_mean, obs_duration_unit, study_duration_unit, organism_habitat,
-  #     species_number #, latin_name, common_name, kingdom, phylum_division, subphylum_div,
-  #     # description_effect,
-  #     #superclass, class, tax_order, family, genus, species, subspecies, variety,
-  #     #reference_number, reference_type, author, title, source, publication_year
-  #   )
-  # 
-  # sort(unique(x$endpoint))
-  # sort(unique(x$organism_habitat))
-  # 
-  # 
-  # 
+  chk::chk_file(database)
+  chk::chk_ext(database, "sqlite")
   
+  on.exit(DBI::dbDisconnect(con))
+  con  <- DBI::dbConnect(
+    RSQLite::SQLite(),
+    database
+  )
+  
+  db_results <- DBI::dbReadTable(con, "results")
+  db_tests <- DBI::dbReadTable(con, "tests")
+  
+  db_endpoint_codes <- DBI::dbReadTable(con, "endpoint_codes") |>
+    dplyr::mutate(
+      concentration_flag = as.logical(as.numeric(.data$concentration_flag))
+    ) |>
+    tibble::tibble()
+  db_species <- DBI::dbReadTable(con, "species") |>
+    dplyr::mutate(present_in_bc = as.logical(as.numeric(present_in_bc))) |>
+    tibble::tibble()
+  db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
+    dplyr::rename(lifestage_description = description) |>
+    tibble::tibble()
+  db_chemicals <- DBI::dbReadTable(con, "chemicals") |>
+    dplyr::mutate(
+      present_in_bc_wqg = as.logical(as.numeric(present_in_bc_wqg))
+    ) |>
+    tibble::tibble()
+  
+  db_references <- DBI::dbReadTable(con, "references")
+  db_effect_codes <- DBI::dbReadTable(con, "effect_codes") |>
+    dplyr::rename(effect_description = description) |>
+    tibble::tibble()
+  db_media_type_codes <- DBI::dbReadTable(con, "media_type_codes") |>
+    dplyr::rename(media_description = description) |>
+    tibble::tibble()
+  
+  combined_data <- db_results |>
+    # filter to only water  (aquatic) tests
+    dplyr::left_join(db_tests, by = "test_id") |>
+    dplyr::filter(organism_habitat == "Water") |>
+    # filter to on conc endpoints
+    dplyr::left_join(db_endpoint_codes, by = c("endpoint" = "code")) |>
+    dplyr::filter(concentration_flag) |>
+    # clean up asterick endpoints
+    dplyr::mutate(endpoint = stringr::str_replace(endpoint, "\\*", "")) |>
+    # add species info
+    dplyr::left_join(db_species, by = "species_number") |>
+    # add life stage info
+    dplyr::left_join(
+      db_lifestage_codes, by = c("organism_lifestage" = "code")
+    ) |>
+    # missing (NA) lifestages should be coded as adult
+    # doesn't appear to be any missing but adding in just in case
+    dplyr::mutate(
+      simple_lifestage = dplyr::if_else(
+        is.na(lifestage_description), "adult", simple_lifestage
+      )
+    ) |>
+    # add chemical info
+    dplyr::left_join(db_chemicals, by = c("test_cas" = "cas_number")) |>
+    # add reference info
+    dplyr::left_join(db_references, by = c("reference_number")) |>
+    # add effect info
+    dplyr::left_join(db_effect_codes, by = c("effect" = "code")) |>
+    # add media groups
+    dplyr::left_join(db_media_type_codes, by = c("media_type" = "code")) |>
+    tibble::tibble()
+  
+  chk::chk_not_missing(combined_data$organism_lifestage)
+  
+  # select columns
+  selected_columns_data <- combined_data |>
+    dplyr::select(
+      "chemical_name", "test_cas",
+      "test_id", "result_id", "endpoint", "effect", "effect_description",
+      "conc1_mean", "conc1_unit",
+      "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "organism_habitat",
+      "species_number", "latin_name", "common_name", "kingdom", 
+      "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
+      "family", "genus", "species", "subspecies", "variety",
+      "species_in_bc" = "present_in_bc", 
+      "ecological_group_class", "ecological_group",
+      "lifestage_description", "simple_lifestage", 
+      "media_type", "media_description", "media_type_group",
+      "present_in_bc_wqg", 
+      "reference_number", "reference_type", "author", "title", "source", 
+      "publication_year"
+    )
+  
+  compiled_data <- selected_columns_data |>
+    # remove missing concentrations
+    dplyr::filter(!(conc1_mean == "NR")) |>
+    # remove concentration with < or > in them
+    dplyr::filter(!(stringr::str_detect(conc1_mean, "\\<|\\>"))) |>
+    # remove rows with no species genus
+    dplyr::filter(!(genus == "")) |>
+    # remove rows with no duration value
+    dplyr::filter(!(obs_duration_mean == "")) |> ### double check still valid 
+    dplyr::filter(!(obs_duration_mean == "NR")) |> ### double check still valid 
+    dplyr::mutate(
+      # remove asterisk from end point
+      endpoint = stringr::str_replace(endpoint, "\\*", ""),
+      # remove asterisk from conc1_mean values and convert to numeric
+      conc1_mean = stringr::str_replace(conc1_mean, "\\*", ""),
+      conc1_mean = as.numeric(conc1_mean),
+      # missing (NA) lifestages should be coded as adult
+      # doesn't appear to be any missing but adding in just in case
+      simple_lifestage = dplyr::if_else(
+        is.na(lifestage_description), 
+        "adult", 
+        simple_lifestage
+      ),
+      # simple life stage should only match for amphibians and fish
+      simple_lifestage = dplyr::case_when(
+        ecological_group == "Invertebrate" ~ NA_character_,
+        ecological_group == "Algae" ~ NA_character_,
+        ecological_group == "Plant" ~ NA_character_,
+        TRUE ~ simple_lifestage
+      )
+    ) 
+  
+  compiled_data
 }
-
-
-### To Do
-
-# unlog logged Endpoints
-# remove * on endpoints 
