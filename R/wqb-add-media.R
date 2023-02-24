@@ -1,4 +1,4 @@
-#' Code Media Type to Salt or Fresh Water by Species and Test
+#' Add and Code Media Type to Salt or Fresh Water by Species and Test
 #' 
 #' The media type code for each species and test has been coded to either salt water, 
 #' fresh water or not reported. 
