@@ -2,7 +2,6 @@
 
 export(wqb_add_bc_species)
 export(wqb_add_concentration_endpoints)
-export(wqb_add_habitat)
 export(wqb_add_lifestage)
 export(wqb_add_trophic_group)
 export(wqb_compile_dataset)
