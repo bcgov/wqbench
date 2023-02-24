@@ -43,7 +43,7 @@ wqb_add_bc_wqg <- function(database) {
   if ("present_in_bc_wqg" %in% colnames(db_chemicals)) {
     stop(
       paste(
-        "British Columbia water quality guideline flag have already been", 
+        "British Columbia water quality guideline flag has already been", 
         "added to the database"
       )
     )
