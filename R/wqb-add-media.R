@@ -8,7 +8,7 @@
 #' @export
 #' @details Read in the media_type_codes table and code the 24 groups into three
 #'   categories: salt water, fresh water or not reported. The new categories are
-#'   added to a column in the table called `media_type`.
+#'   added to a column in the table called `media_type_group`.
 #'
 #' @examples
 #' \dontrun{
@@ -35,7 +35,7 @@ wqb_add_media <- function(database) {
       description = stringr::str_squish(.data$description)
     )
   
-  if ("media_type" %in% colnames(db_media_type)) {
+  if ("media_type_group" %in% colnames(db_media_type)) {
     stop(
       "Media type has already been added to the database"
     )
@@ -43,7 +43,7 @@ wqb_add_media <- function(database) {
   # create coding groups
   media_type <- db_media_type |>
     dplyr::mutate(
-      media_type = dplyr::case_when(
+      media_type_group = dplyr::case_when(
         .data[["description"]] == "Fresh water" ~ "fresh water",
         .data[["description"]] == "Salt water" ~ "salt water",
         TRUE ~ "not reported"
@@ -55,7 +55,7 @@ wqb_add_media <- function(database) {
     con,
     paste0(
       "CREATE TABLE media_type ",
-      "(code TEXT, description TEXT, media_type TEXT, ",
+      "(code TEXT, description TEXT, media_type_group TEXT, ",
       "PRIMARY KEY (code))"
     )
   )

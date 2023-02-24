@@ -19,7 +19,7 @@ water and not reported.
 \details{
 Read in the media_type_codes table and code the 24 groups into three
 categories: salt water, fresh water or not reported. The new categories are
-added to a column in the table called \code{media_type}.
+added to a column in the table called \code{media_type_group}.
 }
 \examples{
 \dontrun{
