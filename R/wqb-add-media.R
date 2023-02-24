@@ -13,15 +13,15 @@
 #'  `species_tests_media`.
 #' @examples
 #' \dontrun{
-#' habitat_info <- wqb_add_habitat(
+#' media_info <- wqb_add_media(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' 
-#' habitat_info <- wqb_add_habitat(
+#' media_info <- wqb_add_media(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' }
-wqb_add_habitat <- function(database) {
+wqb_add_media <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
