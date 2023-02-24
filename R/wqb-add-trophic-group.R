@@ -1,7 +1,7 @@
 #' Add Trophic Groups to Database
 #' 
-#' Read in the trophic groups and add them to the SQLite database. Species are 
-#' classed into groups and class level groups. 
+#' Read in the trophic groups and and add to the `species` table in the
+#' database. 
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -13,13 +13,9 @@
 #' The trophic groups file must contain the columns: `class`, `order`, 
 #' `ecological_group`, and `ecological_group_class`. The `class` and `order`
 #' columns are matched to the `class` and `tax_order` columns in the `species`
-#' table of the ECOTOX downloaded data. 
+#' table of the ECOTOX downloaded data and then adds the `ecological_group` and 
+#' `ecological_group_class` columns to the species table. 
 #' 
-#' The output table contains three columns: species_number, ecological_group, 
-#' and ecological_group_class.
-#'
-#' The output table is added to the database with the name 
-#' `species_trophic_group`.
 #' @examples
 #' \dontrun{
 #' trophic_group <- wqb_add_trophic_group(
@@ -31,8 +27,32 @@
 #' ) 
 #' }
 wqb_add_trophic_group <- function(database) {
+  
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
+  
+  # read in species from db
+  on.exit(DBI::dbDisconnect(con))
+  con  <- DBI::dbConnect(
+    RSQLite::SQLite(), 
+    database
+  )
+  db_species <- DBI::dbReadTable(con, "species") |>
+    dplyr::mutate(
+      class = stringr::str_squish(.data$class),
+      tax_order = stringr::str_squish(.data$tax_order)
+    )
+  
+  if ("ecological_group" %in% colnames(db_species)) {
+    stop(
+      "Ecological group has already been added to the database"
+    )
+  }
+  if ("ecological_group_class" %in% colnames(db_species)) {
+    stop(
+      "Ecological group has already been added to the database"
+    )
+  }
   
   # read in trophic groups 
   trophic_groups_file_path <- system.file(
@@ -52,37 +72,42 @@ wqb_add_trophic_group <- function(database) {
       ecological_group_class = ""
     )
   )
-  
+  trophic_groups <- trophic_groups |>
+    dplyr::mutate(
+      class = stringr::str_squish(.data$class),
+      order = stringr::str_squish(.data$order),
+      ecological_group = stringr::str_squish(.data$ecological_group),
+      ecological_group_class = stringr::str_squish(.data$ecological_group_class),
+    )
   # select group where both have class and order 
   trophic_levels_class_order <- trophic_groups |> 
-    dplyr::filter(!is.na(class) & !is.na(order)) |>
+    dplyr::filter(!is.na(.data$class) & !is.na(.data$order)) |>
     dplyr::rename(
       ecological_group_co = "ecological_group",
       ecological_group_class_co = "ecological_group_class"
     )
   # select groups with only class 
   trophic_levels_class <- trophic_groups |> 
-    dplyr::filter(is.na(order)) |>
+    dplyr::filter(is.na(.data$order)) |>
     dplyr::rename(
       ecological_group_c = "ecological_group",
       ecological_group_class_c = "ecological_group_class"
+    ) |>
+    dplyr::select(
+      "class", "ecological_group_c", "ecological_group_class_c"
     )
   # select groups with only order 
   trophic_levels_order <- trophic_groups |> 
-    dplyr::filter(is.na(class)) |>
+    dplyr::filter(is.na(.data$class)) |>
     dplyr::rename(
       ecological_group_o = "ecological_group",
       ecological_group_class_o = "ecological_group_class"
+    ) |>
+    dplyr::select(
+      "order", "ecological_group_o", "ecological_group_class_o"
     )
-
-  # read in species from db
-  on.exit(DBI::dbDisconnect(con))
-  con  <- DBI::dbConnect(
-    RSQLite::SQLite(), 
-    database
-  )
-  db_species <- DBI::dbReadTable(con, "species")
   
+  # process info
   species_trophic_group <- db_species |>
     dplyr::left_join(trophic_levels_class, by = "class") |>
     dplyr::left_join(
@@ -109,16 +134,18 @@ wqb_add_trophic_group <- function(database) {
       )
     ) |>
     dplyr::select(
-      "species_number", "ecological_group_class", "ecological_group"
+      dplyr::all_of(colnames(db_species)),
+      "ecological_group_class", "ecological_group",
     ) |>
-    tidyr::drop_na("ecological_group_class", "ecological_group") |>
     tibble::tibble()
   
+  # create new db things 
   DBI::dbExecute(
     con,
-    paste0("CREATE TABLE species_trophic_group ",
-           "(species_number INTEGER, ecological_group_class TEXT, ",
-           "ecological_group TEXT, PRIMARY KEY (species_number))"
+    paste0(
+      "CREATE TABLE species_trophic_group ",
+      "(", paste(colnames(species_trophic_group), collapse = ", "),
+      ", PRIMARY KEY (species_number))"
     )
   )
   
@@ -128,6 +155,13 @@ wqb_add_trophic_group <- function(database) {
     value = species_trophic_group, 
     append = TRUE, 
     row.names = FALSE
+  )
+  
+  DBI::dbExecute(con, "DROP TABLE species;")
+  DBI::dbExecute(
+    con,
+    "ALTER TABLE species_trophic_group
+  RENAME TO species;"
   )
   
   invisible(species_trophic_group)

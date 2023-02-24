@@ -13,8 +13,8 @@ wqb_add_trophic_group(database)
 Invisible data frame
 }
 \description{
-Read in the trophic groups and add them to the SQLite database. Species are
-classed into groups and class level groups.
+Read in the trophic groups and and add to the \code{species} table in the
+database.
 }
 \details{
 The trophic group data is contained in a csv file in the extdata
@@ -24,13 +24,8 @@ and classes. Do not add new columns, rename columns or rename the file.
 The trophic groups file must contain the columns: \code{class}, \code{order},
 \code{ecological_group}, and \code{ecological_group_class}. The \code{class} and \code{order}
 columns are matched to the \code{class} and \code{tax_order} columns in the \code{species}
-table of the ECOTOX downloaded data.
-
-The output table contains three columns: species_number, ecological_group,
-and ecological_group_class.
-
-The output table is added to the database with the name
-\code{species_trophic_group}.
+table of the ECOTOX downloaded data and then adds the \code{ecological_group} and
+\code{ecological_group_class} columns to the species table.
 }
 \examples{
 \dontrun{
