@@ -1,4 +1,4 @@
-code,description,keep,value_mutlipler_to_hours,comments
+code,description,keep,value_multiplier_to_hours,comments
 --,Unspecified,FALSE,,
 #NAME?,"Pretreatment, time unknown",FALSE,,
 abs,Until abscission,FALSE,,

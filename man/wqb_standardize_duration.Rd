@@ -16,22 +16,34 @@ Invisible data frame
 Read in the duration-conversion file and flag unit values that can be
 converted and which ones will be removed. The column \code{keep} is added to the
 duration_unit_codes table to indicate which units will be kept and which will
-have the rows deleted. The \code{value_mutlipler_to_hours} column is added for
+have the rows deleted. The \code{value_multiplier_to_hours} column is added for
 each unit will be converted to hours.
 }
 \details{
-The list of units to be converted are contained in a csv
-file in the extdata folder of the package. The csv file can be edited by
-adding or removing rows.  To add new rows get the \code{code} and \code{description}
-values from the \code{duration_unit_codes} table in the ECOTOX data and paste them
-into the csv file.
+The list of units to be converted are contained in a csv file in the
+extdata folder of the package. The csv file can be edited by adding or
+removing rows.  To add new rows get the \code{code} and \code{description} values
+from the \code{duration_unit_codes} table in the ECOTOX data and paste them into
+the csv file.
 
 Do not add new columns, rename columns or rename the file. The file must
-only contain the columns: \code{code}, \code{description}, \code{keep} and \code{value_multipler_to_hours}.
+only contain the columns: \code{code}, \code{description}, \code{keep} and
+\code{value_multiplier_to_hours}.
 
-The \code{code} values in the duration-conversion file are matched to the
-\code{code} values in the \code{duration_unit_codes} table in the ECOTOX downloaded data.
+The \code{code} values in the duration-conversion file are matched to the \code{code}
+values in the \code{duration_unit_codes} table in the ECOTOX downloaded data.
 
 The \code{value_multipler_to_hours} column contains the value need to convert
 the unit into hours.
+}
+\examples{
+\dontrun{
+chem_bc_wqg <- wqb_standardize_duration(
+ database = "ecotox_ascii_09_15_2022.sqlite"
+)
+
+chem_bc_wqg <- wqb_standardize_duration(
+ database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+}
 }

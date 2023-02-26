@@ -1,30 +1,39 @@
 #' Add Duration Unit Conversation Values for Standardizing the Data
 #'
-#' Read in the duration-conversion file and flag unit values that can be 
-#' converted and which ones will be removed. The column `keep` is added to the 
+#' Read in the duration-conversion file and flag unit values that can be
+#' converted and which ones will be removed. The column `keep` is added to the
 #' duration_unit_codes table to indicate which units will be kept and which will
-#' have the rows deleted. The `value_mutlipler_to_hours` column is added for
-#' each unit will be converted to hours. 
+#' have the rows deleted. The `value_multiplier_to_hours` column is added for
+#' each unit will be converted to hours.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details The list of units to be converted are contained in a csv
-#'   file in the extdata folder of the package. The csv file can be edited by
-#'   adding or removing rows.  To add new rows get the `code` and `description`
-#'   values from the `duration_unit_codes` table in the ECOTOX data and paste them
-#'   into the csv file.
+#' @details The list of units to be converted are contained in a csv file in the
+#'   extdata folder of the package. The csv file can be edited by adding or
+#'   removing rows.  To add new rows get the `code` and `description` values
+#'   from the `duration_unit_codes` table in the ECOTOX data and paste them into
+#'   the csv file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
-#'   only contain the columns: `code`, `description`, `keep` and `value_multipler_to_hours`.
+#'   only contain the columns: `code`, `description`, `keep` and
+#'   `value_multiplier_to_hours`.
 #'
-#'   The `code` values in the duration-conversion file are matched to the
-#'   `code` values in the `duration_unit_codes` table in the ECOTOX downloaded data. 
-#'   
-#'   The `value_multipler_to_hours` column contains the value need to convert 
-#'   the unit into hours. 
+#'   The `code` values in the duration-conversion file are matched to the `code`
+#'   values in the `duration_unit_codes` table in the ECOTOX downloaded data.
 #'
+#'   The `value_multipler_to_hours` column contains the value need to convert
+#'   the unit into hours.
 #' @examples
+#' \dontrun{
+#' chem_bc_wqg <- wqb_standardize_duration(
+#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#' )
+#'
+#' chem_bc_wqg <- wqb_standardize_duration(
+#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#' )
+#' }
 wqb_standardize_duration <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
@@ -69,7 +78,7 @@ wqb_standardize_duration <- function(database) {
     list(
       code = c("", NA),
       keep = TRUE,
-      value_mutlipler_to_hours = c(1, NA)
+      value__to_hours = c(1, NA)
     )
   )
   
@@ -82,7 +91,7 @@ wqb_standardize_duration <- function(database) {
       ),
       code = stringr::str_squish(.data$code) 
     ) |>
-    dplyr::select("code", "keep", "value_mutlipler_to_hours")
+    dplyr::select("code", "keep", "value_multiplier_to_hours")
   
   # print out name of any codes that don't match the db ones
   dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
