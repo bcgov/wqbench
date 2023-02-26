@@ -78,7 +78,7 @@ wqb_standardize_duration <- function(database) {
     list(
       code = c("", NA),
       keep = TRUE,
-      value__to_hours = c(1, NA)
+      value_multiplier_to_hours = c(1, NA)
     )
   )
   
