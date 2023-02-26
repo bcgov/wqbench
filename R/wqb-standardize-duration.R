@@ -1,10 +1,11 @@
 #' Add Duration Unit Conversation Values for Standardizing the Data
 #'
 #' Read in the duration-conversion file and flag unit values that can be
-#' converted and which ones will be removed. The column `keep` is added to the
-#' duration_unit_codes table to indicate which units will be kept and which will
-#' have the rows deleted. The `value_multiplier_to_hours` column is added for
-#' each unit will be converted to hours.
+#' converted and which ones will be removed. The column `duration_units_to_keep`
+#' is added to the duration_unit_codes table to indicate which units will be
+#' kept and which will have the rows deleted. The
+#' `duration_value_multiplier_to_hours` column is added for each unit will be
+#' converted to hours.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -16,14 +17,14 @@
 #'   the csv file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
-#'   only contain the columns: `code`, `description`, `keep` and
-#'   `value_multiplier_to_hours`.
+#'   only contain the columns: `code`, `description`, `duration_units_to_keep`
+#'   and `duration_value_multiplier_to_hours`.
 #'
 #'   The `code` values in the duration-conversion file are matched to the `code`
 #'   values in the `duration_unit_codes` table in the ECOTOX downloaded data.
 #'
-#'   The `value_multiplier_to_hours` column contains the value need to convert
-#'   the unit into hours.
+#'   The `duration_value_multiplier_to_hours` column contains the value need to
+#'   convert the unit into hours.
 #' @examples
 #' \dontrun{
 #' duration_unit_code_standardization <- wqb_standardize_duration(
@@ -51,7 +52,7 @@ wqb_standardize_duration <- function(database) {
     ) |>
     tibble::tibble()
   
-  if ("value_multiplier_to_hours" %in% colnames(db_duration_unit_codes)) {
+  if ("duration_value_multiplier_to_hours" %in% colnames(db_duration_unit_codes)) {
     stop(
       paste(
         "Value multiplier to hours has already been", 
@@ -60,10 +61,10 @@ wqb_standardize_duration <- function(database) {
     )
   }
   
-  if ("keep" %in% colnames(db_duration_unit_codes)) {
+  if ("duration_units_to_keep" %in% colnames(db_duration_unit_codes)) {
     stop(
       paste(
-        "Keep has already been added to the database"
+        "duration_units_to_keep has already been added to the database"
       )
     )
   }
@@ -77,8 +78,8 @@ wqb_standardize_duration <- function(database) {
     duration_std, 
     list(
       code = c("", NA),
-      keep = TRUE,
-      value_multiplier_to_hours = c(1, NA)
+      duration_units_to_keep = TRUE,
+      duration_value_multiplier_to_hours = c(1, NA)
     )
   )
   
@@ -91,7 +92,7 @@ wqb_standardize_duration <- function(database) {
       ),
       code = stringr::str_squish(.data$code) 
     ) |>
-    dplyr::select("code", "keep", "value_multiplier_to_hours")
+    dplyr::select("code", "duration_units_to_keep", "duration_value_multiplier_to_hours")
   
   # print out name of any codes that don't match the db ones
   dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
