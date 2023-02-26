@@ -73,7 +73,7 @@ wqb_add_concentration_endpoints <- function(database) {
   # print out name of any codes that don't match the db ones
   dont_match <- !(endpoint_concentration_pick$code %in% db_endpoint_code$code)
   if (any((dont_match))) {
-    print("Value(s) do not match code(s) in `endpoint_code` table in ECOTOX database:")
+    print("Value(s) do not match code(s) in `endpoint_codes` table in ECOTOX database:")
     print(endpoint_concentration_pick$code[dont_match])
   }
   
