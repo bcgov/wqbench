@@ -1,0 +1,172 @@
+code,description,keep,value_mutlipler_to_hours,comments
+--,Unspecified,FALSE,,
+#NAME?,"Pretreatment, time unknown",FALSE,,
+abs,Until abscission,FALSE,,
+ac,Age class,FALSE,,
+alv,Alevin,FALSE,,
+ant,Until anthesis,FALSE,,
+b0.25,0.25 bloom stage,FALSE,,
+bbch,BBCH Scale,FALSE,,
+BLM,Bloom stage,FALSE,,
+brd,Brood or litter,FALSE,,
+brs,Breeding season,FALSE,,
+bt,Boot stage,FALSE,,
+cd,Colony diameter,FALSE,,
+cfs,Commercial flowering stage,FALSE,,
+clv,Until cleavage,FALSE,,
+crs,Crab stage,FALSE,,
+cs,Cell stage,FALSE,,
+d,Day(s),TRUE,24,24 hours in a day
+dapu,Days after pupation,TRUE,24,24 hours in a day
+dbh,Days pre-hatch,TRUE,24,24 hours in a day
+dd,Degree days,FALSE,,
+dge,Days gestation,TRUE,24,24 hours in a day
+dh,Degree hours,FALSE,,
+dla,Days lactation,TRUE,24,24 hours in a day
+dpe,Days post-emergence,TRUE,24,24 hours in a day
+dpel,Days post egg laying,TRUE,24,24 hours in a day
+dpf,Days post fertilization,TRUE,24,24 hours in a day
+dpfg,Days post fledging,TRUE,24,24 hours in a day
+dpfl,Days post flowering,TRUE,24,24 hours in a day
+dpgm,Days post germination,TRUE,24,24 hours in a day
+dph,Days post-hatch,TRUE,24,24 hours in a day
+dphv,Days post harvest,TRUE,24,24 hours in a day
+dpm,Days post-moult,TRUE,24,24 hours in a day
+dpmm,Days post metamorphosis,TRUE,24,24 hours in a day
+dpn,Days post-natal,TRUE,24,24 hours in a day
+dpo,Days post-oviposition,TRUE,24,24 hours in a day
+dpp,Days post planting/sowing,TRUE,24,24 hours in a day
+dpr,Days post-release,TRUE,24,24 hours in a day
+dpref,Days pre-fertilization,TRUE,24,24 hours in a day
+dps,Days post-spawn,TRUE,24,24 hours in a day
+dpu,Days post-swim up,TRUE,24,24 hours in a day
+dpw,Days post-swimming,TRUE,24,24 hours in a day
+dpys,Days post yolk sac absorption,TRUE,24,24 hours in a day
+ea,To earing or heading,FALSE,,
+eb,Early bloom stage,FALSE,,
+ej,Egg to juvenile,FALSE,,
+el,Egg(s) laid,FALSE,,
+em,Emergence,FALSE,,
+ep,Egg to pupation,FALSE,,
+epa,Egg to pre-adult,FALSE,,
+eslk,Early silk stage,FALSE,,
+eso,End of shooting stage,FALSE,,
+eta,Egg to adult,FALSE,,
+ey,Eyed stage,FALSE,,
+f5,50% flowering,FALSE,,
+fb,Full bloom stage,FALSE,,
+fd,Frond,FALSE,,
+fi,Floral initiation,FALSE,,
+fl,Flower stage,FALSE,,
+flg,Fledging,FALSE,,
+fr,Fruit stage,FALSE,,
+frt,To fertilization,FALSE,,
+fry,Fry,FALSE,,
+fs,Flowering stage,FALSE,,
+gds,Gallien and durocher stage,FALSE,,
+ge,Generation,FALSE,,
+ges,Gestation,FALSE,,
+gm,Germination,FALSE,,
+go,Gosner stage,FALSE,,
+gs,Growing season,FALSE,,
+gts,Gastrula stage,FALSE,,
+h,Hour(s),TRUE,1,1 hour in an hour
+hbf,Hours pre-fertilization,TRUE,1,1 hour in an hour
+hbh,Hours pre-hatch,TRUE,1,1 hour in an hour
+hns ,Haun stage,FALSE,,
+hpe,Hours post-emergence,TRUE,1,1 hour in an hour
+hpel,Hours post egg laying,TRUE,1,1 hour in an hour
+hpf,Hours post fertilization,TRUE,1,1 hour in an hour
+hph,Hours post hatch,TRUE,1,1 hour in an hour
+hpp,Hours post planting/sowing,TRUE,1,1 hour in an hour
+hpr,Hours post release,TRUE,1,1 hour in an hour
+hps,hours post-spawn,TRUE,1,1 hour in an hour
+hs,Harrison stage,FALSE,,
+ht,Until hatch,FALSE,,
+hv,Harvest,FALSE,,
+i2,Intermolt to 2nd molt,FALSE,,
+ins,Instar,FALSE,,
+inst,Instantaneous,FALSE,,
+it,Intermolt to molt,FALSE,,
+js,jointing stage,FALSE,,
+kh,Knee-high stage,FALSE,,
+lf,Lifetime;no associated numeric value,FALSE,,
+lfd,Leaf drop,FALSE,,
+lgp,To lag phase,FALSE,,
+lhv15-20,"Leaf harvest, 15-20 cm",FALSE,,
+lhv20-25,"Leaf harvest, 20-25 cm",FALSE,,
+log,To log phase,FALSE,,
+ls,Leaf stage,FALSE,,
+ls4-6,4-6 leaf stage,FALSE,,
+ls6,Six leaf stage,FALSE,,
+ls9-10,9-10 leaf stage,FALSE,,
+LSI,Larval stage index,FALSE,,
+lva,Larva to adult,FALSE,,
+lvp,Larva to pupa,FALSE,,
+lvsa,Larva to subadult,FALSE,,
+ma,Maturity,FALSE,,
+mi,Minute(s),TRUE,0.016666667,60 minutes in an hour
+mmph,Until metamorphosis,FALSE,,
+mo,Month(s),TRUE,720,"30 days in a month, 24 hours in a day"
+mope,Months post-emergence,TRUE,720,"30 days in a month, 24 hours in a day"
+mopf,Months post-fertilization,TRUE,720,"30 days in a month, 24 hours in a day"
+moph,Months post-hatch,TRUE,720,"30 days in a month, 24 hours in a day"
+mopm,Months post-metamorphosis,TRUE,720,"30 days in a month, 24 hours in a day"
+mopres,Months pre-smolt,TRUE,720,"30 days in a month, 24 hours in a day"
+mopswm,Months post swim-up,TRUE,720,"30 days in a month, 24 hours in a day"
+mpf,Minutes post-fertilization,TRUE,0.016666667,60 minutes in an hour
+mpgm,Months post-germination,TRUE,720,"30 days in a month, 24 hours in a day"
+mph,Minutes post-hatch,TRUE,0.016666667,60 minutes in an hour
+mpp,Months post planting/sowing,TRUE,720,"30 days in a month, 24 hours in a day"
+MULT,Multiple durations (for terrestrial rollup),FALSE,,
+myp,Mysis - post-larvae,FALSE,,
+NC,Not coded,FALSE,,
+nf,Nieuwkoop-faber-stage,FALSE,,
+NR,Not reported,FALSE,,
+pa,Pupa to adult,FALSE,,
+pan,Panicle formation stage,FALSE,,
+pci,Phytochron index,FALSE,,
+pd,1st pod set,FALSE,,
+pgm,Post germination,FALSE,,
+pm,Post molt,FALSE,,
+pr,Priming,FALSE,,
+pro,Propagation stage,FALSE,,
+rhv3,"Root harvest, 3 grams",FALSE,,
+s,Second(s),TRUE,0.000277778,"60 seconds in a minute, 60 minutes in an hour"
+sds,seedling stage,FALSE,,
+slk,Silk stage,FALSE,,
+sms,Somite stage,FALSE,,
+so,Shooting stage,FALSE,,
+spf,Seconds post-fertilization,TRUE,0.000277778,"60 seconds in a minute, 60 minutes in an hour"
+spref,Seconds pre-fertilization,TRUE,0.000277778,"60 seconds in a minute, 60 minutes in an hour"
+ss,Squaring stage,FALSE,,
+sss,Seed set stage,FALSE,,
+sst,Substage,FALSE,,
+stg,Stage,FALSE,,
+su,Summer,FALSE,,
+swm,Swim-up,FALSE,,
+tls,Tiller stage,FALSE,,
+tr,1st trifoliate leaf,FALSE,,
+ts,Time to tassle,FALSE,,
+ubi,Until birth,FALSE,,
+utl,Until larva,FALSE,,
+utp,Until pupa,FALSE,,
+vg,Vegatative stage,FALSE,,
+wbh,Weeks pre-hatch,TRUE,168,"7 days in a week, 24 hours in a day"
+wk,Week(s),TRUE,168,"7 days in a week, 24 hours in a day"
+wkpm,Weeks post metamorphosis,TRUE,168,"7 days in a week, 24 hours in a day"
+wkprf,Weeks pre-fertilization,TRUE,168,"7 days in a week, 24 hours in a day"
+wpe,Weeks post-emergence,TRUE,168,"7 days in a week, 24 hours in a day"
+wph,Weeks post-hatch,TRUE,168,"7 days in a week, 24 hours in a day"
+wphv,Weeks pre harvest,TRUE,168,"7 days in a week, 24 hours in a day"
+wpp,Weeks post planting/sowing,TRUE,168,"7 days in a week, 24 hours in a day"
+wps,Weeks post-swim-up,TRUE,168,"7 days in a week, 24 hours in a day"
+wpv3,Weeks post V3 stage,TRUE,168,"7 days in a week, 24 hours in a day"
+wpv5,Weeks post V5 stage,TRUE,168,"7 days in a week, 24 hours in a day"
+yc,Year class,TRUE,8760,365 days in a year and 24 hours in a day
+yph,Years post-hatch,TRUE,8760,365 days in a year and 24 hours in a day
+yr,Year(s),TRUE,8760,365 days in a year and 24 hours in a day
+ZGS,Zadoks growth stage,FALSE,,
+zm,Zoeae - megalop,FALSE,,
+zmy,Zoeae - mysis,FALSE,,
+NA,Not applicable,FALSE,,
