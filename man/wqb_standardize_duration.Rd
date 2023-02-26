@@ -33,16 +33,16 @@ only contain the columns: \code{code}, \code{description}, \code{keep} and
 The \code{code} values in the duration-conversion file are matched to the \code{code}
 values in the \code{duration_unit_codes} table in the ECOTOX downloaded data.
 
-The \code{value_multipler_to_hours} column contains the value need to convert
+The \code{value_multiplier_to_hours} column contains the value need to convert
 the unit into hours.
 }
 \examples{
 \dontrun{
-chem_bc_wqg <- wqb_standardize_duration(
+duration_unit_code_standardization <- wqb_standardize_duration(
  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
-chem_bc_wqg <- wqb_standardize_duration(
+duration_unit_code_standardization <- wqb_standardize_duration(
  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }

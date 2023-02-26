@@ -22,15 +22,15 @@
 #'   The `code` values in the duration-conversion file are matched to the `code`
 #'   values in the `duration_unit_codes` table in the ECOTOX downloaded data.
 #'
-#'   The `value_multipler_to_hours` column contains the value need to convert
+#'   The `value_multiplier_to_hours` column contains the value need to convert
 #'   the unit into hours.
 #' @examples
 #' \dontrun{
-#' chem_bc_wqg <- wqb_standardize_duration(
+#' duration_unit_code_standardization <- wqb_standardize_duration(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' )
 #'
-#' chem_bc_wqg <- wqb_standardize_duration(
+#' duration_unit_code_standardization <- wqb_standardize_duration(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
@@ -51,10 +51,10 @@ wqb_standardize_duration <- function(database) {
     ) |>
     tibble::tibble()
   
-  if ("value_multipler_to_hours" %in% colnames(db_duration_unit_codes)) {
+  if ("value_multiplier_to_hours" %in% colnames(db_duration_unit_codes)) {
     stop(
       paste(
-        "Value multipler to hours has already been", 
+        "Value multiplier to hours has already been", 
         "added to the database"
       )
     )
