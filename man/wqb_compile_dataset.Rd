@@ -22,6 +22,8 @@ Combine XXX tables.
 Select a subset of columns.
 
 Removes rows with no genus, no concentration, no duration.
+Remove rows where duration can not be standardized to hours.
+Standardizes all durations into hours.
 
 Cleans data by removing asterisks in concentration values and endpoints.
 }
