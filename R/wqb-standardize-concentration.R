@@ -47,7 +47,9 @@ wqb_standardize_concentration <- function(database) {
     database
   )
   
-  db_concentration_unit_codes <- DBI::dbReadTable(con, "concentration_unit_codes") |>
+  db_concentration_unit_codes <- DBI::dbReadTable(
+    con, "concentration_unit_codes"
+  ) |>
     dplyr::mutate(
       code = stringr::str_squish(.data$code),
     ) |>
