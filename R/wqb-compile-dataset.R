@@ -13,6 +13,7 @@
 #' Removes rows with no genus, no concentration, no duration.
 #' Remove rows where duration can not be standardized to hours.
 #' Standardizes all durations into hours. 
+#' Standardizes all concentrations into mg/L or ppm (which are equivalent). 
 #' 
 #' Cleans data by removing asterisks in concentration values and endpoints. 
 #'
@@ -37,9 +38,9 @@ wqb_compile_dataset <- function(database) {
   )
   
   db_results <- DBI::dbReadTable(con, "results") |>
-    dplyr::rename(additional_comments_results = .data$additional_comments)
+    dplyr::rename(additional_comments_results = "additional_comments")
   db_tests <- DBI::dbReadTable(con, "tests") |>
-    dplyr::rename(additional_comments_tests = .data$additional_comments)
+    dplyr::rename(additional_comments_tests = "additional_comments")
   
   db_endpoint_codes <- DBI::dbReadTable(con, "endpoint_codes") |>
     dplyr::mutate(
@@ -66,6 +67,12 @@ wqb_compile_dataset <- function(database) {
       duration_units_to_keep = as.logical(as.numeric(.data$duration_units_to_keep))
     ) |>
     dplyr::rename("duration_unit_description" = "description") |>
+    tibble::tibble()
+  db_concentration_unit_codes <- DBI::dbReadTable(con, "concentration_unit_codes") |>
+    dplyr::mutate(
+      conc_conversion_flag = as.logical(as.numeric(.data$conc_conversion_flag))
+    ) |>
+    dplyr::rename("concentration_unit_description" = "description") |>
     tibble::tibble()
   
   db_references <- DBI::dbReadTable(con, "references")
@@ -97,6 +104,10 @@ wqb_compile_dataset <- function(database) {
     dplyr::left_join(
       db_duration_unit_codes, by = c("obs_duration_unit" = "code")
     ) |>
+    # add concentration unit info
+    dplyr::left_join(
+      db_concentration_unit_codes, by = c("conc1_unit" = "code")
+    ) |>
     # add reference info
     dplyr::left_join(db_references, by = c("reference_number")) |>
     # add effect info
@@ -112,7 +123,10 @@ wqb_compile_dataset <- function(database) {
     dplyr::select(
       "chemical_name", "test_cas",
       "test_id", "result_id", "endpoint", "effect", "effect_description",
-      "conc1_mean", "conc1_unit", "conc2_mean", "conc2_unit",
+      "conc1_mean", "conc1_unit", 
+      "conc_conversion_flag", "conc_conversion_value_multiplier", 
+      "conc_conversion_unit",
+      "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
       "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
       "study_duration_mean", "study_duration_unit",
@@ -140,10 +154,12 @@ wqb_compile_dataset <- function(database) {
     # remove rows with no species genus
     dplyr::filter(!(.data$genus == "")) |>
     # remove rows with no duration value
-    dplyr::filter(!(.data$obs_duration_mean == "")) |> ### double check still valid 
-    dplyr::filter(!(.data$obs_duration_mean == "NR")) |> ### double check still valid 
-    # remove rows where duration can not be converted 
+    dplyr::filter(!(.data$obs_duration_mean == "")) |> 
+    dplyr::filter(!(.data$obs_duration_mean == "NR")) |>
+    # remove rows where duration can not be standardized 
     dplyr::filter(.data$duration_units_to_keep) |>
+    # remove rows where concentration cannot be standardized 
+    dplyr::filter(.data$conc_conversion_flag) |>
     dplyr::mutate(
       # remove asterisk from end point
       endpoint = stringr::str_replace(.data$endpoint, "\\*", ""),
@@ -154,6 +170,8 @@ wqb_compile_dataset <- function(database) {
       obs_duration_mean = as.numeric(.data$obs_duration_mean),
       obs_duration_mean_std = .data$obs_duration_mean * .data$duration_value_multiplier_to_hours,
       obs_duration_unit_std = "hours",
+      # convert concentration units to mg/L or ppm
+      conc1_mean_std = .data$conc1_mean * .data$conc_conversion_value_multiplier,
       # missing (NA) lifestages should be coded as adult
       # doesn't appear to be any missing but adding in just in case
       simple_lifestage = dplyr::if_else(
@@ -172,7 +190,11 @@ wqb_compile_dataset <- function(database) {
     dplyr::select(
       "chemical_name", "test_cas",
       "test_id", "result_id", "endpoint", "effect", "effect_description",
-      "conc1_mean", "conc1_unit", "conc2_mean", "conc2_unit",
+      "conc1_mean", "conc1_unit", 
+      "conc_conversion_flag", "conc_conversion_value_multiplier", 
+      "conc1_mean_std",
+      "conc_conversion_unit",
+      "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
       "obs_duration_mean", "obs_duration_unit",
       "obs_duration_mean_std", "obs_duration_unit_std",
@@ -194,5 +216,4 @@ wqb_compile_dataset <- function(database) {
     )
   
   compiled_data
-  
 }
