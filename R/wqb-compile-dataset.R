@@ -11,6 +11,8 @@
 #' Select a subset of columns.
 #' 
 #' Removes rows with no genus, no concentration, no duration.
+#' Remove rows where duration can not be standardized to hours.
+#' Standardizes all durations into hours. 
 #' 
 #' Cleans data by removing asterisks in concentration values and endpoints. 
 #'
@@ -57,6 +59,12 @@ wqb_compile_dataset <- function(database) {
       present_in_bc_wqg = as.logical(as.numeric(.data$present_in_bc_wqg))
     ) |>
     tibble::tibble()
+  db_duration_unit_codes <- DBI::dbReadTable(con, "duration_unit_codes") |>
+    dplyr::mutate(
+      duration_units_to_keep = as.logical(as.numeric(.data$duration_units_to_keep))
+    ) |>
+    dplyr::rename("duration_unit_description" = "description") |>
+    tibble::tibble()
   
   db_references <- DBI::dbReadTable(con, "references")
   db_effect_codes <- DBI::dbReadTable(con, "effect_codes") |>
@@ -83,6 +91,10 @@ wqb_compile_dataset <- function(database) {
     ) |>
     # add chemical info
     dplyr::left_join(db_chemicals, by = c("test_cas" = "cas_number")) |>
+    # add duration unit info
+    dplyr::left_join(
+      db_duration_unit_codes, by = c("obs_duration_unit" = "code")
+    ) |>
     # add reference info
     dplyr::left_join(db_references, by = c("reference_number")) |>
     # add effect info
@@ -100,6 +112,7 @@ wqb_compile_dataset <- function(database) {
       "test_id", "result_id", "endpoint", "effect", "effect_description",
       "conc1_mean", "conc1_unit",
       "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "duration_units_to_keep", "duration_value_multiplier_to_hours", 
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
@@ -123,12 +136,18 @@ wqb_compile_dataset <- function(database) {
     # remove rows with no duration value
     dplyr::filter(!(.data$obs_duration_mean == "")) |> ### double check still valid 
     dplyr::filter(!(.data$obs_duration_mean == "NR")) |> ### double check still valid 
+    # remove rows where duration can not be converted 
+    dplyr::filter(duration_units_to_keep) |>
     dplyr::mutate(
       # remove asterisk from end point
       endpoint = stringr::str_replace(.data$endpoint, "\\*", ""),
       # remove asterisk from conc1_mean values and convert to numeric
       conc1_mean = stringr::str_replace(.data$conc1_mean, "\\*", ""),
       conc1_mean = as.numeric(.data$conc1_mean),
+      # convert duration units to hours
+      obs_duration_mean = as.numeric(.data$obs_duration_mean),
+      obs_duration_mean_std = .data$obs_duration_mean * .data$duration_value_multiplier_to_hours,
+      obs_duration_unit_std = "hours",
       # missing (NA) lifestages should be coded as adult
       # doesn't appear to be any missing but adding in just in case
       simple_lifestage = dplyr::if_else(
@@ -143,7 +162,26 @@ wqb_compile_dataset <- function(database) {
         .data$ecological_group == "Plant" ~ NA_character_,
         TRUE ~ .data$simple_lifestage
       )
-    ) 
+    ) |>
+    dplyr::select(
+      "chemical_name", "test_cas",
+      "test_id", "result_id", "endpoint", "effect", "effect_description",
+      "conc1_mean", "conc1_unit",
+      "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "obs_duration_mean_std", "obs_duration_unit_std",
+      "organism_habitat",
+      "species_number", "latin_name", "common_name", "kingdom", 
+      "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
+      "family", "genus", "species", "subspecies", "variety",
+      "species_present_in_bc", 
+      "ecological_group_class", "ecological_group",
+      "lifestage_description", "simple_lifestage", 
+      "media_type", "media_description", "media_type_group",
+      "present_in_bc_wqg", 
+      "reference_number", "reference_type", "author", "title", "source", 
+      "publication_year"
+    )
   
   compiled_data
+  
 }
