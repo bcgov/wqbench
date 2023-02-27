@@ -24,6 +24,7 @@ Select a subset of columns.
 Removes rows with no genus, no concentration, no duration.
 Remove rows where duration can not be standardized to hours.
 Standardizes all durations into hours.
+Standardizes all concentrations into mg/L or ppm (which are equivalent).
 
 Cleans data by removing asterisks in concentration values and endpoints.
 }
