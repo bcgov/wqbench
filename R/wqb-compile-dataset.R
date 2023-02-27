@@ -37,9 +37,9 @@ wqb_compile_dataset <- function(database) {
   )
   
   db_results <- DBI::dbReadTable(con, "results") |>
-    dplyr::rename(additional_comments_results = additional_comments)
+    dplyr::rename(additional_comments_results = .data$additional_comments)
   db_tests <- DBI::dbReadTable(con, "tests") |>
-    dplyr::rename(additional_comments_tests = additional_comments)
+    dplyr::rename(additional_comments_tests = .data$additional_comments)
   
   db_endpoint_codes <- DBI::dbReadTable(con, "endpoint_codes") |>
     dplyr::mutate(
@@ -143,7 +143,7 @@ wqb_compile_dataset <- function(database) {
     dplyr::filter(!(.data$obs_duration_mean == "")) |> ### double check still valid 
     dplyr::filter(!(.data$obs_duration_mean == "NR")) |> ### double check still valid 
     # remove rows where duration can not be converted 
-    dplyr::filter(duration_units_to_keep) |>
+    dplyr::filter(.data$duration_units_to_keep) |>
     dplyr::mutate(
       # remove asterisk from end point
       endpoint = stringr::str_replace(.data$endpoint, "\\*", ""),
