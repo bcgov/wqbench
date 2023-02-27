@@ -36,8 +36,10 @@ wqb_compile_dataset <- function(database) {
     database
   )
   
-  db_results <- DBI::dbReadTable(con, "results")
-  db_tests <- DBI::dbReadTable(con, "tests")
+  db_results <- DBI::dbReadTable(con, "results") |>
+    dplyr::rename(additional_comments_results = additional_comments)
+  db_tests <- DBI::dbReadTable(con, "tests") |>
+    dplyr::rename(additional_comments_tests = additional_comments)
   
   db_endpoint_codes <- DBI::dbReadTable(con, "endpoint_codes") |>
     dplyr::mutate(
@@ -110,8 +112,11 @@ wqb_compile_dataset <- function(database) {
     dplyr::select(
       "chemical_name", "test_cas",
       "test_id", "result_id", "endpoint", "effect", "effect_description",
-      "conc1_mean", "conc1_unit",
+      "conc1_mean", "conc1_unit", "conc2_mean", "conc2_unit",
+      "conc3_mean", "conc3_unit",
       "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "study_duration_mean", "study_duration_unit",
+      "exposure_duration_mean", "exposure_duration_unit",
       "duration_units_to_keep", "duration_value_multiplier_to_hours", 
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
@@ -123,7 +128,8 @@ wqb_compile_dataset <- function(database) {
       "media_type", "media_description", "media_type_group",
       "present_in_bc_wqg", 
       "reference_number", "reference_type", "author", "title", "source", 
-      "publication_year"
+      "publication_year",
+      "additional_comments_tests", "additional_comments_results"
     )
   
   compiled_data <- selected_columns_data |>
@@ -166,9 +172,13 @@ wqb_compile_dataset <- function(database) {
     dplyr::select(
       "chemical_name", "test_cas",
       "test_id", "result_id", "endpoint", "effect", "effect_description",
-      "conc1_mean", "conc1_unit",
-      "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "conc1_mean", "conc1_unit", "conc2_mean", "conc2_unit",
+      "conc3_mean", "conc3_unit",
+      "obs_duration_mean", "obs_duration_unit",
       "obs_duration_mean_std", "obs_duration_unit_std",
+      "study_duration_mean", "study_duration_unit",
+      "exposure_duration_mean", "exposure_duration_unit",
+      "duration_units_to_keep", "duration_value_multiplier_to_hours", 
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
@@ -179,7 +189,8 @@ wqb_compile_dataset <- function(database) {
       "media_type", "media_description", "media_type_group",
       "present_in_bc_wqg", 
       "reference_number", "reference_type", "author", "title", "source", 
-      "publication_year"
+      "publication_year",
+      "additional_comments_tests", "additional_comments_results"
     )
   
   compiled_data
