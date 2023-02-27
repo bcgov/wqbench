@@ -17,13 +17,15 @@ This is a basic example which shows you how to solve a common problem:
 library(wqbench)
 ```
 
+### Compile Data Set
+
 Download the most recent database 
 
 ```r
 download_path <- wqb_download_epa_ecotox("data_download")
 ```
 
-Create a SQLite database 
+Create a SQLite database from the Downloaded Ecotox Data
 
 ```r
 database_09_22 <- wqb_create_epa_ecotox(
@@ -32,58 +34,49 @@ database_09_22 <- wqb_create_epa_ecotox(
 )
 ```
 
-Add external data sources
+Add and update database
+
+- all these functions need to be run for the data set to compile. 
 
 ```r
-# trophic groups
-wqb_add_trophic_group(
- database = database_09_22
-) 
-
-# british columbia species 
 bc_species <- wqb_add_bc_species(
-  database = database_09_22
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 ) 
 
-```
-
-Filter ECOTOX database to concentration endpoints and aquatic tests 
-
-```r
-results_conc_endpoints <- wqb_select_concentration_endpoints(
-  database = database_09_22
+chem_bc_wqg <- wqb_add_bc_wqg(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 
-tests_aquatic <- wqb_filter_aquatic_tests(
-  database = database_09_22
+conc_endpoints <- wqb_add_concentration_endpoints(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
-```
 
-Clean up Media Test types to be salt water, fresh water or not reported
-
-```r
-media_test <- wqb_add_habitat(
-  database = database_09_22
-)
-```
-
-## External Data Additions and Filters
-
-The extdata folder contains a list of British Columbia species, trophic groups,
-life stages groups, and the endpoints selected for the data set. 
-
-These files can be changed to allow for an easy way to make adjustments to the
-final outputted data set. 
-
-```r
-habitat_info <- wqb_add_habitat(
-  database = "ecotox_ascii_09_15_2022.sqlite"
-) 
-```
-
-```r
 lifestage_codes <- wqb_add_lifestage(
-  database = database_09_22
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 ) 
+
+media_groups <- wqb_add_media(
+ database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+
+trophic_groups <- wqb_add_trophic_group(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+) 
+
+duration_unit_code_standardization <- wqb_standardize_duration(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+
+concentration_unit_code_standardization <- wqb_standardize_concentration(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
+
+data_compiled <- wqb_compile_dataset(
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+) 
+data_compiled
 ```
 
+### Classify Duration
+
+Once the data set has been compiled, the duration can be set. 
