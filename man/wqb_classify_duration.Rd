@@ -18,10 +18,11 @@ Each test will be classified as an acute or chronic and a new column called
 }
 \details{
 Classifications for acute and chronic are separated by trophic group
-(\code{ecological_group}). The values are classified as acute, chronic or not
-specified in the \code{duration_class} column.
+(\code{ecological_group}). The values are classified as acute, chronic in a new
+column called \code{duration_class}.
 
-Values not meeting this criteria are classified as not specified.
+Values not meeting this criteria are classified as not specified and are
+removed.
 
 Fish and amphibians
 Acute:

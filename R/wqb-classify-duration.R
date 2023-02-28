@@ -7,10 +7,11 @@
 #' @return Invisible data frame
 #' @export
 #' @details Classifications for acute and chronic are separated by trophic group
-#'   (`ecological_group`). The values are classified as acute, chronic or not
-#'   specified in the `duration_class` column.
+#'   (`ecological_group`). The values are classified as acute, chronic in a new 
+#'   column called `duration_class`.
 #'
-#'   Values not meeting this criteria are classified as not specified.
+#'   Values not meeting this criteria are classified as not specified and are 
+#'   removed.
 #'  
 #'  Fish and amphibians
 #'    Acute: 
@@ -54,7 +55,7 @@ wqb_classify_duration <- function(data) {
     data, 
     list(
       ecological_group = "",
-      obs_duration_mean_std = "",
+      obs_duration_mean_std = 1,
       simple_lifestage = c("", NA)
     )
   ) 
@@ -78,7 +79,8 @@ wqb_classify_duration <- function(data) {
         stringr::str_detect(ecological_group, "(?i)^plant$") & obs_duration_mean_std > 168 ~ "chronic",
         TRUE ~ "not specified"
       ) 
-    )
+    ) |>
+    dplyr::filter(!(.data$duration_class == "not specified"))
   
   data_classified
 }
