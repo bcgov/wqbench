@@ -13,7 +13,50 @@ wqb_classify_duration(data)
 Invisible data frame
 }
 \description{
-Each test will be classified as an acute or chronic.
+Each test will be classified as an acute or chronic and a new column called
+\code{duration_class} will be added to the data set.
+}
+\details{
+Classifications for acute and chronic are separated by trophic group
+(\code{ecological_group}). The values are classified as acute, chronic or not
+specified in the \code{duration_class} column.
+
+Values not meeting this criteria are classified as not specified.
+
+Fish and amphibians
+Acute:
+- duration ≤ 96 hours
+Chronic:
+- life stage (\code{simple_lifestage}) is juvenile or adult and
+duration ≥ 504 hours
+- life stage (\code{simple_lifestage}) is early life stages (els) and
+duration ≥ 168 hours
+
+Aquatic invertebrates
+Acute:
+- duration ≤ 96 hours
+Chronic:
+- Planktonic invertebrates (\code{ecological_group_class}) and duration > 96 hours
+- Regular invertebrates (\code{ecological_group_class}) and duration ≥ 168 hours
+
+Algae
+Acute:
+- duration ≤ 24 hours
+Chronic:
+- duration > 24 hours
+
+Aquatic Plants
+Acute:
+- duration ≤ 48 hours
+Chronic:
+\itemize{
+\item duration > 7 days (used Lemna protocol as a guide, EC 2007)
+}
+
+Reference
+Environment Canada 2007. Test for measuring the inhibition of growth using
+the freshwater macrophyte, Lemna minor.  Available online at:
+https://publications.gc.ca/collections/collection_2013/ec/En49-7-1-37-eng.pdf
 }
 \examples{
 \dontrun{
