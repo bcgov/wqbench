@@ -4,9 +4,13 @@
 #' `duration_class` will be added to the data set. 
 #'
 #' @param data A data frame of the compiled data set.
-#' @return Invisible data frame
+#' @return Data frame
 #' @export
-#' @details Classifications for acute and chronic are separated by trophic group
+#' @details The data set passed should be the output of the 
+#'   ` wqb_compile_dataset()` function and must at least contain the columns:
+#'    `ecological_group`, `obs_duration_mean_std` and `simple_lifestage`.
+#' 
+#'   Classifications for acute and chronic are separated by trophic group
 #'   (`ecological_group`). The values are classified as acute, chronic in a new 
 #'   column called `duration_class`.
 #'

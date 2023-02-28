@@ -10,13 +10,17 @@ wqb_classify_duration(data)
 \item{data}{A data frame of the compiled data set.}
 }
 \value{
-Invisible data frame
+Data frame
 }
 \description{
 Each test will be classified as an acute or chronic and a new column called
 \code{duration_class} will be added to the data set.
 }
 \details{
+The data set passed should be the output of the
+\code{ wqb_compile_dataset()} function and must at least contain the columns:
+\code{ecological_group}, \code{obs_duration_mean_std} and \code{simple_lifestage}.
+
 Classifications for acute and chronic are separated by trophic group
 (\code{ecological_group}). The values are classified as acute, chronic in a new
 column called \code{duration_class}.
