@@ -21,7 +21,7 @@ Combine XXX tables.
 
 Select a subset of columns.
 
-Removes rows with no genus, no concentration, no duration.
+Removes rows with no genus, no ecological group, no concentration, no duration.
 Remove rows where duration can not be standardized to hours.
 Standardizes all durations into hours.
 Standardizes all concentrations into mg/L or ppm (which are equivalent).

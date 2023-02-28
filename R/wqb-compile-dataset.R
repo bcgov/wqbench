@@ -10,7 +10,7 @@
 #' 
 #' Select a subset of columns.
 #' 
-#' Removes rows with no genus, no concentration, no duration.
+#' Removes rows with no genus, no ecological group, no concentration, no duration.
 #' Remove rows where duration can not be standardized to hours.
 #' Standardizes all durations into hours. 
 #' Standardizes all concentrations into mg/L or ppm (which are equivalent). 
@@ -128,7 +128,7 @@ wqb_compile_dataset <- function(database) {
       "conc_conversion_unit",
       "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
-      "obs_duration_mean", "obs_duration_unit", "study_duration_unit", 
+      "obs_duration_mean", "obs_duration_unit", 
       "study_duration_mean", "study_duration_unit",
       "exposure_duration_mean", "exposure_duration_unit",
       "duration_units_to_keep", "duration_value_multiplier_to_hours", 
@@ -153,6 +153,8 @@ wqb_compile_dataset <- function(database) {
     dplyr::filter(!(stringr::str_detect(.data$conc1_mean, "\\<|\\>"))) |>
     # remove rows with no species genus
     dplyr::filter(!(.data$genus == "")) |>
+    # remove rows with no ecological group 
+    dplyr::filter(!(is.na(.data$ecological_group))) |>
     # remove rows with no duration value
     dplyr::filter(!(.data$obs_duration_mean == "")) |> 
     dplyr::filter(!(.data$obs_duration_mean == "NR")) |>
