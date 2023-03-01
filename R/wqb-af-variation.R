@@ -18,11 +18,11 @@ wqb_af_variation <- function(data) {
   ) 
   
   no_species <- data |> 
-    dplyr::count(species_number) |> 
+    dplyr::count(.data$species_number) |> 
     nrow()
   
   no_trophic_levels <- data |> 
-    dplyr::count(ecological_group) |> 
+    dplyr::count(.data$ecological_group) |> 
     nrow()
   ## Trophic Level 1 ----
   if (no_trophic_levels == 1){
