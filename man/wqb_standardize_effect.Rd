@@ -14,5 +14,28 @@ function.}
 Data frame
 }
 \description{
-Standardize type of Effect
+Each concentration is divided by a factor to standardize the effect. The
+factor is determined from the set of rules provided in the details.
+}
+\details{
+The data argument passed to this function should be the output of
+\code{wqb_classify_duration()} and must at least contain the columns:
+\code{endpoint}, \code{duration_class}, and \code{ecological_group}.
+
+The \code{conc1_mean_std} value is divided by the factor determined in the rules
+below and adds two columns to the data set
+\code{conc1_mean_std_effect_divide_factor} and \code{conc1_mean_std_effect}.
+
+If duration is acute AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) AND group has (fish, amphibians, inverts or plants) then divide by 10
+If duration is acute AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) AND group has (algae) then divide by 5
+If duration is acute AND effect type has (NOEC, NOEL, MATC or EC/IC/LC x<20) then divide by 5
+If duration is chronic AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) then divide by 5
+If duration is chronic AND effect type has (NOEC, NOEL, MATC or EC/IC/LC x<20) then divide by 1
+}
+\examples{
+\dontrun{
+standardized_effect_data <- wqb_standardize_effect(data)
+
+standardized_effect_data <- wqb_standardize_effect(classified_data)
+}
 }
