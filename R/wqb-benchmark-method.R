@@ -18,7 +18,7 @@
 #' @examples
 #' \dontrun{
 #' data <- wqb_benchmark_method(data)
-#' 
+#' data <- wqb_benchmark_method(aggregated_data)
 #' }
 wqb_benchmark_method <- function(data) {
  
