@@ -21,7 +21,6 @@
 #' data <- wqb_benchmark_method(aggregated_data)
 #' }
 wqb_benchmark_method <- function(data) {
- 
   chk::check_data(
     data, 
     list(
