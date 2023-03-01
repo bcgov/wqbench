@@ -1,9 +1,10 @@
 #' Determine the Variation Assessment Factor
-#' 
-#' Based on a set of rules determine all the assessment factors for the 
-#' data set. 
 #'
-#' @param data A data frame that is the output of the `wqb_benchmark-method()` function.
+#' Depending on the number of trophic groups and species a certain assessment 
+#'  factor is determined.
+#'
+#' @param data A data frame that is the output of the `wqb_benchmark-method()`
+#'   function.
 #' @return A data frame
 #' @export
 #'

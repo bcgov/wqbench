@@ -1,6 +1,10 @@
 #' Determine the BC Species Assessment Factors
+#' 
+#' Depending on the number of BC species present a certain assessment 
+#'  factor is determined.
 #'
-#' @param data A data frame that is the output of the `wqb_benchmark-method()` function.
+#' @param data A data frame that is the output of the `wqb_benchmark-method()`
+#'   function.
 #' @return A data frame
 #' @export
 #'

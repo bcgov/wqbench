@@ -7,13 +7,15 @@
 wqb_af_ecological(data)
 }
 \arguments{
-\item{data}{A data frame that is the output of the \code{wqb_benchmark-method()} function.}
+\item{data}{A data frame that is the output of the \code{wqb_benchmark-method()}
+function.}
 }
 \value{
 A data frame
 }
 \description{
-Determine the Ecological Assessment Factors
+Depending on the presence of certain ecological groups present in the data
+set determines the assessment factor applied.
 }
 \examples{
 \dontrun{

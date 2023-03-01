@@ -1,6 +1,10 @@
 #' Determine the Ecological Assessment Factors
 #'
-#' @param data A data frame that is the output of the `wqb_benchmark-method()` function.
+#' Depending on the presence of certain ecological groups present in the data
+#' set determines the assessment factor applied.
+#'
+#' @param data A data frame that is the output of the `wqb_benchmark-method()`
+#'   function.
 #' @return A data frame
 #' @export
 #'
