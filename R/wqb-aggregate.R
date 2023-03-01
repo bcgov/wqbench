@@ -55,13 +55,12 @@ wqb_aggregate <- function(data, chemical) {
     dplyr::slice(1) |>
     dplyr::ungroup() |>
     dplyr::arrange(species_number) |>
-    dplyr::relocate(
-      species_number, lifestage_description, effect_description, group_id, id, 
-      conc1_mean_std_effect, conc1_mean_std_effect_aggr, 
-      endpoint, effect_priority_order, 
-      common_name,
-      .after = chemical_name
-    ) 
+    dplyr::select(
+      "chemical_name", "test_cas",
+      "effect", "effect_description",
+      "conc1_mean_std_effect_aggr", "conc_conversion_unit",
+      "species_number", "latin_name", "common_name"
+    )
   
   aggregated_data
 }
