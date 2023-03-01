@@ -67,7 +67,8 @@ wqb_aggregate <- function(data, cas_num) {
       "effect", "effect_description",
       "conc1_mean_std_effect_aggr", "conc_conversion_unit",
       "species_number", "latin_name", "common_name",  
-      "ecological_group_class", "ecological_group",
+      "ecological_group_class", "ecological_group", 
+      "species_present_in_bc"
     )
   
   aggregated_data
