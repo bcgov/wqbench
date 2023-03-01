@@ -111,6 +111,8 @@ wqb_compile_dataset <- function(database) {
     # add reference info
     dplyr::left_join(db_references, by = c("reference_number")) |>
     # add effect info
+    # clean codes so they join
+    dplyr::mutate(effect = stringr::str_replace_all(.data$effect, "(/)|(~)", "")) |>
     dplyr::left_join(db_effect_codes, by = c("effect" = "code")) |>
     # add media groups
     dplyr::left_join(db_media_type_codes, by = c("media_type" = "code")) |>
@@ -187,7 +189,9 @@ wqb_compile_dataset <- function(database) {
         .data$ecological_group == "Algae" ~ NA_character_,
         .data$ecological_group == "Plant" ~ NA_character_,
         TRUE ~ .data$simple_lifestage
-      )
+      ),
+      # set cas nums to be char as values too large to be ints
+      test_cas = as.character(.data$test_cas)
     ) |>
     dplyr::select(
       "chemical_name", "test_cas",

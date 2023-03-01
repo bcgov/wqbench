@@ -24,6 +24,11 @@ wqb_aggregate <- function(data, cas_num) {
   chk::check_data(
     data, 
     list(
+      test_cas = "",
+      species_number = 1L,
+      lifestage_description = "",
+      effect_description = "",
+      conc1_mean_std_effect = 1
     )
   ) 
   chk::chk_character_or_factor(cas_num)
