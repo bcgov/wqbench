@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-af-ecological.R
 \name{wqb_af_ecological}
 \alias{wqb_af_ecological}
-\title{#' Determine the Ecological Assessment Factors}
+\title{Determine the Ecological Assessment Factors}
 \usage{
 wqb_af_ecological(data)
 }
@@ -13,7 +13,7 @@ wqb_af_ecological(data)
 A data frame
 }
 \description{
-#' Determine the Ecological Assessment Factors
+Determine the Ecological Assessment Factors
 }
 \examples{
 \dontrun{

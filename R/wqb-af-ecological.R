@@ -1,4 +1,4 @@
-#' #' Determine the Ecological Assessment Factors
+#' Determine the Ecological Assessment Factors
 #'
 #' @param data A data frame that is the output of the `wqb_benchmark-method()` function.
 #' @return A data frame
@@ -44,6 +44,4 @@ wqb_af_ecological <- function(data) {
   }
   
   data
-  
-  
 }
