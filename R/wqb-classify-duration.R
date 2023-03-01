@@ -8,7 +8,7 @@
 #' @export
 #' @details The data set passed should be the output of the 
 #'   ` wqb_compile_dataset()` function and must at least contain the columns:
-#'    `ecological_group`, `obs_duration_mean_std` and `simple_lifestage`.
+#'    `ecological_group`, `duration_mean_std` and `simple_lifestage`.
 #' 
 #'   Classifications for acute and chronic are separated by trophic group
 #'   (`ecological_group`). The values are classified as acute, chronic in a new 
@@ -59,7 +59,7 @@ wqb_classify_duration <- function(data) {
     data, 
     list(
       ecological_group = "",
-      obs_duration_mean_std = 1,
+      duration_mean_std = 1,
       simple_lifestage = c("", NA)
     )
   ) 
@@ -68,19 +68,19 @@ wqb_classify_duration <- function(data) {
     dplyr::mutate(
       duration_class = dplyr::case_when(
         # Fish and Amphibians
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$")  & obs_duration_mean_std <= 96 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^juvenile$|(?i)^adult$")  & obs_duration_mean_std >= 504 ~ "chronic",
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^els$")  & obs_duration_mean_std >= 168 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$")  & duration_mean_std <= 96 ~ "acute",
+        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^juvenile$|(?i)^adult$")  & duration_mean_std >= 504 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^els$")  & duration_mean_std >= 168 ~ "chronic",
         # Invertebrates
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & obs_duration_mean_std <= 96 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Planktonic Invertebrate") & obs_duration_mean_std > 96 ~ "chronic",
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Regular") & obs_duration_mean_std >= 168 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & duration_mean_std <= 96 ~ "acute",
+        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Planktonic Invertebrate") & duration_mean_std > 96 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Regular") & duration_mean_std >= 168 ~ "chronic",
         # Algae
-        stringr::str_detect(ecological_group, "(?i)^algae$") & obs_duration_mean_std <= 24 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^algae$") & obs_duration_mean_std > 24 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^algae$") & duration_mean_std <= 24 ~ "acute",
+        stringr::str_detect(ecological_group, "(?i)^algae$") & duration_mean_std > 24 ~ "chronic",
         # Plants
-        stringr::str_detect(ecological_group, "(?i)^plant$") & obs_duration_mean_std <= 48 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^plant$") & obs_duration_mean_std > 168 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^plant$") & duration_mean_std <= 48 ~ "acute",
+        stringr::str_detect(ecological_group, "(?i)^plant$") & duration_mean_std > 168 ~ "chronic",
         TRUE ~ "not specified"
       ) 
     ) |>
@@ -94,11 +94,11 @@ wqb_classify_duration <- function(data) {
       "conc_conversion_unit",
       "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
-      "obs_duration_mean", "obs_duration_unit",
-      "obs_duration_mean_std", "obs_duration_unit_std",
-      "study_duration_mean", "study_duration_unit",
-      "exposure_duration_mean", "exposure_duration_unit",
+      "duration_mean_std", "duration_unit_std",
+      "duration_mean", "duration_unit",
       "duration_units_to_keep", "duration_value_multiplier_to_hours", 
+      "study_duration_mean", "study_duration_unit",
+      "obs_duration_mean", "obs_duration_unit", 
       "duration_class",
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
