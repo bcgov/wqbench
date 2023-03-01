@@ -1,18 +1,18 @@
 #' Aggregate Data for each Species
-#' 
+#'
 #' Aggregate data so the most sensitive value is selected for each species.
 #'
-#' @param data A data frame that is the output of the `wqb_standardize_effect()` function.
-#' @param cas_num A string of the cas number. 
+#' @param data A data frame that is the output of the `wqb_standardize_effect()`
+#'   function.
+#' @param cas_num A string of the cas number.
 #' @return Data frame
 #' @export
-#' @details 
-#'  Each species, life stage and effect are group for each chemical and the 
-#'  most sensitive effect concentration is selected for each speices. 
-#'  
-#'  If multiple data points within each group exists then the geometric mean is 
-#'  calculated. 
+#' @details Each species, life stage and effect are group for each chemical and
+#' the most sensitive effect concentration is selected for each speices.
 #'
+#' If multiple data points within each group exists then the geometric mean is
+#' calculated.
+#' 
 #' @examples
 #' \dontrun{
 #' wqb_aggregate(data, "7553562")

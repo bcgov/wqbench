@@ -19,7 +19,7 @@ Each test will be classified as an acute or chronic and a new column called
 \details{
 The data set passed should be the output of the
 \code{ wqb_compile_dataset()} function and must at least contain the columns:
-\code{ecological_group}, \code{obs_duration_mean_std} and \code{simple_lifestage}.
+\code{ecological_group}, \code{duration_mean_std} and \code{simple_lifestage}.
 
 Classifications for acute and chronic are separated by trophic group
 (\code{ecological_group}). The values are classified as acute, chronic in a new

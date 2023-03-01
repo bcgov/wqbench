@@ -7,7 +7,8 @@
 wqb_aggregate(data, cas_num)
 }
 \arguments{
-\item{data}{A data frame that is the output of the \code{wqb_standardize_effect()} function.}
+\item{data}{A data frame that is the output of the \code{wqb_standardize_effect()}
+function.}
 
 \item{cas_num}{A string of the cas number.}
 }
@@ -18,8 +19,8 @@ Data frame
 Aggregate data so the most sensitive value is selected for each species.
 }
 \details{
-Each species, life stage and effect are group for each chemical and the
-most sensitive effect concentration is selected for each speices.
+Each species, life stage and effect are group for each chemical and
+the most sensitive effect concentration is selected for each speices.
 
 If multiple data points within each group exists then the geometric mean is
 calculated.
