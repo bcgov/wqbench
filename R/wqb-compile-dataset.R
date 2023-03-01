@@ -101,8 +101,31 @@ wqb_compile_dataset <- function(database) {
     # add chemical info
     dplyr::left_join(db_chemicals, by = c("test_cas" = "cas_number")) |>
     # add duration unit info
+    # use study duration but if study duration is missing use observed duration
+    dplyr::mutate(
+      duration_mean = dplyr::if_else(
+        !is.na(.data$study_duration_mean),
+        .data$study_duration_mean,
+        .data$obs_duration_mean
+      ),
+      duration_unit = dplyr::if_else(
+        !is.na(.data$study_duration_mean),
+        .data$study_duration_unit,
+        .data$obs_duration_unit
+      ),
+      duration_unit = dplyr::if_else(
+        !stringr::str_detect(.data$duration_mean, "NC"),
+        .data$duration_unit,
+        .data$obs_duration_unit
+      ),
+      duration_mean = dplyr::if_else(
+        !stringr::str_detect(.data$duration_mean, "NC"),
+        .data$duration_mean,
+        .data$obs_duration_mean
+      )
+    ) |>
     dplyr::left_join(
-      db_duration_unit_codes, by = c("obs_duration_unit" = "code")
+      db_duration_unit_codes, by = c("duration_unit" = "code")
     ) |>
     # add concentration unit info
     dplyr::left_join(
@@ -130,10 +153,10 @@ wqb_compile_dataset <- function(database) {
       "conc_conversion_unit",
       "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
-      "obs_duration_mean", "obs_duration_unit", 
-      "study_duration_mean", "study_duration_unit",
-      "exposure_duration_mean", "exposure_duration_unit",
+      "duration_mean", "duration_unit",
       "duration_units_to_keep", "duration_value_multiplier_to_hours", 
+      "study_duration_mean", "study_duration_unit",
+      "obs_duration_mean", "obs_duration_unit", 
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
@@ -158,8 +181,9 @@ wqb_compile_dataset <- function(database) {
     # remove rows with no ecological group 
     dplyr::filter(!(is.na(.data$ecological_group))) |>
     # remove rows with no duration value
-    dplyr::filter(!(.data$obs_duration_mean == "")) |> 
-    dplyr::filter(!(.data$obs_duration_mean == "NR")) |>
+    dplyr::filter(!(.data$duration_mean == "")) |> 
+    dplyr::filter(!(.data$duration_mean == "NR")) |>
+    dplyr::filter(!(is.na(.data$duration_mean))) |>
     # remove rows where duration can not be standardized 
     dplyr::filter(.data$duration_units_to_keep) |>
     # remove rows where concentration cannot be standardized 
@@ -171,9 +195,9 @@ wqb_compile_dataset <- function(database) {
       conc1_mean = stringr::str_replace(.data$conc1_mean, "\\*", ""),
       conc1_mean = as.numeric(.data$conc1_mean),
       # convert duration units to hours
-      obs_duration_mean = as.numeric(.data$obs_duration_mean),
-      obs_duration_mean_std = .data$obs_duration_mean * .data$duration_value_multiplier_to_hours,
-      obs_duration_unit_std = "hours",
+      duration_mean = as.numeric(.data$duration_mean),
+      duration_mean_std = .data$duration_mean * .data$duration_value_multiplier_to_hours,
+      duration_unit_std = "hours",
       # convert concentration units to mg/L or ppm
       conc1_mean_std = .data$conc1_mean * .data$conc_conversion_value_multiplier,
       # missing (NA) lifestages should be coded as adult
@@ -202,11 +226,11 @@ wqb_compile_dataset <- function(database) {
       "conc_conversion_unit",
       "conc2_mean", "conc2_unit",
       "conc3_mean", "conc3_unit",
-      "obs_duration_mean", "obs_duration_unit",
-      "obs_duration_mean_std", "obs_duration_unit_std",
-      "study_duration_mean", "study_duration_unit",
-      "exposure_duration_mean", "exposure_duration_unit",
+      "duration_mean_std", "duration_unit_std",
+      "duration_mean", "duration_unit",
       "duration_units_to_keep", "duration_value_multiplier_to_hours", 
+      "study_duration_mean", "study_duration_unit",
+      "obs_duration_mean", "obs_duration_unit", 
       "organism_habitat",
       "species_number", "latin_name", "common_name", "kingdom", 
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
