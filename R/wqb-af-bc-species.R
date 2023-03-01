@@ -26,13 +26,17 @@ wqb_af_bc_species <- function(data) {
     dplyr::count(.data$species_number) |>
     nrow()
   
-  data_af <- data |>
-    dplyr::mutate(
-      af_bc_species = dplyr::case_when(
-        no_bc_species > 4 ~ 1,
-        no_bc_species == 2 | no_bc_species == 3 ~ 2,
-        no_bc_species <= 1 ~ 3
-      )
-    )
-  data_af
+  if (no_bc_species <= 1) {
+    data$af_bc_species <- 3
+  }
+  
+  if (no_bc_species %in% 2:3) {
+    data$af_bc_species <- 2
+  }
+  
+  if (no_bc_species >= 4) {
+    data$af_bc_species <- 1
+  }
+  
+  data
 }

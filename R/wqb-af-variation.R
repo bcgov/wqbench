@@ -34,15 +34,15 @@ wqb_af_variation <- function(data) {
       data$af_variation <- 50L
       return(data)
     }
-    if ((no_species == 2 | no_species == 3)) {
+    if (no_species %in% 2:3) {
       data$af_variation <- 20L
       return(data)
     }
-    if ((no_species == 4 | no_species == 6)) {
+    if (no_species %in% 4:6) { 
       data$af_variation <- 10L
       return(data)
     }
-    if (no_species >= 6) {
+    if (no_species > 6) {
       data$af_variation <- 5L
       return(data)
     }
@@ -53,15 +53,15 @@ wqb_af_variation <- function(data) {
       data$af_variation <- NA_integer_
       return(data)
     }
-    if (no_species == 2 | no_species == 3) {
+    if (no_species %in% 2:3) {
       data$af_variation <- 10L
       return(data)
     }
-    if (no_species == 4 | no_species == 6) {
+    if (no_species %in% 4:6) { 
       data$af_variation <- 50L
       return(data)
     }
-    if (no_species >= 6) {
+    if (no_species > 6) {
       data$af_variation <- 2L
       return(data)
     }
@@ -72,15 +72,15 @@ wqb_af_variation <- function(data) {
       data$af_variation <- NA_integer_
       return(data)
     }
-    if (no_species == 2 | no_species == 3) {
+    if (no_species %in% 2:3) {
       data$af_variation <- 5L
       return(data)
     }
-    if (no_species == 4 | no_species == 6) {
+    if (no_species %in% 4:6) { 
       data$af_variation <- 2L
       return(data)
     }
-    if (no_species >= 6) {
+    if (no_species > 6) {
       data$af_variation <- 1L 
       return(data)
     }
