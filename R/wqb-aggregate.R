@@ -3,7 +3,7 @@
 #' Aggregate data so the most sensitive value is selected for each species.
 #'
 #' @param data A data frame that is the output of the `wqb_standardize_effect()` function.
-#' @param chemical A string of the chemical name or cas number. 
+#' @param cas_num A string of the cas number. 
 #' @return Data frame
 #' @export
 #' @details 
@@ -15,46 +15,46 @@
 #'
 #' @examples
 #' \dontrun{
-#' 
-#' 
+#' wqb_aggregate(data, "71432")
+#' wqb_aggregate(data, "67663")
 #' }
-wqb_aggregate <- function(data, chemical) {
+wqb_aggregate <- function(data, cas_num) {
   chk::check_data(
     data, 
     list(
     )
   ) 
-  chk::chk_character_or_factor(chemical)
+  chk::chk_character_or_factor(cas_num)
   
   aggregated_data <- data |>
-    dplyr::filter(test_cas == chemical) |>
-    dplyr::group_by(species_number, lifestage_description, effect_description) |>
+    dplyr::filter(.data$test_cas == cas_num) |>
+    dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
     dplyr::mutate(
       endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
       endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
       effect_priority_order = dplyr::case_when(
-        stringr::str_detect(endpoint_alpha, "EC|IC") & endpoint_numeric <= 10  ~ 8,
-        stringr::str_detect(endpoint_alpha, "EC|IC") & endpoint_numeric > 10 &  endpoint_numeric <= 20  ~ 7,
-        stringr::str_detect(endpoint_alpha, "MATC") ~ 6,
-        stringr::str_detect(endpoint_alpha, "(NOEC)|(NOEL)") ~ 5,
-        stringr::str_detect(endpoint_alpha, "(LOEC)|(LOEL)|(MCIG)") ~ 4,
-        stringr::str_detect(endpoint_alpha, "EC|IC") & endpoint_numeric > 20  ~ 3,
-        stringr::str_detect(endpoint_alpha, "LC") & endpoint_numeric < 20  ~ 2,
-        stringr::str_detect(endpoint_alpha, "LC") & endpoint_numeric >= 20  ~ 1
+        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric <= 10  ~ 8,
+        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 10 &  .data$endpoint_numeric <= 20  ~ 7,
+        stringr::str_detect(.data$endpoint_alpha, "MATC") ~ 6,
+        stringr::str_detect(.data$endpoint_alpha, "(NOEC)|(NOEL)") ~ 5,
+        stringr::str_detect(.data$endpoint_alpha, "(LOEC)|(LOEL)|(MCIG)") ~ 4,
+        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 20  ~ 3,
+        stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric < 20  ~ 2,
+        stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric >= 20  ~ 1
       ),
       group_id = dplyr::cur_group_id(),
       id = 1:dplyr::n()
     ) |>
-    dplyr::filter(effect_priority_order == min(effect_priority_order)) |>
+    dplyr::filter(.data$effect_priority_order == min(.data$effect_priority_order)) |>
     dplyr::mutate(
-      conc1_mean_std_effect_aggr = mean(conc1_mean_std_effect)
+      conc1_mean_std_effect_aggr = mean(.data$conc1_mean_std_effect)
     ) |>
     dplyr::ungroup() |>
-    dplyr::group_by(species_number) |>
-    dplyr::arrange(conc1_mean_std_effect_aggr) |>
+    dplyr::group_by(.data$species_number) |>
+    dplyr::arrange(.data$conc1_mean_std_effect_aggr) |>
     dplyr::slice(1) |>
     dplyr::ungroup() |>
-    dplyr::arrange(species_number) |>
+    dplyr::arrange(.data$species_number) |>
     dplyr::select(
       "chemical_name", "test_cas",
       "effect", "effect_description",
