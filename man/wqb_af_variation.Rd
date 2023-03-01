@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-af-variation.R
 \name{wqb_af_variation}
 \alias{wqb_af_variation}
-\title{Determine the Assessment Factor}
+\title{Determine the Variation Assessment Factor}
 \usage{
 wqb_af_variation(data)
 }
@@ -15,4 +15,9 @@ A data frame
 \description{
 Based on a set of rules determine all the assessment factors for the
 data set.
+}
+\examples{
+\dontrun{
+data <- wqb_af_variation(data)
+}
 }

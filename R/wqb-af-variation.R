@@ -1,4 +1,4 @@
-#' Determine the Assessment Factor
+#' Determine the Variation Assessment Factor
 #' 
 #' Based on a set of rules determine all the assessment factors for the 
 #' data set. 
@@ -8,6 +8,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data <- wqb_af_variation(data)
+#' }
 wqb_af_variation <- function(data) {
   chk::check_data(
     data, 
@@ -27,60 +30,60 @@ wqb_af_variation <- function(data) {
   ## Trophic Level 1 ----
   if (no_trophic_levels == 1){
     if (no_species == 1) {
-      data$variation_factor <- 50L
+      data$af_variation <- 50L
       return(data)
     }
     if ((no_species == 2 | no_species == 3)) {
-      data$variation_factor <- 20L
+      data$af_variation <- 20L
       return(data)
     }
     if ((no_species == 4 | no_species == 6)) {
-      data$variation_factor <- 10L
+      data$af_variation <- 10L
       return(data)
     }
     if (no_species >= 6) {
-      data$variation_factor <- 5L
+      data$af_variation <- 5L
       return(data)
     }
   }
   ## Trophic Level 2 ----
   if (no_trophic_levels == 2) {
     if (no_species == 1) {
-      data$variation_factor <- NA_integer_
+      data$af_variation <- NA_integer_
       return(data)
     }
     if (no_species == 2 | no_species == 3) {
-      data$variation_factor <- 10L
+      data$af_variation <- 10L
       return(data)
     }
     if (no_species == 4 | no_species == 6) {
-      data$variation_factor <- 50L
+      data$af_variation <- 50L
       return(data)
     }
     if (no_species >= 6) {
-      data$variation_factor <- 2L
+      data$af_variation <- 2L
       return(data)
     }
   }
   ## Trophic Level 3 ----
   if (no_trophic_levels == 3) {
     if (no_species == 1) {
-      data$variation_factor <- NA_integer_
+      data$af_variation <- NA_integer_
       return(data)
     }
     if (no_species == 2 | no_species == 3) {
-      data$variation_factor <- 5L
+      data$af_variation <- 5L
       return(data)
     }
     if (no_species == 4 | no_species == 6) {
-      data$variation_factor <- 2L
+      data$af_variation <- 2L
       return(data)
     }
     if (no_species >= 6) {
-      data$variation_factor <- 1L 
+      data$af_variation <- 1L 
       return(data)
     }
   }
-  data$variation_factor <- 1L 
+  data$af_variation <- 1L 
   data
 }
