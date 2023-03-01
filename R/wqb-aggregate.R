@@ -15,8 +15,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' wqb_aggregate(data, "71432")
+#' wqb_aggregate(data, "7553562")
 #' wqb_aggregate(data, "67663")
+#' 
+#' aggregated_data <- wqb_aggregate(standardized_effect_data, "71432")
 #' }
 wqb_aggregate <- function(data, cas_num) {
   chk::check_data(
