@@ -66,7 +66,8 @@ wqb_aggregate <- function(data, cas_num) {
       "chemical_name", "test_cas",
       "effect", "effect_description",
       "conc1_mean_std_effect_aggr", "conc_conversion_unit",
-      "species_number", "latin_name", "common_name"
+      "species_number", "latin_name", "common_name",  
+      "ecological_group_class", "ecological_group",
     )
   
   aggregated_data
