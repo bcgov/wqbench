@@ -31,6 +31,6 @@ If these conditions are not met then a variation factor is the required.
 \examples{
 \dontrun{
 data <- wqb_benchmark_method(data)
-
+data <- wqb_benchmark_method(aggregated_data)
 }
 }
