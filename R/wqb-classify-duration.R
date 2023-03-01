@@ -84,7 +84,35 @@ wqb_classify_duration <- function(data) {
         TRUE ~ "not specified"
       ) 
     ) |>
-    dplyr::filter(!(.data$duration_class == "not specified"))
+    dplyr::filter(!(.data$duration_class == "not specified")) |>
+    dplyr::select(
+      "chemical_name", "test_cas",
+      "test_id", "result_id", "endpoint", "effect", "effect_description",
+      "conc1_mean", "conc1_unit", 
+      "conc_conversion_flag", "conc_conversion_value_multiplier", 
+      "conc1_mean_std",
+      "conc_conversion_unit",
+      "conc2_mean", "conc2_unit",
+      "conc3_mean", "conc3_unit",
+      "obs_duration_mean", "obs_duration_unit",
+      "obs_duration_mean_std", "obs_duration_unit_std",
+      "study_duration_mean", "study_duration_unit",
+      "exposure_duration_mean", "exposure_duration_unit",
+      "duration_units_to_keep", "duration_value_multiplier_to_hours", 
+      "duration_class",
+      "organism_habitat",
+      "species_number", "latin_name", "common_name", "kingdom", 
+      "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
+      "family", "genus", "species", "subspecies", "variety",
+      "species_present_in_bc", 
+      "ecological_group_class", "ecological_group",
+      "lifestage_description", "simple_lifestage", 
+      "media_type", "media_description", "media_type_group",
+      "present_in_bc_wqg", 
+      "reference_number", "reference_type", "author", "title", "source", 
+      "publication_year",
+      "additional_comments_tests", "additional_comments_results"
+    )
   
   data_classified
 }
