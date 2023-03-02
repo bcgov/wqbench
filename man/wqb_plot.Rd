@@ -10,6 +10,9 @@ wqb_plot(data)
 \item{data}{A data frame of clean and processed data filtered to only a
 single chemical.}
 }
+\value{
+A ggplot object
+}
 \description{
 Plots a single chemical
 }

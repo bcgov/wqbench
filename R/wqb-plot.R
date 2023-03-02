@@ -3,7 +3,7 @@
 #' @param data A data frame of clean and processed data filtered to only a 
 #'  single chemical.
 #'
-#' @return
+#' @return A ggplot object
 #' @export
 #'
 #' @examples
