@@ -27,15 +27,15 @@ wqb_af_bc_species <- function(data) {
     nrow()
   
   if (no_bc_species <= 1) {
-    data$af_bc_species <- 3
+    data$af_bc_species <- 3L
   }
   
   if (no_bc_species %in% 2:3) {
-    data$af_bc_species <- 2
+    data$af_bc_species <- 2L
   }
   
   if (no_bc_species >= 4) {
-    data$af_bc_species <- 1
+    data$af_bc_species <- 1L
   }
   
   data

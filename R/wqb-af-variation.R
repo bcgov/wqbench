@@ -58,7 +58,7 @@ wqb_af_variation <- function(data) {
       return(data)
     }
     if (no_species %in% 4:6) { 
-      data$af_variation <- 50L
+      data$af_variation <- 5L
       return(data)
     }
     if (no_species > 6) {

@@ -36,15 +36,15 @@ wqb_af_ecological <- function(data) {
     )
   
   if (no_ecological$salmonid == 0) {
-    data$af_salmon <- 2
+    data$af_salmon <- 2L
   } else {
-    data$af_salmon <- 1
+    data$af_salmon <- 1L
   }
   
   if (no_ecological$planktonic_invertebrate == 0) {
-    data$af_planktonic <- 2
+    data$af_planktonic <- 2L
   } else {
-    data$af_planktonic <- 1
+    data$af_planktonic <- 1L
   }
   
   data
