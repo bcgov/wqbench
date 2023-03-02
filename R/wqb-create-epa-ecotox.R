@@ -24,7 +24,7 @@ wqb_create_epa_ecotox <- function(file_path = ".", data_path) {
   dbfile <- file.path(file_path, dbname)
   dir.create(file_path, showWarnings = FALSE)
   
-  
+  on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
     RSQLite::SQLite(), 
     dbfile
@@ -85,13 +85,8 @@ wqb_create_epa_ecotox <- function(file_path = ".", data_path) {
     )
   }
 
-  DBI::dbDisconnect(con)
   invisible(dbfile)
 }
-
-### if so add in index otherwise don't
-
-
 
 db_tbl_core_structure <- function() {
   # names are table names, values are primary keys 
