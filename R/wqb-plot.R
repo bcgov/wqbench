@@ -34,11 +34,17 @@ wqb_plot <- function(data) {
         y = .data$latin_name,
         color = .data$ecological_group
       ),
-      alpha = 0.6
+      alpha = 0.8,
+      size = 1.5
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
-    ggplot2::labs(color = "Trophic Group") +
+    ggplot2::scale_color_manual(
+      "Trophic Group",
+      values = c(
+        "#000000", "#3063A3", "#E8613C", "#821C65", "#63BB42", "#FFD446"
+      )
+    ) +
     ggplot2::theme_bw() + 
     ggplot2::theme(
       legend.position = "bottom",
