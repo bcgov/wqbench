@@ -18,6 +18,7 @@ Imports:
     chk,
     DBI,
     dplyr,
+    ggplot2,
     httr,
     readr,
     rlang,
