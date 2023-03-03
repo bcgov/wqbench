@@ -1,6 +1,8 @@
 #' Generate the Benchmark Guideline Value using a SSD
 #'
-#' @param data 
+#' @param data A data frame of clean and processed data filtered to only a 
+#'  single chemical.
+#' @param fit The fit from ssd
 #'
 #' @return A data frame which contains the HC5 value, the total 
 #'  assessment factor and the benchmark value.
@@ -8,9 +10,9 @@
 #'
 #' @examples
 #' \dontrun{
-#'  bench_iodine <- wqb_generate_ssd(data)
+#'  bench_iodine <- wqb_generate_ssd(data, fit)
 #' }
-wqb_generate_ssd <- function(data) {
+wqb_generate_ssd <- function(data, fit) {
   chk::check_data(
     data,
     list(
@@ -19,14 +21,10 @@ wqb_generate_ssd <- function(data) {
     )
   )
   af <- gen_af_value(data)
-  
-  fit <- wqb_generate_ssd_fit(data)
   hc5 <- wqb_generate_ssd_hc5(fit)
   
   value <- hc5 |>
-    dplyr::select(
-      est, lcl, ucl
-    ) |>
+    dplyr::select("est", "lcl", "ucl") |>
     dplyr::mutate(
       af = af,
       benchmark_est = .data$est / .data$af,
@@ -41,9 +39,11 @@ wqb_generate_ssd <- function(data) {
 
 #' Fit a SSD
 #'
-#' @param data 
+#' @param data A data frame of clean and processed data filtered to only a 
+#'  single chemical.
 #'
 #' @return A data frame 
+#' @export
 #'
 #' @examples
 #' \dontrun{
@@ -60,7 +60,7 @@ wqb_generate_ssd_fit <- function(data) {
 
 #' Get a SSD HC5
 #'
-#' @param data 
+#' @param fit The fit from ssd
 #'
 #' @return A data frame 
 #'
