@@ -30,15 +30,15 @@ library(wqbench)
 Download the most recent database 
 
 ```r
-download_path <- wqb_download_epa_ecotox("data_download")
+wqb_download_epa_ecotox(file_path = "~/Ecotoxicology/ecotox", version = 2)
 ```
 
 Create a SQLite database from the Downloaded Ecotox Data
 
 ```r
-database_09_22 <- wqb_create_epa_ecotox(
-  file_path = "ecotox_db",
-  data_path = "data_dl/ecotox_ascii_09_15_2022"
+database <- wqb_create_epa_ecotox(
+  file_path = "~/Ecotoxicology/ecotox_db/",
+  data_path = "~/Ecotoxicology/ecotox/ecotox_ascii_09_15_2022"
 )
 ```
 
@@ -47,44 +47,46 @@ Add and update database
 - all these functions need to be run for the data set to compile. 
 
 ```r
-bc_species <- wqb_add_bc_species(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
-
-chem_bc_wqg <- wqb_add_bc_wqg(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-)
-
-conc_endpoints <- wqb_add_concentration_endpoints(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-)
-
-lifestage_codes <- wqb_add_lifestage(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
-
-media_groups <- wqb_add_media(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-)
-
-trophic_groups <- wqb_add_trophic_group(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
-
-duration_unit_code_standardization <- wqb_standardize_duration(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-)
-
-concentration_unit_code_standardization <- wqb_standardize_concentration(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-)
-
-data_compiled <- wqb_compile_dataset(
-  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
-data_compiled
+bc_species <- wqb_add_bc_species(database = database) 
+chem_bc_wqg <- wqb_add_bc_wqg(database = database)
+conc_endpoints <- wqb_add_concentration_endpoints(database = database)
+lifestage_codes <- wqb_add_lifestage(database = database) 
+media_groups <- wqb_add_media(database = database)
+trophic_groups <- wqb_add_trophic_group(database = database) 
+duration_unit_code_standardization <- wqb_standardize_duration(database = database)
+concentration_unit_code_standardization <- wqb_standardize_concentration(database = database)
+data <- wqb_compile_dataset(database = database) 
 ```
 
-### Classify Duration
+```r
+data <- wqb_classify_duration(data)
+data <- wqb_standardize_effect(data)
+data_agg <- wqb_aggregate(data, "129909906")
+data_agg <- wqb_benchmark_method(data_agg)
+data_agg <- wqb_af_variation(data_agg)
+data_agg <- wqb_af_ecological(data_agg)
+data_agg <- wqb_af_bc_species(data_agg)
+```
 
-Once the data set has been compiled, the duration can be set. 
+# Generate Benchmark
+
+```r
+benchmark <- wqb_generate_bench(data_agg)
+```
+
+# Plots
+
+Plot data set
+```r
+gp <- wqb_plot(data)
+```
+
+If the data uses the vf method to calculate the benchmark value
+```r
+gp <- wqb_plot_vf(data_agg)
+```
+
+If the data uses the ssd method to calculate the benchmark value
+```r
+gp <- wqb_plot_ssd(data_agg)
+```
