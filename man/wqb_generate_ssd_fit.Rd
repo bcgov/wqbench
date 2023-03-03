@@ -7,7 +7,8 @@
 wqb_generate_ssd_fit(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A data frame of clean and processed data filtered to only a
+single chemical.}
 }
 \value{
 A data frame

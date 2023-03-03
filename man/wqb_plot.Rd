@@ -4,7 +4,7 @@
 \alias{wqb_plot}
 \title{Plots a single chemical}
 \usage{
-wqb_plot(data)
+wqb_plot(data, y_axis)
 }
 \arguments{
 \item{data}{A data frame of clean and processed data filtered to only a

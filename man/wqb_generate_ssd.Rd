@@ -4,10 +4,13 @@
 \alias{wqb_generate_ssd}
 \title{Generate the Benchmark Guideline Value using a SSD}
 \usage{
-wqb_generate_ssd(data)
+wqb_generate_ssd(data, fit)
 }
 \arguments{
-\item{data}{}
+\item{data}{A data frame of clean and processed data filtered to only a
+single chemical.}
+
+\item{fit}{The fit from ssd}
 }
 \value{
 A data frame which contains the HC5 value, the total
@@ -18,6 +21,6 @@ Generate the Benchmark Guideline Value using a SSD
 }
 \examples{
 \dontrun{
- bench_iodine <- wqb_generate_ssd(data)
+ bench_iodine <- wqb_generate_ssd(data, fit)
 }
 }

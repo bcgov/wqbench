@@ -7,7 +7,7 @@
 wqb_generate_ssd_hc5(fit)
 }
 \arguments{
-\item{data}{}
+\item{fit}{The fit from ssd}
 }
 \value{
 A data frame
