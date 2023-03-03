@@ -32,10 +32,16 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       ggplot2::aes(
         x = .data[[y_axis]], 
         y = .data$latin_name,
-        color = .data$ecological_group
+        color = .data$ecological_group_class
       ),
       alpha = 0.8,
       size = 1.5
+    ) +
+    ggplot2::facet_grid(
+      rows = ggplot2::vars(.data$ecological_group),
+      scale = "free_y",
+      space = "free_y",
+      switch = "y"
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
@@ -45,11 +51,20 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
         "#000000", "#3063A3", "#E8613C", "#821C65", "#63BB42", "#FFD446"
       )
     ) +
-    ggplot2::theme_bw() + 
+    ggplot2::theme_bw() +
     ggplot2::theme(
       legend.position = "bottom",
       legend.background = ggplot2::element_rect(
-        size = 0.2, linetype = "solid", colour = "black")
+        linetype = "solid", colour = "black")
+    ) +
+    ggplot2::scale_y_discrete(position = "left") +
+    ggplot2::scale_x_log10(
+      breaks = scales::trans_breaks("log10", function(x) 10^x),
+      labels = scales::label_comma()
+    ) +
+    ggplot2::annotation_logticks(
+      sides = "b",
+      size = 0.3
     ) +
     NULL
   
