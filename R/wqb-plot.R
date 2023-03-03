@@ -10,14 +10,13 @@
 #' \dontrun{
 #' wqb_plot(data)
 #' }
-wqb_plot <- function(data) {
+wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
   chk::check_data(
     data, 
     list(
       test_cas = "",
       ecological_group = "",
-      latin_name = "",
-      conc1_mean_std_effect = 1
+      latin_name = ""
     )
   ) 
   
@@ -30,7 +29,7 @@ wqb_plot <- function(data) {
   gp <- ggplot2::ggplot(data = data) +
     ggplot2::geom_point(
       ggplot2::aes(
-        x = .data$conc1_mean_std_effect, 
+        x = .data[[y_axis]], 
         y = .data$latin_name,
         color = .data$ecological_group
       ),
