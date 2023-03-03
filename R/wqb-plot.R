@@ -40,8 +40,7 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
     ggplot2::facet_grid(
       rows = ggplot2::vars(.data$ecological_group),
       scale = "free_y",
-      space = "free_y",
-      switch = "y"
+      space = "free_y"
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
@@ -57,7 +56,7 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       legend.background = ggplot2::element_rect(
         linetype = "solid", colour = "black")
     ) +
-    ggplot2::scale_y_discrete(position = "left") +
+    ggplot2::scale_y_discrete(position = "right") +
     ggplot2::scale_x_log10(
       breaks = scales::trans_breaks("log10", function(x) 10^x),
       labels = scales::label_comma()
