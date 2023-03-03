@@ -7,7 +7,7 @@
 wqb_plot_vf(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A dataframe of the aggregated data with the assessment factors}
 }
 \description{
 Title

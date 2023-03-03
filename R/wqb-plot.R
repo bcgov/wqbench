@@ -2,6 +2,7 @@
 #'
 #' @param data A data frame of clean and processed data filtered to only a 
 #'  single chemical.
+#' @param y_axis A string of the column to use for the y-axis
 #'
 #' @return A ggplot object
 #' @export

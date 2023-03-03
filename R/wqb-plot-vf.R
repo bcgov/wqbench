@@ -1,6 +1,6 @@
 #' Title
 #'
-#' @param data 
+#' @param data A dataframe of the aggregated data with the assessment factors
 #'
 #' @return
 #' @export

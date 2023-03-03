@@ -4,11 +4,13 @@
 \alias{wqb_plot}
 \title{Plots a single chemical}
 \usage{
-wqb_plot(data, y_axis)
+wqb_plot(data, y_axis = "conc1_mean_std_effect")
 }
 \arguments{
 \item{data}{A data frame of clean and processed data filtered to only a
 single chemical.}
+
+\item{y_axis}{A string of the column to use for the y-axis}
 }
 \value{
 A ggplot object
