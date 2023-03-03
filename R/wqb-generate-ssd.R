@@ -50,11 +50,10 @@ wqb_generate_ssd <- function(data, fit) {
 #'  fit <- wqb_generate_ssd_fit(data)
 #' }
 wqb_generate_ssd_fit <- function(data) {
-  fit <- ssdtools::ssd_fit_dists(
+  ssdtools::ssd_fit_bcanz(
     data = data,
     left = "conc1_mean_std_effect_aggr"
   )
-  fit
 }
 
 
@@ -66,8 +65,8 @@ wqb_generate_ssd_fit <- function(data) {
 #'
 #' @examples
 #' \dontrun{
-#'  fit <- wqb_generate_ssd_fit(data)
+#'  fit <- wqb_generate_ssd_hc5(data)
 #' }
-wqb_generate_ssd_hc5 <- function(fit) {
-  hc5 <- ssdtools::ssd_hc(fit, ci = TRUE, nboot = 100, percent = 5)
+wqb_generate_ssd_hc5 <- function(fit, nboot = 100) {
+  ssdtools::ssd_hc_bcanz(fit, nboot = nboot)
 }
