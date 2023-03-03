@@ -30,7 +30,9 @@ wqb_generate_ssd <- function(data, fit) {
       benchmark_est = .data$est / .data$af,
       benchmark_lcl = .data$lcl / .data$af,
       benchmark_ucl = .data$ucl / .data$af,
-    )
+      .keep = "used"
+    ) |>
+    dplyr::select("benchmark_est", "benchmark_lcl", "benchmark_ucl", "af")
   
   value
 }
@@ -68,5 +70,6 @@ wqb_generate_ssd_fit <- function(data) {
 #'  fit <- wqb_generate_ssd_hc5(data)
 #' }
 wqb_generate_ssd_hc5 <- function(fit, nboot = 100) {
-  ssdtools::ssd_hc_bcanz(fit, nboot = nboot)
+  ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
+    dplyr::filter(percent == 5)
 }

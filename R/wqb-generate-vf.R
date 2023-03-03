@@ -28,7 +28,10 @@ wqb_generate_vf <- function(data) {
     dplyr::select("conc1_mean_std_effect_aggr") |>
     dplyr::mutate(
       af = af,
-      benchmark_value = .data$conc1_mean_std_effect_aggr / .data$af
-    )
+      benchmark_est = .data$conc1_mean_std_effect_aggr / .data$af,
+      benchmark_lcl = NA_real_,
+      benchmark_ucl = NA_real_
+    ) |>
+    dplyr::select("benchmark_est", "benchmark_lcl", "benchmark_ucl", "af")
   value 
 }

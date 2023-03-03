@@ -12,7 +12,7 @@ wqb_plot_vf <- function(data) {
   gp <- wqb_plot(data, "conc1_mean_std_effect_aggr")
   gp <- gp +
     ggplot2::geom_vline(
-      ggplot2::aes(xintercept = vf$benchmark_value, linetype = "benchmark")
+      ggplot2::aes(xintercept = vf$benchmark_est, linetype = "benchmark")
     ) +
     ggplot2::expand_limits(y = 0) +
     ggplot2::scale_linetype_manual(
