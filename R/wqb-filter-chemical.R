@@ -15,7 +15,7 @@ wqb_filter_chemical <- function(data, cas_num) {
   chk::check_data(
     data, 
     list(
-      cas_number = ""
+      test_cas = ""
     )
   ) 
   
