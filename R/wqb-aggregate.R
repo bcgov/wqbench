@@ -4,7 +4,6 @@
 #'
 #' @param data A data frame that is the output of the `wqb_standardize_effect()`
 #'   function.
-#' @param cas_num A string of the cas number.
 #' @return Data frame
 #' @export
 #' @details Each species, life stage and effect are group for each chemical and
@@ -15,26 +14,23 @@
 #' 
 #' @examples
 #' \dontrun{
-#' wqb_aggregate(data, "7553562")
-#' wqb_aggregate(data, "67663")
+#' wqb_aggregate(data)
+#' wqb_aggregate(data)
 #' 
 #' aggregated_data <- wqb_aggregate(standardized_effect_data, "71432")
 #' }
-wqb_aggregate <- function(data, cas_num) {
+wqb_aggregate <- function(data) {
   chk::check_data(
     data, 
     list(
-      test_cas = "",
       species_number = 1L,
       lifestage_description = "",
       effect_description = "",
       conc1_mean_std_effect = 1
     )
   ) 
-  chk::chk_character_or_factor(cas_num)
   
   aggregated_data <- data |>
-    dplyr::filter(.data$test_cas == cas_num) |>
     dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
     dplyr::mutate(
       endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
