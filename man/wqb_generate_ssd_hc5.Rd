@@ -4,10 +4,14 @@
 \alias{wqb_generate_ssd_hc5}
 \title{Get a SSD HC5}
 \usage{
-wqb_generate_ssd_hc5(fit)
+wqb_generate_ssd_hc5(fit, nboot = 100)
 }
 \arguments{
 \item{fit}{The fit from ssd}
+
+\item{nboot}{A count of the number of bootstrap samples to use to estimate
+the se and confidence limits. A value of 10000 is recommended for official
+guidelines.}
 }
 \value{
 A data frame
@@ -17,6 +21,6 @@ Get a SSD HC5
 }
 \examples{
 \dontrun{
- fit <- wqb_generate_ssd_fit(data)
+ fit <- wqb_generate_ssd_hc5(data)
 }
 }

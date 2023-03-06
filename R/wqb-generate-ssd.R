@@ -62,8 +62,11 @@ wqb_generate_ssd_fit <- function(data) {
 #' Get a SSD HC5
 #'
 #' @param fit The fit from ssd
+#' @param nboot A count of the number of bootstrap samples to use to estimate
+#'   the se and confidence limits. A value of 10000 is recommended for official
+#'   guidelines.
 #'
-#' @return A data frame 
+#' @return A data frame
 #'
 #' @examples
 #' \dontrun{
@@ -71,5 +74,5 @@ wqb_generate_ssd_fit <- function(data) {
 #' }
 wqb_generate_ssd_hc5 <- function(fit, nboot = 100) {
   ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
-    dplyr::filter(percent == 5)
+    dplyr::filter(.data$percent == 5)
 }

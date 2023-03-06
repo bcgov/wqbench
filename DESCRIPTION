@@ -24,6 +24,7 @@ Imports:
     rlang,
     RSQLite,
     rvest,
+    scales,
     ssdtools,
     stringr,
     tibble,
