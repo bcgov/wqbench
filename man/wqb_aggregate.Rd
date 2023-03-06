@@ -4,13 +4,11 @@
 \alias{wqb_aggregate}
 \title{Aggregate Data for each Species}
 \usage{
-wqb_aggregate(data, cas_num)
+wqb_aggregate(data)
 }
 \arguments{
 \item{data}{A data frame that is the output of the \code{wqb_standardize_effect()}
 function.}
-
-\item{cas_num}{A string of the cas number.}
 }
 \value{
 Data frame
@@ -27,8 +25,8 @@ calculated.
 }
 \examples{
 \dontrun{
-wqb_aggregate(data, "7553562")
-wqb_aggregate(data, "67663")
+wqb_aggregate(data)
+wqb_aggregate(data)
 
 aggregated_data <- wqb_aggregate(standardized_effect_data, "71432")
 }
