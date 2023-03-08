@@ -138,9 +138,11 @@ wqb_compile_dataset <- function(database) {
     dplyr::mutate(effect = stringr::str_replace_all(.data$effect, "(/)|(~)", "")) |>
     dplyr::left_join(db_effect_codes, by = c("effect" = "code")) |>
     # add media groups
+    # clean codes so they join
+    dplyr::mutate(media_type = stringr::str_replace_all(.data$media_type, "(/)", "")) |>
     dplyr::left_join(db_media_type_codes, by = c("media_type" = "code")) |>
     tibble::tibble()
-  
+
   chk::chk_not_missing(combined_data$organism_lifestage)
   
   # select columns
