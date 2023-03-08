@@ -8,14 +8,14 @@
 #' @export
 #' @details To determine the most sensitive value:
 #' 
-#' - The species, life stage and effect are grouped together.
+#' - Group the species, life stage and effect together.
 #' - Within each group prioritize the selection of the effect level using the following order which is specific to benchmark method:
 #'   - SSD method use: 
 #'      - EC/IC x<=10 > EC/IC11-EC/IC20 > MATC > NOEC/NOEL > LOEC/LOEL/MCIG> EC/ICx>20  > LC x<20 > LC x≥20
 #'   - Deterministic method use: 
 #'      - EC/IC10 > EC/IC11-EC/IC20 > MATC > LOEC/LOEL/MCIG > EC/ICx>20  > LC x<20 > LC x≥20 > NOEC/NOEL
-#' - If multiple data points within each group exists then the geometric mean is calculated.
-#' - The lowest concentration value is then selected.
+#' - If multiple data points remain within each prioritized endpoint group then the geometric mean is calculated.
+#' - The lowest concentration value out of the groups is selected as the most sensitive endpoint..
 #'  
 #'  Only a subset of columns are returned since the data has been aggregated 
 #'  down to the species level. 

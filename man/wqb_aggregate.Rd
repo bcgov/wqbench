@@ -19,7 +19,7 @@ priority of effect level depends on the benchmark method that will be used.
 \details{
 To determine the most sensitive value:
 \itemize{
-\item The species, life stage and effect are grouped together.
+\item Group the species, life stage and effect together.
 \item Within each group prioritize the selection of the effect level using the following order which is specific to benchmark method:
 \itemize{
 \item SSD method use:
@@ -31,8 +31,8 @@ To determine the most sensitive value:
 \item EC/IC10 > EC/IC11-EC/IC20 > MATC > LOEC/LOEL/MCIG > EC/ICx>20  > LC x<20 > LC x≥20 > NOEC/NOEL
 }
 }
-\item If multiple data points within each group exists then the geometric mean is calculated.
-\item The lowest concentration value is then selected.
+\item If multiple data points remain within each prioritized endpoint group then the geometric mean is calculated.
+\item The lowest concentration value out of the groups is selected as the most sensitive endpoint..
 }
 
 Only a subset of columns are returned since the data has been aggregated
