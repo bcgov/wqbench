@@ -28,15 +28,15 @@
 #'   convert the unit into the unit listed in the `conc_conversion_unit` column.
 #' @examples
 #' \dontrun{
-#' concentration_unit_code_standardization <- wqb_standardize_concentration(
+#' concentration_unit_code_standardization <- wqb_add_conc_conversions(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' )
 #'
-#' concentration_unit_code_standardization <- wqb_standardize_concentration(
+#' concentration_unit_code_standardization <- wqb_add_conc_conversions(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
-wqb_standardize_concentration <- function(database) {
+wqb_add_conc_conversions <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   

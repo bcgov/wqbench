@@ -50,14 +50,15 @@ lifestage_codes <- wqb_add_lifestage(database = database)
 media_groups <- wqb_add_media(database = database)
 trophic_groups <- wqb_add_trophic_group(database = database) 
 duration_unit_code_standardization <- wqb_standardize_duration(database = database)
-concentration_unit_code_standardization <- wqb_standardize_concentration(database = database)
+concentration_unit_code_standardization <- wqb_add_conc_conversions(database = database)
 data <- wqb_compile_dataset(database = database) 
 ```
 
 ``` r
 data <- wqb_classify_duration(data)
 data <- wqb_standardize_effect(data)
-data_agg <- wqb_aggregate(data, "129909906")
+data <- wqb_filter_chemical(data, "129909906")
+data_agg <- wqb_aggregate(data)
 data_agg <- wqb_benchmark_method(data_agg)
 data_agg <- wqb_af_variation(data_agg)
 data_agg <- wqb_af_ecological(data_agg)
