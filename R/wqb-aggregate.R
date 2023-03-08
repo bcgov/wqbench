@@ -24,33 +24,66 @@ wqb_aggregate <- function(data) {
     data, 
     list(
       species_number = 1L,
+      ### should be simple lifestage... 
       lifestage_description = "",
       effect_description = "",
-      conc1_mean_std_effect = 1
+      conc1_mean_std_effect = 1,
+      method = ""
     )
   ) 
   
-  aggregated_data <- data |>
-    dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
+  method <- unique(data$method)
+  
+  if (length(method) != 1) {
+    stop("Only 1 method allowed per data set")
+  }
+  
+  if (method == "SSD") {
+    grouped_data <- data |>
+      dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
+      dplyr::mutate(
+        endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
+        endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
+        effect_priority_order = dplyr::case_when(
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric <= 10  ~ 8,
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric >= 11 &  .data$endpoint_numeric <= 20  ~ 7,
+          stringr::str_detect(.data$endpoint_alpha, "MATC") ~ 6,
+          stringr::str_detect(.data$endpoint_alpha, "(NOEC)|(NOEL)") ~ 5,
+          stringr::str_detect(.data$endpoint_alpha, "(LOEC)|(LOEL)|(MCIG)") ~ 4,
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 20  ~ 3,
+          stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric < 20  ~ 2,
+          stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric >= 20  ~ 1
+        ),
+        group_id = dplyr::cur_group_id(),
+        id = 1:dplyr::n()
+      ) 
+  } else {
+    # Deterministic method
+    grouped_data <- data |>
+      dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
+      dplyr::mutate(
+        endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
+        endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
+        effect_priority_order = dplyr::case_when(
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric <= 10  ~ 8,
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric >= 11 &  .data$endpoint_numeric <= 20  ~ 7,
+          stringr::str_detect(.data$endpoint_alpha, "MATC") ~ 6,
+          stringr::str_detect(.data$endpoint_alpha, "(LOEC)|(LOEL)|(MCIG)") ~ 5,
+          stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 20  ~ 4,
+          stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric < 20  ~ 3,
+          stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric >= 20  ~ 2,
+          stringr::str_detect(.data$endpoint_alpha, "(NOEC)|(NOEL)") ~ 1,
+        ),
+        group_id = dplyr::cur_group_id(),
+        id = 1:dplyr::n()
+      ) 
+  }
+  
+  aggregated_data <- 
+    grouped_data |>
+    dplyr::filter(.data$effect_priority_order == max(.data$effect_priority_order)) |>
     dplyr::mutate(
-      endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
-      endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
-      effect_priority_order = dplyr::case_when(
-        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric <= 10  ~ 8,
-        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 10 &  .data$endpoint_numeric <= 20  ~ 7,
-        stringr::str_detect(.data$endpoint_alpha, "MATC") ~ 6,
-        stringr::str_detect(.data$endpoint_alpha, "(NOEC)|(NOEL)") ~ 5,
-        stringr::str_detect(.data$endpoint_alpha, "(LOEC)|(LOEL)|(MCIG)") ~ 4,
-        stringr::str_detect(.data$endpoint_alpha, "EC|IC") & .data$endpoint_numeric > 20  ~ 3,
-        stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric < 20  ~ 2,
-        stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric >= 20  ~ 1
-      ),
-      group_id = dplyr::cur_group_id(),
-      id = 1:dplyr::n()
-    ) |>
-    dplyr::filter(.data$effect_priority_order == min(.data$effect_priority_order)) |>
-    dplyr::mutate(
-      conc1_mean_std_effect_aggr = mean(.data$conc1_mean_std_effect)
+      conc1_mean_std_effect_aggr = geometric_mean(.data$conc1_mean_std_effect)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(.data$species_number) |>

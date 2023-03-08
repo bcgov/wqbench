@@ -1,4 +1,8 @@
 
+geometric_mean <- function(x) {
+  exp(mean(log(x)))
+}
+
 gen_af_table <- function(data) {
   chk::check_data(
     data,
