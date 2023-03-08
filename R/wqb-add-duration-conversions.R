@@ -27,15 +27,15 @@
 #'   convert the unit into hours.
 #' @examples
 #' \dontrun{
-#' duration_unit_code_standardization <- wqb_standardize_duration(
+#' duration_unit_code_standardization <- wqb_add_duration_conversions(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
 #' )
 #'
-#' duration_unit_code_standardization <- wqb_standardize_duration(
+#' duration_unit_code_standardization <- wqb_add_duration_conversions(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
-wqb_standardize_duration <- function(database) {
+wqb_add_duration_conversions <- function(database) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
