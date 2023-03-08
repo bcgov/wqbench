@@ -7,27 +7,39 @@
 wqb_aggregate(data)
 }
 \arguments{
-\item{data}{A data frame that is the output of the \code{wqb_standardize_effect()}
-function.}
+\item{data}{A data frame}
 }
 \value{
 Data frame
 }
 \description{
-Aggregate data so the most sensitive value is selected for each species.
+Aggregate data to select the most sensitive value for each species. The
+priority of effect level depends on the benchmark method that will be used.
 }
 \details{
-Each species, life stage and effect are group for each chemical and
-the most sensitive effect concentration is selected for each speices.
+To determine the most sensitive value:
+\itemize{
+\item The species, life stage and effect are grouped together.
+\item Within each group prioritize the selection of the effect level using the following order which is specific to benchmark method:
+\itemize{
+\item SSD method use:
+\itemize{
+\item EC/IC x<=10 > EC/IC11-EC/IC20 > MATC > NOEC/NOEL > LOEC/LOEL/MCIG> EC/ICx>20  > LC x<20 > LC x≥20
+}
+\item Deterministic method use:
+\itemize{
+\item EC/IC10 > EC/IC11-EC/IC20 > MATC > LOEC/LOEL/MCIG > EC/ICx>20  > LC x<20 > LC x≥20 > NOEC/NOEL
+}
+}
+\item If multiple data points within each group exists then the geometric mean is calculated.
+\item The lowest concentration value is then selected.
+}
 
-If multiple data points within each group exists then the geometric mean is
-calculated.
+Only a subset of columns are returned since the data has been aggregated
+down to the species level.
 }
 \examples{
 \dontrun{
-wqb_aggregate(data)
-wqb_aggregate(data)
-
-aggregated_data <- wqb_aggregate(standardized_effect_data, "71432")
+data <- wqb_aggregate(data)
 }
 }
