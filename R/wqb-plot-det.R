@@ -9,16 +9,39 @@
 wqb_plot_det <- function(data) {
   det <- wqb_generate_det(data)
   
-  gp <- wqb_plot(data, "conc1_mean_std_effect_aggr")
-  gp <- gp +
+  col_name <- "conc1_mean_std_effect_aggr"
+
+  line_data <- tibble::tibble(
+    names = c("Aquatic Life Benchmark", "Critical Toxicity Value"),
+    values = c(det$benchmark_est, min(data[[col_name]]))
+  )
+
+  gp <- wqb_plot(data, col_name) +
     ggplot2::geom_vline(
-      ggplot2::aes(xintercept = det$benchmark_est, linetype = "benchmark")
+      data = line_data,
+      ggplot2::aes(
+        xintercept = values,
+        linetype = names,
+        color = names
+      )
     ) +
-    ggplot2::expand_limits(y = 0) +
+    ggplot2::scale_color_manual(
+      "",
+      values = c(
+        "Aquatic Life Benchmark" = "red", 
+        "Critical Toxicity Value" = "black"
+      )
+    ) +
     ggplot2::scale_linetype_manual(
       "",
-      values = c("dotted")
-    )
+      values = c(
+        "Aquatic Life Benchmark" = "dashed", 
+        "Critical Toxicity Value" = "solid"
+      )
+    ) +
+    NULL
+  
+  gp$layers <- c(gp$layers[[3]], gp$layers[[2]], gp$layers[[1]]) 
   
   gp 
 }
