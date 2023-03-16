@@ -4,7 +4,7 @@
 \alias{wqb_plot}
 \title{Plots a single chemical}
 \usage{
-wqb_plot(data, y_axis = "conc1_mean_std_effect")
+wqb_plot(data, y_axis = "effect_conc_std_mg.L")
 }
 \arguments{
 \item{data}{A data frame of clean and processed data filtered to only a

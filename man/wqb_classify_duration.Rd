@@ -42,7 +42,7 @@ Acute:
 - duration ≤ 96 hours
 Chronic:
 - Planktonic invertebrates (\code{ecological_group_class}) and duration > 96 hours
-- Regular invertebrates (\code{ecological_group_class}) and duration ≥ 168 hours
+- Other invertebrates (\code{ecological_group_class}) and duration ≥ 168 hours
 
 Algae
 Acute:
