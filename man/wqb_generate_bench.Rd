@@ -11,7 +11,7 @@ wqb_generate_bench(data)
 single chemical.}
 }
 \description{
-Pass the data to generate the benchmark for VF or SSD method.
+Pass the data to generate the benchmark for DET or SSD method.
 }
 \examples{
 \dontrun{

@@ -62,11 +62,11 @@ data <- wqb_compile_dataset(database = database)
 data <- wqb_classify_duration(data)
 data <- wqb_standardize_effect(data)
 data <- wqb_filter_chemical(data, "129909906")
-data_agg <- wqb_aggregate(data)
-data_agg <- wqb_benchmark_method(data_agg)
-data_agg <- wqb_af_variation(data_agg)
-data_agg <- wqb_af_ecological(data_agg)
-data_agg <- wqb_af_bc_species(data_agg)
+data <- wqb_benchmark_method(data)
+data <- wqb_aggregate(data)
+data <- wqb_af_variation(data)
+data <- wqb_af_ecological(data)
+data <- wqb_af_bc_species(data)
 ```
 
 # Generate Benchmark

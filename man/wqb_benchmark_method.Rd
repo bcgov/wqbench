@@ -17,7 +17,8 @@ Add a column called \code{method} which either will say SSD or AF.
 }
 \details{
 The data is run through a set of rules to determine if a species
-sensitivity distribution (SSD) or variation factor (VF) can be used on the data set.
+sensitivity distribution (SSD) or deterministic (DET) method can be used on
+the data set.
 
 Conditions for SSD:
 \itemize{
