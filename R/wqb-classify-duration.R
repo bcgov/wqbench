@@ -31,7 +31,7 @@
 #'      - duration ≤ 96 hours
 #'    Chronic:
 #'      - Planktonic invertebrates (`ecological_group_class`) and duration > 96 hours
-#'      - Regular invertebrates (`ecological_group_class`) and duration ≥ 168 hours
+#'      - Other invertebrates (`ecological_group_class`) and duration ≥ 168 hours
 #'  
 #'  Algae
 #'    Acute: 
@@ -74,7 +74,7 @@ wqb_classify_duration <- function(data) {
         # Invertebrates
         stringr::str_detect(ecological_group, "(?i)^invertebrate$") & duration_mean_std <= 96 ~ "acute",
         stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Planktonic Invertebrate") & duration_mean_std > 96 ~ "chronic",
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Regular") & duration_mean_std >= 168 ~ "chronic",
+        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Other") & duration_mean_std >= 168 ~ "chronic",
         # Algae
         stringr::str_detect(ecological_group, "(?i)^algae$") & duration_mean_std <= 24 ~ "acute",
         stringr::str_detect(ecological_group, "(?i)^algae$") & duration_mean_std > 24 ~ "chronic",
