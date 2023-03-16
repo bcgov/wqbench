@@ -12,8 +12,8 @@ wqb_plot_ssd <- function(data, fit) {
   
   pred <- ssdtools::predict(fit, ci = TRUE)
   gp <- ssdtools::ssd_plot(
-    data, pred, shape = "ecological_group", color = "ecological_group", 
-    label = "common_name", left = "conc1_mean_std_effect_aggr",
+    data, pred, shape = "trophic_group", color = "trophic_group", 
+    label = "common_name", left = "conc1_mean_std_effect_aggr_mg.L",
     xlab = "Concentration (mg/L)", ribbon = TRUE
   ) + 
     ggplot2::expand_limits(x = 3000) +

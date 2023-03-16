@@ -11,22 +11,22 @@
 #' \dontrun{
 #' wqb_plot(data)
 #' }
-wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
+wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
   chk::check_data(
     data, 
     list(
-      test_cas = "",
-      ecological_group = "",
+      cas = "",
+      trophic_group = "",
       latin_name = ""
     )
   ) 
   
   data <- data |>
-    dplyr::arrange(.data$ecological_group) |>
+    dplyr::arrange(.data$trophic_group) |>
     dplyr::mutate(
       latin_name = factor(.data$latin_name, levels = unique(.data$latin_name)),
       species_present_in_bc = dplyr::if_else(.data$species_present_in_bc, "BC Species", "Other"),
-      ecological_group_class = factor(.data$ecological_group_class, levels = c("Regular", "Planktonic Invertebrate", "Salmonid"))
+      ecological_group = factor(.data$ecological_group, levels = c("Other", "Planktonic Invertebrate", "Salmonid"))
     )
   
   gp <- ggplot2::ggplot(data = data) +
@@ -34,14 +34,14 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       ggplot2::aes(
         x = .data[[y_axis]], 
         y = .data$latin_name,
-        fill = .data$ecological_group_class,
+        fill = .data$ecological_group,
         shape = .data$species_present_in_bc,
       ),
       alpha = 0.8,
       size = 1.5
     ) +
     ggplot2::facet_grid(
-      rows = ggplot2::vars(.data$ecological_group),
+      rows = ggplot2::vars(.data$trophic_group),
       scale = "free_y"#,
       #space = "free_y" ### they are squished when they have minimal values
     ) +
@@ -50,7 +50,7 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
     ggplot2::scale_fill_manual(
       "Legend",
       values = c(
-        "Regular" = "#000000", 
+        "Other" = "#000000", 
         "Planktonic Invertebrate" = "#60C4EB", 
         "Salmonid" = "#E8613C"
       )

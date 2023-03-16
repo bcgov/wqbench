@@ -25,22 +25,22 @@ wqb_benchmark_method <- function(data) {
   chk::check_data(
     data, 
     list(
-      ecological_group = ""
+      trophic_group = ""
     )
   ) 
   
   groups_species <- 
     data |>
     dplyr::mutate(
-      ecological_group = stringr::str_to_lower(.data$ecological_group),
-      ecological_group = factor(
-        .data$ecological_group, 
+      trophic_group = stringr::str_to_lower(.data$trophic_group),
+      trophic_group = factor(
+        .data$trophic_group, 
         levels = c("fish", "amphibian", "invertebrate", "algae", "plant")
       )
     ) |>
-    dplyr::count(.data$ecological_group, .drop = FALSE) |>
+    dplyr::count(.data$trophic_group, .drop = FALSE) |>
     tidyr::pivot_wider(
-      names_from = "ecological_group",
+      names_from = "trophic_group",
       values_from = "n"
     )
   

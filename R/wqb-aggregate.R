@@ -29,9 +29,9 @@ wqb_aggregate <- function(data) {
     data, 
     list(
       species_number = 1L,
-      lifestage_description = "",
-      effect_description = "",
-      conc1_mean_std_effect = 1,
+      lifestage = "",
+      effect = "",
+      effect_conc_std_mg.L = 1,
       method = ""
     )
   ) 
@@ -44,7 +44,7 @@ wqb_aggregate <- function(data) {
   
   if (method == "SSD") {
     grouped_data <- data |>
-      dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
+      dplyr::group_by(.data$species_number, .data$lifestage, .data$effect) |>
       dplyr::mutate(
         endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
         endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
@@ -64,7 +64,7 @@ wqb_aggregate <- function(data) {
   } else {
     # Deterministic method
     grouped_data <- data |>
-      dplyr::group_by(.data$species_number, .data$lifestage_description, .data$effect_description) |>
+      dplyr::group_by(.data$species_number, .data$lifestage, .data$effect) |>
       dplyr::mutate(
         endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
         endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
@@ -87,21 +87,26 @@ wqb_aggregate <- function(data) {
     grouped_data |>
     dplyr::filter(.data$effect_priority_order == max(.data$effect_priority_order)) |>
     dplyr::mutate(
-      conc1_mean_std_effect_aggr = geometric_mean(.data$conc1_mean_std_effect)
+      conc1_mean_std_effect_aggr_mg.L = geometric_mean(.data$effect_conc_std_mg.L)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(.data$species_number) |>
-    dplyr::arrange(.data$conc1_mean_std_effect_aggr) |>
+    dplyr::arrange(.data$conc1_mean_std_effect_aggr_mg.L) |>
     dplyr::slice(1) |>
     dplyr::ungroup() |>
     dplyr::arrange(.data$species_number) |>
     dplyr::select(
-      "chemical_name", "test_cas",
-      "effect", "effect_description",
-      "conc1_mean_std_effect_aggr", "conc_conversion_unit",
-      "species_number", "latin_name", "common_name",  
-      "ecological_group_class", "ecological_group", 
-      "species_present_in_bc", "method"
+      "chemical_name", 
+      "cas",
+      "latin_name", 
+      "common_name",
+      "effect",
+      "conc1_mean_std_effect_aggr_mg.L",
+      "trophic_group",    
+      "ecological_group", 
+      "species_present_in_bc", 
+      "method",
+      "species_number"
     )
   
   aggregated_data

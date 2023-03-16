@@ -16,22 +16,22 @@ wqb_af_ecological <- function(data) {
   chk::check_data(
     data, 
     list(
-      ecological_group_class = ""
+      ecological_group = ""
     )
   ) 
   
   no_ecological <- data |> 
     dplyr::mutate(
-      ecological_group_class = stringr::str_replace(.data$ecological_group_class, " ", "_"),
-      ecological_group_class = stringr::str_to_lower(.data$ecological_group_class),
-      ecological_group_class = factor(
-        .data$ecological_group_class, 
-        levels = c("planktonic_invertebrate", "regular", "salmonid")
+      ecological_group = stringr::str_replace(.data$ecological_group, " ", "_"),
+      ecological_group = stringr::str_to_lower(.data$ecological_group),
+      ecological_group = factor(
+        .data$ecological_group, 
+        levels = c("planktonic_invertebrate", "other", "salmonid")
       )
     ) |>
-    dplyr::count(.data$ecological_group_class, .drop = FALSE) |> 
+    dplyr::count(.data$ecological_group, .drop = FALSE) |> 
     tidyr::pivot_wider(
-      names_from = "ecological_group_class",
+      names_from = "ecological_group",
       values_from = "n"
     )
   

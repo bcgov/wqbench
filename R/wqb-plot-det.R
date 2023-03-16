@@ -9,7 +9,7 @@
 wqb_plot_det <- function(data) {
   det <- wqb_generate_det(data)
   
-  col_name <- "conc1_mean_std_effect_aggr"
+  col_name <- "conc1_mean_std_effect_aggr_mg.L"
 
   line_data <- tibble::tibble(
     names = c("Aquatic Life Benchmark", "Critical Toxicity Value"),
@@ -20,9 +20,9 @@ wqb_plot_det <- function(data) {
     ggplot2::geom_vline(
       data = line_data,
       ggplot2::aes(
-        xintercept = values,
-        linetype = names,
-        color = names
+        xintercept = .data$values,
+        linetype = .data$names,
+        color = .data$names
       )
     ) +
     ggplot2::scale_color_manual(

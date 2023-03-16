@@ -15,12 +15,12 @@ wqb_filter_chemical <- function(data, cas_num) {
   chk::check_data(
     data, 
     list(
-      test_cas = ""
+      cas = ""
     )
   ) 
   
   data <- data |>
-    dplyr::filter(.data$test_cas == cas_num)
+    dplyr::filter(.data$cas == cas_num)
   
   data
 }

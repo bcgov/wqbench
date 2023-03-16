@@ -16,7 +16,7 @@ wqb_af_variation <- function(data) {
   chk::check_data(
     data, 
     list(
-      ecological_group = "",
+      trophic_group = "",
       species_number = 1L
     )
   ) 
@@ -26,7 +26,7 @@ wqb_af_variation <- function(data) {
     nrow()
   
   no_trophic_levels <- data |> 
-    dplyr::count(.data$ecological_group) |> 
+    dplyr::count(.data$trophic_group) |> 
     nrow()
   ## Trophic Level 1 ----
   if (no_trophic_levels == 1){
