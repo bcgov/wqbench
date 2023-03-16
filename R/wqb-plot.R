@@ -24,7 +24,9 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
   data <- data |>
     dplyr::arrange(.data$ecological_group) |>
     dplyr::mutate(
-      latin_name = factor(.data$latin_name, levels = unique(.data$latin_name))
+      latin_name = factor(.data$latin_name, levels = unique(.data$latin_name)),
+      species_present_in_bc = dplyr::if_else(.data$species_present_in_bc, "BC Species", "Other"),
+      ecological_group_class = factor(.data$ecological_group_class, levels = c("Regular", "Planktonic Invertebrate", "Salmonid"))
     )
   
   gp <- ggplot2::ggplot(data = data) +
@@ -32,40 +34,60 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       ggplot2::aes(
         x = .data[[y_axis]], 
         y = .data$latin_name,
-        color = .data$ecological_group_class
+        color = .data$ecological_group_class,
+        shape = .data$species_present_in_bc,
       ),
       alpha = 0.8,
       size = 1.5
     ) +
     ggplot2::facet_grid(
       rows = ggplot2::vars(.data$ecological_group),
-      scale = "free_y",
-      space = "free_y"
+      scale = "free_y"#,
+      #space = "free_y" ### they are squished when they have minimal values
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
     ggplot2::scale_color_manual(
-      "Trophic Group",
+      "Legend",
       values = c(
-        "#000000", "#3063A3", "#E8613C", "#821C65", "#63BB42", "#FFD446"
+        "Regular" = "#000000", 
+        "Planktonic Invertebrate" = "#3063A3", 
+        "Salmonid" = "#E8613C"
       )
+    ) +
+    ggplot2::scale_shape_manual(
+      "",
+      values = c(
+        "BC Species" = 17, 
+        "Other" = 19
+      ),
+      breaks = c("BC Species")
     ) +
     ggplot2::theme_bw() +
     ggplot2::theme(
       legend.position = "bottom",
-      legend.background = ggplot2::element_rect(
-        linetype = "solid", colour = "black")
+      panel.border = ggplot2::element_rect(colour = "black", fill = NA),
+      legend.background = ggplot2::element_blank(),
+      legend.box.background = ggplot2::element_rect(colour = "black")
     ) +
     ggplot2::scale_y_discrete(position = "right") +
     ggplot2::scale_x_log10(
       breaks = scales::trans_breaks("log10", function(x) 10^x),
-      labels = scales::label_comma()
+      label = ~ ifelse(
+        .x < 10, 
+        sprintf("%g", round(.x, 3)), 
+        scales::comma(.x, accuracy = 1)
+      )
     ) +
     ggplot2::annotation_logticks(
       sides = "b",
       size = 0.3
     ) +
+    ggplot2::guides(
+      colour = ggplot2::guide_legend(order = 1),
+      shape = ggplot2::guide_legend(order = 2)
+    ) +
     NULL
   
-  gp 
+  gp  
 }
