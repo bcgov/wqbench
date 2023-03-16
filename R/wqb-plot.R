@@ -34,7 +34,7 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       ggplot2::aes(
         x = .data[[y_axis]], 
         y = .data$latin_name,
-        color = .data$ecological_group_class,
+        fill = .data$ecological_group_class,
         shape = .data$species_present_in_bc,
       ),
       alpha = 0.8,
@@ -47,19 +47,19 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
-    ggplot2::scale_color_manual(
+    ggplot2::scale_fill_manual(
       "Legend",
       values = c(
         "Regular" = "#000000", 
-        "Planktonic Invertebrate" = "#3063A3", 
+        "Planktonic Invertebrate" = "#60C4EB", 
         "Salmonid" = "#E8613C"
       )
     ) +
     ggplot2::scale_shape_manual(
       "",
       values = c(
-        "BC Species" = 17, 
-        "Other" = 19
+        "BC Species" = 24, 
+        "Other" = 21
       ),
       breaks = c("BC Species")
     ) +
@@ -84,7 +84,7 @@ wqb_plot <- function(data, y_axis = "conc1_mean_std_effect") {
       size = 0.3
     ) +
     ggplot2::guides(
-      colour = ggplot2::guide_legend(order = 1),
+      fill = ggplot2::guide_legend(order = 1, override.aes = list(shape = 21)),
       shape = ggplot2::guide_legend(order = 2)
     ) +
     NULL
