@@ -82,9 +82,9 @@ Plot data set
 gp <- wqb_plot(data)
 ```
 
-If the data uses the vf method to calculate the benchmark value
+If the data uses the deterministic method to calculate the benchmark value
 ```r
-gp <- wqb_plot_vf(data_agg)
+gp <- wqb_plot_det(data_agg)
 ```
 
 If the data uses the ssd method to calculate the benchmark value

@@ -6,7 +6,8 @@
 #' @return A data frame
 #' @export
 #' @details The data is run through a set of rules to determine if a species 
-#' sensitivity distribution (SSD) or variation factor (VF) can be used on the data set. 
+#' sensitivity distribution (SSD) or deterministic (DET) method can be used on 
+#' the data set. 
 #' 
 #' Conditions for SSD:
 #'  - number of fish species ≥ 3 AND 
@@ -46,7 +47,7 @@ wqb_benchmark_method <- function(data) {
   if (groups_species$fish >= 3 & groups_species$invertebrate >= 3 & (groups_species$algae >=1 | groups_species$plant >= 1)) {
     data$method <- "SSD"
   } else {
-    data$method <- "VF" #variation factor
+    data$method <- "Deterministic" 
   }
   
   data

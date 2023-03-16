@@ -11,13 +11,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' bench_iodine <- wqb_generate_vf(data)
+#' bench_iodine <- wqb_generate_det(data)
 #' }
-wqb_generate_vf <- function(data) {
+wqb_generate_det <- function(data) {
   chk::check_data(
     data,
     list(
-      method = c("VF", "VF", "VF"),
+      method = c("Deterministic", "Deterministic", "Deterministic"),
       conc1_mean_std_effect_aggr = 1
     )
   )
