@@ -42,8 +42,8 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
     ) +
     ggplot2::facet_grid(
       rows = ggplot2::vars(.data$trophic_group),
-      scale = "free_y"#,
-      #space = "free_y" ### they are squished when they have minimal values
+      scale = "free_y",
+      space = "free_y"
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
@@ -68,14 +68,18 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
       legend.position = "bottom",
       panel.border = ggplot2::element_rect(colour = "black", fill = NA),
       legend.background = ggplot2::element_blank(),
-      legend.box.background = ggplot2::element_rect(colour = "black")
+      legend.box.background = ggplot2::element_rect(colour = "black"),
+      strip.text.y = ggplot2::element_text(angle = 0)
     ) +
-    ggplot2::scale_y_discrete(position = "right") +
+    ggplot2::scale_y_discrete(
+      position = "right", 
+      expand = ggplot2::expansion(add = 0.5)
+    ) +
     ggplot2::scale_x_log10(
       breaks = scales::trans_breaks("log10", function(x) 10^x),
       label = ~ ifelse(
         .x < 10, 
-        sprintf("%g", round(.x, 3)), 
+        sprintf("%g", signif(.x, 3)), 
         scales::comma(.x, accuracy = 1)
       )
     ) +
