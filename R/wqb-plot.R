@@ -24,7 +24,7 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
   data <- data |>
     dplyr::arrange(.data$trophic_group) |>
     dplyr::mutate(
-      latin_name = factor(.data$latin_name, levels = unique(.data$latin_name)),
+      latin_name = factor(.data$latin_name, levels = sort(unique(.data$latin_name))),
       species_present_in_bc = dplyr::if_else(.data$species_present_in_bc, "BC Species", "Other"),
       ecological_group = factor(.data$ecological_group, levels = c("Other", "Planktonic Invertebrate", "Salmonid"))
     )
