@@ -13,7 +13,7 @@ wqb_plot_det <- function(data) {
 
   line_data <- tibble::tibble(
     names = c("Aquatic Life Benchmark", "Critical Toxicity Value"),
-    values = c(det$benchmark_est, min(data[[col_name]]))
+    values = c(det$ctv_est_mg.L, min(data[[col_name]]))
   )
   
   gp <- wqb_plot(data, col_name) +

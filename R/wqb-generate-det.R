@@ -27,11 +27,12 @@ wqb_generate_det <- function(data) {
     dplyr::slice(1) |>
     dplyr::select("conc1_mean_std_effect_aggr_mg.L") |>
     dplyr::mutate(
-      af = af,
-      benchmark_est = .data$conc1_mean_std_effect_aggr_mg.L / .data$af,
-      benchmark_lcl = NA_real_,
-      benchmark_ucl = NA_real_
+      ctv_est_mg.L = .data$conc1_mean_std_effect_aggr_mg.L,
+      ctv_lcl_mg.L = NA_real_,
+      ctv_ucl_mg.L = NA_real_
     ) |>
-    dplyr::select("benchmark_est", "benchmark_lcl", "benchmark_ucl", "af")
+    dplyr::select(
+      "ctv_est_mg.L", "ctv_lcl_mg.L", "ctv_ucl_mg.L"
+    )
   value 
 }

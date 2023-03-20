@@ -4,8 +4,8 @@
 #'  single chemical.
 #' @param fit The fit from ssd
 #'
-#' @return A data frame which contains the HC5 value, the total 
-#'  assessment factor and the benchmark value.
+#' @return A data frame which contains the Critical Toxicity Value (HC5) and
+#'  upper and lower bound. 
 #' @export
 #'
 #' @examples
@@ -26,13 +26,14 @@ wqb_generate_ssd <- function(data, fit) {
   value <- hc5 |>
     dplyr::select("est", "lcl", "ucl") |>
     dplyr::mutate(
-      af = af,
-      benchmark_est = .data$est / .data$af,
-      benchmark_lcl = .data$lcl / .data$af,
-      benchmark_ucl = .data$ucl / .data$af,
+      ctv_est_mg.L = .data$est,
+      ctv_lcl_mg.L = .data$lcl,
+      ctv_ucl_mg.L = .data$ucl,
       .keep = "used"
     ) |>
-    dplyr::select("benchmark_est", "benchmark_lcl", "benchmark_ucl", "af")
+    dplyr::select(
+      "ctv_est_mg.L", "ctv_lcl_mg.L", "ctv_ucl_mg.L"
+    )
   
   value
 }
