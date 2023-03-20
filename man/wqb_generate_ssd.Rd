@@ -13,8 +13,8 @@ single chemical.}
 \item{fit}{The fit from ssd}
 }
 \value{
-A data frame which contains the HC5 value, the total
-assessment factor and the benchmark value.
+A data frame which contains the Critical Toxicity Value (HC5) and
+upper and lower bound.
 }
 \description{
 Generate the Benchmark Guideline Value using a SSD
