@@ -25,7 +25,7 @@ wqb_benchmark_method <- function(data) {
   chk::check_data(
     data, 
     list(
-      trophic_group = ""
+      trophic_group = factor("")
     )
   ) 
   

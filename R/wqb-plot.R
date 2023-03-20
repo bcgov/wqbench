@@ -16,7 +16,7 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
     data, 
     list(
       cas = "",
-      trophic_group = "",
+      trophic_group = factor(""),
       latin_name = ""
     )
   ) 

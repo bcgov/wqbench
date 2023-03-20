@@ -33,7 +33,7 @@ wqb_standardize_effect <- function(data) {
     list(
       endpoint = "",
       duration_class = "",
-      ecological_group = ""
+      ecological_group = factor("")
     )
   ) 
   

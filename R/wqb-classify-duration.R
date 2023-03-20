@@ -58,7 +58,7 @@ wqb_classify_duration <- function(data) {
   chk::check_data(
     data, 
     list(
-      ecological_group = "",
+      ecological_group = factor(""),
       duration_mean_std = 1,
       simple_lifestage = c("", NA)
     )

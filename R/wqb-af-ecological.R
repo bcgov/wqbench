@@ -16,7 +16,7 @@ wqb_af_ecological <- function(data) {
   chk::check_data(
     data, 
     list(
-      ecological_group = ""
+      ecological_group = factor("")
     )
   ) 
   
@@ -25,7 +25,7 @@ wqb_af_ecological <- function(data) {
       ecological_group = stringr::str_replace(.data$ecological_group, " ", "_"),
       ecological_group = stringr::str_to_lower(.data$ecological_group),
       ecological_group = factor(
-        .data$ecological_group, 
+        .data$ecological_group,
         levels = c("planktonic_invertebrate", "other", "salmonid")
       )
     ) |>

@@ -217,7 +217,16 @@ wqb_compile_dataset <- function(database) {
         TRUE ~ .data$simple_lifestage
       ),
       # set cas nums to be char as values too large to be ints
-      test_cas = as.character(.data$test_cas)
+      test_cas = as.character(.data$test_cas),
+      # set factor levels
+      ecological_group = factor(
+        .data$ecological_group, 
+        levels = sort(unique(.data$ecological_group))
+      ),
+      ecological_group_class = factor(
+        .data$ecological_group_class, 
+        levels = sort(unique(.data$ecological_group_class))
+      )
     ) |>
     dplyr::select(
       "chemical_name", "test_cas",

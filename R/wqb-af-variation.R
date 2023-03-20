@@ -16,7 +16,7 @@ wqb_af_variation <- function(data) {
   chk::check_data(
     data, 
     list(
-      trophic_group = "",
+      trophic_group = factor(""),
       species_number = 1L
     )
   ) 
