@@ -83,10 +83,6 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
         scales::comma(.x, accuracy = 1)
       )
     ) +
-    ggplot2::annotation_logticks(
-      sides = "b",
-      size = 0.3
-    ) +
     ggplot2::guides(
       fill = ggplot2::guide_legend(order = 1, override.aes = list(shape = 21)),
       shape = ggplot2::guide_legend(order = 2)
