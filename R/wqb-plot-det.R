@@ -15,7 +15,7 @@ wqb_plot_det <- function(data) {
     names = c("Aquatic Life Benchmark", "Critical Toxicity Value"),
     values = c(det$benchmark_est, min(data[[col_name]]))
   )
-
+  
   gp <- wqb_plot(data, col_name) +
     ggplot2::geom_vline(
       data = line_data,
@@ -41,7 +41,6 @@ wqb_plot_det <- function(data) {
     ) +
     NULL
   
-  gp$layers <- c(gp$layers[[3]], gp$layers[[2]], gp$layers[[1]]) 
-  
+  gp$layers <- c(gp$layers[[2]], gp$layers[[1]]) 
   gp 
 }
