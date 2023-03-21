@@ -25,8 +25,7 @@ Classifications for acute and chronic are separated by trophic group
 (\code{ecological_group}). The values are classified as acute, chronic in a new
 column called \code{duration_class}.
 
-Values not meeting this criteria are classified as not specified and are
-removed.
+Values not meeting this criteria are classified as acute.
 
 Fish and amphibians
 Acute:

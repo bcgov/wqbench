@@ -14,8 +14,7 @@
 #'   (`ecological_group`). The values are classified as acute, chronic in a new 
 #'   column called `duration_class`.
 #'
-#'   Values not meeting this criteria are classified as not specified and are 
-#'   removed.
+#'   Values not meeting this criteria are classified as acute.
 #'  
 #'  Fish and amphibians
 #'    Acute: 
@@ -81,10 +80,10 @@ wqb_classify_duration <- function(data) {
         # Plants
         stringr::str_detect(ecological_group, "(?i)^plant$") & duration_mean_std <= 48 ~ "acute",
         stringr::str_detect(ecological_group, "(?i)^plant$") & duration_mean_std > 168 ~ "chronic",
-        TRUE ~ "not specified"
+        # anything outside the specified category is set as acute
+        TRUE ~ "acute"
       ) 
     ) |>
-    dplyr::filter(!(.data$duration_class == "not specified")) |>
     dplyr::select(
       "chemical_name", "test_cas",
       "test_id", "result_id", "endpoint", "effect", "effect_description",
