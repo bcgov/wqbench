@@ -2,13 +2,13 @@
 % Please edit documentation in R/wqb-plot-det.R
 \name{wqb_plot_det}
 \alias{wqb_plot_det}
-\title{Title}
+\title{Plot the Deterministic Method Results}
 \usage{
 wqb_plot_det(data)
 }
 \arguments{
-\item{data}{A dataframe of the aggregated data with the assessment factors}
+\item{data}{A data frame of the aggregated data with the assessment factors}
 }
 \description{
-Title
+Plot the Deterministic Method Results
 }

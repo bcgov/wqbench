@@ -2,7 +2,6 @@
 #'
 #' @param data A data frame of clean and processed data filtered to only a 
 #'  single chemical.
-#' @param y_axis A string of the column to use for the y-axis
 #'
 #' @return A ggplot object
 #' @export
@@ -11,13 +10,14 @@
 #' \dontrun{
 #' wqb_plot(data)
 #' }
-wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
+wqb_plot <- function(data) {
   chk::check_data(
     data, 
     list(
-      cas = "",
-      trophic_group = factor(""),
-      latin_name = ""
+      latin_name = "",
+      effect_conc_std_mg.L = 1,
+      endpoint = "",
+      trophic_group = factor("")
     )
   ) 
   
@@ -25,17 +25,14 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
     dplyr::arrange(.data$trophic_group) |>
     dplyr::mutate(
       latin_name = factor(.data$latin_name, levels = sort(unique(.data$latin_name))),
-      species_present_in_bc = dplyr::if_else(.data$species_present_in_bc, "BC Species", "Other"),
-      ecological_group = factor(.data$ecological_group, levels = c("Other", "Planktonic Invertebrate", "Salmonid"))
     )
   
   gp <- ggplot2::ggplot(data = data) +
     ggplot2::geom_point(
       ggplot2::aes(
-        x = .data[[y_axis]], 
+        x = .data$effect_conc_std_mg.L, 
         y = .data$latin_name,
-        fill = .data$ecological_group,
-        shape = .data$species_present_in_bc,
+        shape = .data$endpoint,
       ),
       alpha = 0.8,
       size = 1.5
@@ -47,21 +44,9 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
     ) +
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
-    ggplot2::scale_fill_manual(
-      "Legend",
-      values = c(
-        "Other" = "#000000", 
-        "Planktonic Invertebrate" = "#60C4EB", 
-        "Salmonid" = "#E8613C"
-      )
-    ) +
-    ggplot2::scale_shape_manual(
-      "",
-      values = c(
-        "BC Species" = 24, 
-        "Other" = 21
-      ),
-      breaks = c("BC Species")
+    ggplot2::labs(
+      shape = "Endpoint",
+      caption = "The concentration values are on a log scale."
     ) +
     ggplot2::theme_bw() +
     ggplot2::theme(
@@ -82,10 +67,6 @@ wqb_plot <- function(data, y_axis = "effect_conc_std_mg.L") {
         sprintf("%g", signif(.x, 3)), 
         scales::comma(.x, accuracy = 1)
       )
-    ) +
-    ggplot2::guides(
-      fill = ggplot2::guide_legend(order = 1, override.aes = list(shape = 21)),
-      shape = ggplot2::guide_legend(order = 2)
     ) +
     NULL
   
