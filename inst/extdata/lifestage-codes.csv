@@ -30,6 +30,7 @@ NE,Neonate,ELS
 NH,"New, newly or recent hatch",ELS
 NL,Neurala,ELS
 NOINT,Not intact,Adult
+NR,Not reported,Adult
 OO,"Oocyte, ova",ELS
 PA,Parr,Juvenile
 PC,Pre-hatch,ELS
