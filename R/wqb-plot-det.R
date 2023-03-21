@@ -9,7 +9,7 @@
 wqb_plot_det <- function(data) {
   det <- wqb_generate_det(data)
   
-  col_name <- "conc1_mean_std_effect_aggr_mg.L"
+  col_name <- "sp_aggre_conc_mg.L"
 
   line_data <- tibble::tibble(
     names = c("Aquatic Life Benchmark", "Critical Toxicity Value"),

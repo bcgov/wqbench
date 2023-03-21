@@ -17,7 +17,7 @@ wqb_generate_ssd <- function(data, fit) {
     data,
     list(
       method = c("SSD", "SSD", "SSD"),
-      conc1_mean_std_effect_aggr_mg.L = 1
+      sp_aggre_conc_mg.L = 1
     )
   )
   af <- gen_af_value(data)
@@ -55,7 +55,7 @@ wqb_generate_ssd <- function(data, fit) {
 wqb_generate_ssd_fit <- function(data) {
   ssdtools::ssd_fit_bcanz(
     data = data,
-    left = "conc1_mean_std_effect_aggr_mg.L"
+    left = "sp_aggre_conc_mg.L"
   )
 }
 

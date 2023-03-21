@@ -87,11 +87,11 @@ wqb_aggregate <- function(data) {
     grouped_data |>
     dplyr::filter(.data$effect_priority_order == max(.data$effect_priority_order)) |>
     dplyr::mutate(
-      conc1_mean_std_effect_aggr_mg.L = geometric_mean(.data$effect_conc_std_mg.L)
+      sp_aggre_conc_mg.L = geometric_mean(.data$effect_conc_std_mg.L)
     ) |>
     dplyr::ungroup() |>
     dplyr::group_by(.data$species_number) |>
-    dplyr::arrange(.data$conc1_mean_std_effect_aggr_mg.L) |>
+    dplyr::arrange(.data$sp_aggre_conc_mg.L) |>
     dplyr::slice(1) |>
     dplyr::ungroup() |>
     dplyr::arrange(.data$species_number) |>
@@ -101,7 +101,7 @@ wqb_aggregate <- function(data) {
       "latin_name", 
       "common_name",
       "effect",
-      "conc1_mean_std_effect_aggr_mg.L",
+      "sp_aggre_conc_mg.L",
       "trophic_group",    
       "ecological_group", 
       "species_present_in_bc", 

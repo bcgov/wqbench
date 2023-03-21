@@ -16,7 +16,7 @@ wqb_generate_bench <- function(data) {
     data,
     list(
       method = c("SSD", "Deterministic"),
-      conc1_mean_std_effect_aggr_mg.L = 1
+      sp_aggre_conc_mg.L = 1
     )
   )
   

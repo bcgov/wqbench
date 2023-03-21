@@ -18,16 +18,16 @@ wqb_generate_det <- function(data) {
     data,
     list(
       method = c("Deterministic", "Deterministic", "Deterministic"),
-      conc1_mean_std_effect_aggr_mg.L = 1
+      sp_aggre_conc_mg.L = 1
     )
   )
   af <- gen_af_value(data)
   value <- data |>
-    dplyr::arrange(.data$conc1_mean_std_effect_aggr_mg.L) |>
+    dplyr::arrange(.data$sp_aggre_conc_mg.L) |>
     dplyr::slice(1) |>
-    dplyr::select("conc1_mean_std_effect_aggr_mg.L") |>
+    dplyr::select("sp_aggre_conc_mg.L") |>
     dplyr::mutate(
-      ctv_est_mg.L = .data$conc1_mean_std_effect_aggr_mg.L,
+      ctv_est_mg.L = .data$sp_aggre_conc_mg.L,
       ctv_lcl_mg.L = NA_real_,
       ctv_ucl_mg.L = NA_real_
     ) |>
