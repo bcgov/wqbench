@@ -45,7 +45,7 @@ wqb_plot <- function(data) {
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
     ggplot2::labs(
-      shape = "Endpoint",
+      shape = "Endpoint:",
       caption = "The concentration values are on a log scale."
     ) +
     ggplot2::theme_bw() +

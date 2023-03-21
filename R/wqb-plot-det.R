@@ -93,8 +93,10 @@ wqb_plot_det <- function(data) {
       )
     ) +
     ggplot2::guides(
-      fill = ggplot2::guide_legend(order = 1, override.aes = list(shape = 21)),
-      shape = ggplot2::guide_legend(order = 2)
+      fill = ggplot2::guide_legend(order = 1, override.aes = list(shape = 21), nrow = 1),
+      shape = ggplot2::guide_legend(order = 2, nrow = 1),
+      linetype = ggplot2::guide_legend(order = 3, nrow = 1),
+      color = ggplot2::guide_legend(order = 3, nrow = 1)
     ) +
     NULL
   
