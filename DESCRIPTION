@@ -1,19 +1,25 @@
 Package: wqbench
-Title: Downloads and Compiles Data from the US EPA ECOTOX Database
+Title: Compile, clean and model ecotoxicology data for calculating aquatic life benchmarks
 Version: 0.0.0.9000
-Authors@R: 
-    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-7388-1222"))
-Description: Download the most recent version of the US EPA Ecotox database to 
- be ready to use. The data is then processed and compiled so it can be used to 
- generate water quality guideline benchmarks for various chemicals and compounds.
+Authors@R: c(
+  person("Province of British Columbia", role = "cph"),
+  person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = c("aut"),
+             comment = c(ORCID = "0000-0001-7388-1222")),
+  person("Angeline", "Tillmanns", ,"Angeline.Tillmanns@gov.bc.ca", role = c("aut", "cre")),
+  person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = c("ctb"),
+           comment = c(ORCID = "0000-0002-7683-4592"))
+  )
+Description: Download recent versions of the US EPA ECOTOX database. Clean,
+  standardize and classify data so values are comparable. Use a SSD or 
+  deterministic method to determine the critical toxicity value and assessment
+  factors to compute the aquatic life water quality benchmark for a compound. 
 License: Apache License (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Config/testthat/edition: 3
 Suggests: 
     testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Imports: 
     chk,
     DBI,
