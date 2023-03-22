@@ -2,6 +2,8 @@
 # wqbench
 
 <!-- badges: start -->
+
+[![img](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 <!-- badges: end -->
 
 The goal of wqbench is to …
@@ -58,11 +60,11 @@ data <- wqb_compile_dataset(database = database)
 data <- wqb_classify_duration(data)
 data <- wqb_standardize_effect(data)
 data <- wqb_filter_chemical(data, "129909906")
-data_agg <- wqb_aggregate(data)
-data_agg <- wqb_benchmark_method(data_agg)
-data_agg <- wqb_af_variation(data_agg)
-data_agg <- wqb_af_ecological(data_agg)
-data_agg <- wqb_af_bc_species(data_agg)
+data <- wqb_benchmark_method(data)
+data <- wqb_aggregate(data)
+data <- wqb_af_variation(data)
+data <- wqb_af_ecological(data)
+data <- wqb_af_bc_species(data)
 ```
 
 # Generate Benchmark
@@ -79,10 +81,11 @@ Plot data set
 gp <- wqb_plot(data)
 ```
 
-If the data uses the vf method to calculate the benchmark value
+If the data uses the deterministic method to calculate the benchmark
+value
 
 ``` r
-gp <- wqb_plot_vf(data_agg)
+gp <- wqb_plot_det(data_agg)
 ```
 
 If the data uses the ssd method to calculate the benchmark value
@@ -90,3 +93,34 @@ If the data uses the ssd method to calculate the benchmark value
 ``` r
 gp <- wqb_plot_ssd(data_agg)
 ```
+
+## Getting Help or Reporting an Issue
+
+To report issues, bugs or enhancements, please file an
+[issue](https://github.com/bcgov/wqbench/issues). Check out the
+[support]() for more info.
+
+## Code of Conduct
+
+Please note that the wqbench project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+## License
+
+The code is released under the Apache License 2.0
+
+Copyright 2023 Province of British Columbia
+
+Licensed under the Apache License, Version 2.0 (the “License”); you may
+not use this file except in compliance with the License. You may obtain
+a copy of the License at
+
+<https://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an “AS IS” BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
