@@ -5,6 +5,7 @@ output: github_document
 # wqbench
 
 <!-- badges: start -->
+[![img](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 <!-- badges: end -->
 
 The goal of wqbench is to ...
