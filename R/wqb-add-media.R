@@ -20,9 +20,10 @@
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details Read in the media_type_codes table and code the 24 groups into three
-#'   categories: salt water, fresh water or not reported. The new categories are
-#'   added to a column in the table called `media_type_group`.
+#' @details Read in the media_type_codes table from the database and code the 24
+#'   groups into three categories: salt water, fresh water or not reported. The
+#'   new categories are added to a column in the table called
+#'   `media_type_group`.
 #'
 #' @examples
 #' \dontrun{

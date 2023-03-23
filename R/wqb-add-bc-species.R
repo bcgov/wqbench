@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Add BC Species to Database
+#' Add BC Species
 #'
-#' Read in the British Columbia species and add to the `species` table in the
-#' database.
+#' Read in a list of British Columbia species and add a column to the `species`
+#' table in the database to indicate if the species is present in British
+#' Columbia.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -26,20 +27,21 @@
 #'   file must only contain a single column named `latin_name`.
 #'
 #'   The `latin_name` column must consist of the genus and species separated by
-#'   a space. The `latin_name` column in the bc-species file are matched to the
-#'   `latin_name` column in the species table of the ECOTOX downloaded data. A
-#'   new column `species_present_in_bc` is added to the species table that codes each
-#'   species as either TRUE or FALSE.
+#'   a space. The `latin_name` column in the bc-species.csv file is matched to
+#'   the `latin_name` column in the species table of the database. A new column
+#'   `species_present_in_bc` is added to the species table that codes each
+#'   species as TRUE if it matches a value in the bc-species.csv or FALSE if
+#'   there is no match.
 #'
 #' @examples
 #' \dontrun{
 #' bc_species <- wqb_add_bc_species(
 #'  database = "ecotox_ascii_09_15_2022.sqlite"
-#' ) 
-#' 
+#' )
+#'
 #' bc_species <- wqb_add_bc_species(
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-#' ) 
+#' )
 #' }
 wqb_add_bc_species <- function(database) {
   chk::chk_file(database)

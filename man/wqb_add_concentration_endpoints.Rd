@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-concentration-endpoints.R
 \name{wqb_add_concentration_endpoints}
 \alias{wqb_add_concentration_endpoints}
-\title{Add the Concentration Endpoints to Database}
+\title{Add the Concentration Endpoints}
 \usage{
 wqb_add_concentration_endpoints(database)
 }
@@ -13,24 +13,25 @@ wqb_add_concentration_endpoints(database)
 Invisible data frame
 }
 \description{
-Read in the selected concentration endpoints and mark those values in the
-endpoint_codes table in the database by adding a \code{concentration_flag} column
-to the table.
+Read in the concentration endpoints that have been selected to keep in the
+final data set. Add a column to the endpoint_codes table in the database to
+mark the corresponding endpoints.
 }
 \details{
-The list of concentration endpoints to be used is contained in a csv
-file in the extdata folder of the package. The csv file can be edited by
-adding or removing rows.  To add new rows get the \code{code} and \code{description}
-values from the \code{endpoint_codes} table in the ECOTOX data and paste them
-into the csv file.
+The list of concentration endpoints is contained in a csv file in
+the extdata folder of the package. The csv file can be edited by adding or
+removing rows.  To add new rows get the \code{code} and \code{description} values
+from the \code{endpoint_codes} table in the database and paste them into the csv
+file.
 
 Do not add new columns, rename columns or rename the file. The file must
 only contain the \code{code} and \code{description} column.
 
 The \code{code} values in the endpoint-concentration file are matched to the
-\code{code} values in the endpoint_code table in the ECOTOX downloaded data. Any
-codes that are listed in the file are then coded as TRUE under a new column
-called \code{concentration_flag} in the endpoint_table.
+\code{code} values in the endpoint_code table in the database. A new column
+\code{concentration_flag} is added to the endpoint_code table that codes each
+endpoint as TRUE if the endpoint is present in endpoint-concentration.csv
+file.
 }
 \examples{
 \dontrun{

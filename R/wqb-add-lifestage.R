@@ -12,11 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Add Life Stage groups to Database
+#' Add Life Stage Groups
 #'
-#' Read in the life stage simple groups and mark those values in the
-#' lifestage_code table in the database by adding a `simple_lifestage` column to
-#' the table.
+#' Read in the life stage simple groups and add a column in the lifestage_code 
+#' table in the database to mark the corresponding values. 
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -29,7 +28,7 @@
 #'   The life stage data is contained in a csv file in the extdata folder of the
 #'   package. The csv file can be edited by adding or removing rows.  To add new
 #'   rows get the `code` and `description` values from the `lifestage_code`
-#'   table in the ECOTOX data and paste them into the csv file and then add the
+#'   table in the dataset and paste them into the csv file and then add the
 #'   value to the `simple_lifestage` column.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
@@ -37,7 +36,7 @@
 #'   column.
 #'
 #'   The `code` values in the lifestage-codes.csv file are matched to the `code`
-#'   values in the lifestage_code table in the ECOTOX downloaded data. Any codes
+#'   values in the lifestage_code table in the database. Any codes
 #'   that match are coded in a new column called `simple_lifestage`.
 #' @examples
 #' \dontrun{

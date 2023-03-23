@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-duration-conversions.R
 \name{wqb_add_duration_conversions}
 \alias{wqb_add_duration_conversions}
-\title{Add Duration Unit Conversation Values for Standardizing the Data}
+\title{Add Duration Unit Conversation Values}
 \usage{
 wqb_add_duration_conversions(database)
 }
@@ -13,18 +13,17 @@ wqb_add_duration_conversions(database)
 Invisible data frame
 }
 \description{
-Read in the duration-conversion file and flag unit values that can be
-converted and which ones will be removed. The column \code{duration_units_to_keep}
-is added to the duration_unit_codes table to indicate which units will be
-kept and which will have the rows deleted. The
-\code{duration_value_multiplier_to_hours} column is added for each unit will be
-converted to hours.
+Read in the duration-conversion file and code unit values that can be
+converted and which ones will be removed. Two columns will be added to the
+duration_unit_codes table in the database to indicate which units are being
+kept and the conversion factor. Currently duration units are converted to
+hours.
 }
 \details{
 The list of units to be converted are contained in a csv file in the
 extdata folder of the package. The csv file can be edited by adding or
 removing rows.  To add new rows get the \code{code} and \code{description} values
-from the \code{duration_unit_codes} table in the ECOTOX data and paste them into
+from the \code{duration_unit_codes} table in the database and paste them into
 the csv file.
 
 Do not add new columns, rename columns or rename the file. The file must
@@ -32,9 +31,12 @@ only contain the columns: \code{code}, \code{description}, \code{duration_units_
 and \code{duration_value_multiplier_to_hours}.
 
 The \code{code} values in the duration-conversion file are matched to the \code{code}
-values in the \code{duration_unit_codes} table in the ECOTOX downloaded data.
+values in the \code{duration_unit_codes} table in the database.
 
-The \code{duration_value_multiplier_to_hours} column contains the value need to
+The \code{duration_units_to_keep} column indicates which units are being
+converted and which are being removed because they can not be converted or
+are not in the aquatic portion of the data. The
+\code{duration_value_multiplier_to_hours} column contains the value need to
 convert the unit into hours.
 }
 \examples{

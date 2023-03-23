@@ -7,15 +7,17 @@
 wqb_af_variation(data)
 }
 \arguments{
-\item{data}{A data frame that is the output of the \code{wqb_benchmark-method()}
-function.}
+\item{data}{A data frame}
 }
 \value{
 A data frame
 }
 \description{
-Depending on the number of trophic groups and species a certain assessment
-factor is determined.
+Determine the assessment factor based on the number of trophic groups and
+species.
+}
+\details{
+Check the resource document for how the assessment was calculated.
 }
 \examples{
 \dontrun{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-conc-conversions.R
 \name{wqb_add_conc_conversions}
 \alias{wqb_add_conc_conversions}
-\title{Add Concentration Unit Conversation Values for Standardizing the Data}
+\title{Add Concentration Unit Conversation Values}
 \usage{
 wqb_add_conc_conversions(database)
 }
@@ -13,30 +13,31 @@ wqb_add_conc_conversions(database)
 Invisible data frame
 }
 \description{
-Read in the concentration-conversion file and flag unit values that can be
-converted and which ones will be removed. The column \code{conc_conversion_flag}
-is added to the concentration_unit_codes table to indicate which units will
-be kept and which will have the rows deleted. The
-\code{conc_conversion_value_multiplier} column is added for each unit will be
-converted to the unit specified in the \code{conc_conversion_unit} column.
+Read in the concentration-conversion file and code units that can be
+converted and which ones will be removed. Three columns will be added to the
+concentration_unit_codes table in the database, indicate which units are
+being kept, the conversion factor, and the units it is being converted to.
+Currently units are converted to mg/L or equivalent.
 }
 \details{
 The list of units to be converted are contained in a csv file in the
 extdata folder of the package. The csv file can be edited by adding or
 removing rows.  To add new rows get the \code{code} and \code{description} values
-from the \code{concentration_unit_codes} table in the ECOTOX data and paste them
+from the \code{concentration_unit_codes} table in the database and paste them
 into the csv file.
 
 Do not add new columns, rename columns or rename the file. The file must
 only contain the columns: \code{code}, \code{description}, \code{conc_conversion_flag},
 \code{conc_conversion_value_multiplier} and \code{conc_conversion_unit}.
 
-The \code{code} values in the concentration-conversion file are matched to the
-\code{code} values in the \code{concentration_unit_codes} table in the ECOTOX
-downloaded data.
+The \code{conc_conversion_flag} column indicates which units are being converted
+and which are being removed because they can not be converted or are not in
+the aquatic portion of the data.The \code{conc_conversion_value_multiplier}
+column contains the value need to convert the unit into the unit listed in
+the \code{conc_conversion_unit} column.
 
-The \code{conc_conversion_value_multiplier} column contains the value need to
-convert the unit into the unit listed in the \code{conc_conversion_unit} column.
+The \code{code} values in the concentration-conversion file are matched to the
+\code{code} values in the \code{concentration_unit_codes} table in the database.
 }
 \examples{
 \dontrun{

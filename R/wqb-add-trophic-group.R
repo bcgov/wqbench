@@ -14,8 +14,8 @@
 
 #' Add Trophic Groups to Database
 #' 
-#' Read in the trophic groups and and add to the `species` table in the
-#' database. 
+#' Read in the trophic and ecological groups and and add a column to the 
+#' `species` table in the database that lists the groups for each species. 
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -27,7 +27,7 @@
 #' The trophic groups file must contain the columns: `class`, `order`, 
 #' `ecological_group`, and `ecological_group_class`. The `class` and `order`
 #' columns are matched to the `class` and `tax_order` columns in the `species`
-#' table of the ECOTOX downloaded data and then adds the `ecological_group` and 
+#' table of the database and then adds the `ecological_group` and 
 #' `ecological_group_class` columns to the species table. 
 #' 
 #' @examples

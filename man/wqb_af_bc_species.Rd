@@ -2,20 +2,21 @@
 % Please edit documentation in R/wqb-af-bc-species.R
 \name{wqb_af_bc_species}
 \alias{wqb_af_bc_species}
-\title{Determine the BC Species Assessment Factors}
+\title{Determine the BC Species Assessment Factor}
 \usage{
 wqb_af_bc_species(data)
 }
 \arguments{
-\item{data}{A data frame that is the output of the \code{wqb_benchmark-method()}
-function.}
+\item{data}{A data frame}
 }
 \value{
 A data frame
 }
 \description{
-Depending on the number of BC species present a certain assessment
-factor is determined.
+Determines an assessment factor based on the number of BC species present.
+}
+\details{
+Check the resource document for how the assessment was calculated.
 }
 \examples{
 \dontrun{

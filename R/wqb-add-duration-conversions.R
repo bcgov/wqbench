@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Add Duration Unit Conversation Values for Standardizing the Data
+#' Add Duration Unit Conversation Values
 #'
-#' Read in the duration-conversion file and flag unit values that can be
-#' converted and which ones will be removed. The column `duration_units_to_keep`
-#' is added to the duration_unit_codes table to indicate which units will be
-#' kept and which will have the rows deleted. The
-#' `duration_value_multiplier_to_hours` column is added for each unit will be
-#' converted to hours.
+#' Read in the duration-conversion file and code unit values that can be
+#' converted and which ones will be removed. Two columns will be added to the
+#' duration_unit_codes table in the database to indicate which units are being
+#' kept and the conversion factor. Currently duration units are converted to
+#' hours.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -27,7 +26,7 @@
 #' @details The list of units to be converted are contained in a csv file in the
 #'   extdata folder of the package. The csv file can be edited by adding or
 #'   removing rows.  To add new rows get the `code` and `description` values
-#'   from the `duration_unit_codes` table in the ECOTOX data and paste them into
+#'   from the `duration_unit_codes` table in the database and paste them into
 #'   the csv file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
@@ -35,10 +34,14 @@
 #'   and `duration_value_multiplier_to_hours`.
 #'
 #'   The `code` values in the duration-conversion file are matched to the `code`
-#'   values in the `duration_unit_codes` table in the ECOTOX downloaded data.
+#'   values in the `duration_unit_codes` table in the database.
 #'
-#'   The `duration_value_multiplier_to_hours` column contains the value need to
+#'   The `duration_units_to_keep` column indicates which units are being
+#'   converted and which are being removed because they can not be converted or
+#'   are not in the aquatic portion of the data. The
+#'   `duration_value_multiplier_to_hours` column contains the value need to
 #'   convert the unit into hours.
+#'
 #' @examples
 #' \dontrun{
 #' duration_unit_code_standardization <- wqb_add_duration_conversions(

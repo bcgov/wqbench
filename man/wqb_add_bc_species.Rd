@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-bc-species.R
 \name{wqb_add_bc_species}
 \alias{wqb_add_bc_species}
-\title{Add BC Species to Database}
+\title{Add BC Species}
 \usage{
 wqb_add_bc_species(database)
 }
@@ -13,8 +13,9 @@ wqb_add_bc_species(database)
 Invisible data frame
 }
 \description{
-Read in the British Columbia species and add to the \code{species} table in the
-database.
+Read in a list of British Columbia species and add a column to the \code{species}
+table in the database to indicate if the species is present in British
+Columbia.
 }
 \details{
 The BC species data is contained in a csv file in the extdata folder
@@ -23,19 +24,20 @@ species. Do not add new columns, rename columns or rename the file. The
 file must only contain a single column named \code{latin_name}.
 
 The \code{latin_name} column must consist of the genus and species separated by
-a space. The \code{latin_name} column in the bc-species file are matched to the
-\code{latin_name} column in the species table of the ECOTOX downloaded data. A
-new column \code{species_present_in_bc} is added to the species table that codes each
-species as either TRUE or FALSE.
+a space. The \code{latin_name} column in the bc-species.csv file is matched to
+the \code{latin_name} column in the species table of the database. A new column
+\code{species_present_in_bc} is added to the species table that codes each
+species as TRUE if it matches a value in the bc-species.csv or FALSE if
+there is no match.
 }
 \examples{
 \dontrun{
 bc_species <- wqb_add_bc_species(
  database = "ecotox_ascii_09_15_2022.sqlite"
-) 
+)
 
 bc_species <- wqb_add_bc_species(
  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
+)
 }
 }

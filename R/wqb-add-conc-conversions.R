@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Add Concentration Unit Conversation Values for Standardizing the Data
+#' Add Concentration Unit Conversation Values
 #'
-#' Read in the concentration-conversion file and flag unit values that can be
-#' converted and which ones will be removed. The column `conc_conversion_flag`
-#' is added to the concentration_unit_codes table to indicate which units will
-#' be kept and which will have the rows deleted. The
-#' `conc_conversion_value_multiplier` column is added for each unit will be
-#' converted to the unit specified in the `conc_conversion_unit` column.
+#' Read in the concentration-conversion file and code units that can be
+#' converted and which ones will be removed. Three columns will be added to the
+#' concentration_unit_codes table in the database, indicate which units are
+#' being kept, the conversion factor, and the units it is being converted to. 
+#' Currently units are converted to mg/L or equivalent.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
@@ -27,19 +26,22 @@
 #' @details The list of units to be converted are contained in a csv file in the
 #'   extdata folder of the package. The csv file can be edited by adding or
 #'   removing rows.  To add new rows get the `code` and `description` values
-#'   from the `concentration_unit_codes` table in the ECOTOX data and paste them
+#'   from the `concentration_unit_codes` table in the database and paste them
 #'   into the csv file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
 #'   only contain the columns: `code`, `description`, `conc_conversion_flag`,
 #'   `conc_conversion_value_multiplier` and `conc_conversion_unit`.
+#'   
+#'   The `conc_conversion_flag` column indicates which units are being converted 
+#'   and which are being removed because they can not be converted or are not in 
+#'   the aquatic portion of the data.The `conc_conversion_value_multiplier` 
+#'   column contains the value need to convert the unit into the unit listed in 
+#'   the `conc_conversion_unit` column.
 #'
 #'   The `code` values in the concentration-conversion file are matched to the
-#'   `code` values in the `concentration_unit_codes` table in the ECOTOX
-#'   downloaded data.
-#'
-#'   The `conc_conversion_value_multiplier` column contains the value need to
-#'   convert the unit into the unit listed in the `conc_conversion_unit` column.
+#'   `code` values in the `concentration_unit_codes` table in the database.
+#'   
 #' @examples
 #' \dontrun{
 #' concentration_unit_code_standardization <- wqb_add_conc_conversions(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-add-bc-wqg.R
 \name{wqb_add_bc_wqg}
 \alias{wqb_add_bc_wqg}
-\title{Add BC Water Quality Guidelines to Database}
+\title{Add BC Water Quality Guidelines}
 \usage{
 wqb_add_bc_wqg(database)
 }
@@ -13,16 +13,18 @@ wqb_add_bc_wqg(database)
 Invisible data frame
 }
 \description{
-Read in the British Columbia water quality guidelines (wqg) and add to the
-chemicals tables in the database.
+Read in the British Columbia water quality guidelines (wqg) and add a column
+to the chemicals tables in the database to indicate if the chemical is
+present in the British Columbia water quality guidelines.
 }
 \details{
-The BC wag data is stored in the BC Data Catalogue.
+The wqg data is stored in the BC Data Catalogue.
 
-The \code{CAS_number} column in the bc wqg data are matched to the \code{cas_number}
-column in the chemicals table of the ECOTOX downloaded data. A new column
+The \code{CAS_number} column in the bc wqg data is matched to the \code{cas_number}
+column in the chemicals table of the database. A new column
 \code{present_in_bc_wqg} is added to the chemicals table that codes each
-chemical as either TRUE or FALSE.
+chemical as TRUE if the chemical is present in wqg or FALSE if the chemical
+is not present in wqg.
 }
 \examples{
 \dontrun{

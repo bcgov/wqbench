@@ -12,20 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Add BC Water Quality Guidelines to Database
+#' Add BC Water Quality Guidelines
 #'
-#' Read in the British Columbia water quality guidelines (wqg) and add to the
-#' chemicals tables in the database.
+#' Read in the British Columbia water quality guidelines (wqg) and add a column
+#' to the chemicals tables in the database to indicate if the chemical is
+#' present in the British Columbia water quality guidelines.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details The BC wag data is stored in the BC Data Catalogue.
+#' @details The wqg data is stored in the BC Data Catalogue.
 #'
-#'   The `CAS_number` column in the bc wqg data are matched to the `cas_number`
-#'   column in the chemicals table of the ECOTOX downloaded data. A new column
+#'   The `CAS_number` column in the bc wqg data is matched to the `cas_number`
+#'   column in the chemicals table of the database. A new column
 #'   `present_in_bc_wqg` is added to the chemicals table that codes each
-#'   chemical as either TRUE or FALSE.
+#'   chemical as TRUE if the chemical is present in wqg or FALSE if the chemical
+#'   is not present in wqg.
 #'
 #' @examples
 #' \dontrun{

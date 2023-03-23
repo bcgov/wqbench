@@ -1,25 +1,41 @@
-#' Add the Concentration Endpoints to Database
+# Copyright 2023 Province of British Columbia
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at 
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+#' Add the Concentration Endpoints
 #'
-#' Read in the selected concentration endpoints and mark those values in the
-#' endpoint_codes table in the database by adding a `concentration_flag` column
-#' to the table.
+#' Read in the concentration endpoints that have been selected to keep in the
+#' final data set. Add a column to the endpoint_codes table in the database to
+#' mark the corresponding endpoints.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details The list of concentration endpoints to be used is contained in a csv
-#'   file in the extdata folder of the package. The csv file can be edited by
-#'   adding or removing rows.  To add new rows get the `code` and `description`
-#'   values from the `endpoint_codes` table in the ECOTOX data and paste them
-#'   into the csv file.
+#' @details The list of concentration endpoints is contained in a csv file in
+#'   the extdata folder of the package. The csv file can be edited by adding or
+#'   removing rows.  To add new rows get the `code` and `description` values
+#'   from the `endpoint_codes` table in the database and paste them into the csv
+#'   file.
 #'
 #'   Do not add new columns, rename columns or rename the file. The file must
 #'   only contain the `code` and `description` column.
 #'
 #'   The `code` values in the endpoint-concentration file are matched to the
-#'   `code` values in the endpoint_code table in the ECOTOX downloaded data. Any
-#'   codes that are listed in the file are then coded as TRUE under a new column
-#'   called `concentration_flag` in the endpoint_table.
+#'   `code` values in the endpoint_code table in the database. A new column
+#'   `concentration_flag` is added to the endpoint_code table that codes each
+#'   endpoint as TRUE if the endpoint is present in endpoint-concentration.csv
+#'   file.
+#' 
 #' @examples
 #' \dontrun{
 #' wqb_add_concentration_endpoints(
