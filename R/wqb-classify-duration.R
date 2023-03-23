@@ -14,54 +14,14 @@
 
 #' Classify Duration
 #'
-#' Each test will be classified as an acute or chronic and a new column called 
-#' `duration_class` will be added to the data set. 
+#' Classify each test as either acute or chronic in the `duration_class`
+#' column.
 #'
-#' @param data A data frame of the compiled data set.
-#' @return Data frame
+#' @param data A data frame
+#' @return A data frame
 #' @export
-#' @details The data set passed should be the output of the 
-#'   ` wqb_compile_dataset()` function and must at least contain the columns:
-#'    `ecological_group`, `duration_mean_std` and `simple_lifestage`.
-#' 
-#'   Classifications for acute and chronic are separated by trophic group
-#'   (`ecological_group`). The values are classified as acute, chronic in a new 
-#'   column called `duration_class`.
-#'
-#'   Values not meeting this criteria are classified as acute.
-#'  
-#'  Fish and amphibians
-#'    Acute: 
-#'      - duration ≤ 96 hours
-#'    Chronic:
-#'      - life stage (`simple_lifestage`) is juvenile or adult and 
-#'      duration ≥ 504 hours
-#'      - life stage (`simple_lifestage`) is early life stages (els) and 
-#'      duration ≥ 168 hours
-#'  
-#'  Aquatic invertebrates
-#'    Acute: 
-#'      - duration ≤ 96 hours
-#'    Chronic:
-#'      - Planktonic invertebrates (`ecological_group_class`) and duration > 96 hours
-#'      - Other invertebrates (`ecological_group_class`) and duration ≥ 168 hours
-#'  
-#'  Algae
-#'    Acute: 
-#'     - duration ≤ 24 hours
-#'    Chronic: 
-#'     - duration > 24 hours
-#'    
-#'  Aquatic Plants
-#'    Acute: 
-#'     - duration ≤ 48 hours 
-#'    Chronic: 
-#'    - duration > 7 days (used Lemna protocol as a guide, EC 2007)
-#' 
-#' Reference
-#'  Environment Canada 2007. Test for measuring the inhibition of growth using 
-#'  the freshwater macrophyte, Lemna minor.  Available online at: 
-#'  https://publications.gc.ca/collections/collection_2013/ec/En49-7-1-37-eng.pdf
+#' @details Check the resource document for the rules used to determine the 
+#' classification for each trophic group. This is Step 2. 
 #'
 #' @examples
 #' \dontrun{

@@ -18,22 +18,10 @@
 #' priority of effect level depends on the benchmark method that will be used.
 #'
 #' @param data A data frame
-#' @return Data frame
+#' @return A data frame
 #' @export
-#' @details To determine the most sensitive value:
-#' 
-#' - Group the species, life stage and effect together.
-#' - Within each group prioritize the selection of the effect level using the following order which is specific to benchmark method:
-#'   - SSD method use: 
-#'      - EC/IC x<=10 > EC/IC11-EC/IC20 > MATC > NOEC/NOEL > LOEC/LOEL/MCIG> EC/ICx>20  > LC x<20 > LC x≥20
-#'   - Deterministic method use: 
-#'      - EC/IC10 > EC/IC11-EC/IC20 > MATC > LOEC/LOEL/MCIG > EC/ICx>20  > LC x<20 > LC x≥20 > NOEC/NOEL
-#' - If multiple data points remain within each prioritized endpoint group then the geometric mean is calculated.
-#' - The lowest concentration value out of the groups is selected as the most sensitive endpoint..
-#'  
-#'  Only a subset of columns are returned since the data has been aggregated 
-#'  down to the species level. 
-#' 
+#' @details Check the resource document for the rules used to aggregate the data 
+#'  down to a single value per species. This is Step 5. 
 #' @examples
 #' \dontrun{
 #' data <- wqb_aggregate(data)

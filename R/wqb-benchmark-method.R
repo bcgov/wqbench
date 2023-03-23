@@ -14,21 +14,16 @@
 
 #' Determine Benchmark Method
 #' 
-#' Add a column called `method` which either will say SSD or AF.
+#' Determine if a species sensitivity distribution (SSD) or deterministic method 
+#' will be used to determine the aquatic life water quality benchmark value
+#' for the data. A column called `method` will be added to the data indicating
+#' which method will be used. 
 #' 
-#' @param data A data frame that is the output of the `wqb_aggregate()` function.
+#' @param data A data frame
 #' @return A data frame
 #' @export
-#' @details The data is run through a set of rules to determine if a species 
-#' sensitivity distribution (SSD) or deterministic (DET) method can be used on 
-#' the data set. 
-#' 
-#' Conditions for SSD:
-#'  - number of fish species ≥ 3 AND 
-#'  - number of invertebrates ≥ 3 AND 
-#'  - number of plants or algae species ≥ 1
-#'  
-#' If these conditions are not met then a variation factor is the required. 
+#' @details Check the resource document for the rules used to determine which
+#' benchmark method will be used. This is Step 4. 
 #'
 #' @examples
 #' \dontrun{

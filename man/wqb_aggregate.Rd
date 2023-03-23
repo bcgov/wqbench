@@ -10,33 +10,15 @@ wqb_aggregate(data)
 \item{data}{A data frame}
 }
 \value{
-Data frame
+A data frame
 }
 \description{
 Aggregate data to select the most sensitive value for each species. The
 priority of effect level depends on the benchmark method that will be used.
 }
 \details{
-To determine the most sensitive value:
-\itemize{
-\item Group the species, life stage and effect together.
-\item Within each group prioritize the selection of the effect level using the following order which is specific to benchmark method:
-\itemize{
-\item SSD method use:
-\itemize{
-\item EC/IC x<=10 > EC/IC11-EC/IC20 > MATC > NOEC/NOEL > LOEC/LOEL/MCIG> EC/ICx>20  > LC x<20 > LC x≥20
-}
-\item Deterministic method use:
-\itemize{
-\item EC/IC10 > EC/IC11-EC/IC20 > MATC > LOEC/LOEL/MCIG > EC/ICx>20  > LC x<20 > LC x≥20 > NOEC/NOEL
-}
-}
-\item If multiple data points remain within each prioritized endpoint group then the geometric mean is calculated.
-\item The lowest concentration value out of the groups is selected as the most sensitive endpoint..
-}
-
-Only a subset of columns are returned since the data has been aggregated
-down to the species level.
+Check the resource document for the rules used to aggregate the data
+down to a single value per species. This is Step 5.
 }
 \examples{
 \dontrun{
