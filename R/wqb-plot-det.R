@@ -21,7 +21,7 @@
 #'
 #' @examples
 wqb_plot_det <- function(data) {
-  det <- wqb_generate_det(data)
+  det <- wqb_method_det(data)
   af <- wqb_summary_af(data)
   
   line_data <- tibble::tibble(
