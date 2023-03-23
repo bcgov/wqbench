@@ -12,22 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Generate the Variation Factor Benchmark Guideline Value
+#' Deterministic Method to Generate Critical Toxicity Value for the Chemical
 #'
-#' Finds the lowest concentration and then divides by the assessment
-#' factor to output the benchmark value for the chemical.
+#' Use the deterministic method to generate the critical toxicity value for the 
+#' data set.
 #'
 #' @param data A data frame 
-#'
-#' @return A data frame which contains the lowest concentration, the total 
-#'  assessment factor and the benchmark value.
+#' @return A data frame
 #' @export
+#' @details Check the resource document for more details . This is Step 1. 
 #'
 #' @examples
 #' \dontrun{
-#' bench_iodine <- wqb_generate_det(data)
+#' bench_iodine <- wqb_method_det(data)
 #' }
-wqb_generate_det <- function(data) {
+wqb_method_det <- function(data) {
   chk::check_data(
     data,
     list(

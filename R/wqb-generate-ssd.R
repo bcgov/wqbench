@@ -24,9 +24,9 @@
 #'
 #' @examples
 #' \dontrun{
-#'  bench_iodine <- wqb_generate_ssd(data, fit)
+#'  bench_iodine <- wqb_method_ssd(data, fit)
 #' }
-wqb_generate_ssd <- function(data, fit) {
+wqb_method_ssd <- function(data, fit) {
   chk::check_data(
     data,
     list(
