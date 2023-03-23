@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Determine the Variation Assessment Factor
+#' Determine the Species Variation Assessment Factor
 #'
 #'  Determine the assessment factor based on the number of trophic groups and
 #'   species.
@@ -20,7 +20,8 @@
 #' @param data A data frame
 #' @return A data frame
 #' @export
-#' @details Check the resource document for how the assessment was calculated.
+#' @details Check the resource document for how the assessment factor was 
+#'  calculated.
 #'  
 #' @examples
 #' \dontrun{

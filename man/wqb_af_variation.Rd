@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-af-variation.R
 \name{wqb_af_variation}
 \alias{wqb_af_variation}
-\title{Determine the Variation Assessment Factor}
+\title{Determine the Species Variation Assessment Factor}
 \usage{
 wqb_af_variation(data)
 }
@@ -17,7 +17,8 @@ Determine the assessment factor based on the number of trophic groups and
 species.
 }
 \details{
-Check the resource document for how the assessment was calculated.
+Check the resource document for how the assessment factor was
+calculated.
 }
 \examples{
 \dontrun{

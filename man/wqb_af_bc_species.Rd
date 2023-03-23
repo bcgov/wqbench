@@ -16,7 +16,8 @@ A data frame
 Determines an assessment factor based on the number of BC species present.
 }
 \details{
-Check the resource document for how the assessment was calculated.
+Check the resource document for how the assessment factor was
+calculated.
 }
 \examples{
 \dontrun{

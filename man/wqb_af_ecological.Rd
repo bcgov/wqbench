@@ -17,7 +17,8 @@ Determines the assessment factor based on the presence of certain ecological
 groups.
 }
 \details{
-Check the resource document for how the assessment was calculated.
+Check the resource document for how the assessment factor was
+calculated.
 }
 \examples{
 \dontrun{

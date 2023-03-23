@@ -20,7 +20,8 @@
 #' @param data A data frame
 #' @return A data frame
 #' @export
-#' @details Check the resource document for how the assessment was calculated.
+#' @details Check the resource document for how the assessment factor was 
+#'  calculated.
 #'
 #' @examples
 #' \dontrun{
