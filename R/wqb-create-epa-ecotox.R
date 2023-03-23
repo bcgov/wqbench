@@ -12,19 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Create a SQLite Database from the US EPA ECOTOX data
+#' Create the ECOTOX Database
 #'
-#'  Use this function to create a local SQLite database of the ECOTOX data.
-#'  
+#' Create a SQLite database from the US EPA ECOTOX downloaded files.
 #'
-#' @param file_path A string of the file path location to save the SQLite 
-#'  database
-#' @param data_path A string of the location the downloaded ECOTOX data folder
+#' @param folder_path Folder path to write to.  
+#' @param data_path Folder path to the downloaded ECOTOX folder
 #'
 #' @return Invisible string of the file path of the database.
 #' @export
-#' @details This functions creates each base table from the ecotox download as 
-#'  well as populates each table and sets the primary key relationships.  
+#' @details This functions reads in the text files in the folder and writes
+#' them to the database.  
 #'
 #' @examples
 #' \dontrun{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-compile-dataset.R
 \name{wqb_compile_dataset}
 \alias{wqb_compile_dataset}
-\title{Compile the data set from the Database}
+\title{Compile Data}
 \usage{
 wqb_compile_dataset(database)
 }
@@ -13,20 +13,11 @@ wqb_compile_dataset(database)
 Invisible data frame
 }
 \description{
-Compile data from the database to make the completed data set from the
-external sources and US EPA ECOTOX database.
+Join database tables together and start filtering and cleaning data.
 }
 \details{
-Combine XXX tables.
-
-Select a subset of columns.
-
-Removes rows with no genus, no ecological group, no concentration, no duration.
-Remove rows where duration can not be standardized to hours.
-Standardizes all durations into hours.
-Standardizes all concentrations into mg/L or ppm (which are equivalent).
-
-Cleans data by removing asterisks in concentration values and endpoints.
+Check the resource document more details on the data added,
+filter conditions and cleaning steps. This is Step 1.
 }
 \examples{
 \dontrun{

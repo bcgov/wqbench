@@ -2,25 +2,24 @@
 % Please edit documentation in R/wqb-create-epa-ecotox.R
 \name{wqb_create_epa_ecotox}
 \alias{wqb_create_epa_ecotox}
-\title{Create a SQLite Database from the US EPA ECOTOX data}
+\title{Create the ECOTOX Database}
 \usage{
 wqb_create_epa_ecotox(file_path = ".", data_path)
 }
 \arguments{
-\item{file_path}{A string of the file path location to save the SQLite
-database}
+\item{data_path}{Folder path to the downloaded ECOTOX folder}
 
-\item{data_path}{A string of the location the downloaded ECOTOX data folder}
+\item{folder_path}{Folder path to write to.}
 }
 \value{
 Invisible string of the file path of the database.
 }
 \description{
-Use this function to create a local SQLite database of the ECOTOX data.
+Create a SQLite database from the US EPA ECOTOX downloaded files.
 }
 \details{
-This functions creates each base table from the ecotox download as
-well as populates each table and sets the primary key relationships.
+This functions reads in the text files in the folder and writes
+them to the database.
 }
 \examples{
 \dontrun{

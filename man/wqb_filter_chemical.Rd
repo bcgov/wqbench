@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-filter-chemical.R
 \name{wqb_filter_chemical}
 \alias{wqb_filter_chemical}
-\title{Filter data set to a Single Chemical}
+\title{Filter to a Single Chemical}
 \usage{
 wqb_filter_chemical(data, cas_num)
 }
@@ -12,10 +12,10 @@ wqb_filter_chemical(data, cas_num)
 \item{cas_num}{A string of the cas number.}
 }
 \value{
-Data frame
+A data frame
 }
 \description{
-Filter data set to a Single Chemical
+Filter to a Single Chemical
 }
 \examples{
 \dontrun{

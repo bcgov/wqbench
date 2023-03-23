@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-download-epa-ecotox.R
 \name{wqb_download_epa_ecotox}
 \alias{wqb_download_epa_ecotox}
-\title{Download EPA ECOTOX Database Files}
+\title{Download ECOTOX Data Files}
 \usage{
 wqb_download_epa_ecotox(file_path = ".", version = 1)
 }
@@ -10,23 +10,26 @@ wqb_download_epa_ecotox(file_path = ".", version = 1)
 \item{file_path}{A string of the file path location to save the downloaded
 files. The default is your current working directory.}
 
-\item{version}{An integer to indicate which version you want to download.
-The default is 1 which downloads the most recent version.}
+\item{version}{An integer to indicate which version you want to download. The
+default is 1 which downloads the most recent version.}
 }
 \value{
 Invisible string of the file path the downloaded files were saved.
 }
 \description{
-Download the EPA ECOTOX database files from their FTP site. The default is to
-download the most recent version of the database.
+Download the ECOTOX data files from their FTP website. The default is to
+download the most recent version of the data.
 }
 \details{
-You have the option of downloading older version of the database
-but only up to the four most recent version. The most recent version is set
-as 1 and the older version you can download is version 4.
+You have the option of downloading older version of the data but
+only up to the four most recent version. The most recent version is set as
+1 and the oldest version is version 4.
 
-The downloaded folder will contain various files that are needed to compile
+The downloaded folder will contain various files that are needed to build
 the database.
+
+You must have a working internet connection to run this function
+successfully.
 }
 \examples{
 \dontrun{
@@ -37,4 +40,14 @@ wqb_download_epa_ecotox("data_download")
 # pull previous version of the database
 wqb_download_epa_ecotox("data_download", version = 2)
 }
+}
+\references{
+US EPA ECOTOX website: \url{https://cfpub.epa.gov/ecotox/}
+
+Olker, J. H., Elonen, C. M., Pilli, A., Anderson, A., Kinziger, B.,
+Erickson, S., Skopinski, M., Pomplun, A., LaLone, C. A., Russom, C. L., &
+Hoff, D. (2022). The ECOTOXicology Knowledgebase: A Curated Database of
+Ecologically Relevant Toxicity Tests to Support Environmental Research and
+Risk Assessment. Environmental Toxicology and Chemistry, 41(6):1520-1539.
+https://doi.org/10.1002/etc.5324
 }

@@ -12,24 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Compile the data set from the Database 
+#' Compile Data 
 #'
-#' Compile data from the database to make the completed data set from the 
-#' external sources and US EPA ECOTOX database.
+#' Join database tables together and start filtering and cleaning data.
 #'
 #' @param database A string to the location of the database.
 #' @return Invisible data frame
 #' @export
-#' @details Combine XXX tables.
-#' 
-#' Select a subset of columns.
-#' 
-#' Removes rows with no genus, no ecological group, no concentration, no duration.
-#' Remove rows where duration can not be standardized to hours.
-#' Standardizes all durations into hours. 
-#' Standardizes all concentrations into mg/L or ppm (which are equivalent). 
-#' 
-#' Cleans data by removing asterisks in concentration values and endpoints. 
+#' @details Check the resource document more details on the data added, 
+#' filter conditions and cleaning steps. This is Step 1. 
 #'
 #' @examples
 #' \dontrun{
