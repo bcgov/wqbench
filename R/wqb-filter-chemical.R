@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Filter data set to a Single Chemical
+#' Filter to a Single Chemical
 #'
 #' @param data A data frame 
 #' @param cas_num A string of the cas number.
 #'
-#' @return Data frame
+#' @return A data frame
 #' @export
 #'
 #' @examples
@@ -32,6 +32,7 @@ wqb_filter_chemical <- function(data, cas_num) {
       cas = ""
     )
   ) 
+  chk::chk_string(cas_num)
   
   data <- data |>
     dplyr::filter(.data$cas == cas_num)
