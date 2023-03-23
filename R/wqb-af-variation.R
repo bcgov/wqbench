@@ -14,14 +14,14 @@
 
 #' Determine the Variation Assessment Factor
 #'
-#' Depending on the number of trophic groups and species a certain assessment 
-#'  factor is determined.
+#'  Determine the assessment factor based on the number of trophic groups and
+#'   species.
 #'
-#' @param data A data frame that is the output of the `wqb_benchmark-method()`
-#'   function.
+#' @param data A data frame
 #' @return A data frame
 #' @export
-#'
+#' @details Check the resource document for how the assessment was calculated.
+#'  
 #' @examples
 #' \dontrun{
 #' data <- wqb_af_variation(data)

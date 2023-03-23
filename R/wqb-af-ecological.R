@@ -14,13 +14,13 @@
 
 #' Determine the Ecological Assessment Factors
 #'
-#' Depending on the presence of certain ecological groups present in the data
-#' set determines the assessment factor applied.
+#' Determines the assessment factor based on the presence of certain ecological 
+#' groups.
 #'
-#' @param data A data frame that is the output of the `wqb_benchmark-method()`
-#'   function.
+#' @param data A data frame
 #' @return A data frame
 #' @export
+#' @details Check the resource document for how the assessment was calculated.
 #'
 #' @examples
 #' \dontrun{
