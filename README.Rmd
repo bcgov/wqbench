@@ -70,10 +70,10 @@ data <- wqb_af_ecological(data)
 data <- wqb_af_bc_species(data)
 ```
 
-# Generate Benchmark
+# Generate Critical Toxicity Value
 
 ```r
-benchmark <- wqb_generate_bench(data_agg)
+benchmark <- wqb_generate_ctv(data_agg)
 ```
 
 # Plots

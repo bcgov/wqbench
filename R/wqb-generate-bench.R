@@ -12,20 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Generate benchmark 
+#' Generate Critical Toxicity Value
 #' 
-#' Pass the data to generate the benchmark for DET or SSD method. 
+#' Determine the critical toxicity value for the species. The function will
+#' apply the method listed in the method column. 
 #'
-#' @param data A data frame of clean and processed data filtered to only a 
-#'  single chemical.
-#' @return
+#' @param data A data frame
+#' @return A data frame
 #' @export
+#' @details The ctv_est_mg.L is the estimate of the critical toxicity value for 
+#' the species. The ctv_lcl_mg.L is the lower confidence limit. The ctv_ucl_mg.L 
+#' is the upper confidence limit.
+#' 
+#' The Deterministic method will always produce missing values in the 
+#' ctv_lcl_mg.L and ctv_ucl_mg.L columns. 
 #'
 #' @examples
 #' \dontrun{
-#' benchmark <- wqb_generate_bench(data)
+#' ctv <- wqb_generate_ctv(data)
 #' }
-wqb_generate_bench <- function(data) {
+wqb_generate_ctv <- function(data) {
   chk::check_data(
     data,
     list(
