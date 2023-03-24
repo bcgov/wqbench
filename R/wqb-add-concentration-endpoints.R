@@ -106,7 +106,7 @@ wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
     con,
     paste0(
       "CREATE TABLE endpoint_concentration (",
-      "code TEXT, description TEXT, concentration_flag TEXT, ",
+      "(", paste(colnames(endpoint_concentration), collapse = ", "),
       "PRIMARY KEY (code))"
     )
   )

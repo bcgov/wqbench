@@ -71,7 +71,7 @@ wqb_add_media <- function(database, quiet = FALSE) {
     con,
     paste0(
       "CREATE TABLE media_type ",
-      "(code TEXT, description TEXT, media_type_group TEXT, ",
+      "(", paste(colnames(media_type), collapse = ", "),
       "PRIMARY KEY (code))"
     )
   )

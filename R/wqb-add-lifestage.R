@@ -111,7 +111,7 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     con,
     paste0(
       "CREATE TABLE lifestage_groups ",
-      "(code TEXT, description TEXT, simple_lifestage TEXT, ",
+      "(", paste(colnames(lifestage_groups), collapse = ", "),
       "PRIMARY KEY (code))"
     )
   )
