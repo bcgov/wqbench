@@ -12,19 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Generate the Benchmark Guideline Value using a SSD
+#' SSD Method to Calculate Critical Toxicity Value for the Chemical
 #'
-#' @param data A data frame of clean and processed data filtered to only a 
-#'  single chemical.
-#' @param fit The fit from ssd
+#' Use a species sensitivity distribution to calculate the critical toxicity 
+#' value for the data set. The critical toxicity value is the hazardous 
+#' concentration for 5% of species (HC5) when the SSD method is used. 
 #'
-#' @return A data frame which contains the Critical Toxicity Value (HC5) and
-#'  upper and lower bound. 
+#' @param data A data frame
+#' @param fit The fit
+#' @return A data frame 
 #' @export
-#'
+#' @details A wrapper on the ssdtools package function
+#'  `ssdtools::ssd_hc_bcanz()`. The number of bootstrap samples is set to 10000 
+#'  (which  can take a few minutes to run) and only the HC5 concentration is 
+#'  returned.
+#' 
 #' @examples
 #' \dontrun{
-#'  bench_iodine <- wqb_method_ssd(data, fit)
+#'  hc5 <- wqb_method_ssd(data, fit)
 #' }
 wqb_method_ssd <- function(data, fit) {
   chk::check_data(
@@ -34,8 +39,7 @@ wqb_method_ssd <- function(data, fit) {
       sp_aggre_conc_mg.L = 1
     )
   )
-  af <- gen_af_value(data)
-  hc5 <- wqb_generate_ssd_hc5(fit)
+  hc5 <- wqb_ssd_hc5(fit)
   
   value <- hc5 |>
     dplyr::select("est", "lcl", "ucl") |>
@@ -52,42 +56,42 @@ wqb_method_ssd <- function(data, fit) {
   value
 }
 
-
-
-#' Fit a SSD
+#' Fit BCANZ Distributions
+#' 
+#' Wrapper to `ssdtools::ssd_fit_bcanz()`. The sp_aggre_conc_mg.L values are
+#' the concentrations used.
 #'
-#' @param data A data frame of clean and processed data filtered to only a 
-#'  single chemical.
-#'
+#' @param data A data frame
 #' @return A data frame 
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'  fit <- wqb_generate_ssd_fit(data)
+#'  fit <- wqb_ssd_fit(data)
 #' }
-wqb_generate_ssd_fit <- function(data) {
+wqb_ssd_fit <- function(data) {
   ssdtools::ssd_fit_bcanz(
     data = data,
     left = "sp_aggre_conc_mg.L"
   )
 }
 
-
-#' Get a SSD HC5
+#' Run SSD to get Hazard Concentrations
+#' 
+#' Wrapper to the `ssdtools::ssd_hc_bcanz()` function and selects only the 
+#' row which is 5%.
 #'
 #' @param fit The fit from ssd
 #' @param nboot A count of the number of bootstrap samples to use to estimate
 #'   the se and confidence limits. A value of 10000 is recommended for official
 #'   guidelines.
-#'
 #' @return A data frame
 #'
 #' @examples
 #' \dontrun{
-#'  fit <- wqb_generate_ssd_hc5(data)
+#'  hc5 <- wqb_ssd_hc5(fit)
 #' }
-wqb_generate_ssd_hc5 <- function(fit, nboot = 100) {
+wqb_ssd_hc5 <- function(fit, nboot = 10000) {
   ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
     dplyr::filter(.data$percent == 5)
 }
