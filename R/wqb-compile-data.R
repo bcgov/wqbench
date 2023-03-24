@@ -92,6 +92,8 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
     dplyr::rename("media_description" = "description") |>
     tibble::tibble()
   
+  db_meta_data_download <- DBI::dbReadTable(con, "meta_data_download")
+  
   combined_data <- db_results |>
     # filter to only water  (aquatic) tests
     dplyr::left_join(db_tests, by = "test_id") |>
@@ -235,7 +237,9 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       ecological_group_class = factor(
         .data$ecological_group_class, 
         levels = sort(unique(.data$ecological_group_class))
-      )
+      ),
+      # add meta info
+      dl_version = db_meta_data_download$dl_version
     ) |>
     dplyr::select(
       "chemical_name", "test_cas",
@@ -262,7 +266,8 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       "present_in_bc_wqg", 
       "reference_number", "reference_type", "author", "title", "source", 
       "publication_year",
-      "additional_comments_tests", "additional_comments_results"
+      "additional_comments_tests", "additional_comments_results",
+      "dl_version"
     )
   
   compiled_data

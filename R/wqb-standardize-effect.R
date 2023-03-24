@@ -89,7 +89,8 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "source", 
       "publication_year",
       "present_in_bc_wqg",
-      "species_number"
+      "species_number",
+      "dl_version"
     )
   
   effect_std 
