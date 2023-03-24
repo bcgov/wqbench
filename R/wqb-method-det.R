@@ -34,7 +34,6 @@ wqb_method_det <- function(data) {
       sp_aggre_conc_mg.L = 1
     )
   )
-  af <- gen_af_value(data)
   value <- data |>
     dplyr::arrange(.data$sp_aggre_conc_mg.L) |>
     dplyr::slice(1) |>
