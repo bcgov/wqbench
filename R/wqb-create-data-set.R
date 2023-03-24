@@ -24,6 +24,7 @@
 #'   default is 1 which downloads the most recent version.
 #' @param folder_path Folder path to write to.  
 #' @param quiet Turn off message when quiet set to TRUE.
+#' @param ask Turn off question when set to FALSE.
 #' @return A data frame
 #' @export
 #'
@@ -36,20 +37,18 @@
 wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox", 
                                 version = 1, 
                                 folder_path = "~/Ecotoxicology/ecotox_db/",
-                                quiet = FALSE) {
-  
-  ### check if already exists
-  ### ask to stop or to overwrite
-  
-  
+                                quiet = FALSE,
+                                ask = TRUE) {
+
   data_path <- wqb_download_epa_ecotox(
-    file_path = file_path, version = version
+    file_path = file_path, version = version, ask = ask
   )
   
   database <- wqb_create_epa_ecotox(
     folder_path = folder_path,
     data_path = data_path,
-    quiet = quiet
+    quiet = quiet,
+    ask = ask
   )
   
   wqb_add_bc_species(database = database, quiet = quiet) 
