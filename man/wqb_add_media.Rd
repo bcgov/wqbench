@@ -4,10 +4,12 @@
 \alias{wqb_add_media}
 \title{Add Media Type Coding of Salt or Fresh Water}
 \usage{
-wqb_add_media(database)
+wqb_add_media(database, quiet = FALSE)
 }
 \arguments{
 \item{database}{A string to the location of the database.}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 Invisible data frame

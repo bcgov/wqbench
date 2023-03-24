@@ -4,10 +4,12 @@
 \alias{wqb_add_duration_conversions}
 \title{Add Duration Unit Conversation Values}
 \usage{
-wqb_add_duration_conversions(database)
+wqb_add_duration_conversions(database, quiet = FALSE)
 }
 \arguments{
 \item{database}{A string to the location of the database.}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 Invisible data frame

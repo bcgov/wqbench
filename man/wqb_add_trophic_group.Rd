@@ -4,10 +4,12 @@
 \alias{wqb_add_trophic_group}
 \title{Add Trophic Groups to Database}
 \usage{
-wqb_add_trophic_group(database)
+wqb_add_trophic_group(database, quiet = FALSE)
 }
 \arguments{
 \item{database}{A string to the location of the database.}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 Invisible data frame

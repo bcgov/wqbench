@@ -18,6 +18,7 @@
 #' table in the database to mark the corresponding values. 
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details  Only life stages related to fish or amphibians have been coded. The
@@ -48,7 +49,7 @@
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' }
-wqb_add_lifestage <- function(database) {
+wqb_add_lifestage <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
@@ -121,6 +122,9 @@ wqb_add_lifestage <- function(database) {
     append = TRUE, 
     row.names = FALSE
   )
+  if (!quiet) {
+    message("Adding simple life stage groups")
+  }
   DBI::dbExecute(con, "DROP TABLE lifestage_codes;")
   DBI::dbExecute(
     con,

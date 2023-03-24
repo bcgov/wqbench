@@ -18,6 +18,7 @@
 #' water and not reported.
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details Read in the media_type_codes table from the database and code the 24
@@ -35,7 +36,7 @@
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
-wqb_add_media <- function(database) {
+wqb_add_media <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
@@ -81,6 +82,9 @@ wqb_add_media <- function(database) {
     append = TRUE,
     row.names = FALSE
   )
+  if (!quiet) {
+    message("Adding media groups")
+  }
   DBI::dbExecute(con, "DROP TABLE media_type_codes;")
   DBI::dbExecute(
     con,

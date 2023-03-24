@@ -19,6 +19,7 @@
 #' mark the corresponding endpoints.
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details The list of concentration endpoints is contained in a csv file in
@@ -46,7 +47,7 @@
 #'   database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
-wqb_add_concentration_endpoints <- function(database) {
+wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
@@ -116,7 +117,9 @@ wqb_add_concentration_endpoints <- function(database) {
     append = TRUE, 
     row.names = FALSE
   )
-  
+  if (!quiet) {
+    message("Adding concentration endpoint list")
+  }
   DBI::dbExecute(con, "DROP TABLE endpoint_codes;")
   DBI::dbExecute(
     con,

@@ -18,6 +18,7 @@
 #' `species` table in the database that lists the groups for each species. 
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details The trophic group data is contained in a csv file in the extdata 
@@ -40,7 +41,7 @@
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' }
-wqb_add_trophic_group <- function(database) {
+wqb_add_trophic_group <- function(database, quiet = FALSE) {
   
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
@@ -170,7 +171,9 @@ wqb_add_trophic_group <- function(database) {
     append = TRUE, 
     row.names = FALSE
   )
-  
+  if (!quiet) {
+    message("Adding trophic and ecological groups")
+  }
   DBI::dbExecute(con, "DROP TABLE species;")
   DBI::dbExecute(
     con,

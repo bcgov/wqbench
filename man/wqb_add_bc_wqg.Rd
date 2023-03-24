@@ -4,10 +4,12 @@
 \alias{wqb_add_bc_wqg}
 \title{Add BC Water Quality Guidelines}
 \usage{
-wqb_add_bc_wqg(database)
+wqb_add_bc_wqg(database, quiet = FALSE)
 }
 \arguments{
 \item{database}{A string to the location of the database.}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 Invisible data frame

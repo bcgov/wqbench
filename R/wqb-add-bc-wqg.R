@@ -19,6 +19,7 @@
 #' present in the British Columbia water quality guidelines.
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details The wqg data is stored in the BC Data Catalogue.
@@ -39,7 +40,7 @@
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
-wqb_add_bc_wqg <- function(database) {
+wqb_add_bc_wqg <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
   
@@ -123,7 +124,9 @@ wqb_add_bc_wqg <- function(database) {
     append = TRUE,
     row.names = FALSE
   )
-  
+  if (!quiet) {
+    message("Adding BC WQG")
+  }
   DBI::dbExecute(con, "DROP TABLE chemicals;")
   DBI::dbExecute(
     con,
