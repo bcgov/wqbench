@@ -48,7 +48,8 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
   
   database <- wqb_create_epa_ecotox(
     folder_path = folder_path,
-    data_path = data_path
+    data_path = data_path,
+    quiet = quiet
   )
   
   wqb_add_bc_species(database = database, quiet = quiet) 

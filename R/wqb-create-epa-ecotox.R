@@ -18,7 +18,7 @@
 #'
 #' @param folder_path Folder path to write to.  
 #' @param data_path Folder path to the downloaded ECOTOX folder
-#'
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible string of the file path of the database.
 #' @export
 #' @details This functions reads in the text files in the folder and writes
@@ -28,13 +28,17 @@
 #' \dontrun{
 #' wqb_create_epa_ecotox(data_path = "ecotox_ascii_12_15_2022")
 #' }
-wqb_create_epa_ecotox <- function(folder_path = ".", data_path) {
+wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE) {
   chk::chk_string(folder_path)
   chk::chk_string(data_path)
   
   dbname <- paste0(basename(data_path), ".sqlite")
   dbfile <- file.path(folder_path, dbname)
   dir.create(folder_path, showWarnings = FALSE)
+  
+  if (!quiet) {
+    message("Create SQLite database")
+  }
   
   on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
@@ -53,7 +57,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path) {
   tbl_data <- db_tbl_core_structure()
   
   for (i in seq_along(files_data)) {
-    message("Create table: ", files_data[i], "\n")
+    message("Adding ecotox table: ", name_data[i], "\n")
     dt <- utils::read.table(
       files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
     )
@@ -76,7 +80,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path) {
   validation_data <- db_tbl_validation_structure()
 
   for (i in seq_along(files_validation)) {
-    message("Create table: ", files_validation[i], "\n")
+    message("Adding ecotox table: ", name_validation[i], "\n")
     dt <- utils::read.table(
       files_validation[i],
       header = TRUE,
