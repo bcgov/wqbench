@@ -44,7 +44,7 @@ wqb_generate_ctv <- function(data) {
   if (method == "Deterministic") {
     bench <- wqb_method_det(data)
   } else {
-    fit <- wqb_generate_ssd_fit(data)
+    fit <- wqb_ssd_fit(data)
     bench <- wqb_method_ssd(data, fit)
   }
   bench
