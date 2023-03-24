@@ -4,7 +4,7 @@
 \alias{wqb_download_epa_ecotox}
 \title{Download ECOTOX Data Files}
 \usage{
-wqb_download_epa_ecotox(file_path = ".", version = 1)
+wqb_download_epa_ecotox(file_path = ".", version = 1, ask = TRUE)
 }
 \arguments{
 \item{file_path}{A string of the file path location to save the downloaded
@@ -12,6 +12,8 @@ files. The default is your current working directory.}
 
 \item{version}{An integer to indicate which version you want to download. The
 default is 1 which downloads the most recent version.}
+
+\item{ask}{Turn off question when set to FALSE.}
 }
 \value{
 Invisible string of the file path the downloaded files were saved.

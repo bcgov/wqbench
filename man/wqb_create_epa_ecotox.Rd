@@ -4,12 +4,16 @@
 \alias{wqb_create_epa_ecotox}
 \title{Create the ECOTOX Database}
 \usage{
-wqb_create_epa_ecotox(folder_path = ".", data_path)
+wqb_create_epa_ecotox(folder_path = ".", data_path, quiet = FALSE, ask = TRUE)
 }
 \arguments{
 \item{folder_path}{Folder path to write to.}
 
 \item{data_path}{Folder path to the downloaded ECOTOX folder}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
+
+\item{ask}{Turn off question when set to FALSE.}
 }
 \value{
 Invisible string of the file path of the database.
@@ -20,6 +24,8 @@ Create a SQLite database from the US EPA ECOTOX downloaded files.
 \details{
 This functions reads in the text files in the folder and writes
 them to the database.
+
+This function will overwrite a database if already present.
 }
 \examples{
 \dontrun{

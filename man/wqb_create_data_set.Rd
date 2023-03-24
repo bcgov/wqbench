@@ -7,7 +7,9 @@
 wqb_create_data_set(
   file_path = "~/Ecotoxicology/ecotox",
   version = 1,
-  folder_path = "~/Ecotoxicology/ecotox_db/"
+  folder_path = "~/Ecotoxicology/ecotox_db/",
+  quiet = FALSE,
+  ask = TRUE
 )
 }
 \arguments{
@@ -18,6 +20,10 @@ files. The default is your current working directory.}
 default is 1 which downloads the most recent version.}
 
 \item{folder_path}{Folder path to write to.}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
+
+\item{ask}{Turn off question when set to FALSE.}
 }
 \value{
 A data frame
