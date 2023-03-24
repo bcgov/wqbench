@@ -4,12 +4,12 @@
 \alias{wqb_create_epa_ecotox}
 \title{Create the ECOTOX Database}
 \usage{
-wqb_create_epa_ecotox(file_path = ".", data_path)
+wqb_create_epa_ecotox(folder_path = ".", data_path)
 }
 \arguments{
-\item{data_path}{Folder path to the downloaded ECOTOX folder}
-
 \item{folder_path}{Folder path to write to.}
+
+\item{data_path}{Folder path to the downloaded ECOTOX folder}
 }
 \value{
 Invisible string of the file path of the database.

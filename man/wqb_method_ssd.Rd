@@ -2,25 +2,31 @@
 % Please edit documentation in R/wqb-method-ssd.R
 \name{wqb_method_ssd}
 \alias{wqb_method_ssd}
-\title{Generate the Benchmark Guideline Value using a SSD}
+\title{SSD Method to Calculate Critical Toxicity Value for the Chemical}
 \usage{
 wqb_method_ssd(data, fit)
 }
 \arguments{
-\item{data}{A data frame of clean and processed data filtered to only a
-single chemical.}
+\item{data}{A data frame}
 
-\item{fit}{The fit from ssd}
+\item{fit}{The fit}
 }
 \value{
-A data frame which contains the Critical Toxicity Value (HC5) and
-upper and lower bound.
+A data frame
 }
 \description{
-Generate the Benchmark Guideline Value using a SSD
+Use a species sensitivity distribution to calculate the critical toxicity
+value for the data set. The critical toxicity value is the hazardous
+concentration for 5\% of species (HC5) when the SSD method is used.
+}
+\details{
+A wrapper on the ssdtools package function
+\code{ssdtools::ssd_hc_bcanz()}. The number of bootstrap samples is set to 10000
+(which  can take a few minutes to run) and only the HC5 concentration is
+returned.
 }
 \examples{
 \dontrun{
- bench_iodine <- wqb_method_ssd(data, fit)
+ hc5 <- wqb_method_ssd(data, fit)
 }
 }
