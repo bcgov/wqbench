@@ -72,7 +72,7 @@ wqb_add_media <- function(database, quiet = FALSE) {
     paste0(
       "CREATE TABLE media_type ",
       "(", paste(colnames(media_type), collapse = ", "),
-      "PRIMARY KEY (code))"
+      ", PRIMARY KEY (code))"
     )
   )
   DBI::dbWriteTable(

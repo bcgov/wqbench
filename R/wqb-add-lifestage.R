@@ -112,7 +112,7 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     paste0(
       "CREATE TABLE lifestage_groups ",
       "(", paste(colnames(lifestage_groups), collapse = ", "),
-      "PRIMARY KEY (code))"
+      ", PRIMARY KEY (code))"
     )
   )
   DBI::dbWriteTable(

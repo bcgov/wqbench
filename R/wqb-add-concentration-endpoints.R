@@ -101,14 +101,13 @@ wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
     ) |>
     tibble::tibble()
   
-  print("here1")
   # write new table to database
   DBI::dbExecute(
     con,
     paste0(
       "CREATE TABLE endpoint_concentration ",
       "(", paste(colnames(endpoint_concentration), collapse = ", "), 
-      "PRIMARY KEY (code))"
+      ", PRIMARY KEY (code))"
     )
   )
   DBI::dbWriteTable(
