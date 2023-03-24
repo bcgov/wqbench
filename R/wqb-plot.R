@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Plots a single chemical 
+#' Plot Data
+#' 
+#' Plot the standardized data to see the concentrations per species for each
+#'  endpoint. 
 #'
-#' @param data A data frame of clean and processed data filtered to only a 
-#'  single chemical.
-#'
-#' @return A ggplot object
+#' @param data A data frame
 #' @export
 #'
 #' @examples

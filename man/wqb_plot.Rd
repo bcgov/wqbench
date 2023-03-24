@@ -2,19 +2,16 @@
 % Please edit documentation in R/wqb-plot.R
 \name{wqb_plot}
 \alias{wqb_plot}
-\title{Plots a single chemical}
+\title{Plot Data}
 \usage{
 wqb_plot(data)
 }
 \arguments{
-\item{data}{A data frame of clean and processed data filtered to only a
-single chemical.}
-}
-\value{
-A ggplot object
+\item{data}{A data frame}
 }
 \description{
-Plots a single chemical
+Plot the standardized data to see the concentrations per species for each
+endpoint.
 }
 \examples{
 \dontrun{

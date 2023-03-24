@@ -12,16 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Plot SSD
+#' Plot Species Sensitivity Distribution
+#' 
+#' Plot results to see the species sensitivity distribution. The dashed line
+#' shows the HC5 value. 
 #'
-#' @param data A data frame of clean and processed data filtered to only a 
-#'  single chemical.
+#' @param data A data frame
 #' @param fit The fit from ssd
-#'
-#' @return
 #' @export
+#' @details This is a wrapper on `ssdtools::predict()` and 
+#' `ssdtools::ssd_plot()`.
 #'
 #' @examples
+#' \dontrun{
+#' wqb_plot_ssd(data, fit)
+#' }
 wqb_plot_ssd <- function(data, fit) {
   
   pred <- ssdtools::predict(fit, ci = TRUE)

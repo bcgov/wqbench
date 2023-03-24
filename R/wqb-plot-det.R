@@ -13,13 +13,17 @@
 # limitations under the License.
 
 #' Plot the Deterministic Method Results
+#' 
+#' Plot deterministic results to see the standardized data, critical toxicity 
+#' value and aquatic life benchmark. 
 #'
-#' @param data A data frame of the aggregated data with the assessment factors
-#'
-#' @return
+#' @param data A data frame
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' wqb_plot_det(data)
+#' }
 wqb_plot_det <- function(data) {
   det <- wqb_method_det(data)
   af <- wqb_summary_af(data)

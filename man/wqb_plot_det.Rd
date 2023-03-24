@@ -7,8 +7,14 @@
 wqb_plot_det(data)
 }
 \arguments{
-\item{data}{A data frame of the aggregated data with the assessment factors}
+\item{data}{A data frame}
 }
 \description{
-Plot the Deterministic Method Results
+Plot deterministic results to see the standardized data, critical toxicity
+value and aquatic life benchmark.
+}
+\examples{
+\dontrun{
+wqb_plot_det(data)
+}
 }

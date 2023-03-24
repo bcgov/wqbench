@@ -2,16 +2,25 @@
 % Please edit documentation in R/wqb-plot-ssd.R
 \name{wqb_plot_ssd}
 \alias{wqb_plot_ssd}
-\title{Plot SSD}
+\title{Plot Species Sensitivity Distribution}
 \usage{
 wqb_plot_ssd(data, fit)
 }
 \arguments{
-\item{data}{A data frame of clean and processed data filtered to only a
-single chemical.}
+\item{data}{A data frame}
 
 \item{fit}{The fit from ssd}
 }
 \description{
-Plot SSD
+Plot results to see the species sensitivity distribution. The dashed line
+shows the HC5 value.
+}
+\details{
+This is a wrapper on \code{ssdtools::predict()} and
+\code{ssdtools::ssd_plot()}.
+}
+\examples{
+\dontrun{
+wqb_plot_ssd(data, fit)
+}
 }
