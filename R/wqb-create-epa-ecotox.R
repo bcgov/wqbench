@@ -77,7 +77,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
   
   for (i in seq_along(files_data)) {
     if (!quiet) {
-      message("Adding ecotox table: ", name_data[i], "\n")
+      message("Adding ecotox table: ", name_data[i])
     }
     dt <- utils::read.table(
       files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
@@ -102,7 +102,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
 
   for (i in seq_along(files_validation)) {
     if (!quiet) {
-      message("Adding ecotox table: ", name_validation[i], "\n")
+      message("Adding ecotox table: ", name_validation[i])
     }
     dt <- utils::read.table(
       files_validation[i],
@@ -123,21 +123,19 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       names(validation_data[i]), value = dt, append = TRUE, row.names = FALSE
     )
   }
-  
   # add version info and downloaded day
-  meta_info <- tibble::tibble(
-    dl_date = as.character(Sys.time()),
+  meta_data_download <- tibble::tibble(
     dl_version = basename(data_path)
   )
   
   query <- paste0(
-    "CREATE TABLE meta_info",
-    "(", paste(colnames(meta_info), collapse = ", "), 
+    "CREATE TABLE meta_data_download",
+    "(", paste(colnames(meta_data_download), collapse = ", "), 
     ")"
   )
   DBI::dbExecute(con, query)
   DBI::dbWriteTable(con, 
-    "meta_info", value = meta_info, append = TRUE, row.names = FALSE
+    "meta_data_download", value = meta_data_download, append = TRUE, row.names = FALSE
   )
 
   invisible(dbfile)
