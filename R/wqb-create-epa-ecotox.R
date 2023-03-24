@@ -19,21 +19,40 @@
 #' @param folder_path Folder path to write to.  
 #' @param data_path Folder path to the downloaded ECOTOX folder
 #' @param quiet Turn off message when quiet set to TRUE.
+#' @param ask Turn off question when set to FALSE.
 #' @return Invisible string of the file path of the database.
 #' @export
 #' @details This functions reads in the text files in the folder and writes
 #' them to the database.  
+#' 
+#' This function will overwrite a database if already present. 
 #'
 #' @examples
 #' \dontrun{
 #' wqb_create_epa_ecotox(data_path = "ecotox_ascii_12_15_2022")
 #' }
-wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE) {
+wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
+                                  ask = TRUE) {
   chk::chk_string(folder_path)
   chk::chk_string(data_path)
   
   dbname <- paste0(basename(data_path), ".sqlite")
   dbfile <- file.path(folder_path, dbname)
+  
+  if (ask){
+    file_present <- file.exists(dbfile)
+    if (file_present) {
+      # Ask to end or to continue and overwrite 
+      answer <- utils::askYesNo(
+        paste("The", dbname, "database is already present in", folder_path,". Overwrite it?")
+      )
+      # if no or cancel then exit function
+      if (!answer | is.na(answer)) {
+        chk::err("Permission denied. Exiting")
+      }
+    }
+  }
+  unlink(dbfile)
   dir.create(folder_path, showWarnings = FALSE)
   
   if (!quiet) {
@@ -57,7 +76,9 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE) {
   tbl_data <- db_tbl_core_structure()
   
   for (i in seq_along(files_data)) {
-    message("Adding ecotox table: ", name_data[i], "\n")
+    if (!quiet) {
+      message("Adding ecotox table: ", name_data[i], "\n")
+    }
     dt <- utils::read.table(
       files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
     )
@@ -80,7 +101,9 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE) {
   validation_data <- db_tbl_validation_structure()
 
   for (i in seq_along(files_validation)) {
-    message("Adding ecotox table: ", name_validation[i], "\n")
+    if (!quiet) {
+      message("Adding ecotox table: ", name_validation[i], "\n")
+    }
     dt <- utils::read.table(
       files_validation[i],
       header = TRUE,
@@ -100,6 +123,22 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE) {
       names(validation_data[i]), value = dt, append = TRUE, row.names = FALSE
     )
   }
+  
+  # add version info and downloaded day
+  meta_info <- tibble::tibble(
+    dl_date = as.character(Sys.time()),
+    dl_version = basename(data_path)
+  )
+  
+  query <- paste0(
+    "CREATE TABLE meta_info",
+    "(", paste(colnames(meta_info), collapse = ", "), 
+    ")"
+  )
+  DBI::dbExecute(con, query)
+  DBI::dbWriteTable(con, 
+    "meta_info", value = meta_info, append = TRUE, row.names = FALSE
+  )
 
   invisible(dbfile)
 }
