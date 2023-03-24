@@ -21,6 +21,7 @@
 #'   files. The default is your current working directory.
 #' @param version An integer to indicate which version you want to download. The
 #'   default is 1 which downloads the most recent version.
+#' @param ask Turn off question when set to FALSE.
 #' @return Invisible string of the file path the downloaded files were saved.
 #' @export
 #' @details You have the option of downloading older version of the data but
@@ -51,7 +52,7 @@
 #' # pull previous version of the database
 #' wqb_download_epa_ecotox("data_download", version = 2)
 #' }
-wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
+wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE) {
   chk::chk_string(file_path)
   chk::chk_whole_number(version)
   chk::chk_range(version, range = c(1, 4))
@@ -79,6 +80,20 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1) {
   file_url <- file.path(ftp_url, most_recent_version)
   file_name <-  file_info$file_name[version] 
   
+  if (ask){
+    dir_present <- dir.exists(file.path(file_path, file_name))
+    if (dir_present) {
+      # Ask to end or to continue and overwrite 
+      answer <- utils::askYesNo(
+        paste("The", file_name, "folder is already downloaded to", file_path,". Overwrite it?")
+      )
+      # if no or cancel then exit function
+      if (!answer | is.na(answer)) {
+        return(file.path(file_path, file_name))
+      }
+    }
+  }
+
   temp_zip <- file.path(
     withr::local_tempdir(),
     file_info$file[version]
@@ -126,11 +141,13 @@ unzip_folder_correction <- function(unzip_location_sub, file_name, file_path) {
     move_location <- file.path(file_path, file_name)
     dir.create(
       file.path(move_location, "validation"), 
-      recursive = TRUE
+      recursive = TRUE,
+      showWarnings = FALSE
     )
     file.copy(
       to = files_to_move,
-      from = files_from
+      from = files_from,
+      overwrite = TRUE
     )
   } else {
     files_from <- list.files(
@@ -145,11 +162,13 @@ unzip_folder_correction <- function(unzip_location_sub, file_name, file_path) {
     )
     dir.create(
       file.path(move_location, "validation"),
-      recursive = TRUE
+      recursive = TRUE,
+      showWarnings = FALSE
     )
     file.copy(
       to = files_to_move,
-      from = files_from
+      from = files_from,
+      overwrite = TRUE
     )
   }
   
