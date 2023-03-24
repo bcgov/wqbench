@@ -4,10 +4,12 @@
 \alias{wqb_standardize_effect}
 \title{Standardize type of Effect}
 \usage{
-wqb_standardize_effect(data)
+wqb_standardize_effect(data, quiet = FALSE)
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 A data frame

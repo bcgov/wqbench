@@ -18,6 +18,7 @@
 #' column.
 #'
 #' @param data A data frame
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return A data frame
 #' @export
 #' @details Check the resource document for the rules used to determine the 
@@ -27,7 +28,7 @@
 #' \dontrun{
 #' classified_data <- wqb_classify_duration(compiled_data)
 #' }
-wqb_classify_duration <- function(data) {
+wqb_classify_duration <- function(data, quiet = FALSE) {
   chk::check_data(
     data, 
     list(
@@ -36,6 +37,9 @@ wqb_classify_duration <- function(data) {
       simple_lifestage = c("", NA)
     )
   ) 
+  if (!quiet) {
+    message("Classify duration")
+  }
   
   data_classified <- data |>
     dplyr::mutate(

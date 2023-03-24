@@ -4,10 +4,12 @@
 \alias{wqb_classify_duration}
 \title{Classify Duration}
 \usage{
-wqb_classify_duration(data)
+wqb_classify_duration(data, quiet = FALSE)
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{quiet}{Turn off message when quiet set to TRUE.}
 }
 \value{
 A data frame

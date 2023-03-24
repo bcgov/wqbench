@@ -23,6 +23,7 @@
 #' @param version An integer to indicate which version you want to download. The
 #'   default is 1 which downloads the most recent version.
 #' @param folder_path Folder path to write to.  
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return A data frame
 #' @export
 #'
@@ -34,7 +35,8 @@
 #' }
 wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox", 
                                 version = 1, 
-                                folder_path = "~/Ecotoxicology/ecotox_db/") {
+                                folder_path = "~/Ecotoxicology/ecotox_db/",
+                                quiet = FALSE) {
   
   ### check if already exists
   ### ask to stop or to overwrite
@@ -49,17 +51,17 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
     data_path = data_path
   )
   
-  wqb_add_bc_species(database = database) 
-  wqb_add_bc_wqg(database = database)
-  wqb_add_concentration_endpoints(database = database)
-  wqb_add_lifestage(database = database) 
-  wqb_add_media(database = database)
-  wqb_add_trophic_group(database = database) 
-  wqb_add_duration_conversions(database = database)
-  wqb_add_conc_conversions(database = database)
+  wqb_add_bc_species(database = database, quiet = quiet) 
+  wqb_add_bc_wqg(database = database, quiet = quiet)
+  wqb_add_concentration_endpoints(database = database, quiet = quiet)
+  wqb_add_lifestage(database = database, quiet = quiet) 
+  wqb_add_media(database = database, quiet = quiet)
+  wqb_add_trophic_group(database = database, quiet = quiet) 
+  wqb_add_duration_conversions(database = database, quiet = quiet)
+  wqb_add_conc_conversions(database = database, quiet = quiet)
   
-  data <- wqb_compile_dataset(database = database) 
-  data <- wqb_classify_duration(data)
-  data <- wqb_standardize_effect(data)
+  data <- wqb_compile_dataset(database = database, quiet = quiet) 
+  data <- wqb_classify_duration(data, quiet = quiet)
+  data <- wqb_standardize_effect(data, quiet = quiet)
   data
 }

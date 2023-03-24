@@ -17,6 +17,7 @@
 #' Determine and apply factor needed to standardize the endpoints. 
 #'
 #' @param data A data frame
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return A data frame
 #' @export
 #' @details Check the resource document for details the rules used to determine 
@@ -27,7 +28,7 @@
 #' standardized_effect_data <- wqb_standardize_effect(data)
 #' standardized_effect_data <- wqb_standardize_effect(classified_data)
 #' }
-wqb_standardize_effect <- function(data) {
+wqb_standardize_effect <- function(data, quiet = FALSE) {
   chk::check_data(
     data, 
     list(
@@ -36,6 +37,9 @@ wqb_standardize_effect <- function(data) {
       ecological_group = factor("")
     )
   ) 
+  if (!quiet) {
+    message("Standardize type of effect")
+  }
   
   effect_std <- data |>
     dplyr::mutate(

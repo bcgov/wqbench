@@ -17,6 +17,7 @@
 #' Join database tables together and start filtering and cleaning data.
 #'
 #' @param database A string to the location of the database.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @return Invisible data frame
 #' @export
 #' @details Check the resource document more details on the data added, 
@@ -32,9 +33,12 @@
 #'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' ) 
 #' }
-wqb_compile_dataset <- function(database) {
+wqb_compile_dataset <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
+  if (!quiet) {
+    message("Compile data")
+  }
   
   on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
