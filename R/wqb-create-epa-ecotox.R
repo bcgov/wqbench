@@ -28,13 +28,13 @@
 #' \dontrun{
 #' wqb_create_epa_ecotox(data_path = "ecotox_ascii_12_15_2022")
 #' }
-wqb_create_epa_ecotox <- function(file_path = ".", data_path) {
-  chk::chk_string(file_path)
+wqb_create_epa_ecotox <- function(folder_path = ".", data_path) {
+  chk::chk_string(folder_path)
   chk::chk_string(data_path)
   
   dbname <- paste0(basename(data_path), ".sqlite")
-  dbfile <- file.path(file_path, dbname)
-  dir.create(file_path, showWarnings = FALSE)
+  dbfile <- file.path(folder_path, dbname)
+  dir.create(folder_path, showWarnings = FALSE)
   
   on.exit(DBI::dbDisconnect(con))
   con  <- DBI::dbConnect(
