@@ -13,7 +13,8 @@ wqb_summary_af(data)
 A data frame
 }
 \description{
-Summary Table of the Assessment Factor Values
+Create summary table of the species variation factor, ecological assessment
+factor and B.C. species factor.
 }
 \examples{
 \dontrun{

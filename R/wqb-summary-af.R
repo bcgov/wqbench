@@ -13,6 +13,9 @@
 # limitations under the License.
 
 #' Summary Table of the Assessment Factor Values
+#' 
+#' Create summary table of the species variation factor, ecological assessment 
+#' factor and B.C. species factor. 
 #'
 #' @param data A data frame
 #' @return A data frame

@@ -14,31 +14,17 @@
 
 #' Standardize type of Effect
 #' 
-#' Each concentration is divided by a factor to standardize the effect. The 
-#' factor is determined from the set of rules provided in the details. 
+#' Determine and apply factor needed to standardize the endpoints. 
 #'
-#' @param data A data frame that is the output of the `wqb_classify_duration()` 
-#'  function.
-#' @return Data frame
+#' @param data A data frame
+#' @return A data frame
 #' @export
-#' @details The data argument passed to this function should be the output of
-#'  `wqb_classify_duration()` and must at least contain the columns: 
-#'  `endpoint`, `duration_class`, and `ecological_group`.
-#'  
-#'  The `conc1_mean_std` value is divided by the factor determined in the rules
-#'  below and adds two columns to the data set 
-#'  `conc1_mean_std_effect_divide_factor` and `conc1_mean_std_effect`.
-#' 
-#' If duration is acute AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) AND group has (fish, amphibians, inverts or plants) then divide by 10
-#' If duration is acute AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) AND group has (algae) then divide by 5
-#' If duration is acute AND effect type has (NOEC, NOEL, MATC or EC/IC/LC x<20) then divide by 5
-#' If duration is chronic AND effect type has (LOEC, LOEL, MCIG or EC/IC/LC x≥20) then divide by 5
-#' If duration is chronic AND effect type has (NOEC, NOEL, MATC or EC/IC/LC x<20) then divide by 1
+#' @details Check the resource document for details the rules used to determine 
+#'  standardized the endpoints. This is Step 3. 
 #' 
 #' @examples
 #' \dontrun{
 #' standardized_effect_data <- wqb_standardize_effect(data)
-#' 
 #' standardized_effect_data <- wqb_standardize_effect(classified_data)
 #' }
 wqb_standardize_effect <- function(data) {
