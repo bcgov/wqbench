@@ -142,7 +142,7 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding duration conversions")
+    message("Adding: duration conversions to duration_unit_codes table")
   }
   DBI::dbExecute(con, "DROP TABLE duration_unit_codes;")
   DBI::dbExecute(

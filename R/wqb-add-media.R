@@ -83,7 +83,7 @@ wqb_add_media <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding media groups")
+    message("Adding: media groups to media_type_codes table")
   }
   DBI::dbExecute(con, "DROP TABLE media_type_codes;")
   DBI::dbExecute(

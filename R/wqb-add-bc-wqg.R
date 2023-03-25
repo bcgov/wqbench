@@ -125,7 +125,7 @@ wqb_add_bc_wqg <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding BC WQG")
+    message("Adding: BC WQG to chemicals table")
   }
   DBI::dbExecute(con, "DROP TABLE chemicals;")
   DBI::dbExecute(

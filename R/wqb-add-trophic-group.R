@@ -172,7 +172,7 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding trophic and ecological groups")
+    message("Adding: trophic and ecological groups to species table")
   }
   DBI::dbExecute(con, "DROP TABLE species;")
   DBI::dbExecute(

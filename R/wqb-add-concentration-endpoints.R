@@ -118,7 +118,7 @@ wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding concentration endpoint list")
+    message("Adding: concentration endpoints flag to endpoint_codes table")
   }
   DBI::dbExecute(con, "DROP TABLE endpoint_codes;")
   DBI::dbExecute(

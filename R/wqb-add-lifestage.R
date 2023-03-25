@@ -123,7 +123,7 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding simple life stage groups")
+    message("Adding: simple life stage groups to lifestage_codes table")
   }
   DBI::dbExecute(con, "DROP TABLE lifestage_codes;")
   DBI::dbExecute(

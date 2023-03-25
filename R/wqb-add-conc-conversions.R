@@ -154,7 +154,7 @@ wqb_add_conc_conversions <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding concentration conversions")
+    message("Adding: concentration conversions to concentration_unit_codes table")
   }
   DBI::dbExecute(con, "DROP TABLE concentration_unit_codes;")
   DBI::dbExecute(

@@ -105,7 +105,7 @@ wqb_add_bc_species <- function(database, quiet = FALSE) {
     row.names = FALSE
   )
   if (!quiet) {
-    message("Adding BC Species")
+    message("Adding: BC species to species table")
   }
   DBI::dbExecute(con, "DROP TABLE species;")
   DBI::dbExecute(

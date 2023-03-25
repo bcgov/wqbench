@@ -78,7 +78,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
   
   for (i in seq_along(files_data)) {
     if (!quiet) {
-      message("Adding ecotox table: ", name_data[i])
+      message("Adding: ecotox table ", name_data[i])
     }
     dt <- utils::read.table(
       files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
@@ -103,7 +103,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
 
   for (i in seq_along(files_validation)) {
     if (!quiet) {
-      message("Adding ecotox table: ", name_validation[i])
+      message("Adding: ecotox table ", name_validation[i])
     }
     dt <- utils::read.table(
       files_validation[i],
