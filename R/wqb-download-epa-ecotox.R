@@ -21,6 +21,7 @@
 #'   files. The default is your current working directory.
 #' @param version An integer to indicate which version you want to download. The
 #'   default is 1 which downloads the most recent version.
+#' @param quiet Turn off message when quiet set to TRUE.
 #' @param ask Turn off question when set to FALSE.
 #' @return Invisible string of the file path the downloaded files were saved.
 #' @export
@@ -52,7 +53,8 @@
 #' # pull previous version of the database
 #' wqb_download_epa_ecotox("data_download", version = 2)
 #' }
-wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE) {
+wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
+                                    quiet = FALSE) {
   chk::chk_string(file_path)
   chk::chk_whole_number(version)
   chk::chk_range(version, range = c(1, 4))
@@ -89,6 +91,9 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE) {
       )
       # if no or cancel then exit function
       if (!answer | is.na(answer)) {
+        if (!quiet) {
+          message("Skip downloading data files")
+        }
         return(file.path(file_path, file_name))
       }
     }
@@ -99,12 +104,14 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE) {
     file_info$file[version]
   )
   
-  message("Downloading...")
-  httr::GET(
-    url = file_url,
-    httr::write_disk(temp_zip, overwrite = TRUE),
-    httr::progress("down")
-  )
+  if (!quiet) {
+    message("Downloading...")
+    httr::GET(
+      url = file_url,
+      httr::write_disk(temp_zip, overwrite = TRUE),
+      httr::progress("down")
+    )
+  }
   
   unzip_location_sub <- file.path(withr::local_tempdir(), "unzip")
 
