@@ -56,7 +56,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
   dir.create(folder_path, showWarnings = FALSE)
   
   if (!quiet) {
-    message("Create SQLite database")
+    message("Creating SQLite database")
   }
   
   on.exit(DBI::dbDisconnect(con))
@@ -72,6 +72,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
   )
   
   files_data <- files[!grepl('release', files)]
+  files_data <- files_data[!grepl('download', files_data)]
   name_data <- gsub(".txt", "", basename(files_data))
   tbl_data <- db_tbl_core_structure()
   
@@ -123,19 +124,23 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       names(validation_data[i]), value = dt, append = TRUE, row.names = FALSE
     )
   }
-  # add version info and downloaded day
-  meta_data_download <- tibble::tibble(
-    dl_version = basename(data_path)
+   # add version info and downloaded day
+  dt <- utils::read.table(
+    file.path(data_path, "download_info.txt"),
+    header = TRUE,
+    sep = "|",
+    comment.char = "",
+    quote = ""
   )
-  
+
   query <- paste0(
-    "CREATE TABLE meta_data_download",
-    "(", paste(colnames(meta_data_download), collapse = ", "), 
+    "CREATE TABLE meta_data_dl",
+    "(", paste(colnames(dt), collapse = ", "),
     ")"
   )
   DBI::dbExecute(con, query)
-  DBI::dbWriteTable(con, 
-    "meta_data_download", value = meta_data_download, append = TRUE, row.names = FALSE
+  DBI::dbWriteTable(con,
+    "meta_data_dl", value = dt, append = TRUE, row.names = FALSE
   )
 
   invisible(dbfile)

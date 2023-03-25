@@ -92,7 +92,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
     dplyr::rename("media_description" = "description") |>
     tibble::tibble()
   
-  db_meta_data_download <- DBI::dbReadTable(con, "meta_data_download")
+  db_meta_data_download <- DBI::dbReadTable(con, "meta_data_dl")
   
   combined_data <- db_results |>
     # filter to only water  (aquatic) tests
@@ -239,7 +239,8 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
         levels = sort(unique(.data$ecological_group_class))
       ),
       # add meta info
-      dl_version = db_meta_data_download$dl_version
+      download_date = db_meta_data_download$download_date,
+      version = db_meta_data_download$version
     ) |>
     dplyr::select(
       "chemical_name", "test_cas",
@@ -267,7 +268,8 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       "reference_number", "reference_type", "author", "title", "source", 
       "publication_year",
       "additional_comments_tests", "additional_comments_results",
-      "dl_version"
+      "download_date",
+      "version"
     )
   
   compiled_data

@@ -89,7 +89,8 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
       "reference_number", "reference_type", "author", "title", "source", 
       "publication_year",
       "additional_comments_tests", "additional_comments_results",
-      "dl_version"
+      "download_date",
+      "version"
     )
   
   data_classified
