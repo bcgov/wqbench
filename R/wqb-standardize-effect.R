@@ -69,7 +69,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
     ) |>
     dplyr::select(
       "chemical_name", 
-      "cas" = "test_cas",
+      "cas",
       "latin_name", 
       "common_name",
       "endpoint", 

@@ -244,7 +244,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
     ) |>
     dplyr::select(
       "chemical_name", 
-      "test_cas",
+      "cas" = "test_cas",
       "test_id", 
       "result_id", 
       "endpoint", 
