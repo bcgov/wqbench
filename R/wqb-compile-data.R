@@ -175,7 +175,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
       "family", "genus", "species", "subspecies", "variety",
       "species_present_in_bc", 
-      "ecological_group_class", "ecological_group",
+      "ecological_group", "trophic_group",
       "lifestage_description", "simple_lifestage", 
       "media_type", "media_description", "media_type_group",
       "present_in_bc_wqg", 
@@ -192,7 +192,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
     # remove rows with no species genus
     dplyr::filter(!(.data$genus == "")) |>
     # remove rows with no ecological group 
-    dplyr::filter(!(is.na(.data$ecological_group))) |>
+    dplyr::filter(!(is.na(.data$trophic_group))) |>
     # remove rows with no duration value
     dplyr::filter(!(.data$duration_mean == "")) |> 
     dplyr::filter(!(.data$duration_mean == "NR")) |>
@@ -221,21 +221,21 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       ),
       # simple life stage should only match for amphibians and fish
       simple_lifestage = dplyr::case_when(
-        .data$ecological_group == "Invertebrate" ~ NA_character_,
-        .data$ecological_group == "Algae" ~ NA_character_,
-        .data$ecological_group == "Plant" ~ NA_character_,
+        .data$trophic_group == "Invertebrate" ~ NA_character_,
+        .data$trophic_group == "Algae" ~ NA_character_,
+        .data$trophic_group == "Plant" ~ NA_character_,
         TRUE ~ .data$simple_lifestage
       ),
       # set cas nums to be char as values too large to be ints
       test_cas = as.character(.data$test_cas),
       # set factor levels
+      trophic_group = factor(
+        .data$trophic_group, 
+        levels = sort(unique(.data$trophic_group))
+      ),
       ecological_group = factor(
         .data$ecological_group, 
         levels = sort(unique(.data$ecological_group))
-      ),
-      ecological_group_class = factor(
-        .data$ecological_group_class, 
-        levels = sort(unique(.data$ecological_group_class))
       ),
       # add meta info
       download_date = db_meta_data_download$download_date,
@@ -284,8 +284,8 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       #"subspecies", 
       #"variety",
       "species_present_in_bc", 
-      "ecological_group_class", 
-      "ecological_group",
+      "trophic_group", # = "ecological_group",
+      "ecological_group", # = "ecological_group_class", 
       "lifestage" = "lifestage_description", 
       "simple_lifestage", 
       "media_type", 

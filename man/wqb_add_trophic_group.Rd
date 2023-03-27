@@ -24,10 +24,10 @@ folder of the package. This file can be edited by adding or removing groups
 and classes. Do not add new columns, rename columns or rename the file.
 
 The trophic groups file must contain the columns: \code{class}, \code{order},
-\code{ecological_group}, and \code{ecological_group_class}. The \code{class} and \code{order}
+\code{trophic_group}, and \code{ecological_group}. The \code{class} and \code{order}
 columns are matched to the \code{class} and \code{tax_order} columns in the \code{species}
-table of the database and then adds the \code{ecological_group} and
-\code{ecological_group_class} columns to the species table.
+table of the database and then adds the \code{trophic_group} and
+\code{ecological_group} columns to the species table.
 }
 \examples{
 \dontrun{

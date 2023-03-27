@@ -34,7 +34,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
     list(
       endpoint = "",
       duration_class = "",
-      ecological_group = factor("")
+      trophic_group = factor("")
     )
   ) 
   if (!quiet) {
@@ -47,11 +47,11 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
       conc1_mean_std_effect_divide_factor = dplyr::case_when(
         stringr::str_detect(.data$duration_class, "(?i)^acute$") & 
-          stringr::str_detect(.data$ecological_group, "(?i)^amphibian$|^fish$|^invertebrate$|^plant$") & 
+          stringr::str_detect(.data$trophic_group, "(?i)^amphibian$|^fish$|^invertebrate$|^plant$") & 
           (stringr::str_detect(.data$endpoint, "(LOEC)|(LOEL)|(MCIG)") | (stringr::str_detect(.data$endpoint, "(EC)|(IC)|(LC)") & .data$endpoint_numeric >= 20))  ~ 10L,
         
         stringr::str_detect(.data$duration_class, "(?i)^acute$") & 
-          stringr::str_detect(.data$ecological_group, "(?i)^algae$") & 
+          stringr::str_detect(.data$trophic_group, "(?i)^algae$") & 
           (stringr::str_detect(.data$endpoint, "(LOEC)|(LOEL)|(MCIG)") | (stringr::str_detect(.data$endpoint, "(EC)|(IC)|(LC)") & .data$endpoint_numeric >= 20))  ~ 5L,
         
         stringr::str_detect(.data$duration_class, "(?i)^acute$") & 
@@ -81,8 +81,8 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "effect_conc_std_mg.L" = "conc1_mean_std_effect",
       "ACR" = "conc1_mean_std_effect_divide_factor", 
       "media_type", 
-      "trophic_group" = "ecological_group",
-      "ecological_group" = "ecological_group_class", 
+      "trophic_group",
+      "ecological_group", 
       "species_present_in_bc", 
       "author", 
       "title", 

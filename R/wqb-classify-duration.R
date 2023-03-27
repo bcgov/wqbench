@@ -32,8 +32,8 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
   chk::check_data(
     data, 
     list(
+      trophic_group = factor(""),
       ecological_group = factor(""),
-      ecological_group_class = factor(""),
       duration_hrs = 1,
       simple_lifestage = c("", NA)
     )
@@ -46,19 +46,19 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
     dplyr::mutate(
       duration_class = dplyr::case_when(
         # Fish and Amphibians
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$")  & duration_hrs <= 96 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^juvenile$|(?i)^adult$")  & duration_hrs >= 504 ~ "chronic",
-        stringr::str_detect(ecological_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^els$")  & duration_hrs >= 168 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^amphibian$|^fish$")  & duration_hrs <= 96 ~ "acute",
+        stringr::str_detect(trophic_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^juvenile$|(?i)^adult$")  & duration_hrs >= 504 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^amphibian$|^fish$") & stringr::str_detect(simple_lifestage, "(?i)^els$")  & duration_hrs >= 168 ~ "chronic",
         # Invertebrates
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & duration_hrs <= 96 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Planktonic Invertebrate") & duration_hrs > 96 ~ "chronic",
-        stringr::str_detect(ecological_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group_class, "(?i)Other") & duration_hrs >= 168 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^invertebrate$") & duration_hrs <= 96 ~ "acute",
+        stringr::str_detect(trophic_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group, "(?i)Planktonic Invertebrate") & duration_hrs > 96 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^invertebrate$") & stringr::str_detect(ecological_group, "(?i)Other") & duration_hrs >= 168 ~ "chronic",
         # Algae
-        stringr::str_detect(ecological_group, "(?i)^algae$") & duration_hrs <= 24 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^algae$") & duration_hrs > 24 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^algae$") & duration_hrs <= 24 ~ "acute",
+        stringr::str_detect(trophic_group, "(?i)^algae$") & duration_hrs > 24 ~ "chronic",
         # Plants
-        stringr::str_detect(ecological_group, "(?i)^plant$") & duration_hrs <= 48 ~ "acute",
-        stringr::str_detect(ecological_group, "(?i)^plant$") & duration_hrs > 168 ~ "chronic",
+        stringr::str_detect(trophic_group, "(?i)^plant$") & duration_hrs <= 48 ~ "acute",
+        stringr::str_detect(trophic_group, "(?i)^plant$") & duration_hrs > 168 ~ "chronic",
         # anything outside the specified category is set as acute
         TRUE ~ "acute"
       ) 
@@ -76,8 +76,8 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
       "latin_name", 
       "common_name", 
       "species_present_in_bc", 
-      "ecological_group_class", 
-      "ecological_group",
+      "ecological_group", 
+      "trophic_group",
       "lifestage", 
       "media_type", 
       "present_in_bc_wqg", 

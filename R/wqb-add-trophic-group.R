@@ -26,10 +26,10 @@
 #' and classes. Do not add new columns, rename columns or rename the file.
 #' 
 #' The trophic groups file must contain the columns: `class`, `order`, 
-#' `ecological_group`, and `ecological_group_class`. The `class` and `order`
+#' `trophic_group`, and `ecological_group`. The `class` and `order`
 #' columns are matched to the `class` and `tax_order` columns in the `species`
-#' table of the database and then adds the `ecological_group` and 
-#' `ecological_group_class` columns to the species table. 
+#' table of the database and then adds the `trophic_group` and 
+#' `ecological_group` columns to the species table. 
 #' 
 #' @examples
 #' \dontrun{
@@ -58,12 +58,12 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
       tax_order = stringr::str_squish(.data$tax_order)
     )
   
-  if ("ecological_group" %in% colnames(db_species)) {
+  if ("trophic_group" %in% colnames(db_species)) {
     stop(
       "Ecological group has already been added to the database"
     )
   }
-  if ("ecological_group_class" %in% colnames(db_species)) {
+  if ("ecological_group" %in% colnames(db_species)) {
     stop(
       "Ecological group has already been added to the database"
     )
@@ -83,30 +83,30 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     list(
       class = c("", NA),
       order = c("", NA),
-      ecological_group = "",
-      ecological_group_class = ""
+      trophic_group = "",
+      ecological_group = ""
     )
   )
   trophic_groups <- trophic_groups |>
     dplyr::mutate(
       class = stringr::str_squish(.data$class),
       order = stringr::str_squish(.data$order),
+      ecological_group = stringr::str_squish(.data$trophic_group),
       ecological_group = stringr::str_squish(.data$ecological_group),
-      ecological_group_class = stringr::str_squish(.data$ecological_group_class),
     )
   # select group where both have class and order 
   trophic_levels_class_order <- trophic_groups |> 
     dplyr::filter(!is.na(.data$class) & !is.na(.data$order)) |>
     dplyr::rename(
-      ecological_group_co = "ecological_group",
-      ecological_group_class_co = "ecological_group_class"
+      ecological_group_co = "trophic_group",
+      ecological_group_class_co = "ecological_group"
     )
   # select groups with only class 
   trophic_levels_class <- trophic_groups |> 
     dplyr::filter(is.na(.data$order)) |>
     dplyr::rename(
-      ecological_group_c = "ecological_group",
-      ecological_group_class_c = "ecological_group_class"
+      ecological_group_c = "trophic_group",
+      ecological_group_class_c = "ecological_group"
     ) |>
     dplyr::select(
       "class", "ecological_group_c", "ecological_group_class_c"
@@ -115,8 +115,8 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
   trophic_levels_order <- trophic_groups |> 
     dplyr::filter(is.na(.data$class)) |>
     dplyr::rename(
-      ecological_group_o = "ecological_group",
-      ecological_group_class_o = "ecological_group_class"
+      ecological_group_o = "trophic_group",
+      ecological_group_class_o = "ecological_group"
     ) |>
     dplyr::select(
       "order", "ecological_group_o", "ecological_group_class_o"
@@ -131,7 +131,7 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     ) |>
     dplyr::left_join(trophic_levels_order, by = c("tax_order" = "order")) |>
     dplyr::mutate(
-      ecological_group_class = dplyr::case_when(
+      ecological_group = dplyr::case_when(
         is.na(.data$ecological_group_class_c) & 
           is.na(.data$ecological_group_class_co) ~ .data$ecological_group_class_o,
         !is.na(.data$ecological_group_class_c) & 
@@ -139,7 +139,7 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
         !is.na(.data$ecological_group_class_c) & 
           !is.na(ecological_group_class_co) ~ .data$ecological_group_class_co
       ),
-      ecological_group = dplyr::case_when(
+      trophic_group = dplyr::case_when(
         is.na(.data$ecological_group_class_c) & 
           is.na(.data$ecological_group_class_co) ~ .data$ecological_group_o,
         !is.na(.data$ecological_group_class_c) & 
@@ -150,7 +150,7 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     ) |>
     dplyr::select(
       dplyr::all_of(colnames(db_species)),
-      "ecological_group_class", "ecological_group",
+      "ecological_group", "trophic_group",
     ) |>
     tibble::tibble()
   
