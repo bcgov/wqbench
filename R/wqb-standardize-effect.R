@@ -75,7 +75,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "endpoint", 
       "effect",
       "effect_conc_mg.L" = "conc1_mean_std_mg.L",
-      "lifestage" = "lifestage_description", 
+      "lifestage", 
       "duration_hrs", 
       "duration_class",
       "effect_conc_std_mg.L" = "conc1_mean_std_effect",
