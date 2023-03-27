@@ -240,7 +240,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       ),
       # add meta info
       download_date = db_meta_data_download$download_date,
-      version = db_meta_data_download$version
+      version = stringr::str_squish(db_meta_data_download$version)
     ) |>
     dplyr::select(
       "chemical_name", 
