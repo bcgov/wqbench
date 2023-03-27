@@ -76,7 +76,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "effect",
       "effect_conc_mg.L" = "conc1_mean_std_mg.L",
       "lifestage" = "lifestage_description", 
-      "duration_hrs" = "duration_mean_std", 
+      "duration_hrs", 
       "duration_class",
       "effect_conc_std_mg.L" = "conc1_mean_std_effect",
       "ACR" = "conc1_mean_std_effect_divide_factor", 

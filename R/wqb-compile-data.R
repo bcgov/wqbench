@@ -209,8 +209,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       conc1_mean = as.numeric(.data$conc1_mean),
       # convert duration units to hours
       duration_mean = as.numeric(.data$duration_mean),
-      duration_mean_std = .data$duration_mean * .data$duration_value_multiplier_to_hours,
-      duration_unit_std = "hours",
+      duration_hrs = .data$duration_mean * .data$duration_value_multiplier_to_hours,
       # convert concentration units to mg/L or ppm
       conc1_mean_std_mg.L = .data$conc1_mean * .data$conc_conversion_value_multiplier,
       # missing (NA) lifestages should be coded as adult
@@ -260,8 +259,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       #"conc2_unit",
       #"conc3_mean", 
       #"conc3_unit",
-      "duration_mean_std", 
-      "duration_unit_std",
+      "duration_hrs", 
       "duration_mean", 
       "duration_unit",
       "duration_units_to_keep", 
