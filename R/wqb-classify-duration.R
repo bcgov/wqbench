@@ -33,7 +33,7 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
     data, 
     list(
       ecological_group = factor(""),
-      ecological_group_class = "",
+      ecological_group_class = factor(""),
       duration_mean_std = 1,
       simple_lifestage = c("", NA)
     )
