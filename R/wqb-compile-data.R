@@ -212,7 +212,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       duration_mean_std = .data$duration_mean * .data$duration_value_multiplier_to_hours,
       duration_unit_std = "hours",
       # convert concentration units to mg/L or ppm
-      conc1_mean_std = .data$conc1_mean * .data$conc_conversion_value_multiplier,
+      conc1_mean_std_mg.L = .data$conc1_mean * .data$conc_conversion_value_multiplier,
       # missing (NA) lifestages should be coded as adult
       # doesn't appear to be any missing but adding in just in case
       simple_lifestage = dplyr::if_else(
@@ -254,7 +254,7 @@ wqb_compile_dataset <- function(database, quiet = FALSE) {
       "conc1_unit", 
       "conc_conversion_flag", 
       "conc_conversion_value_multiplier", 
-      "conc1_mean_std",
+      "conc1_mean_std_mg.L",
       "conc_conversion_unit",
       #"conc2_mean", 
       #"conc2_unit",

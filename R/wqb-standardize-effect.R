@@ -65,7 +65,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
         
         TRUE ~ NA_integer_
       ),
-      conc1_mean_std_effect = .data$conc1_mean_std / .data$conc1_mean_std_effect_divide_factor
+      conc1_mean_std_effect = .data$conc1_mean_std_mg.L / .data$conc1_mean_std_effect_divide_factor
     ) |>
     dplyr::select(
       "chemical_name", 
@@ -74,7 +74,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "common_name",
       "endpoint", 
       "effect",
-      "effect_conc_mg.L" = "conc1_mean_std",
+      "effect_conc_mg.L" = "conc1_mean_std_mg.L",
       "lifestage" = "lifestage_description", 
       "duration_hrs" = "duration_mean_std", 
       "duration_class",
