@@ -106,13 +106,13 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
   
   if (!quiet) {
     message("Downloading...")
-    httr::GET(
-      url = file_url,
-      httr::write_disk(temp_zip, overwrite = TRUE),
-      httr::progress("down")
-    )
   }
-  
+  httr::GET(
+    url = file_url,
+    httr::write_disk(temp_zip, overwrite = TRUE),
+    httr::progress("down")
+  )
+
   unzip_location_sub <- file.path(withr::local_tempdir(), "unzip")
 
   utils::unzip(
