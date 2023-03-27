@@ -275,5 +275,109 @@ test_that("amphibian els is acute under 168 hours and chronic over", {
   )
 })
 
+test_that("amphibian adult is acute under 504 hours and chronic over", {
+  reps <- 11
+  df <- data.frame(
+    "trophic_group" = factor(rep("amphibian", reps)),
+    "duration_hrs" = c(1, 95, 96, 97, 167, 168, 169, 503, 504, 505, 1000), 
+    "ecological_group" = factor(rep("other", reps)), 
+    "simple_lifestage" = rep("adult", reps),
+    "chemical_name" = rep(NA, reps),  
+    "cas" = rep(NA, reps),  
+    "endpoint" = rep(NA, reps),   
+    "effect" = rep(NA, reps),   
+    "effect_conc_mg.L" = rep(NA, reps),   
+    "organism_habitat" = rep(NA, reps),   
+    "species_number" = rep(NA, reps),   
+    "latin_name" = rep(NA, reps),   
+    "common_name" = rep(NA, reps),   
+    "species_present_in_bc" = rep(NA, reps),   
+    "lifestage" = rep(NA, reps),   
+    "media_type" = rep(NA, reps),   
+    "present_in_bc_wqg" = rep(NA, reps),   
+    "author" = rep(NA, reps),   
+    "title" = rep(NA, reps),   
+    "source" = rep(NA, reps),   
+    "publication_year" = rep(NA, reps),   
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps)
+  ) 
+  output <- wqb_classify_duration(df, quiet = TRUE)
+  expect_equal(
+    output$duration_class,
+    #hours   1        95       96       97       167     168      169      503     504         505        1000
+    c("acute", "acute", "acute", "acute", "acute", "acute", "acute", "acute", "chronic", "chronic", "chronic")
+  )
+})
 
+# Algae ----
+test_that("algae is acute under 24 hours and chronic over", {
+  reps <- 5
+  df <- data.frame(
+    "trophic_group" = factor(rep("algae", reps)),
+    "duration_hrs" = c(1, 23, 24, 25, 50), 
+    "ecological_group" = factor(rep("other", reps)), 
+    "simple_lifestage" = rep(NA_character_, reps),
+    "chemical_name" = rep(NA, reps),  
+    "cas" = rep(NA, reps),  
+    "endpoint" = rep(NA, reps),   
+    "effect" = rep(NA, reps),   
+    "effect_conc_mg.L" = rep(NA, reps),   
+    "organism_habitat" = rep(NA, reps),   
+    "species_number" = rep(NA, reps),   
+    "latin_name" = rep(NA, reps),   
+    "common_name" = rep(NA, reps),   
+    "species_present_in_bc" = rep(NA, reps),   
+    "lifestage" = rep(NA, reps),   
+    "media_type" = rep(NA, reps),   
+    "present_in_bc_wqg" = rep(NA, reps),   
+    "author" = rep(NA, reps),   
+    "title" = rep(NA, reps),   
+    "source" = rep(NA, reps),   
+    "publication_year" = rep(NA, reps),   
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps)
+  ) 
+  output <- wqb_classify_duration(df, quiet = TRUE)
+  expect_equal(
+    output$duration_class,
+#hours   1,       23,      24,     25,          50
+    c("acute", "acute", "acute", "chronic", "chronic")
+  )
+})
 
+# Plants ----
+test_that("plant is acute under 169 hours and chronic over", {
+  reps <- 8
+  df <- data.frame(
+    "trophic_group" = factor(rep("plant", reps)),
+    "duration_hrs" = c(1, 47, 48, 49, 167, 168, 169, 500), 
+    "ecological_group" = factor(rep("other", reps)), 
+    "simple_lifestage" = rep(NA_character_, reps),
+    "chemical_name" = rep(NA, reps),  
+    "cas" = rep(NA, reps),  
+    "endpoint" = rep(NA, reps),   
+    "effect" = rep(NA, reps),   
+    "effect_conc_mg.L" = rep(NA, reps),   
+    "organism_habitat" = rep(NA, reps),   
+    "species_number" = rep(NA, reps),   
+    "latin_name" = rep(NA, reps),   
+    "common_name" = rep(NA, reps),   
+    "species_present_in_bc" = rep(NA, reps),   
+    "lifestage" = rep(NA, reps),   
+    "media_type" = rep(NA, reps),   
+    "present_in_bc_wqg" = rep(NA, reps),   
+    "author" = rep(NA, reps),   
+    "title" = rep(NA, reps),   
+    "source" = rep(NA, reps),   
+    "publication_year" = rep(NA, reps),   
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps)
+  ) 
+  output <- wqb_classify_duration(df, quiet = TRUE)
+  expect_equal(
+    output$duration_class,
+#hours  1,        47,      48,      49,     167,     168,      169,       500
+    c("acute", "acute", "acute", "acute", "acute", "acute", "chronic", "chronic")
+  )
+})
