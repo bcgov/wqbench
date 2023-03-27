@@ -16,7 +16,7 @@
 #' 
 #' This function downloads the data, creates and adds all the data to the
 #' database, compiles, standardizes, and classifies the data. The output
-#' of this function is feed into the app. 
+#' of this function is fed into the app. 
 #'
 #' @param file_path A string of the file path location to save the downloaded
 #'   files. The default is your current working directory.
@@ -25,6 +25,8 @@
 #' @param folder_path Folder path to write to.  
 #' @param quiet Turn off message when quiet set to TRUE.
 #' @param ask Turn off question when set to FALSE.
+#' @param save_rds Saves the data set as a rds file in the folder_path. 
+#'   Turn off when set to FALSE. 
 #' @return A data frame
 #' @export
 #'
@@ -38,7 +40,8 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
                                 version = 1, 
                                 folder_path = "~/Ecotoxicology/ecotox_db/",
                                 quiet = FALSE,
-                                ask = TRUE) {
+                                ask = TRUE,
+                                save_rds = TRUE) {
 
   data_path <- wqb_download_epa_ecotox(
     file_path = file_path, version = version, ask = ask, quiet = quiet
@@ -63,5 +66,11 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
   data <- wqb_compile_dataset(database = database, quiet = quiet) 
   data <- wqb_classify_duration(data, quiet = quiet)
   data <- wqb_standardize_effect(data, quiet = quiet)
+  if (save_rds) {
+    saveRDS(
+      object = data,
+      file = file.path(folder_path, paste0(unique(data$version), ".rds"))
+    )
+  }
   data
 }

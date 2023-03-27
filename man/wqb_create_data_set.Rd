@@ -9,7 +9,8 @@ wqb_create_data_set(
   version = 1,
   folder_path = "~/Ecotoxicology/ecotox_db/",
   quiet = FALSE,
-  ask = TRUE
+  ask = TRUE,
+  save_rds = TRUE
 )
 }
 \arguments{
@@ -24,6 +25,9 @@ default is 1 which downloads the most recent version.}
 \item{quiet}{Turn off message when quiet set to TRUE.}
 
 \item{ask}{Turn off question when set to FALSE.}
+
+\item{save_rds}{Saves the data set as a rds file in the folder_path.
+Turn off when set to FALSE.}
 }
 \value{
 A data frame
@@ -31,7 +35,7 @@ A data frame
 \description{
 This function downloads the data, creates and adds all the data to the
 database, compiles, standardizes, and classifies the data. The output
-of this function is feed into the app.
+of this function is fed into the app.
 }
 \examples{
 \dontrun{
