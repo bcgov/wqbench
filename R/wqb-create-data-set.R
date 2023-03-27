@@ -41,7 +41,7 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
                                 ask = TRUE) {
 
   data_path <- wqb_download_epa_ecotox(
-    file_path = file_path, version = version, ask = ask
+    file_path = file_path, version = version, ask = ask, quiet = quiet
   )
   
   database <- wqb_create_epa_ecotox(
