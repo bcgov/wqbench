@@ -80,17 +80,11 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
       "ecological_group",
       "lifestage", 
       "media_type", 
-      #"media_description", 
-      #"media_type_group",
       "present_in_bc_wqg", 
-      "reference_number", 
-      "reference_type", 
       "author", 
       "title", 
       "source", 
       "publication_year",
-      "additional_comments_tests", 
-      "additional_comments_results",
       "download_date",
       "version"
     )
