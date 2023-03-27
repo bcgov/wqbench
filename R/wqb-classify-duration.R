@@ -68,7 +68,7 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
       "cas",
       "endpoint", 
       "effect",
-      "conc1_mean_std_mg.L",
+      "effect_conc_mg.L",
       "duration_hrs", 
       "duration_class",
       "organism_habitat",

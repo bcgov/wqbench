@@ -45,7 +45,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
     dplyr::mutate(
       endpoint_alpha = stringr::str_extract(.data$endpoint, "[:alpha:]+"),
       endpoint_numeric = stringr::str_extract(.data$endpoint, "[:digit:]+"),
-      conc1_mean_std_effect_divide_factor = dplyr::case_when(
+      acr = dplyr::case_when(
         stringr::str_detect(.data$duration_class, "(?i)^acute$") & 
           stringr::str_detect(.data$trophic_group, "(?i)^amphibian$|^fish$|^invertebrate$|^plant$") & 
           (stringr::str_detect(.data$endpoint, "(LOEC)|(LOEL)|(MCIG)") | (stringr::str_detect(.data$endpoint, "(EC)|(IC)|(LC)") & .data$endpoint_numeric >= 20))  ~ 10L,
@@ -65,7 +65,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
         
         TRUE ~ NA_integer_
       ),
-      conc1_mean_std_effect = .data$conc1_mean_std_mg.L / .data$conc1_mean_std_effect_divide_factor
+      effect_conc_std_mg.L = .data$effect_conc_mg.L / .data$acr
     ) |>
     dplyr::select(
       "chemical_name", 
@@ -74,12 +74,12 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "common_name",
       "endpoint", 
       "effect",
-      "effect_conc_mg.L" = "conc1_mean_std_mg.L",
+      "effect_conc_mg.L",
       "lifestage", 
       "duration_hrs", 
       "duration_class",
-      "effect_conc_std_mg.L" = "conc1_mean_std_effect",
-      "ACR" = "conc1_mean_std_effect_divide_factor", 
+      "effect_conc_std_mg.L",
+      "acr", 
       "media_type", 
       "trophic_group",
       "ecological_group", 
