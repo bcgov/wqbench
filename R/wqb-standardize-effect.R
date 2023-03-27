@@ -73,7 +73,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       "latin_name", 
       "common_name",
       "endpoint", 
-      "effect" = "effect_description",
+      "effect",
       "effect_conc_mg.L" = "conc1_mean_std",
       "lifestage" = "lifestage_description", 
       "duration_hrs" = "duration_mean_std", 

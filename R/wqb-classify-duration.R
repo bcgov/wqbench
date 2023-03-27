@@ -66,7 +66,8 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
     dplyr::select(
       "chemical_name", 
       "cas",
-      "test_id", "result_id", "endpoint", "effect", "effect_description",
+      "endpoint", 
+      "effect",
       "conc1_mean", "conc1_unit", 
       "conc_conversion_flag", "conc_conversion_value_multiplier", 
       "conc1_mean_std",
