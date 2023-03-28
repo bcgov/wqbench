@@ -6,92 +6,78 @@
 [![img](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
 <!-- badges: end -->
 
-The goal of wqbench is to …
-
 ## Installation
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("poissonconsulting/wqbench")
+devtools::install_github("bcgov/wqbench")
 ```
 
 ## Workflow
-
-This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(wqbench)
 ```
 
-### Compile Data Set
-
-Download the most recent database
+### Create Data Set for App
 
 ``` r
-wqb_download_epa_ecotox(file_path = "~/Ecotoxicology/ecotox", version = 2)
-```
-
-Create a SQLite database from the Downloaded Ecotox Data
-
-``` r
-database <- wqb_create_epa_ecotox(
-  file_path = "~/Ecotoxicology/ecotox_db/",
-  data_path = "~/Ecotoxicology/ecotox/ecotox_ascii_09_15_2022"
+data_set <- wqb_create_data_set(
+  version = 3
 )
 ```
 
-Add and update database
+The function will download the US EPA ECOTOX<sup>1</sup> database,
+create a local .sqlite database, add other data sources and filter
+conditions, clean and process the data, classify the duration and
+standardize the effect.
 
-- all these functions need to be run for the data set to compile.
+### Generate Benchmark
 
-``` r
-bc_species <- wqb_add_bc_species(database = database) 
-chem_bc_wqg <- wqb_add_bc_wqg(database = database)
-conc_endpoints <- wqb_add_concentration_endpoints(database = database)
-lifestage_codes <- wqb_add_lifestage(database = database) 
-media_groups <- wqb_add_media(database = database)
-trophic_groups <- wqb_add_trophic_group(database = database) 
-duration_unit_code_standardization <- wqb_add_duration_conversions(database = database)
-concentration_unit_code_standardization <- wqb_add_conc_conversions(database = database)
-data <- wqb_compile_dataset(database = database) 
-```
+#### SSD Example
 
 ``` r
-data <- wqb_classify_duration(data)
-data <- wqb_standardize_effect(data)
-data <- wqb_filter_chemical(data, "129909906")
+data <- wqb_filter_chemical(data_set, "13463677")
 data <- wqb_benchmark_method(data)
-data <- wqb_aggregate(data)
-data <- wqb_af_variation(data)
-data <- wqb_af_ecological(data)
-data <- wqb_af_bc_species(data)
+
+data_agg <- wqb_aggregate(data) 
+data_agg <- wqb_af(data_agg)
+benchmark <- wqb_generate_ctv(data_agg)
 ```
-
-# Generate Benchmark
-
-``` r
-benchmark <- wqb_generate_bench(data_agg)
-```
-
-# Plots
 
 Plot data set
 
 ``` r
-gp <- wqb_plot(data)
+wqb_plot(data)
 ```
 
-If the data uses the deterministic method to calculate the benchmark
-value
+Plot the results
 
 ``` r
-gp <- wqb_plot_det(data_agg)
+wqb_plot_det(data_agg)
 ```
 
-If the data uses the ssd method to calculate the benchmark value
+#### Deterministic Example
 
 ``` r
-gp <- wqb_plot_ssd(data_agg)
+data <- wqb_filter_chemical(data_set, "1000984359")
+data <- wqb_benchmark_method(data)
+
+data_agg <- wqb_aggregate(data) 
+data_agg <- wqb_af(data_agg)
+benchmark <- wqb_generate_ctv(data_agg)
+```
+
+Plot data set
+
+``` r
+wqb_plot(data)
+```
+
+Plot the results
+
+``` r
+wqb_plot_det(data_agg)
 ```
 
 ## Getting Help or Reporting an Issue
@@ -125,3 +111,12 @@ The code is released under the Apache License 2.0
 > WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 > implied. See the License for the specific language governing
 > permissions and limitations under the License.
+
+## Reference
+
+1.  Olker, J. H., Elonen, C. M., Pilli, A., Anderson, A., Kinziger, B.,
+    Erickson, S., Skopinski, M., Pomplun, A., LaLone, C. A., Russom, C.
+    L., & Hoff, D. (2022). The ECOTOXicology Knowledgebase: A Curated
+    Database of Ecologically Relevant Toxicity Tests to Support
+    Environmental Research and Risk Assessment. Environmental Toxicology
+    and Chemistry, 41(6):1520-1539. <https://doi.org/10.1002/etc.5324>
