@@ -82,8 +82,8 @@ wqb_plot_det(data_agg)
 
 #### Benchmark Value
 
-To calculate the benchmarck for the chemical, divide the ctv by each
-assessment factor.
+To calculate the benchmark for the chemical, divide the critical
+toxicity value (ctv) by each assessment factor.
 
 ``` r
 benchmark = ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
