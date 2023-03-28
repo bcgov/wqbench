@@ -98,8 +98,41 @@ test_that("The single species is aggregated to a single row with multiple lifest
   )
 })
 
+test_that("Two species is aggregated to a single row each with multiple lifestages and effects", {
+  reps <- 4
+  df <- data.frame(
+    "species_number" = c(1L, 1L, 2L, 2L),
+    "lifestage" = c("Egg", "Egg", "Larva", "Larva"),
+    "effect" = c("Mortality", "Growth", "Mortality", "Growth"),
+    "effect_conc_std_mg.L" = rep(1, reps),
+    "endpoint" = rep("NOEC", reps),
+    "method" = rep("SSD", reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps), 
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps) 
+  )
+  output <- wqb_aggregate(df)
+  expect_equal(
+    nrow(output),
+    2L
+  )
+})
+
 # SSD ----
-test_that("Highest priorty group (with EC05) selected", {
+test_that("Highest priorty group (with EC05) selected with ssd method", {
   reps <- 17
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -132,7 +165,7 @@ test_that("Highest priorty group (with EC05) selected", {
   )
 })
 
-test_that("Highest priorty group (with EC10) selected", {
+test_that("Highest priorty group (with EC10) selected with ssd method", {
   reps <- 17
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -165,7 +198,7 @@ test_that("Highest priorty group (with EC10) selected", {
   )
 })
 
-test_that("Highest priorty group (with IC10) selected", {
+test_that("Highest priorty group (with IC10) selected with ssd method", {
   reps <- 17
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -198,7 +231,7 @@ test_that("Highest priorty group (with IC10) selected", {
   )
 })
 
-test_that("Highest priorty group (with IC05) selected", {
+test_that("Highest priorty group (with IC05) selected with ssd method", {
   reps <- 17
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -231,7 +264,7 @@ test_that("Highest priorty group (with IC05) selected", {
   )
 })
 
-test_that("Second highest priorty group (with EC11) selected", {
+test_that("Second highest priorty group (with EC11) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -264,7 +297,7 @@ test_that("Second highest priorty group (with EC11) selected", {
   )
 })
 
-test_that("Second highest priorty group (with EC15) selected", {
+test_that("Second highest priorty group (with EC15) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -297,7 +330,7 @@ test_that("Second highest priorty group (with EC15) selected", {
   )
 })
 
-test_that("Second highest priorty group (with EC20) selected", {
+test_that("Second highest priorty group (with EC20) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -330,7 +363,7 @@ test_that("Second highest priorty group (with EC20) selected", {
   )
 })
 
-test_that("Second highest priorty group (with IC11) selected", {
+test_that("Second highest priorty group (with IC11) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -363,7 +396,7 @@ test_that("Second highest priorty group (with IC11) selected", {
   )
 })
 
-test_that("Second highest priorty group (with IC15) selected", {
+test_that("Second highest priorty group (with IC15) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -396,7 +429,7 @@ test_that("Second highest priorty group (with IC15) selected", {
   )
 })
 
-test_that("Second highest priorty group (with IC20) selected", {
+test_that("Second highest priorty group (with IC20) selected with ssd method", {
   reps <- 13
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -429,7 +462,7 @@ test_that("Second highest priorty group (with IC20) selected", {
   )
 })
 
-test_that("Third highest priorty group (with MATC) selected", {
+test_that("Third highest priorty group (with MATC) selected with ssd method", {
   reps <- 12
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -462,7 +495,7 @@ test_that("Third highest priorty group (with MATC) selected", {
   )
 })
 
-test_that("Fourth highest priorty group (with NOEC) selected", {
+test_that("Fourth highest priorty group (with NOEC) selected with ssd method", {
   reps <- 10
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -495,7 +528,7 @@ test_that("Fourth highest priorty group (with NOEC) selected", {
   )
 })
 
-test_that("Fourth highest priorty group (with NOEL) selected", {
+test_that("Fourth highest priorty group (with NOEL) selected with ssd method", {
   reps <- 10
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -528,7 +561,7 @@ test_that("Fourth highest priorty group (with NOEL) selected", {
   )
 })
 
-test_that("Fifth highest priorty group (with LOEC) selected", {
+test_that("Fifth highest priorty group (with LOEC) selected with ssd method", {
   reps <- 7
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -561,7 +594,7 @@ test_that("Fifth highest priorty group (with LOEC) selected", {
   )
 })
 
-test_that("Fifth highest priorty group (with LOEL) selected", {
+test_that("Fifth highest priorty group (with LOEL) selected with ssd method, move to confirm position doesn't matter", {
   reps <- 7
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -594,7 +627,7 @@ test_that("Fifth highest priorty group (with LOEL) selected", {
   )
 })
 
-test_that("Fifth highest priorty group (with MCIG) selected", {
+test_that("Fifth highest priorty group (with MCIG) selected with ssd method moved to confirm position doesn't matter", {
   reps <- 7
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -627,7 +660,7 @@ test_that("Fifth highest priorty group (with MCIG) selected", {
   )
 })
 
-test_that("Sixth highest priorty group (with EC21) selected", {
+test_that("Sixth highest priorty group (with EC21) selected with ssd method", {
   reps <- 5
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -660,7 +693,7 @@ test_that("Sixth highest priorty group (with EC21) selected", {
   )
 })
 
-test_that("Sixth highest priorty group (with IC21) selected", {
+test_that("Sixth highest priorty group (with IC21) selected with ssd method", {
   reps <- 5
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -693,7 +726,7 @@ test_that("Sixth highest priorty group (with IC21) selected", {
   )
 })
 
-test_that("Seventh highest priorty group (with LC19) selected", {
+test_that("Seventh highest priorty group (with LC19) selected with ssd method", {
   reps <- 3
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -726,7 +759,7 @@ test_that("Seventh highest priorty group (with LC19) selected", {
   )
 })
 
-test_that("Seventh highest priorty group (with LC08) selected", {
+test_that("Seventh highest priorty group (with LC08) selected with ssd method", {
   reps <- 3
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -759,7 +792,7 @@ test_that("Seventh highest priorty group (with LC08) selected", {
   )
 })
 
-test_that("Second priorty value (EC11) is picked regardless of concentration value and is highest value", {
+test_that("Second priorty value (EC11) is picked regardless of concentration value and is highest value with ssd method", {
   reps <- 3
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -792,7 +825,7 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
   )
 })
 
-test_that("Second priorty value (EC11) is picked regardless of concentration value when its the medium of the values", {
+test_that("Second priorty value (EC11) is picked regardless of concentration value when its the medium of the values with ssd method", {
   reps <- 3
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -825,7 +858,7 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
   )
 })
 
-test_that("Second priorty value (EC11) is picked regardless of concentration value when its the lowest of the values", {
+test_that("Second priorty value (EC11) is picked regardless of concentration value when its the lowest of the values with ssd method", {
   reps <- 3
   df <- data.frame(
     "species_number" = rep(1L, reps),
@@ -924,10 +957,10 @@ test_that("Choose highest priority group and calc geometric mean with 2 groups",
   )
 })
 
-test_that("Choose highest priority group and calc geometric mean", {
+test_that("Choose highest priority group and calc geometric mean with ssd method", {
   reps <- 7
   df <- data.frame(
-    "species_number" = c(rep(1L, reps), rep(1L, reps)),
+    "species_number" = rep(1L, reps),
     "lifestage" = c(rep("Egg", 3), rep("Larva", 4)),
     "effect" = rep("Mortality", reps),
     "effect_conc_std_mg.L" = c(5, 10, 0.4, 4, 9, 0.3, 0.5),
@@ -957,10 +990,40 @@ test_that("Choose highest priority group and calc geometric mean", {
   )
 })
 
+test_that("Choose different priority for each species with ssd method", {
+  reps <- 6
+  df <- data.frame(
+    "species_number" = c(1L, 1L, 1L, 2L, 2L, 2L),
+    "lifestage" = c(rep("Egg", 3), rep("Larva", 3)),
+    "effect" = rep("Mortality", reps),
+    "effect_conc_std_mg.L" = c(5, 10, 0.4, 9, 0.3, 0.5),
+    "endpoint" = c("MATC", "LC10", "EC30", "EC05", "MATC", "LC50"),
+    "method" = rep("SSD", reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps), 
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps) 
+  )
+  output <- wqb_aggregate(df)
+  expect_equal(
+    output$sp_aggre_conc_mg.L,
+    c(5, 9)
+  )
+})
+
 # Deterministic ----
-
-#  "endpoint" = c("EC05", "EC10", "IC5", "IC10", "EC11", "EC20", "IC11", "IC20", "MATC", "LOEC", "LOEL", "MCIG", "EC21", "IC21", "LC05", "LC19", "LC20", "LC21", "NOEC", "NOEL"),
-
 test_that("Choose highest priority (EC05) endpoint for det method", {
   reps <- 17
   df <- data.frame(
@@ -1200,7 +1263,7 @@ test_that("Choose 2nd priority (IC20) endpoint for det method, move to show orde
     "lifestage" = rep("Egg", reps),
     "effect" = rep("Mortality", reps),
     "effect_conc_std_mg.L" = c(3, 4, 14, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8),
-    "endpoint" = c("MATC", "LOEC", "IC11", "LOEL", "MCIG", "EC21", "IC21", "LC05", "LC19", "LC20", "LC21", "NOEC", "NOEL"),
+    "endpoint" = c("MATC", "LOEC", "IC20", "LOEL", "MCIG", "EC21", "IC21", "LC05", "LC19", "LC20", "LC21", "NOEC", "NOEL"),
     "method" = rep("Deterministic", reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -1693,7 +1756,7 @@ test_that("Choose highest priority group and calc geometric mean with 2 groups f
 test_that("Choose highest priority group and calc geometric mean for det method", {
   reps <- 7
   df <- data.frame(
-    "species_number" = c(rep(1L, reps), rep(1L, reps)),
+    "species_number" = rep(1L, reps),
     "lifestage" = c(rep("Egg", 3), rep("Larva", 4)),
     "effect" = rep("Mortality", reps),
     "effect_conc_std_mg.L" = c(5, 10, 0.4, 4, 9, 0.3, 0.5),
@@ -1720,5 +1783,106 @@ test_that("Choose highest priority group and calc geometric mean for det method"
   expect_equal(
     round(output$sp_aggre_conc_mg.L, 3),
     2.210
+  )
+})
+
+test_that("Choose different priority for each species with det method", {
+  reps <- 6
+  df <- data.frame(
+    "species_number" = c(1L, 1L, 1L, 2L, 2L, 2L),
+    "lifestage" = c(rep("Egg", 3), rep("Larva", 3)),
+    "effect" = rep("Mortality", reps),
+    "effect_conc_std_mg.L" = c(5, 10, 0.4, 9, 0.3, 0.5),
+    "endpoint" = c("MATC", "LC10", "EC30", "EC05", "MATC", "LC50"),
+    "method" = rep("SSD", reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps), 
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps) 
+  )
+  output <- wqb_aggregate(df)
+  expect_equal(
+    output$sp_aggre_conc_mg.L,
+    c(5, 9)
+  )
+})
+
+# Check method priority ----
+
+test_that("Ensure det method priority is used", {
+  reps <- 2
+  df <- data.frame(
+    "species_number" = rep(1L, reps),
+    "lifestage" = rep("Egg", reps),
+    "effect" = rep("Mortality", reps),
+    "effect_conc_std_mg.L" = c(5, 10),
+    "endpoint" = c("NOEL", "LOEL"),
+    "method" = rep("Deterministic", reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps), 
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps) 
+  )
+  output <- wqb_aggregate(df)
+  expect_equal(
+    output$sp_aggre_conc_mg.L,
+    10
+  )
+})
+
+test_that("Ensure ssd method priority is used", {
+  reps <- 2
+  df <- data.frame(
+    "species_number" = rep(1L, reps),
+    "lifestage" = rep("Egg", reps),
+    "effect" = rep("Mortality", reps),
+    "effect_conc_std_mg.L" = c(5, 10),
+    "endpoint" = c("NOEL", "LOEL"),
+    "method" = rep("SSD", reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps), 
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),   
+    "version" = rep(NA, reps) 
+  )
+  output <- wqb_aggregate(df)
+  expect_equal(
+    output$sp_aggre_conc_mg.L,
+    5
   )
 })
