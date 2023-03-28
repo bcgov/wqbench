@@ -42,7 +42,7 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
-benchmark <- wqb_generate_ctv(data_agg)
+ctv <- wqb_generate_ctv(data_agg)
 ```
 
 Plot data set
@@ -54,7 +54,7 @@ wqb_plot(data)
 Plot the results
 
 ``` r
-wqb_plot_det(data_agg)
+wqb_plot_ssd(data_agg)
 ```
 
 #### Deterministic Example
@@ -65,7 +65,7 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
-benchmark <- wqb_generate_ctv(data_agg)
+ctv <- wqb_generate_ctv(data_agg)
 ```
 
 Plot data set
@@ -78,6 +78,26 @@ Plot the results
 
 ``` r
 wqb_plot_det(data_agg)
+```
+
+#### Benchmark Value
+
+To calculate the benchmarck for the chemical, divide the ctv by each
+assessment factor.
+
+``` r
+benchmark = ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
+```
+
+*SSD* method generates a lower and upper confidence interval
+*Deterministic* method only generates an estimate
+
+#### Summary Tables
+
+``` r
+wqb_summary_trophic_species(data_agg)
+wqb_summary_trophic_groups(data_agg)
+wqb_summary_af(data_agg)
 ```
 
 ## Getting Help or Reporting an Issue
