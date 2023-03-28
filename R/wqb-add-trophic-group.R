@@ -91,7 +91,7 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     dplyr::mutate(
       class = stringr::str_squish(.data$class),
       order = stringr::str_squish(.data$order),
-      ecological_group = stringr::str_squish(.data$trophic_group),
+      trophic_group = stringr::str_squish(.data$trophic_group),
       ecological_group = stringr::str_squish(.data$ecological_group),
     )
   # select group where both have class and order 
