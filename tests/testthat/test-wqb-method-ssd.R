@@ -127,4 +127,3 @@ test_that("fit errors if conc values are missing", {
     1.89
   )
 })
-
