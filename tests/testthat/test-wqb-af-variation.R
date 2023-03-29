@@ -54,7 +54,26 @@ test_that("No missing species_number are allowed ", {
   )
 })
 
-
+test_that("Column is added", {
+  reps <- 1L
+  df <- data.frame(
+    "trophic_group" = factor(c("Fish")),
+    "species_number" = 1:reps,
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "sp_aggre_conc_mg.L" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "method" = rep(NA, reps)
+  )
+  output <- wqb_af_variation(df)
+  expect_true(
+    "af_variation" %in% colnames(output)
+  )
+})
 
 test_that("Single trophic level (fish) and single species gives af of 50", {
   reps <- 1L

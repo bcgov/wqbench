@@ -33,6 +33,30 @@ test_that("No missing ecological_group are allowed ", {
   )
 })
 
+test_that("both af columns are added", {
+  reps <- 3
+  df <- data.frame(
+    "ecological_group" = factor("Other", "Other", "Other"),
+    "species_number" = rep(NA, reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "sp_aggre_conc_mg.L" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "method" = rep(NA, reps)
+  )
+  output <- wqb_af_ecological(df)
+  expect_true(
+    "af_salmon" %in% colnames(output)
+  )
+  expect_true(
+    "af_planktonic" %in% colnames(output)
+  )
+})
+
 test_that("af_salmon is 2 and af_plankton is 2 because only other group present", {
   reps <- 3
   df <- data.frame(

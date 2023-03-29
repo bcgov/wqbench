@@ -54,6 +54,27 @@ test_that("No missing bc species present are allowed ", {
   )
 })
 
+test_that("Column is added", {
+  reps <- 5L
+  df <- data.frame(
+    "species_number" = 1L:reps,
+    "species_present_in_bc" = c(rep(FALSE, 5L)), 
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "sp_aggre_conc_mg.L" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA_character_, reps)),
+    "ecological_group" = rep(NA, reps),
+    "method" = rep(NA, reps)
+  )
+  output <- wqb_af_bc_species(df)
+  expect_true(
+    "af_bc_species" %in% colnames(output)
+  )
+})
+
 test_that("af is 3 because there are 0 bc species present out of the 5 species", {
   reps <- 5L
   df <- data.frame(
