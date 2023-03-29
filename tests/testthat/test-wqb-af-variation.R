@@ -320,7 +320,7 @@ test_that("Single trophic level (fish) and six species gives af of 10", {
   )
 })
 
-test_that("Single trophic level (fish) and seven species gives af of 10", {
+test_that("Single trophic level (fish) and seven species gives af of 5", {
   reps <- 7L
   df <- data.frame(
     "trophic_group" = factor(rep("Fish", reps)),
@@ -343,7 +343,7 @@ test_that("Single trophic level (fish) and seven species gives af of 10", {
 })
 
 
-test_that("Single trophic level (fish) and 20 species gives af of 10", {
+test_that("Single trophic level (fish) and 20 species gives af of 5", {
   reps <- 20L
   df <- data.frame(
     "trophic_group" = factor(rep("Fish", reps)),
