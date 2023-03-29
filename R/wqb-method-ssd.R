@@ -92,6 +92,7 @@ wqb_ssd_fit <- function(data) {
 #'  hc5 <- wqb_ssd_hc5(fit)
 #' }
 wqb_ssd_hc5 <- function(fit, nboot = 10000) {
-  ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
+  tbl <- ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
     dplyr::filter(.data$percent == 5)
+  tbl
 }
