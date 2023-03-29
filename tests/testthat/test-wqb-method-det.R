@@ -54,6 +54,28 @@ test_that("conc column can't have missing values", {
   )
 })
 
+
+test_that("errors if ssd present in method", {
+  reps <- 4L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = rep(NA_real_, reps),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  expect_error(
+    wqb_method_det(df),
+    "must have values matching 'Deterministic'"
+  )
+})
+
 test_that("lowest value is selected", {
   reps <- 4L
   df <- data.frame(
@@ -173,3 +195,23 @@ test_that("single value is selected", {
     NA_real_
   )
 })
+
+test_that("output is a table", {
+  reps <- 1L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(0.01),
+    "method" = rep("Deterministic", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- wqb_method_det(df)
+  expect_s3_class(output , "tbl_df")
+})
+
