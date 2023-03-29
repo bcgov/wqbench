@@ -63,11 +63,7 @@ wqb_af_variation <- function(data) {
     }
   }
   ## Trophic Level 2 ----
-  if (no_trophic_levels == 2) {
-    if (no_species == 1) {
-      data$af_variation <- 50L
-      return(data)
-    }
+  if (no_trophic_levels == 2) { ## not possible so remove
     if (no_species %in% 2:3) {
       data$af_variation <- 10L
       return(data)
@@ -82,12 +78,8 @@ wqb_af_variation <- function(data) {
     }
   }
   ## Trophic Level 3 ----
-  if (no_trophic_levels == 3) {
-    if (no_species == 1) {
-      data$af_variation <- 50L
-      return(data)
-    }
-    if (no_species %in% 2:3) {
+  if (no_trophic_levels == 3) { 
+    if (no_species %in% 2:3) { 
       data$af_variation <- 5L
       return(data)
     }
