@@ -45,6 +45,7 @@ wqb_method_det <- function(data) {
     ) |>
     dplyr::select(
       "ctv_est_mg.L", "ctv_lcl_mg.L", "ctv_ucl_mg.L"
-    )
+    ) |>
+    tibble::tibble()
   value 
 }
