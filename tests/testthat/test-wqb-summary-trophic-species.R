@@ -28,7 +28,6 @@ test_that("error when missing value in trophic group column", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps),
     "sp_aggre_conc_mg.L" = rep(NA, reps),
-    
     "ecological_group" = rep(NA, reps),
     "method" = rep(NA, reps)
   )
@@ -54,7 +53,6 @@ test_that("error with character trophic groups", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps),
     "sp_aggre_conc_mg.L" = rep(NA, reps),
-    
     "ecological_group" = rep(NA, reps),
     "method" = rep(NA, reps)
   )
@@ -80,7 +78,6 @@ test_that("number of species outputs correct counts", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps),
     "sp_aggre_conc_mg.L" = rep(NA, reps),
-    
     "ecological_group" = rep(NA, reps),
     "method" = rep(NA, reps)
   )
@@ -114,7 +111,6 @@ test_that("number of species outputs correct counts with fish and amphibian", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps),
     "sp_aggre_conc_mg.L" = rep(NA, reps),
-    
     "ecological_group" = rep(NA, reps),
     "method" = rep(NA, reps)
   )
@@ -144,7 +140,6 @@ test_that("number of species outputs correct counts with all groups", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps),
     "sp_aggre_conc_mg.L" = rep(NA, reps),
-    
     "ecological_group" = rep(NA, reps),
     "method" = rep(NA, reps)
   )

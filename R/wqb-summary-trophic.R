@@ -28,7 +28,8 @@ wqb_summary_trophic_groups <- function(data) {
     list(
       ecological_group = factor(""),
       trophic_group = factor(""),
-      species_present_in_bc = TRUE
+      species_present_in_bc = TRUE,
+      latin_name = ""
     )
   ) 
   
@@ -78,7 +79,11 @@ wqb_summary_trophic_groups <- function(data) {
         Result = paste(sort(unique(trophic_group_names)), collapse = ", ")
       )
     ) |>
-    dplyr::arrange(dplyr::desc(.data$Consideration))
+    dplyr::arrange(dplyr::desc(.data$Consideration)) |>
+    dplyr::mutate(
+      Consideration = dplyr::if_else(Consideration == "Salmonid", "Salmonid(s)", Consideration),
+      Consideration = dplyr::if_else(Consideration == "Planktonic Invertebrates", "Planktonic Invertebrate(s)", Consideration)
+    )
   
   
   summary_tbl
