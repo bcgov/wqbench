@@ -37,7 +37,6 @@ wqb_clean_data <- function(data, quiet = FALSE) {
     message("Clean data")
   }
  
-  
   compiled_data <- data |>
     # remove missing concentrations
     dplyr::filter(!(.data$conc1_mean == "NR")) |>
