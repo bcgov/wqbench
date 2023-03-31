@@ -4,7 +4,7 @@
 \name{wqbench-package}
 \alias{wqbench}
 \alias{wqbench-package}
-\title{wqbench: Compile, clean and model ecotoxicology data for calculating aquatic life benchmarks}
+\title{wqbench: Calculate Aquatic Life Benchmarks}
 \description{
 Download recent versions of the US EPA ECOTOX database. Clean, standardize and classify data so values are comparable. Use a SSD or deterministic method to determine the critical toxicity value and assessment factors to compute the aquatic life water quality benchmark for a compound.
 }
