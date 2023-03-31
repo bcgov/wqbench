@@ -13,6 +13,8 @@ test_that("error when version lower then 1 is passed", {
 })
 
 test_that("folder is downloaded", {
+  skip_if_offline("https://gaftp.epa.gov/ecotox/")
+  
   withr::defer(unlink(write_folder, recursive = TRUE))
   write_folder <- withr::local_tempdir()
   expect_message(
