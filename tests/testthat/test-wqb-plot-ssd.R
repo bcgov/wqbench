@@ -13,6 +13,8 @@
 # limitations under the License.
 
 test_that("type matches ggplot", {
+  skip_if_testing_quick()
+  
   reps <- 6L
   df <- data.frame(
     "sp_aggre_conc_mg.L" = c(1, 2, 3, 4, 5, 1),

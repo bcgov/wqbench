@@ -96,7 +96,9 @@ test_that("fit errors if conc values are missing", {
   )
 })
 
-test_that("fit errors if conc values are missing", {
+test_that("values match up", {
+  skip_if_testing_quick()
+  
   set.seed(10)
   reps <- 6L
   df <- data.frame(

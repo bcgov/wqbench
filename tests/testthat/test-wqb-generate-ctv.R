@@ -85,6 +85,8 @@ test_that("det method is used when method is deterministic", {
 })
 
 test_that("ssd method is used when method is deterministic", {
+  skip_if_testing_quick()
+  
   set.seed(10)
   reps <- 6L
   df <- data.frame(
