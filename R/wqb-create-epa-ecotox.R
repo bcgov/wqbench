@@ -44,7 +44,8 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
     if (file_present) {
       # Ask to end or to continue and overwrite 
       answer <- utils::askYesNo(
-        paste("The", dbname, "database is already present in", folder_path,". Overwrite it?")
+        paste("The", dbname, "database is already present in", folder_path, 
+              ". Overwrite it?")
       )
       # if no or cancel then exit function
       if (!answer | is.na(answer)) {
@@ -84,13 +85,14 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
     )
     query <- paste0(
-      "CREATE TABLE ", names(tbl_data[i]), 
+      "CREATE TABLE ", names(tbl_data[name_data[i]]), 
       "(", paste(colnames(dt), collapse = ", "), 
-      ", PRIMARY KEY (", tbl_data[i], "))"
+      ", PRIMARY KEY (", tbl_data[name_data[[i]]], "))"
     )
     DBI::dbExecute(con, query)
     DBI::dbWriteTable(con, 
-      names(tbl_data[i]), value = dt, append = TRUE, row.names = FALSE
+      names(tbl_data[name_data[i]]), value = dt, append = TRUE, 
+      row.names = FALSE
     )
   }
   
@@ -112,37 +114,41 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       comment.char = "",
       quote = ""
     )
-    if (!is.null(validation_data[[i]])) {
+    
+    if (!is.null(validation_data[[name_validation[i]]])) {
       query <- paste0(
-        "CREATE TABLE [", names(validation_data[i]), 
+        "CREATE TABLE [", names(validation_data[name_validation[i]]), 
         "] (", paste(colnames(dt), collapse = ", "), 
-        ", PRIMARY KEY (", validation_data[[i]], "))"
+        ", PRIMARY KEY (", validation_data[[name_validation[i]]], "))"
       )
       DBI::dbExecute(con, query)
     }
     DBI::dbWriteTable(con, 
-      names(validation_data[i]), value = dt, append = TRUE, row.names = FALSE
+      names(validation_data[name_validation[i]]), value = dt, append = TRUE, 
+      row.names = FALSE
     )
   }
    # add version info and downloaded day
-  dt <- utils::read.table(
-    file.path(data_path, "download_info.txt"),
-    header = TRUE,
-    sep = "|",
-    comment.char = "",
-    quote = ""
-  )
-
-  query <- paste0(
-    "CREATE TABLE meta_data_dl",
-    "(", paste(colnames(dt), collapse = ", "),
-    ")"
-  )
-  DBI::dbExecute(con, query)
-  DBI::dbWriteTable(con,
-    "meta_data_dl", value = dt, append = TRUE, row.names = FALSE
-  )
-
+  if (grepl("download_info.txt", file.path(data_path, "download_info.txt"))) {
+    dt <- utils::read.table(
+      file.path(data_path, "download_info.txt"),
+      header = TRUE,
+      sep = "|",
+      comment.char = "",
+      quote = ""
+    )
+    
+    query <- paste0(
+      "CREATE TABLE meta_data_dl",
+      "(", paste(colnames(dt), collapse = ", "),
+      ")"
+    )
+    DBI::dbExecute(con, query)
+    DBI::dbWriteTable(con,
+      "meta_data_dl", value = dt, append = TRUE, row.names = FALSE
+    )
+  }
+  
   invisible(dbfile)
 }
 
@@ -160,7 +166,6 @@ db_tbl_core_structure <- function() {
   )
 }
 
-### there are about 40 reference/validation tables but not all being pk'ed
 db_tbl_validation_structure <- function() {
   # names are table names, values are primary keys 
   list(
@@ -191,7 +196,7 @@ db_tbl_validation_structure <- function() {
     "organic_matter_type_codes" = NULL,
     "organism_source_codes" = "code",
     "radio_label_codes" = NULL,
-    "references" = "reference_number", # make sure tbl name isnt issue
+    "references" = "reference_number",
     "response_site_codes" = "code",
     "sample_size_unit_codes" = NULL,
     "season_codes" = NULL,
@@ -206,6 +211,3 @@ db_tbl_validation_structure <- function() {
     "weight_unit_codes" = NULL
   )
 }
-
-
-
