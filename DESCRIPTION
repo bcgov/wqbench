@@ -1,5 +1,5 @@
 Package: wqbench
-Title: Compile, clean and model ecotoxicology data for calculating aquatic life benchmarks
+Title: Calculate Aquatic Life Benchmarks
 Version: 0.0.0.9000
 Authors@R: c(
   person("Province of British Columbia", role = "cph"),
