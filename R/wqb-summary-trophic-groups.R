@@ -81,10 +81,9 @@ wqb_summary_trophic_groups <- function(data) {
     ) |>
     dplyr::arrange(dplyr::desc(.data$Consideration)) |>
     dplyr::mutate(
-      Consideration = dplyr::if_else(Consideration == "Salmonid", "Salmonid(s)", Consideration),
-      Consideration = dplyr::if_else(Consideration == "Planktonic Invertebrates", "Planktonic Invertebrate(s)", Consideration)
+      Consideration = dplyr::if_else(.data$Consideration == "Salmonid", "Salmonid(s)", .data$Consideration),
+      Consideration = dplyr::if_else(.data$Consideration == "Planktonic Invertebrates", "Planktonic Invertebrate(s)", .data$Consideration)
     )
-  
   
   summary_tbl
 }
