@@ -24,13 +24,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' data_compiled <- wqb_clean_data(
-#'  database = "ecotox_ascii_09_15_2022.sqlite"
-#' ) 
-#' 
-#' data_compiled <- wqb_clean_data(
-#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-#' ) 
+#' data <- wqb_clean_data(data) 
 #' }
 wqb_clean_data <- function(data, quiet = FALSE) {
   if (!quiet) {
