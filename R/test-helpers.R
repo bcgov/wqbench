@@ -87,7 +87,7 @@ create_clean_test_data <- function(update_vals = list(0)) {
     download_date = NA,
     version = NA_character_
   )
-  z <- modifyList(x, update_vals)
+  z <- utils::modifyList(x, update_vals)
   data.frame(z)
 } 
 
