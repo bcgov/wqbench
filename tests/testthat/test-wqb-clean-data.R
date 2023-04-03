@@ -491,3 +491,116 @@ test_that("trophic group is a factor", {
     "factor"
   )
 })
+
+test_that("test with sample data", {
+  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+    dplyr::arrange(chemical_name)
+  expect_equal(
+    nrow(output),
+    18L
+  )
+  expect_equal(
+    signif(output$effect_conc_mg.L, 4),
+    signif(c(
+      1.6650,
+      0.015,
+      0.0404,
+      0.179,
+      30.4,
+      1,
+      10,
+      0.1000,
+      0.392,
+      2,
+      0.507,
+      0.56,
+      99.4,
+      1.75,
+      0.15,
+      2,
+      18.3,
+      0.93
+    ), 4)
+  )
+  expect_equal(
+    output$duration_hrs,
+    c(20L, 672L, 96L, 1680L, 3L, 24L, 96L, 168L, 72L, 72L, 2304L, 96L, 24L, 96L, 
+      240L, 168L, 96L, 336L)
+  )
+  expect_equal(
+    class(output$trophic_group),
+    "factor"
+  )
+  expect_equal(
+    class(output$ecological_group),
+    "factor"
+  )
+  expect_equal(
+    output$simple_lifestage[output$trophic_group == "Algae"],
+    c(NA_character_, NA_character_)
+  )
+  expect_equal(
+    output$simple_lifestage[output$trophic_group == "Invertebrate"],
+    c(NA_character_, NA_character_, NA_character_)
+  )
+  expect_equal(
+    output$simple_lifestage[output$trophic_group == "Plant"],
+    c(NA_character_)
+  )
+  expect_true(
+    all(!is.na(output$simple_lifestage[output$trophic_group == "Fish"]))
+  )
+  expect_true(
+    all(!is.na(output$simple_lifestage[output$trophic_group == "Amphibian"]))
+  )
+})
+
+test_that("test sample data selected duration correct from study and observed values", {
+  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+    dplyr::arrange(chemical_name)
+  expect_equal(
+    output$duration_mean[output$chemical_name == "2,3,4,5,6-Pentachlorophenol"],
+    20
+  )
+  expect_equal(
+    output$duration_mean[output$cas == "79622596" & output$effect == "Population"],
+    10
+  )
+  expect_equal(
+    output$duration_hrs[output$cas == "79622596" & output$effect == "Population"],
+    1680
+  )
+  expect_equal(
+    output$duration_mean[output$cas == "122349"],
+    72
+  )
+  expect_equal(
+    output$duration_mean[output$cas == "420042"],
+    96
+  )
+  expect_equal(
+    output$duration_hrs[output$cas == "420042"],
+    2304
+  )
+})
+
+test_that("test sample data conc conv executed", {
+  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+    dplyr::arrange(chemical_name)
+  expect_equal(
+    output$conc1_mean[output$cas == "151213"],
+    0.150
+  )
+  expect_equal(
+    output$effect_conc_mg.L[output$cas == "151213"],
+    0.150
+  )
+  expect_equal(
+    output$conc1_mean[output$cas == "87865"],
+    1665.0
+  )
+  expect_equal(
+    output$effect_conc_mg.L[output$cas == "87865"],
+    1.6650
+  )
+})
