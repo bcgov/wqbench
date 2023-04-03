@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Compile Data 
+#' Join Data 
 #'
 #' Join database tables together and start filtering and cleaning data.
 #'
@@ -93,6 +93,47 @@ wqb_join_data <- function(database, quiet = FALSE) {
   
   db_meta_data_download <- DBI::dbReadTable(con, "meta_data_dl")
   
+  data <- join_data(db_results, db_tests, db_endpoint_codes, db_species,
+                    db_lifestage_codes, db_chemicals, db_duration_unit_codes,
+                    db_concentration_unit_codes, db_references,
+                    db_effect_codes, db_media_type_codes,
+                    db_meta_data_download)
+  
+  data
+}
+
+#' Join Data 
+#'
+#' Internal to wqb_join_data() to allow for testing. 
+#'
+#' @param db_results A data frame
+#' @param db_tests A data frame
+#' @param db_endpoint_codes A data frame
+#' @param db_species A data frame
+#' @param db_lifestage_codes A data frame
+#' @param db_chemicals A data frame
+#' @param db_duration_unit_codes A data frame
+#' @param db_concentration_unit_codes A data frame
+#' @param db_references A data frame
+#' @param db_effect_codes A data frame
+#' @param db_media_type_codes A data frame
+#' @param db_meta_data_download A data frame
+#' @return Invisible data frame
+#'
+#' @examples
+#' \dontrun{
+#' data <- wqb_join_data(
+#'  db_results, db_tests, db_endpoint_codes, db_species, db_lifestage_codes, 
+#'  db_chemicals, db_duration_unit_codes, db_concentration_unit_codes, 
+#'  db_references, db_effect_codes, db_media_type_codes, db_meta_data_download
+#' ) 
+#' }
+join_data <- function(db_results, db_tests, db_endpoint_codes, db_species,
+                      db_lifestage_codes, db_chemicals, db_duration_unit_codes,
+                      db_concentration_unit_codes, db_references,
+                      db_effect_codes, db_media_type_codes,
+                      db_meta_data_download) {
+  
   joined_data <- db_results |>
     # filter to only water  (aquatic) tests
     dplyr::left_join(db_tests, by = "test_id") |>
@@ -101,7 +142,10 @@ wqb_join_data <- function(database, quiet = FALSE) {
     dplyr::left_join(db_endpoint_codes, by = c("endpoint" = "code")) |>
     dplyr::filter(.data$concentration_flag) |>
     # clean up asterick endpoints
-    dplyr::mutate(endpoint = stringr::str_replace(.data$endpoint, "\\*", "")) |>
+    
+    ### remove
+    ###dplyr::mutate(endpoint = stringr::str_replace(.data$endpoint, "\\*", "")) |>
+    
     # add species info
     dplyr::left_join(db_species, by = "species_number") |>
     # add life stage info
@@ -185,4 +229,6 @@ wqb_join_data <- function(database, quiet = FALSE) {
     )
   
   joined_data
+  
 }
+

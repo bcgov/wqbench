@@ -2,7 +2,7 @@
 % Please edit documentation in R/wqb-join-data.R
 \name{wqb_join_data}
 \alias{wqb_join_data}
-\title{Compile Data}
+\title{Join Data}
 \usage{
 wqb_join_data(database, quiet = FALSE)
 }
