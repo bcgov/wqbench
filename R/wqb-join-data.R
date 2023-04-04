@@ -139,13 +139,9 @@ join_data <- function(db_results, db_tests, db_endpoint_codes, db_species,
     dplyr::left_join(db_tests, by = "test_id") |>
     dplyr::filter(.data$organism_habitat == "Water") |>
     # filter to on conc endpoints
+    dplyr::mutate(endpoint = stringr::str_replace_all(.data$endpoint, "(/)", "")) |>
     dplyr::left_join(db_endpoint_codes, by = c("endpoint" = "code")) |>
     dplyr::filter(.data$concentration_flag) |>
-    # clean up asterick endpoints
-    
-    ### remove
-    ###dplyr::mutate(endpoint = stringr::str_replace(.data$endpoint, "\\*", "")) |>
-    
     # add species info
     dplyr::left_join(db_species, by = "species_number") |>
     # add life stage info
@@ -202,30 +198,63 @@ join_data <- function(db_results, db_tests, db_endpoint_codes, db_species,
     ) |>
     tibble::tibble() |>
     dplyr::select(
-      "chemical_name", "test_cas",
-      "test_id", "result_id", "endpoint", "effect", "effect_description",
-      "conc1_mean", "conc1_unit", 
-      "conc_conversion_flag", "conc_conversion_value_multiplier", 
+      "chemical_name", 
+      "test_cas",
+      "test_id", 
+      "result_id", 
+      "endpoint", 
+      "effect", 
+      "effect_description",
+      "conc1_mean", 
+      "conc1_unit", 
+      "conc_conversion_flag", 
+      "conc_conversion_value_multiplier", 
       "conc_conversion_unit",
-      "conc2_mean", "conc2_unit",
-      "conc3_mean", "conc3_unit",
-      "duration_mean", "duration_unit",
-      "duration_units_to_keep", "duration_value_multiplier_to_hours", 
-      "study_duration_mean", "study_duration_unit",
-      "obs_duration_mean", "obs_duration_unit", 
+      "conc2_mean", 
+      "conc2_unit",
+      "conc3_mean", 
+      "conc3_unit",
+      "duration_mean", 
+      "duration_unit",
+      "duration_units_to_keep", 
+      "duration_value_multiplier_to_hours", 
+      "study_duration_mean", 
+      "study_duration_unit",
+      "obs_duration_mean",
+      "obs_duration_unit", 
       "organism_habitat",
-      "species_number", "latin_name", "common_name", "kingdom", 
-      "phylum_division", "subphylum_div", "superclass", "class", "tax_order", 
-      "family", "genus", "species", "subspecies", "variety",
+      "species_number", 
+      "latin_name", 
+      "common_name", 
+      "kingdom", 
+      "phylum_division", 
+      "subphylum_div", 
+      "superclass",
+      "class", 
+      "tax_order", 
+      "family", 
+      "genus", 
+      "species", 
+      "subspecies", 
+      "variety",
       "species_present_in_bc", 
-      "ecological_group", "trophic_group",
-      "lifestage_description", "simple_lifestage", 
-      "media_type", "media_description", "media_type_group",
+      "ecological_group", 
+      "trophic_group",
+      "lifestage_description", 
+      "simple_lifestage", 
+      "media_type", 
+      "media_description", 
+      "media_type_group",
       "present_in_bc_wqg", 
-      "reference_number", "reference_type", "author", "title", "source", 
+      "reference_number", 
+      "author", 
+      "title", 
+      "source", 
       "publication_year",
-      "additional_comments_tests", "additional_comments_results",
-      "download_date", "version"
+      "additional_comments_tests", 
+      "additional_comments_results",
+      "download_date", 
+      "version"
     )
   
   joined_data

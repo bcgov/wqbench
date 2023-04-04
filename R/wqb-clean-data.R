@@ -137,7 +137,6 @@ wqb_clean_data <- function(data, quiet = FALSE) {
       # "media_type_group", # I think this should remain not media_type
       "present_in_bc_wqg", 
       # "reference_number", 
-      # "reference_type", 
       "author", 
       "title", 
       "source", 
