@@ -82,7 +82,11 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       message("Adding: ecotox table ", name_data[i])
     }
     dt <- utils::read.table(
-      files_data[i], header = TRUE, sep = '|', comment.char = '', quote = ''
+      files_data[i], 
+      header = TRUE,
+      sep = '|', 
+      comment.char = '', 
+      quote = "\""
     )
     query <- paste0(
       "CREATE TABLE ", names(tbl_data[name_data[i]]), 
@@ -112,7 +116,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
       header = TRUE,
       sep = "|",
       comment.char = "",
-      quote = ""
+      quote = "\""
     )
     
     if (!is.null(validation_data[[name_validation[i]]])) {
