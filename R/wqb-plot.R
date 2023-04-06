@@ -47,6 +47,7 @@ wqb_plot <- function(data) {
         x = .data$effect_conc_mg.L, 
         y = .data$latin_name,
         shape = .data$endpoint,
+        color = .data$endpoint,
       ),
       alpha = 0.8,
       size = 1.5
@@ -60,6 +61,7 @@ wqb_plot <- function(data) {
     ggplot2::ylab("") +
     ggplot2::labs(
       shape = "Endpoint:",
+      color = "Endpoint:",
       caption = "The concentration values are on a log scale."
     ) +
     ggplot2::theme_bw() +
@@ -68,7 +70,8 @@ wqb_plot <- function(data) {
       panel.border = ggplot2::element_rect(colour = "black", fill = NA),
       legend.background = ggplot2::element_blank(),
       legend.box.background = ggplot2::element_rect(colour = "black"),
-      strip.text.y = ggplot2::element_text(angle = 0)
+      strip.text.y = ggplot2::element_text(angle = 0),
+      text = ggplot2::element_text(size = 16)
     ) +
     ggplot2::scale_y_discrete(
       position = "right", 
