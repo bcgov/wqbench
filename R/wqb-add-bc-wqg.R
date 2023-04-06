@@ -84,6 +84,8 @@ wqb_add_bc_wqg <- function(database, quiet = FALSE) {
     )
   )
   bc_wqg <- bc_wqg |>
+    dplyr::filter(Media == "Water" & Type == "Long-term chronic") |>
+    dplyr::filter(Use == "Aquatic Life - Freshwater" | Use == "Aquatic Life - Marine") |>
     dplyr::select("CAS_number") |>
     dplyr::mutate(
       CAS_number = stringr::str_squish(.data$CAS_number),
