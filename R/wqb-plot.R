@@ -29,7 +29,7 @@ wqb_plot <- function(data) {
     data, 
     list(
       latin_name = "",
-      effect_conc_std_mg.L = 1,
+      effect_conc_mg.L = 1,
       endpoint = "",
       trophic_group = factor("")
     )
@@ -44,7 +44,7 @@ wqb_plot <- function(data) {
   gp <- ggplot2::ggplot(data = data) +
     ggplot2::geom_point(
       ggplot2::aes(
-        x = .data$effect_conc_std_mg.L, 
+        x = .data$effect_conc_mg.L, 
         y = .data$latin_name,
         shape = .data$endpoint,
       ),
