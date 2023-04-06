@@ -99,7 +99,9 @@ wqb_plot_det <- function(data) {
       panel.border = ggplot2::element_rect(colour = "black", fill = NA),
       legend.background = ggplot2::element_blank(),
       legend.box.background = ggplot2::element_rect(colour = "black"),
-      strip.text.y = ggplot2::element_text(angle = 0)
+      strip.text.y = ggplot2::element_text(angle = 0),
+      text = ggplot2::element_text(size = 16),
+      legend.direction = "vertical"
     ) +
     ggplot2::scale_y_discrete(
       position = "right", 

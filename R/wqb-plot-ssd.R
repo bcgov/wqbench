@@ -37,7 +37,10 @@ wqb_plot_ssd <- function(data, fit) {
   ) + 
     ggplot2::expand_limits(x = 3000) +
     ssdtools::scale_colour_ssd() +
-    ggplot2::labs(color = "Trophic Group", shape = "Ecological Group")
+    ggplot2::labs(color = "Trophic Group", shape = "Ecological Group") +
+    ggplot2::theme(
+      text = ggplot2::element_text(size = 16)
+    ) 
   
   gp
 }
