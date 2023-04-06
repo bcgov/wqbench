@@ -18,14 +18,14 @@ test_that("erros when latin name missing ", {
     "species_number" = rep(NA, reps),
     "lifestage" = rep(NA, reps),
     "effect" = rep(NA, reps),
-    "effect_conc_std_mg.L" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
     "endpoint" = rep(NA, reps),
     "method" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
     "latin_name" = rep(NA_character_, reps),
     "common_name" = rep(NA, reps),
-    "effect_conc_mg.L" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
@@ -48,7 +48,7 @@ test_that("erros when effect conc is missing ", {
   reps <- 1
   df <- data.frame(
     "latin_name" = rep("Blue Heron", reps),
-    "effect_conc_std_mg.L" = rep(NA_real_, reps),
+    "effect_conc_mg.L" = rep(NA_real_, reps),
     "endpoint" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "species_number" = rep(NA, reps),
@@ -58,7 +58,7 @@ test_that("erros when effect conc is missing ", {
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
     "common_name" = rep(NA, reps),
-    "effect_conc_mg.L" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
@@ -72,7 +72,7 @@ test_that("erros when effect conc is missing ", {
   )
   expect_error(
     wqb_plot(df),
-    "`data\\$effect_conc_std_mg.L` must not have any missing values"
+    "`data\\$effect_conc_mg.L` must not have any missing values"
   )
 })
 
@@ -80,7 +80,7 @@ test_that("erros when endpoint is missing ", {
   reps <- 1
   df <- data.frame(
     "latin_name" = rep("Blue Heron", reps),
-    "effect_conc_std_mg.L" = rep(1, reps),
+    "effect_conc_mg.L" = rep(1, reps),
     "endpoint" = rep(NA_character_, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "species_number" = rep(NA, reps),
@@ -90,7 +90,7 @@ test_that("erros when endpoint is missing ", {
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
     "common_name" = rep(NA, reps),
-    "effect_conc_mg.L" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
@@ -112,7 +112,7 @@ test_that("erros when trophic group is missing ", {
   reps <- 1
   df <- data.frame(
     "latin_name" = rep("Blue Heron", reps),
-    "effect_conc_std_mg.L" = rep(1, reps),
+    "effect_conc_mg.L" = rep(1, reps),
     "endpoint" = rep("NOEC", reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "species_number" = rep(NA, reps),
@@ -122,7 +122,7 @@ test_that("erros when trophic group is missing ", {
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
     "common_name" = rep(NA, reps),
-    "effect_conc_mg.L" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
@@ -144,7 +144,7 @@ test_that("plot type is ggplot", {
   reps <- 1
   df <- data.frame(
     "latin_name" = rep("Blue Heron", reps),
-    "effect_conc_std_mg.L" = rep(1, reps),
+    "effect_conc_mg.L" = rep(1, reps),
     "endpoint" = rep("NOEC", reps),
     "trophic_group" = factor(rep("Fish", reps)),
     "species_number" = rep(NA, reps),
@@ -154,7 +154,7 @@ test_that("plot type is ggplot", {
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
     "common_name" = rep(NA, reps),
-    "effect_conc_mg.L" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
