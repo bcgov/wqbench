@@ -66,27 +66,8 @@ wqb_add_bc_species <- function(database, quiet = FALSE) {
     "extdata/bc-species.csv",
     package = "wqbench"
   )
-  bc_species <- readr::read_csv(bc_species_file_path, show_col_types = FALSE) 
-  chk::check_data(
-    bc_species, 
-    list(
-      latin_name = ""
-    )
-  )
-  bc_species <- bc_species |>
-    dplyr::mutate(
-      latin_name = stringr::str_squish(.data$latin_name),
-      species_present_in_bc = TRUE
-    ) 
-  
-  # add bc species flag to species table
-  species_british_columbia <- db_species |>
-    dplyr::mutate(latin_name = stringr::str_squish(.data$latin_name)) |> 
-    dplyr::left_join(bc_species, by = "latin_name") |>
-    dplyr::mutate(
-      species_present_in_bc =  tidyr::replace_na(.data$species_present_in_bc, FALSE)
-    ) |>
-    tibble::tibble()
+
+  species_british_columbia <- read_bc_species(bc_species_file_path, db_species)
 
   DBI::dbExecute(
     con,
@@ -115,4 +96,64 @@ wqb_add_bc_species <- function(database, quiet = FALSE) {
   )
 
   invisible(species_british_columbia)
+}
+
+#' Combine BC Species and DB Species
+#' 
+#' Internal to allow for testing
+#'
+#' @param bc_species A data frame
+#' @param db_species A data frame
+#' @return A data frame
+#'
+#' @examples
+#' \dontrun{
+#' data <- combine_bc_species(bc_species, db_species)
+#' }
+
+combine_bc_species <- function(bc_species, db_species) {
+  
+  bc_species <- bc_species |>
+    dplyr::mutate(
+      latin_name = stringr::str_squish(.data$latin_name),
+      species_present_in_bc = TRUE
+    ) 
+  
+  # add bc species flag to species table
+  species_british_columbia <- db_species |>
+    dplyr::mutate(latin_name = stringr::str_squish(.data$latin_name)) |> 
+    dplyr::left_join(bc_species, by = "latin_name") |>
+    dplyr::mutate(
+      species_present_in_bc =  tidyr::replace_na(.data$species_present_in_bc, FALSE)
+    ) |>
+    tibble::tibble()
+  
+  species_british_columbia
+}
+
+#' Read in BC Species CSV
+#' 
+#' Internal to allow for testing
+#'
+#' @param bc_species_file_path A file path
+#' @param db_species A data frame
+#' @return A data frame
+#'
+#' @examples
+#' \dontrun{
+#' data <- read_bc_species(bc_species_file_path, db_species)
+#' }
+
+read_bc_species <- function(bc_species_file_path, db_species) {
+  bc_species <- readr::read_csv(bc_species_file_path, show_col_types = FALSE) 
+  chk::check_data(
+    bc_species, 
+    list(
+      latin_name = ""
+    )
+  )
+  
+  species_british_columbia <- combine_bc_species(bc_species, db_species)
+
+  species_british_columbia
 }
