@@ -7,9 +7,9 @@
 combine_conc_conversions(concentration_std, db_concentration_unit_codes)
 }
 \arguments{
-\item{concentration_std}{}
+\item{concentration_std}{A data frame}
 
-\item{db_concentration_unit_codes}{}
+\item{db_concentration_unit_codes}{A data frame}
 }
 \value{
 A data frame
