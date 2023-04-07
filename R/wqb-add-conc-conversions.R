@@ -97,45 +97,14 @@ wqb_add_conc_conversions <- function(database, quiet = FALSE) {
     )
   }
   
-  # read in lookup file 
   concentration_std_file_path <- system.file(
     "extdata/concentration-conversion.csv",
     package = "wqbench"
   )
-  concentration_std <- readr::read_csv(
-    concentration_std_file_path, show_col_types = FALSE
+  
+  concentration_unit_codes_std <-  read_conc_conversions(
+    concentration_std_file_path, db_concentration_unit_codes
   )
-  
-  chk::check_data(
-    concentration_std, 
-    list(
-      code = c("", NA),
-      conc_conversion_flag = c(TRUE, NA), 
-      conc_conversion_value_multiplier = c(1, NA),
-      conc_conversion_unit = c("", NA)
-    )
-  )
-  
-  concentration_std <- concentration_std |>
-    dplyr::mutate(
-      code = stringr::str_squish(.data$code) 
-    ) |>
-    dplyr::select(
-      "code", "conc_conversion_flag", "conc_conversion_value_multiplier",
-      "conc_conversion_unit"
-    )
-  
-  # print out name of any codes that don't match the db ones
-  dont_match <- !(concentration_std$code %in% db_concentration_unit_codes$code)
-  if (any((dont_match))) {
-    print("Value(s) do not match code(s) in `concentration_unit_codes` table in ECOTOX database:")
-    print(concentration_std$code[dont_match])
-  }
-  
-  # add conversion values to the concentration unit table
-  concentration_unit_codes_std <- db_concentration_unit_codes |>
-    dplyr::left_join(concentration_std, by = "code") |>
-    tibble::tibble() 
   
   # create db tables
   DBI::dbExecute(
@@ -164,4 +133,82 @@ wqb_add_conc_conversions <- function(database, quiet = FALSE) {
   )
   
   invisible(concentration_unit_codes_std)
+}
+
+#' Combine Concentration Unit Conversation Values with DB Concentration Unit
+#' 
+#' Internal to allow for testing
+#'
+#' @param concentration_std A data frame
+#' @param db_concentration_unit_codes A data frame
+#'
+#' @return A data frame
+#'   
+#' @examples
+#' \dontrun{
+#' data <- combine_conc_conversions(
+#'   concentration_std, db_concentration_unit_codes
+#' )
+#' }
+combine_conc_conversions <- function(concentration_std, 
+                                     db_concentration_unit_codes) {
+  
+  concentration_std <- concentration_std |>
+    dplyr::mutate(
+      code = stringr::str_squish(.data$code) 
+    ) |>
+    dplyr::select(
+      "code", "conc_conversion_flag", "conc_conversion_value_multiplier",
+      "conc_conversion_unit"
+    )
+  
+  # print out name of any codes that don't match the db ones
+  dont_match <- !(concentration_std$code %in% db_concentration_unit_codes$code)
+  if (any((dont_match))) {
+    message("Value(s) do not match code(s) in `concentration_unit_codes` table in ECOTOX database:")
+    message(chk::cc(concentration_std$code[dont_match]))
+  }
+  
+  # add conversion values to the concentration unit table
+  concentration_unit_codes_std <- db_concentration_unit_codes |>
+    dplyr::left_join(concentration_std, by = "code") |>
+    tibble::tibble() 
+  
+  concentration_unit_codes_std
+}
+
+#' Read Concentration Unit Conversation Values
+#' 
+#' Internal to allow for testing
+#'
+#' @param concentration_std_file_path A file path
+#' @param db_concentration_unit_codes A data frame
+#'
+#' @return A data frame
+#'   
+#' @examples
+#' \dontrun{
+#'  concentration_unit_codes_std <-  read_conc_conversions(
+#'    concentration_std_file_path, db_concentration_unit_codes
+#'  )
+#' }
+read_conc_conversions <- function(concentration_std_file_path, db_concentration_unit_codes) {
+  concentration_std <- readr::read_csv(
+    concentration_std_file_path, show_col_types = FALSE
+  )
+  
+  chk::check_data(
+    concentration_std, 
+    list(
+      code = c("", NA),
+      conc_conversion_flag = c(TRUE, NA), 
+      conc_conversion_value_multiplier = c(1, NA),
+      conc_conversion_unit = c("", NA)
+    )
+  )
+  
+  data <- combine_conc_conversions(
+    concentration_std, db_concentration_unit_codes
+  )
+  data 
 }
