@@ -130,7 +130,10 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
 #' 
 #' Internal to allow for testing
 #'
-#' @return Invisible data frame
+#' @param duration_std A data frame
+#' @param db_duration_unit_codes A data frame
+#'
+#' @return A data frame
 #'
 #' @examples
 #' \dontrun{
@@ -167,7 +170,10 @@ combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
 #' 
 #' Internal to allow for testing
 #'
-#' @return Invisible data frame
+#' @param duration_std_file_path A file path
+#' @param db_duration_unit_codes A data frame
+#'
+#' @return A data frame
 #'
 #' @examples
 #' \dontrun{
