@@ -49,7 +49,7 @@ wqb_join_data <- function(database, quiet = FALSE) {
     dplyr::rename(additional_comments_results = "additional_comments")
   db_tests <- DBI::dbReadTable(con, "tests") |>
     dplyr::rename(additional_comments_tests = "additional_comments") |>
-    dplyr::mutate(test_cas = as.character(test_cas))
+    dplyr::mutate(test_cas = as.character(.data$test_cas))
   
   db_endpoint_codes <- DBI::dbReadTable(con, "endpoint_codes") |>
     dplyr::mutate(
