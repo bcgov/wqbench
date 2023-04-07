@@ -73,33 +73,10 @@ wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
     "extdata/concentration-endpoints.csv",
     package = "wqbench"
   )
-  endpoint_concentration_pick <- readr::read_csv(
-    conc_endpoints_file_path, 
-    show_col_types = FALSE
-  ) 
-  chk::check_data(endpoint_concentration_pick, list(code = ""))
   
-  # add concentration endpoints to endpoints table
-  endpoint_concentration_pick <- endpoint_concentration_pick |>
-    dplyr::mutate(
-      code = stringr::str_squish(.data$code),
-      concentration_flag = TRUE
-    ) |>
-    dplyr::select("code", "concentration_flag")
-  
-  # print out name of any codes that don't match the db ones
-  dont_match <- !(endpoint_concentration_pick$code %in% db_endpoint_code$code)
-  if (any((dont_match))) {
-    print("Value(s) do not match code(s) in `endpoint_codes` table in ECOTOX database:")
-    print(endpoint_concentration_pick$code[dont_match])
-  }
-  
-  endpoint_concentration <- db_endpoint_code |> 
-    dplyr::left_join(endpoint_concentration_pick, by = "code") |>
-    dplyr::mutate(
-      concentration_flag =  tidyr::replace_na(.data$concentration_flag, FALSE)
-    ) |>
-    tibble::tibble()
+  endpoint_concentration <- read_concentration_endpoints(
+    conc_endpoints_file_path, db_endpoint_code
+  )
   
   # write new table to database
   DBI::dbExecute(
@@ -128,4 +105,72 @@ wqb_add_concentration_endpoints <- function(database, quiet = FALSE) {
   )
   
   invisible(endpoint_concentration)
+}
+
+#' Combine the Concentration Endpoints list to db endpoints
+#'
+#' Internal to allow for testing 
+#'
+#' @param endpoint_concentration_pick A data frame
+#' @param db_endpoint_code A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' data <- combine_concentration_endpoints(
+#'  endpoint_concentration_pick, db_endpoint_code
+#' )
+#' }
+combine_concentration_endpoints <- function(endpoint_concentration_pick,
+                                            db_endpoint_code) {
+  # add concentration endpoints to endpoints table
+  endpoint_concentration_pick <- endpoint_concentration_pick |>
+    dplyr::mutate(
+      code = stringr::str_squish(.data$code),
+      concentration_flag = TRUE
+    ) |>
+    dplyr::select("code", "concentration_flag")
+  
+  # print out name of any codes that don't match the db ones
+  dont_match <- !(endpoint_concentration_pick$code %in% db_endpoint_code$code)
+  if (any((dont_match))) {
+    message("Value(s) do not match code(s) in `endpoint_codes` table in ECOTOX database:")
+    message(chk::cc(endpoint_concentration_pick$code[dont_match]))
+  }
+  
+  endpoint_concentration <- db_endpoint_code |> 
+    dplyr::left_join(endpoint_concentration_pick, by = "code") |>
+    dplyr::mutate(
+      concentration_flag =  tidyr::replace_na(.data$concentration_flag, FALSE)
+    ) |>
+    tibble::tibble()
+  
+}
+
+#' Read the Concentration Endpoints 
+#'
+#' Internal to allow for testing 
+#'
+#' @param conc_endpoints_file_path A file path
+#' @param db_endpoint_code A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' endpoint_concentration <- read_concentration_endpoints(
+#'   conc_endpoints_file_path, db_endpoint_code
+#' )
+#' }
+read_concentration_endpoints <- function(conc_endpoints_file_path, 
+                                         db_endpoint_code) {
+  endpoint_concentration_pick <- readr::read_csv(
+    conc_endpoints_file_path, 
+    show_col_types = FALSE
+  ) 
+  chk::check_data(endpoint_concentration_pick, list(code = ""))
+  
+  data <- combine_concentration_endpoints(
+    endpoint_concentration_pick, db_endpoint_code
+  )
+  data
 }
