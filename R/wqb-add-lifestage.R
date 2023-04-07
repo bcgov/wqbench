@@ -68,43 +68,12 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
       "Simple lifestage has already been added to the database"
     )
   }
-  # read in life stage groups 
+
   lifestage_file_path <- system.file(
     "extdata/lifestage-codes.csv",
     package = "wqbench"
   )
-  lifestage_codes <- readr::read_csv(
-    lifestage_file_path,
-    show_col_types = FALSE
-  )
-  chk::check_data(
-    lifestage_codes,
-    list(
-      code = "",
-      description_lifestage = "",
-      simple_lifestage = ""
-    )
-  )
-  lifestage_codes <- lifestage_codes |>
-    dplyr::mutate(
-      code = stringr::str_squish(.data$code),
-      simple_lifestage = stringr::str_squish(.data$simple_lifestage),
-      simple_lifestage = stringr::str_to_lower(.data$simple_lifestage)
-    ) |>
-    dplyr::select("code", "simple_lifestage")
-  # print out name of any codes that don't match the db ones
-  dont_match <- !(lifestage_codes$code %in% db_lifestage_codes$code)
-  if (any((dont_match))) {
-    print("Value(s) do not match code(s) in `endpoint_code` table in ECOTOX database:")
-    print(lifestage_codes$code[dont_match])
-  }
-  
-  lifestage_groups <- db_lifestage_codes |>
-    dplyr::mutate(
-      code = stringr::str_squish(.data$code)
-    ) |>
-    dplyr:: left_join(lifestage_codes, by = "code") |>
-    tibble::tibble() 
+  lifestage_groups <- read_lifestage(lifestage_file_path, db_lifestage_codes)
   
   # write new table to database
   DBI::dbExecute(
@@ -134,3 +103,69 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
   
   invisible(lifestage_groups)
 }
+
+#' Combine Life Stage Groups and db life stage
+#' 
+#' Internal to allow for testing
+#' 
+#' @param lifestage_codes A data frame
+#' @param db_lifestage_codes A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' lifestage_groups <- combine_lifestage(lifestage_codes, db_lifestage_codes)
+#' }
+combine_lifestage <- function(lifestage_codes, db_lifestage_codes) {
+  lifestage_codes <- lifestage_codes |>
+    dplyr::mutate(
+      code = stringr::str_squish(.data$code),
+      simple_lifestage = stringr::str_squish(.data$simple_lifestage),
+      simple_lifestage = stringr::str_to_lower(.data$simple_lifestage)
+    ) |>
+    dplyr::select("code", "simple_lifestage")
+  # print out name of any codes that don't match the db ones
+  dont_match <- !(lifestage_codes$code %in% db_lifestage_codes$code)
+  if (any((dont_match))) {
+    message("Value(s) do not match code(s) in `endpoint_code` table in ECOTOX database:")
+    message(chk::cc(lifestage_codes$code[dont_match]))
+  }
+  
+  lifestage_groups <- db_lifestage_codes |>
+    dplyr::mutate(
+      code = stringr::str_squish(.data$code)
+    ) |>
+    dplyr:: left_join(lifestage_codes, by = "code") |>
+    tibble::tibble() 
+}
+
+#' Read Life Stage Groups 
+#' 
+#' Internal to allow for testing
+#' 
+#' @param lifestage_file_path A data frame
+#' @param db_lifestage_codes A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' lifestage_groups <- read_lifestage(lifestage_file_path, db_lifestage_codes)
+#' }
+read_lifestage <- function(lifestage_file_path, db_lifestage_codes) {
+  lifestage_codes <- readr::read_csv(
+    lifestage_file_path,
+    show_col_types = FALSE
+  )
+  chk::check_data(
+    lifestage_codes,
+    list(
+      code = "",
+      description_lifestage = "",
+      simple_lifestage = ""
+    )
+  )
+  
+  lifestage_groups <- combine_lifestage(lifestage_codes, db_lifestage_codes)
+  lifestage_groups
+}
+
