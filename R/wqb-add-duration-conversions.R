@@ -91,38 +91,10 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
     "extdata/duration-conversion.csv",
     package = "wqbench"
   )
-  duration_std <- readr::read_csv(duration_std_file_path, show_col_types = FALSE) 
-  chk::check_data(
-    duration_std, 
-    list(
-      code = c("", NA),
-      duration_units_to_keep = TRUE,
-      duration_value_multiplier_to_hours = c(1, NA)
-    )
+
+  duration_unit_codes_std <- read_duration_conversions(
+    duration_std_file_path, db_duration_unit_codes
   )
-  
-  duration_std <- duration_std |>
-    dplyr::mutate(
-      code = dplyr::if_else(
-        .data$description == "Pretreatment, time unknown" & .data$code == "#NAME?",
-        "-X",
-        .data$code
-      ),
-      code = stringr::str_squish(.data$code) 
-    ) |>
-    dplyr::select("code", "duration_units_to_keep", "duration_value_multiplier_to_hours")
-  
-  # print out name of any codes that don't match the db ones
-  dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
-  if (any((dont_match))) {
-    print("Value(s) do not match code(s) in `duration_unit_codes` table in ECOTOX database:")
-    print(duration_std$code[dont_match])
-  }
-  
-  # add conversion values to the duration table
-  duration_unit_codes_std <- db_duration_unit_codes |>
-    dplyr::left_join(duration_std, by = "code") |>
-    tibble::tibble() 
   
   # create db tables
   DBI::dbExecute(
@@ -152,4 +124,74 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
   )
   
   invisible(duration_unit_codes_std)
+}
+
+#' Combine Duration Unit Conversation Values and DB duration unit
+#' 
+#' Internal to allow for testing
+#'
+#' @return Invisible data frame
+#'
+#' @examples
+#' \dontrun{
+#' duration_unit_codes_std <- combine_duration_conversions(
+#'   duration_std, db_duration_unit_codes
+#' )
+#' }
+combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
+  duration_std <- duration_std |>
+    dplyr::mutate(
+      code = dplyr::if_else(
+        .data$description == "Pretreatment, time unknown" & .data$code == "#NAME?",
+        "-X",
+        .data$code
+      ),
+      code = stringr::str_squish(.data$code) 
+    ) |>
+    dplyr::select("code", "duration_units_to_keep", "duration_value_multiplier_to_hours")
+  
+  # print out name of any codes that don't match the db ones
+  dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
+  if (any((dont_match))) {
+    message("Value(s) do not match code(s) in `duration_unit_codes` table in ECOTOX database:")
+    message(chk::cc(duration_std$code[dont_match]))
+  }
+  
+  # add conversion values to the duration table
+  duration_unit_codes_std <- db_duration_unit_codes |>
+    dplyr::left_join(duration_std, by = "code") |>
+    tibble::tibble() 
+}
+
+#' Read Duration Unit Conversation
+#' 
+#' Internal to allow for testing
+#'
+#' @return Invisible data frame
+#'
+#' @examples
+#' \dontrun{
+#' duration_unit_codes_std <- read_duration_conversions(
+#'  duration_std_file_path, db_duration_unit_codes
+#' )
+#' }
+read_duration_conversions <- function(duration_std_file_path,
+                                      db_duration_unit_codes) {
+  duration_std <- readr::read_csv(
+    duration_std_file_path, show_col_types = FALSE
+  ) 
+  chk::check_data(
+    duration_std, 
+    list(
+      code = c("", NA),
+      description = c("", NA),
+      duration_units_to_keep = TRUE,
+      duration_value_multiplier_to_hours = c(1, NA)
+    )
+  )
+  
+  duration_unit_codes_std <- combine_duration_conversions(
+    duration_std, db_duration_unit_codes
+  )
+  duration_unit_codes_std
 }
