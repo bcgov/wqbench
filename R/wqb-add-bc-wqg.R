@@ -65,49 +65,12 @@ wqb_add_bc_wqg <- function(database, quiet = FALSE) {
       )
     )
   }
-  # read in bc wqg 
-  # # pull from BC data when uploaded
-  # limits <-  bcdata::bcdc_get_data(
-  #   record = "85d3990a-ec0a-4436-8ebd-150de3ba0747", 
-  #   resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
-  # )
-  
+
   bc_wqg_file_path <- system.file(
     "extdata/all-wqgs.csv",
     package = "wqbench"
   )
-  bc_wqg <- readr::read_csv(bc_wqg_file_path, show_col_types = FALSE) 
-  chk::check_data(
-    bc_wqg, 
-    list(
-      CAS_number = ""
-    )
-  )
-  bc_wqg <- bc_wqg |>
-    dplyr::filter(.data$Media == "Water" & .data$Type == "Long-term chronic") |>
-    dplyr::filter(.data$Use == "Aquatic Life - Freshwater" | .data$Use == "Aquatic Life - Marine") |>
-    dplyr::select("CAS_number") |>
-    dplyr::mutate(
-      CAS_number = stringr::str_squish(.data$CAS_number),
-      CAS_number = stringr::str_replace(.data$CAS_number, "^\\(", ""),
-      CAS_number = stringr::str_replace(.data$CAS_number, "\\)$", ""),
-      CAS_number = stringr::str_replace_all(.data$CAS_number, "\\-", ""),
-      CAS_number = stringr::str_replace_all(.data$CAS_number, "[:alpha:]|[:space:]", ""),
-      CAS_number = dplyr::na_if(.data$CAS_number, ""),
-      present_in_bc_wqg = TRUE
-    ) |> 
-    tidyr::drop_na("CAS_number") |>
-    dplyr::rename(cas_number = "CAS_number") |>
-    dplyr::distinct()
-  
-  # add bc wqg flag to chemicals table
-  chemicals_bc_wqg <- db_chemicals |>
-    dplyr::left_join(bc_wqg, by = "cas_number") |>
-    dplyr::mutate(
-      cas_number = as.numeric(.data$cas_number),
-      present_in_bc_wqg = tidyr::replace_na(.data$present_in_bc_wqg, FALSE)
-    ) |>
-    tibble::tibble() 
+  chemicals_bc_wqg <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
   
   # create db tables
   DBI::dbExecute(
@@ -137,4 +100,79 @@ wqb_add_bc_wqg <- function(database, quiet = FALSE) {
   )
   
   invisible(chemicals_bc_wqg)
+}
+
+#' Combine BC Water Quality Guidelines with DB Chemicals
+#'
+#' Internal to allow for testing
+#'
+#' @param bc_wqg A data frame
+#' @param db_chemicals A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' data <- combine_bc_wqg(bc_wqg, db_chemicals)
+#' }
+combine_bc_wqg <- function(bc_wqg, db_chemicals) {
+  
+  bc_wqg <- bc_wqg |>
+    dplyr::filter(.data$Media == "Water" & .data$Type == "Long-term chronic") |>
+    dplyr::filter(.data$Use == "Aquatic Life - Freshwater" | .data$Use == "Aquatic Life - Marine") |>
+    dplyr::select("CAS_number") |>
+    dplyr::mutate(
+      CAS_number = stringr::str_squish(.data$CAS_number),
+      CAS_number = stringr::str_replace(.data$CAS_number, "^\\(", ""),
+      CAS_number = stringr::str_replace(.data$CAS_number, "\\)$", ""),
+      CAS_number = stringr::str_replace_all(.data$CAS_number, "\\-", ""),
+      CAS_number = stringr::str_replace_all(.data$CAS_number, "[:alpha:]|[:space:]", ""),
+      CAS_number = dplyr::na_if(.data$CAS_number, ""),
+      present_in_bc_wqg = TRUE
+    ) |> 
+    tidyr::drop_na("CAS_number") |>
+    dplyr::rename(cas_number = "CAS_number") |>
+    dplyr::distinct()
+  
+  # add bc wqg flag to chemicals table
+  chemicals_bc_wqg <- db_chemicals |>
+    dplyr::left_join(bc_wqg, by = "cas_number") |>
+    dplyr::mutate(
+      present_in_bc_wqg = tidyr::replace_na(.data$present_in_bc_wqg, FALSE)
+    ) |>
+    tibble::tibble() 
+  
+}
+
+
+#' Read BC Water Quality Guidelines
+#'
+#' Internal to allow for testing
+#'
+#' @param bc_wqg_file_path A file path
+#' @param db_chemicals A data frame
+#'
+#' @return A data frame
+#' @examples
+#' \dontrun{
+#' chemicals_bc_wqg <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
+#' }
+read_bc_wqg <- function(bc_wqg_file_path, db_chemicals) {
+  
+  # read in bc wqg 
+  # # pull from BC data when uploaded
+  # limits <-  bcdata::bcdc_get_data(
+  #   record = "85d3990a-ec0a-4436-8ebd-150de3ba0747", 
+  #   resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
+  # )
+  
+  bc_wqg <- readr::read_csv(bc_wqg_file_path, show_col_types = FALSE) 
+  chk::check_data(
+    bc_wqg, 
+    list(
+      CAS_number = ""
+    )
+  )
+
+  data <- combine_bc_wqg(bc_wqg, db_chemicals)
+  data
 }
