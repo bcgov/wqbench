@@ -56,16 +56,9 @@ wqb_add_media <- function(database, quiet = FALSE) {
       "Media type has already been added to the database"
     )
   }
-  # create coding groups
-  media_type <- db_media_type |>
-    dplyr::mutate(
-      media_type_group = dplyr::case_when(
-        .data[["description"]] == "Fresh water" ~ "fresh water",
-        .data[["description"]] == "Salt water" ~ "salt water",
-        TRUE ~ "not reported"
-      )
-    ) |>
-    tibble::tibble()
+  
+  media_type <- combine_media(db_media_type)
+
   # write new tables 
   DBI::dbExecute(
     con,
@@ -93,4 +86,31 @@ wqb_add_media <- function(database, quiet = FALSE) {
   )
   
   invisible(media_type)
+}
+
+#' Combine Media Type Coding
+#' 
+#' Internal to allow for testing
+#'
+#' @param db_media_type A data frame
+#'
+#' @return A data frame
+#' 
+#' @examples
+#' \dontrun{
+#' media_type <- combine_media(db_media_type)
+#' }
+combine_media <- function(db_media_type) {
+  # create coding groups
+  media_type <- db_media_type |>
+    dplyr::mutate(
+      media_type_group = dplyr::case_when(
+        .data[["description"]] == "Fresh water" ~ "fresh water",
+        .data[["description"]] == "Salt water" ~ "salt water",
+        TRUE ~ "not reported"
+      )
+    ) |>
+    tibble::tibble()
+  
+  media_type
 }
