@@ -20,7 +20,7 @@ devtools::install_github("bcgov/wqbench")
 
 ## Workflow
 
-``` r
+```{r}
 library(wqbench)
 ```
 
@@ -28,7 +28,7 @@ library(wqbench)
 
 ```r
 data_set <- wqb_create_data_set(
-  version = 3
+  version = 1
 )
 ```
 
@@ -36,55 +36,61 @@ The function will download the US EPA ECOTOX<sup>1</sup> database, create a loca
 
 ### Generate Benchmark
 
-#### SSD Example
-
-```r
-data <- wqb_filter_chemical(data_set, "13463677")
-data <- wqb_benchmark_method(data)
-
-data_agg <- wqb_aggregate(data) 
-data_agg <- wqb_af(data_agg)
-ctv <- wqb_generate_ctv(data_agg)
-```
-
-Plot data set
-
-```r
-wqb_plot(data)
-```
-
-Plot the results
-```r
-wqb_plot_ssd(data_agg)
-```
 
 #### Deterministic Example
 
-```r
-data <- wqb_filter_chemical(data_set, "1000984359")
+```{r}
+data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "100016")
 data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
 ctv <- wqb_generate_ctv(data_agg)
+ctv
 ```
 
 Plot data set
 
-```r
+```{r}
 wqb_plot(data)
 ```
 
 Plot the results
-```r
+```{r, fig.width=14}
 wqb_plot_det(data_agg)
 ```
+
+#### SSD Example
+
+```{r}
+data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "1071836")
+data <- wqb_benchmark_method(data)
+
+data_agg <- wqb_aggregate(data) 
+data_agg <- wqb_af(data_agg)
+ctv <- wqb_generate_ctv(data_agg)
+ctv
+```
+
+Plot data set
+
+```{r, fig.height=10, fig.width=12}
+wqb_plot(data)
+```
+
+Plot the results
+```{r}
+fit <- wqb_ssd_fit(data_agg)
+wqb_plot_ssd(data_agg, fit)
+```
+
 
 #### Benchmark Value
 
 To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by each assessment factor. 
-```r
-benchmark = ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
+```{r}
+benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
+benchmark
 ```
 
 *SSD* method generates a lower and upper confidence interval
@@ -92,7 +98,7 @@ benchmark = ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_pla
 
 #### Summary Tables
 
-```r
+```{r}
 wqb_summary_trophic_species(data_agg)
 wqb_summary_trophic_groups(data_agg)
 wqb_summary_af(data_agg)
