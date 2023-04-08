@@ -493,7 +493,8 @@ test_that("trophic group is a factor", {
 })
 
 test_that("test with sample data", {
-  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+  raw_data <- wqbenchdata::get_wqbenchdata("raw_data")
+  output <- wqbench:::wqb_clean_data(raw_data, quiet = TRUE) |>
     dplyr::arrange(chemical_name)
   expect_equal(
     nrow(output),
@@ -556,7 +557,8 @@ test_that("test with sample data", {
 })
 
 test_that("test sample data selected duration correct from study and observed values", {
-  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+  raw_data <- wqbenchdata::get_wqbenchdata("raw_data")
+  output <- wqbench:::wqb_clean_data(raw_data, quiet = TRUE) |>
     dplyr::arrange(chemical_name)
   expect_equal(
     output$duration_mean[output$chemical_name == "2,3,4,5,6-Pentachlorophenol"],
@@ -585,7 +587,8 @@ test_that("test sample data selected duration correct from study and observed va
 })
 
 test_that("test sample data conc conv executed", {
-  output <- wqbench:::wqb_clean_data(wqbenchdata::raw_data, quiet = TRUE) |>
+  raw_data <- wqbenchdata::get_wqbenchdata("raw_data")
+  output <- wqbench:::wqb_clean_data(raw_data, quiet = TRUE) |>
     dplyr::arrange(chemical_name)
   expect_equal(
     output$conc1_mean[output$cas == "151213"],
