@@ -27,7 +27,8 @@ library(wqbench)
 ### Create Data Set for App
 
 The `wqb_create_data_set()` function will download the US EPA ECOTOX<sup>1</sup> database, create a local .sqlite database, add other data sources and filter conditions, clean and process the data, classify the duration, standardize the effect and output the completed data set needed for the shinywqbench app.
-The function will create an RDS file of the data set.
+The function will create an RDS file of the data set as well.
+It takes a few minutes to download and create the data set. 
 
 The default argument for: 
 
@@ -39,7 +40,6 @@ The default argument for:
 data_set <- wqb_create_data_set()
 ```
 
-It takes a few minutes to download and create the data set. 
 The data set can be read in after it has been created. 
 
 ```r
@@ -56,9 +56,19 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
+
 ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
+
+To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors.  
+
+```{r}
+benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark
+```
+
+*Deterministic* method only generates an estimate, the lcl and ucl columns will always be blank .
 
 ```{r}
 # Plot data set
@@ -78,34 +88,30 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
+
 ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
 
+To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors. 
+
+```{r}
+benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark
+```
+
+*SSD* method can generate a lower and upper confidence interval.
 
 ```{r, fig.height=10, fig.width=12}
 # Plot data set
 wqb_plot(data)
 ```
 
-
 ```{r}
 # Plot the results
 fit <- wqb_ssd_fit(data_agg)
 wqb_plot_ssd(data_agg, fit)
 ```
-
-
-#### Benchmark Value
-
-To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by each assessment factor. 
-```{r}
-benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
-benchmark
-```
-
-*SSD* method can generate a lower and upper confidence interval.   
-*Deterministic* method only generates an estimate, the lcl and ucl columns will always be blank . 
 
 #### Summary Tables
 

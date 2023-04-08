@@ -29,21 +29,23 @@ ECOTOX<sup>1</sup> database, create a local .sqlite database, add other
 data sources and filter conditions, clean and process the data, classify
 the duration, standardize the effect and output the completed data set
 needed for the shinywqbench app. The function will create an RDS file of
-the data set for ease of using the data and not having to download or
-compile the data set as this takes several minutes.
+the data set as well. It takes a few minutes to download and create the
+data set.
 
-The default for the `file_path` argument will save the raw text files at
-`"~/Ecotoxicology/ecotox"`. The default for `folder_path` argument will
-save the .sqlite database and RDS file is at
-`"~/Ecotoxicology/ecotox_db/"`. The default value for version will
-download the most recent version of the data set available on the
-website.
+The default argument for:
+
+- `file_path` will save the raw text files at
+  `"~/Ecotoxicology/ecotox"`.
+- `folder_path` will save the .sqlite database and RDS file is at
+  `"~/Ecotoxicology/ecotox_db/"`.
+- `version` will download the most recent version of the data set
+  available on the website.
 
 ``` r
 data_set <- wqb_create_data_set()
 ```
 
-To read in the data set after it has been created.
+The data set can be read in after it has been created.
 
 ``` r
 data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
@@ -59,6 +61,7 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
+
 ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
@@ -68,21 +71,33 @@ ctv
     ##          <dbl>        <dbl>        <dbl>
     ## 1          2.5           NA           NA
 
-Plot data set
+To calculate the benchmark for the chemical, divide the critical
+toxicity value (ctv) by the assessment factors.
 
 ``` r
+benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark
+```
+
+    ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
+    ## 1   0.04166667           NA           NA
+
+*Deterministic* method only generates an estimate, the lcl and ucl
+columns will always be blank .
+
+``` r
+# Plot data set
 wqb_plot(data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
-
-Plot the results
+![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ``` r
+# Plot the results
 wqb_plot_det(data_agg)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 #### SSD Example
 
@@ -92,6 +107,7 @@ data <- wqb_benchmark_method(data)
 
 data_agg <- wqb_aggregate(data) 
 data_agg <- wqb_af(data_agg)
+
 ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
@@ -99,40 +115,35 @@ ctv
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00194       0.0573
-
-Plot data set
-
-``` r
-wqb_plot(data)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
-
-Plot the results
-
-``` r
-fit <- wqb_ssd_fit(data_agg)
-wqb_plot_ssd(data_agg, fit)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
-
-#### Benchmark Value
+    ## 1       0.0101      0.00199       0.0592
 
 To calculate the benchmark for the chemical, divide the critical
-toxicity value (ctv) by each assessment factor.
+toxicity value (ctv) by the assessment factors.
 
 ``` r
-benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic *data_agg$af_variation)
+benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
 benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001939468   0.05726568
+    ## 1   0.01014924  0.001989981    0.0592041
 
-*SSD* method generates a lower and upper confidence interval
-*Deterministic* method only generates an estimate
+*SSD* method can generate a lower and upper confidence interval.
+
+``` r
+# Plot data set
+wqb_plot(data)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+# Plot the results
+fit <- wqb_ssd_fit(data_agg)
+wqb_plot_ssd(data_agg, fit)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
 
 #### Summary Tables
 
