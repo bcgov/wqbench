@@ -26,16 +26,27 @@ library(wqbench)
 
 ### Create Data Set for App
 
+The `wqb_create_data_set()` function will download the US EPA ECOTOX<sup>1</sup> database, create a local .sqlite database, add other data sources and filter conditions, clean and process the data, classify the duration, standardize the effect and output the completed data set needed for the shinywqbench app.
+The function will create an RDS file of the data set.
+
+The default argument for: 
+
+- `file_path` will save the raw text files at `"~/Ecotoxicology/ecotox"`.
+- `folder_path` will save the .sqlite database and RDS file is at `"~/Ecotoxicology/ecotox_db/"`.
+- `version` will download the most recent version of the data set available on the website. 
+
 ```r
-data_set <- wqb_create_data_set(
-  version = 1
-)
+data_set <- wqb_create_data_set()
 ```
 
-The function will download the US EPA ECOTOX<sup>1</sup> database, create a local .sqlite database, add other data sources and filter conditions, clean and process the data, classify the duration and standardize the effect.
+It takes a few minutes to download and create the data set. 
+The data set can be read in after it has been created. 
+
+```r
+data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
+```
 
 ### Generate Benchmark
-
 
 #### Deterministic Example
 
@@ -49,14 +60,13 @@ ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
 
-Plot data set
-
 ```{r}
+# Plot data set
 wqb_plot(data)
 ```
 
-Plot the results
 ```{r, fig.width=14}
+# Plot the results
 wqb_plot_det(data_agg)
 ```
 
@@ -72,14 +82,15 @@ ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
 
-Plot data set
 
 ```{r, fig.height=10, fig.width=12}
+# Plot data set
 wqb_plot(data)
 ```
 
-Plot the results
+
 ```{r}
+# Plot the results
 fit <- wqb_ssd_fit(data_agg)
 wqb_plot_ssd(data_agg, fit)
 ```
@@ -93,8 +104,8 @@ benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_p
 benchmark
 ```
 
-*SSD* method generates a lower and upper confidence interval
-*Deterministic* method only generates an estimate
+*SSD* method can generate a lower and upper confidence interval.   
+*Deterministic* method only generates an estimate, the lcl and ucl columns will always be blank . 
 
 #### Summary Tables
 
