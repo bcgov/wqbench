@@ -101,7 +101,8 @@ wqb_plot_det <- function(data) {
       legend.box.background = ggplot2::element_rect(colour = "black"),
       strip.text.y = ggplot2::element_text(angle = 0),
       text = ggplot2::element_text(size = 16),
-      legend.direction = "vertical"
+      legend.direction = "vertical",
+      plot.margin = ggplot2::unit(c(0,0,0,1), "cm")
     ) +
     ggplot2::scale_y_discrete(
       position = "right", 
