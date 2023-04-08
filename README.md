@@ -118,7 +118,7 @@ ctv
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00203       0.0578
+    ## 1       0.0101      0.00199       0.0581
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
@@ -129,7 +129,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924   0.00203102   0.05779403
+    ## 1   0.01014924  0.001991101   0.05809077
 
 *SSD* method can generate a lower and upper confidence interval.
 
@@ -195,10 +195,10 @@ for more info.
 
 ## Code of Conduct
 
-Please note that the wqbench project is released with a [Contributor
-Code of
-Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+Please note that the shinywqbench project is released with a
+[Contributor Code of
+Conduct](https://github.com/bcgov/wqbench/CODE_OF_CONDUCT.md). By
+contributing to this project, you agree to abide by its terms.
 
 ## License
 
