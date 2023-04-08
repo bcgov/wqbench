@@ -10,13 +10,14 @@ output: github_document
 [![Codecov test coverage](https://codecov.io/gh/poissonconsulting/wqbench/branch/main/graph/badge.svg)](https://app.codecov.io/gh/poissonconsulting/wqbench?branch=main)
 <!-- badges: end -->
 
+This package contains the functions and tools to generate aquatic life water quality benchmarks.
+
 ## Installation
 
 ```{r, eval=FALSE}
 # install.packages("devtools")
 devtools::install_github("bcgov/wqbench")
 ```
-
 
 ## Workflow
 
@@ -36,13 +37,13 @@ The default argument for:
 - `folder_path` will save the .sqlite database and RDS file is at `"~/Ecotoxicology/ecotox_db/"`.
 - `version` will download the most recent version of the data set available on the website. 
 
-```r
+```{r, eval=FALSE}
 data_set <- wqb_create_data_set()
 ```
 
 The data set can be read in after it has been created. 
 
-```r
+```{r, eval=FALSE}
 data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
 ```
 

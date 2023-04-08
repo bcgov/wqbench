@@ -9,6 +9,9 @@
 coverage](https://codecov.io/gh/poissonconsulting/wqbench/branch/main/graph/badge.svg)](https://app.codecov.io/gh/poissonconsulting/wqbench?branch=main)
 <!-- badges: end -->
 
+This package contains the functions and tools to generate aquatic life
+water quality benchmarks.
+
 ## Installation
 
 ``` r
@@ -90,14 +93,14 @@ columns will always be blank .
 wqb_plot(data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ``` r
 # Plot the results
 wqb_plot_det(data_agg)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 #### SSD Example
 
@@ -115,7 +118,7 @@ ctv
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00199       0.0592
+    ## 1       0.0101      0.00203       0.0578
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
@@ -126,7 +129,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001989981    0.0592041
+    ## 1   0.01014924   0.00203102   0.05779403
 
 *SSD* method can generate a lower and upper confidence interval.
 
@@ -135,7 +138,7 @@ benchmark
 wqb_plot(data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 ``` r
 # Plot the results
@@ -143,7 +146,7 @@ fit <- wqb_ssd_fit(data_agg)
 wqb_plot_ssd(data_agg, fit)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 #### Summary Tables
 
