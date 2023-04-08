@@ -62,8 +62,10 @@ wqb_create_data_set <- function(file_path = "~/Ecotoxicology/ecotox",
   wqb_add_trophic_group(database = database, quiet = quiet) 
   wqb_add_duration_conversions(database = database, quiet = quiet)
   wqb_add_conc_conversions(database = database, quiet = quiet)
+
+  data <- wqb_join_data(database = database, quiet = quiet)
+  data <- wqb_clean_data(data, quiet = quiet)
   
-  data <- wqb_compile_dataset(database = database, quiet = quiet) 
   data <- wqb_classify_duration(data, quiet = quiet)
   data <- wqb_standardize_effect(data, quiet = quiet)
   if (save_rds) {
