@@ -74,19 +74,54 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
     "extdata/trophic-group.csv",
     package = "wqbench"
   )
-  trophic_groups <- readr::read_csv(
-    trophic_groups_file_path, 
-    show_col_types = FALSE
+  species_trophic_group <- read_trophic_group(
+    trophic_groups_file_path, db_species
   )
-  chk::check_data(
-    trophic_groups,
-    list(
-      class = c("", NA),
-      order = c("", NA),
-      trophic_group = "",
-      ecological_group = ""
+  
+  # create new db things 
+  DBI::dbExecute(
+    con,
+    paste0(
+      "CREATE TABLE species_trophic_group ",
+      "(", paste(colnames(species_trophic_group), collapse = ", "),
+      ", PRIMARY KEY (species_number))"
     )
   )
+  
+  DBI::dbWriteTable(
+    con, 
+    "species_trophic_group", 
+    value = species_trophic_group, 
+    append = TRUE, 
+    row.names = FALSE
+  )
+  if (!quiet) {
+    message("Adding: trophic and ecological groups to species table")
+  }
+  DBI::dbExecute(con, "DROP TABLE species;")
+  DBI::dbExecute(
+    con,
+    "ALTER TABLE species_trophic_group
+  RENAME TO species;"
+  )
+  
+  invisible(species_trophic_group)
+}
+
+#' Combine Trophic Groups and DB species
+#' 
+#' Internal to allow for testing
+#'
+#' @param trophic_groups A data frame
+#' @param db_species A data frame
+#'
+#' @return A data frame
+#' 
+#' @examples
+#' \dontrun{
+#' species_trophic_group <- combine_trophic_group(trophic_groups, db_species)
+#' }
+combine_trophic_group <- function(trophic_groups, db_species) {
   trophic_groups <- trophic_groups |>
     dplyr::mutate(
       class = stringr::str_squish(.data$class),
@@ -153,33 +188,36 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
       "ecological_group", "trophic_group",
     ) |>
     tibble::tibble()
+}
+
+#' Read Trophic Groups and DB species
+#' 
+#' Internal to allow for testing
+#'
+#' @param trophic_groups_file_path A file path
+#' @param db_species A data frame
+#'
+#' @return A data frame
+#' 
+#' @examples
+#' \dontrun{
+#' species_trophic_group <- read_trophic_group(trophic_groups_file_path, db_species)
+#' }
+read_trophic_group <- function(trophic_groups_file_path, db_species) {
   
-  # create new db things 
-  DBI::dbExecute(
-    con,
-    paste0(
-      "CREATE TABLE species_trophic_group ",
-      "(", paste(colnames(species_trophic_group), collapse = ", "),
-      ", PRIMARY KEY (species_number))"
+  trophic_groups <- readr::read_csv(
+    trophic_groups_file_path, 
+    show_col_types = FALSE
+  )
+  chk::check_data(
+    trophic_groups,
+    list(
+      class = c("", NA),
+      order = c("", NA),
+      trophic_group = "",
+      ecological_group = ""
     )
   )
-  
-  DBI::dbWriteTable(
-    con, 
-    "species_trophic_group", 
-    value = species_trophic_group, 
-    append = TRUE, 
-    row.names = FALSE
-  )
-  if (!quiet) {
-    message("Adding: trophic and ecological groups to species table")
-  }
-  DBI::dbExecute(con, "DROP TABLE species;")
-  DBI::dbExecute(
-    con,
-    "ALTER TABLE species_trophic_group
-  RENAME TO species;"
-  )
-  
-  invisible(species_trophic_group)
+  species_trophic_group <- combine_trophic_group(trophic_groups, db_species)
+  species_trophic_group
 }
