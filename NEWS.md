@@ -1,8 +1,7 @@
-<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
 # wqbench 1.0.0
 
-- Internal changes only.
+- First working version of the package.
 
 
 # wqbench 0.0.0.9000
