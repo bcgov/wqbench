@@ -18,8 +18,8 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Province of British Columbia [copyright holder]
   \item Joe Thorley \email{joe@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7683-4592}{ORCID}) [contributor]
+  \item Province of British Columbia [copyright holder]
 }
 
 }
