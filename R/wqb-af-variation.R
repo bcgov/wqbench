@@ -73,7 +73,7 @@ wqb_af_variation <- function(data) {
       return(data)
     }
     if (no_species > 6) {
-      data$af_variation <- 2L
+      data$af_variation <- 3L
       return(data)
     }
   }
@@ -84,11 +84,11 @@ wqb_af_variation <- function(data) {
       return(data)
     }
     if (no_species %in% 4:6) { 
-      data$af_variation <- 2L
+      data$af_variation <- 3L
       return(data)
     }
     if (no_species > 6) {
-      data$af_variation <- 1L 
+      data$af_variation <- 2L 
       return(data)
     }
   }
