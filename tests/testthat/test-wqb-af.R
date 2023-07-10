@@ -174,6 +174,6 @@ test_that("Proper af's are applied test 4", {
   )
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })

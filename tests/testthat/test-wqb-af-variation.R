@@ -494,7 +494,7 @@ test_that("Two trophic levels (fish, plant) and 6 species gives af of 5", {
   )
 })
 
-test_that("Two trophic levels (fish, plant) and 7 species gives af of 2", {
+test_that("Two trophic levels (fish, plant) and 7 species gives af of 3", {
   reps <- 7L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 3L), rep("Plant", 4L))),
@@ -512,11 +512,11 @@ test_that("Two trophic levels (fish, plant) and 7 species gives af of 2", {
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })
 
-test_that("Two trophic levels (fish, plant) and 20 species gives af of 2", {
+test_that("Two trophic levels (fish, plant) and 20 species gives af of 3", {
   reps <- 20L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 10L), rep("Plant", 10L))),
@@ -534,7 +534,7 @@ test_that("Two trophic levels (fish, plant) and 20 species gives af of 2", {
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })
 
@@ -560,7 +560,7 @@ test_that("Three trophic levels (fish, plant, algae) and 3 species gives af of 5
   )
 })
 
-test_that("Three trophic levels (fish, plant, algae) and 4 species gives af of 2", {
+test_that("Three trophic levels (fish, plant, algae) and 4 species gives af of 3", {
   reps <- 4L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 2L), rep("Plant", 1L), rep("Algae", 1L))),
@@ -578,11 +578,11 @@ test_that("Three trophic levels (fish, plant, algae) and 4 species gives af of 2
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })
 
-test_that("Three trophic levels (fish, plant, algae) and 5 species gives af of 2", {
+test_that("Three trophic levels (fish, plant, algae) and 5 species gives af of 3", {
   reps <- 5L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 2L), rep("Plant", 2L), rep("Algae", 1L))),
@@ -600,11 +600,11 @@ test_that("Three trophic levels (fish, plant, algae) and 5 species gives af of 2
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })
 
-test_that("Three trophic levels (fish, plant, algae) and 6 species gives af of 2", {
+test_that("Three trophic levels (fish, plant, algae) and 6 species gives af of 3", {
   reps <- 6L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 2L), rep("Plant", 2L), rep("Algae", 2L))),
@@ -622,11 +622,11 @@ test_that("Three trophic levels (fish, plant, algae) and 6 species gives af of 2
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    2L
+    3L
   )
 })
 
-test_that("Three trophic levels (fish, plant, algae) and 7 species gives af of 1", {
+test_that("Three trophic levels (fish, plant, algae) and 7 species gives af of 2", {
   reps <- 7L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 3L), rep("Plant", 2L), rep("Algae", 2L))),
@@ -644,11 +644,11 @@ test_that("Three trophic levels (fish, plant, algae) and 7 species gives af of 1
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    1L
+    2L
   )
 })
 
-test_that("Three trophic levels (fish, plant, algae) and 20 species gives af of 1", {
+test_that("Three trophic levels (fish, plant, algae) and 20 species gives af of 2", {
   reps <- 20L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Fish", 10L), rep("Plant", 5L), rep("Algae", 5L))),
@@ -666,11 +666,11 @@ test_that("Three trophic levels (fish, plant, algae) and 20 species gives af of 
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    1L
+    2L
   )
 })
 
-test_that("Three trophic levels (amphibian, plant, algae) and 20 species gives af of 1", {
+test_that("Three trophic levels (amphibian, plant, algae) and 20 species gives af of 2", {
   reps <- 20L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Amphibian", 10L), rep("Plant", 5L), rep("Algae", 5L))),
@@ -688,11 +688,11 @@ test_that("Three trophic levels (amphibian, plant, algae) and 20 species gives a
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    1L
+    2L
   )
 })
 
-test_that("Three trophic levels (amphibian, plant, invertebrate) and 20 species gives af of 1", {
+test_that("Three trophic levels (amphibian, plant, invertebrate) and 20 species gives af of 2", {
   reps <- 20L
   df <- data.frame(
     "trophic_group" = factor(c(rep("Amphibian", 10L), rep("Plant", 5L), rep("Invertebrate", 5L))),
@@ -710,7 +710,7 @@ test_that("Three trophic levels (amphibian, plant, invertebrate) and 20 species 
   output <- wqb_af_variation(df)
   expect_equal(
     unique(output$af_variation),
-    1L
+    2L
   )
 })
 
