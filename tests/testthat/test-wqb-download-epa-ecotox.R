@@ -27,6 +27,7 @@ test_that("error when version lower then 1 is passed", {
 })
 
 test_that("folder is downloaded", {
+  skip_on_ci()
   skip_if_offline("cfpub.epa.gov")
   skip_if_testing_quick()
   
