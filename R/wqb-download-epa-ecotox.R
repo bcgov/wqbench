@@ -77,7 +77,7 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
   )
   file_info$file_name <- tools::file_path_sans_ext(zip_files)
   
-  file_info <- file_info[order(file_info$date, decreasing = TRUE),] 
+  file_info <- file_info[order(file_info$dates, decreasing = TRUE),] 
   most_recent_version <- file_info$file[version] 
   file_url <- file.path(ftp_url, most_recent_version)
   file_name <-  file_info$file_name[version] 
