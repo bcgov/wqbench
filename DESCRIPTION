@@ -2,28 +2,19 @@ Package: wqbench
 Title: Calculate Aquatic Life Benchmarks
 Version: 0.0.1
 Authors@R: c(
-  person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = c("aut"),
-             comment = c(ORCID = "0000-0001-7388-1222")),
-  person("Angeline", "Tillmanns", ,"Angeline.Tillmanns@gov.bc.ca", role = c("aut", "cre")),
-  person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = c("ctb"),
+    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "aut",
+           comment = c(ORCID = "0000-0001-7388-1222")),
+    person("Angeline", "Tillmanns", , "Angeline.Tillmanns@gov.bc.ca", role = c("aut", "cre")),
+    person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0002-7683-4592")),
-  person("Province of British Columbia", role = "cph")
+    person("Province of British Columbia", role = "cph")
   )
-Description: Download recent versions of the US EPA ECOTOX database. Clean,
-  standardize and classify data so values are comparable. Use a SSD or 
-  deterministic method to determine the critical toxicity value and assessment
-  factors to compute the aquatic life water quality benchmark for a compound. 
+Description: Download recent versions of the US EPA ECOTOX database.
+    Clean, standardize and classify data so values are comparable. Use a
+    SSD or deterministic method to determine the critical toxicity value
+    and assessment factors to compute the aquatic life water quality
+    benchmark for a compound.
 License: Apache License (== 2)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-Config/testthat/edition: 3
-Remotes: 
-    poissonconsulting/wqbenchdata
-Suggests: 
-    covr,
-    testthat (>= 3.0.0),
-    wqbenchdata
 Imports: 
     chk,
     DBI,
@@ -41,3 +32,13 @@ Imports:
     tidyr,
     utils,
     withr
+Suggests: 
+    covr,
+    testthat (>= 3.0.0),
+    wqbenchdata
+Remotes: 
+    poissonconsulting/wqbenchdata
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
