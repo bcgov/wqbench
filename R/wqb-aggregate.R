@@ -61,7 +61,7 @@ wqb_aggregate <- function(data) {
           stringr::str_detect(.data$endpoint_alpha, "LC") & .data$endpoint_numeric >= 20 ~ 1
         ),
         group_id = dplyr::cur_group_id(),
-        id = 1:dplyr::n()
+        id = seq_len(dplyr::n())
       )
   } else {
     # Deterministic method
@@ -81,7 +81,7 @@ wqb_aggregate <- function(data) {
           stringr::str_detect(.data$endpoint_alpha, "(NOEC)|(NOEL)") ~ 1,
         ),
         group_id = dplyr::cur_group_id(),
-        id = 1:dplyr::n()
+        id = seq_len(dplyr::n())
       )
   }
 
