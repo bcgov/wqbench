@@ -90,7 +90,7 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
         paste("The", file_name, "folder is already downloaded to", file_path, ". Overwrite it?")
       )
       # if no or cancel then exit function
-      if (!answer | is.na(answer)) {
+      if (!answer || is.na(answer)) {
         if (!quiet) {
           message("Skip downloading data files")
         }

@@ -50,7 +50,7 @@ wqb_create_epa_ecotox <- function(folder_path = ".", data_path, quiet = FALSE,
         )
       )
       # if no or cancel then exit function
-      if (!answer | is.na(answer)) {
+      if (!answer || is.na(answer)) {
         chk::err("Permission denied. Exiting")
       }
     }

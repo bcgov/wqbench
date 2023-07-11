@@ -53,7 +53,7 @@ wqb_benchmark_method <- function(data) {
       values_from = "n"
     )
 
-  if (groups_species$fish >= 3 & groups_species$invertebrate >= 3 & (groups_species$algae >= 1 | groups_species$plant >= 1)) {
+  if (groups_species$fish >= 3 && groups_species$invertebrate >= 3 && (groups_species$algae >= 1 || groups_species$plant >= 1)) {
     data$method <- "SSD"
   } else {
     data$method <- "Deterministic"
