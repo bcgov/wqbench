@@ -168,4 +168,5 @@ test_that("plot type is ggplot", {
   )
   output <- wqb_plot(df)
   expect_equal(class(output), c("gg", "ggplot"))
+  expect_snapshot_plot(output, "wqb_plot")
 })
