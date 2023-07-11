@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -46,39 +46,39 @@
 #' @examples
 #' \dontrun{
 #' duration_unit_code_standardization <- wqb_add_duration_conversions(
-#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#'   database = "ecotox_ascii_09_15_2022.sqlite"
 #' )
 #'
 #' duration_unit_code_standardization <- wqb_add_duration_conversions(
-#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#'   database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
 wqb_add_duration_conversions <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
-  
+
   # read in from db
   on.exit(DBI::dbDisconnect(con))
-  con  <- DBI::dbConnect(
-    RSQLite::SQLite(), 
+  con <- DBI::dbConnect(
+    RSQLite::SQLite(),
     database
   )
-  
+
   db_duration_unit_codes <- DBI::dbReadTable(con, "duration_unit_codes") |>
     dplyr::mutate(
       code = stringr::str_squish(.data$code),
     ) |>
     tibble::tibble()
-  
+
   if ("duration_value_multiplier_to_hours" %in% colnames(db_duration_unit_codes)) {
     stop(
       paste(
-        "Value multiplier to hours has already been", 
+        "Value multiplier to hours has already been",
         "added to the database"
       )
     )
   }
-  
+
   if ("duration_units_to_keep" %in% colnames(db_duration_unit_codes)) {
     stop(
       paste(
@@ -86,7 +86,7 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
       )
     )
   }
-  
+
   duration_std_file_path <- system.file(
     "extdata/duration-conversion.csv",
     package = "wqbench"
@@ -95,7 +95,7 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
   duration_unit_codes_std <- read_duration_conversions(
     duration_std_file_path, db_duration_unit_codes
   )
-  
+
   # create db tables
   DBI::dbExecute(
     con,
@@ -105,7 +105,7 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
       ", PRIMARY KEY (code))"
     )
   )
-  
+
   DBI::dbWriteTable(
     con,
     "duration_unit_codes_std",
@@ -122,12 +122,12 @@ wqb_add_duration_conversions <- function(database, quiet = FALSE) {
     "ALTER TABLE duration_unit_codes_std
   RENAME TO duration_unit_codes;"
   )
-  
+
   invisible(duration_unit_codes_std)
 }
 
 #' Combine Duration Unit Conversation Values and DB duration unit
-#' 
+#'
 #' Internal to allow for testing
 #'
 #' @param duration_std A data frame
@@ -149,25 +149,25 @@ combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
         "-X",
         .data$code
       ),
-      code = stringr::str_squish(.data$code) 
+      code = stringr::str_squish(.data$code)
     ) |>
     dplyr::select("code", "duration_units_to_keep", "duration_value_multiplier_to_hours")
-  
+
   # print out name of any codes that don't match the db ones
   dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
   if (any((dont_match))) {
     message("Value(s) do not match code(s) in `duration_unit_codes` table in ECOTOX database:")
     message(chk::cc(duration_std$code[dont_match]))
   }
-  
+
   # add conversion values to the duration table
   duration_unit_codes_std <- db_duration_unit_codes |>
     dplyr::left_join(duration_std, by = "code") |>
-    tibble::tibble() 
+    tibble::tibble()
 }
 
 #' Read Duration Unit Conversation
-#' 
+#'
 #' Internal to allow for testing
 #'
 #' @param duration_std_file_path A file path
@@ -178,16 +178,17 @@ combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
 #' @examples
 #' \dontrun{
 #' duration_unit_codes_std <- read_duration_conversions(
-#'  duration_std_file_path, db_duration_unit_codes
+#'   duration_std_file_path, db_duration_unit_codes
 #' )
 #' }
 read_duration_conversions <- function(duration_std_file_path,
                                       db_duration_unit_codes) {
   duration_std <- readr::read_csv(
-    duration_std_file_path, show_col_types = FALSE
-  ) 
+    duration_std_file_path,
+    show_col_types = FALSE
+  )
   chk::check_data(
-    duration_std, 
+    duration_std,
     list(
       code = c("", NA),
       description = c("", NA),
@@ -195,7 +196,7 @@ read_duration_conversions <- function(duration_std_file_path,
       duration_value_multiplier_to_hours = c(1, NA)
     )
   )
-  
+
   duration_unit_codes_std <- combine_duration_conversions(
     duration_std, db_duration_unit_codes
   )

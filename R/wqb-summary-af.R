@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,9 +13,9 @@
 # limitations under the License.
 
 #' Summary Table of the Assessment Factor Values
-#' 
-#' Create summary table of the species variation factor, ecological assessment 
-#' factor and B.C. species factor. 
+#'
+#' Create summary table of the species variation factor, ecological assessment
+#' factor and B.C. species factor.
 #'
 #' @param data A data frame
 #' @return A data frame
@@ -27,15 +27,15 @@
 #' }
 wqb_summary_af <- function(data) {
   chk::check_data(
-    data, 
+    data,
     list(
       af_variation = 1L,
       af_salmon = 1L,
       af_planktonic = 1L,
       af_bc_species = 1L
     )
-  ) 
-  
+  )
+
   af_descriptions <- data.frame(
     Consideration = c("af_variation", "af_ecological", "af_bc_species"),
     Description = c(
@@ -44,7 +44,7 @@ wqb_summary_af <- function(data) {
       "Accounts for uncertainty of not having representation of B.C. species"
     )
   )
-  
+
   tbl_af <- data |>
     dplyr::select(
       "af_variation", "af_salmon", "af_planktonic", "af_bc_species"
@@ -69,6 +69,6 @@ wqb_summary_af <- function(data) {
     dplyr::select(
       "Consideration", "Assessment Factor", "Description"
     )
-  
+
   tbl_af
 }

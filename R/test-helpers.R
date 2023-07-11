@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,7 +16,7 @@ skip_if_testing_quick <- function() {
   if (is.null(getOption("wqb_testing"))) {
     invisible(return())
   }
-  
+
   if (getOption("wqb_testing") == "quick") {
     testthat::skip("Not run: testing mode set to quick")
   }
@@ -28,24 +28,24 @@ options(wqb_testing = "quick")
 
 create_clean_test_data <- function(update_vals = list(0)) {
   x <- list(
-    chemical_name = "Bleach", 
+    chemical_name = "Bleach",
     test_cas = NA,
     test_id = NA,
-    result_id = NA, 
-    endpoint = "LOEC", 
+    result_id = NA,
+    endpoint = "LOEC",
     effect = NA_character_,
     effect_description = "Mortality",
-    conc1_mean = 1, 
-    conc1_unit = "mg/L", 
-    conc_conversion_flag = TRUE, 
+    conc1_mean = 1,
+    conc1_unit = "mg/L",
+    conc_conversion_flag = TRUE,
     conc_conversion_value_multiplier = 1,
-    conc_conversion_unit = "mg/L", 
-    conc2_mean = NA, 
-    conc2_unit = NA, 
-    conc3_mean = NA, 
-    conc3_unit = NA, 
-    duration_mean = 1, 
-    duration_unit = "h", 
+    conc_conversion_unit = "mg/L",
+    conc2_mean = NA,
+    conc2_unit = NA,
+    conc3_mean = NA,
+    conc3_unit = NA,
+    duration_mean = 1,
+    duration_unit = "h",
     duration_units_to_keep = TRUE,
     duration_value_multiplier_to_hours = 1,
     study_duration_mean = NA,
@@ -82,12 +82,11 @@ create_clean_test_data <- function(update_vals = list(0)) {
     title = NA_character_,
     source = NA,
     publication_year = NA,
-    additional_comments_tests = NA_character_, 
+    additional_comments_tests = NA_character_,
     additional_comments_results = NA_character_,
     download_date = NA,
     version = NA_character_
   )
   z <- utils::modifyList(x, update_vals)
   data.frame(z)
-} 
-
+}

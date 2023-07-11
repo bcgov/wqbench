@@ -44,11 +44,11 @@ convert the unit into hours.
 \examples{
 \dontrun{
 duration_unit_code_standardization <- wqb_add_duration_conversions(
- database = "ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
 duration_unit_code_standardization <- wqb_add_duration_conversions(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }
 }

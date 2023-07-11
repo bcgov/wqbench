@@ -44,11 +44,11 @@ The \code{code} values in the concentration-conversion file are matched to the
 \examples{
 \dontrun{
 concentration_unit_code_standardization <- wqb_add_conc_conversions(
- database = "ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
 concentration_unit_code_standardization <- wqb_add_conc_conversions(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }
 }

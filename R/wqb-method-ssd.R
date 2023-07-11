@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,22 +14,22 @@
 
 #' SSD Method to Calculate Critical Toxicity Value for the Chemical
 #'
-#' Use a species sensitivity distribution to calculate the critical toxicity 
-#' value for the data set. The critical toxicity value is the hazardous 
-#' concentration for 5% of species (HC5) when the SSD method is used. 
+#' Use a species sensitivity distribution to calculate the critical toxicity
+#' value for the data set. The critical toxicity value is the hazardous
+#' concentration for 5% of species (HC5) when the SSD method is used.
 #'
 #' @param data A data frame
 #' @param fit The fit
-#' @return A data frame 
+#' @return A data frame
 #' @export
 #' @details A wrapper on the ssdtools package function
-#'  `ssdtools::ssd_hc_bcanz()`. The number of bootstrap samples is set to 10000 
-#'  (which  can take a few minutes to run) and only the HC5 concentration is 
+#'  `ssdtools::ssd_hc_bcanz()`. The number of bootstrap samples is set to 10000
+#'  (which  can take a few minutes to run) and only the HC5 concentration is
 #'  returned.
-#' 
+#'
 #' @examples
 #' \dontrun{
-#'  hc5 <- wqb_method_ssd(data, fit)
+#' hc5 <- wqb_method_ssd(data, fit)
 #' }
 wqb_method_ssd <- function(data, fit) {
   chk::check_data(
@@ -40,7 +40,7 @@ wqb_method_ssd <- function(data, fit) {
     )
   )
   hc5 <- wqb_ssd_hc5(fit)
-  
+
   value <- hc5 |>
     dplyr::select("est", "lcl", "ucl") |>
     dplyr::mutate(
@@ -52,22 +52,22 @@ wqb_method_ssd <- function(data, fit) {
     dplyr::select(
       "ctv_est_mg.L", "ctv_lcl_mg.L", "ctv_ucl_mg.L"
     )
-  
+
   value
 }
 
 #' Fit BCANZ Distributions
-#' 
+#'
 #' Wrapper to `ssdtools::ssd_fit_bcanz()`. The sp_aggre_conc_mg.L values are
 #' the concentrations used.
 #'
 #' @param data A data frame
-#' @return A data frame 
+#' @return A data frame
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'  fit <- wqb_ssd_fit(data)
+#' fit <- wqb_ssd_fit(data)
 #' }
 wqb_ssd_fit <- function(data) {
   ssdtools::ssd_fit_bcanz(
@@ -77,8 +77,8 @@ wqb_ssd_fit <- function(data) {
 }
 
 #' Run SSD to get Hazard Concentrations
-#' 
-#' Wrapper to the `ssdtools::ssd_hc_bcanz()` function and selects only the 
+#'
+#' Wrapper to the `ssdtools::ssd_hc_bcanz()` function and selects only the
 #' row which is 5%.
 #'
 #' @param fit The fit from ssd
@@ -89,7 +89,7 @@ wqb_ssd_fit <- function(data) {
 #'
 #' @examples
 #' \dontrun{
-#'  hc5 <- wqb_ssd_hc5(fit)
+#' hc5 <- wqb_ssd_hc5(fit)
 #' }
 wqb_ssd_hc5 <- function(fit, nboot = 10000) {
   tbl <- ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>

@@ -20,7 +20,7 @@ Internal to allow for testing
 \examples{
 \dontrun{
 duration_unit_codes_std <- read_duration_conversions(
- duration_std_file_path, db_duration_unit_codes
+  duration_std_file_path, db_duration_unit_codes
 )
 }
 }

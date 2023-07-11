@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,16 +15,20 @@
 test_that("values are coded into correct groupings", {
   db_media_type <- data.frame(
     code = c("--", "AGR", "FW", "SW", "NR", "SLG", "MAN"),
-    description = c("Unspecified", "Agar", "Fresh water", "Salt water", 
-                    "Not reported", "Sludge", "Manure")
+    description = c(
+      "Unspecified", "Agar", "Fresh water", "Salt water",
+      "Not reported", "Sludge", "Manure"
+    )
   )
-  
+
   output <- combine_media(db_media_type)
-  
+
   expect_equal(
     output$media_type_group,
-    c("not reported", "not reported", "fresh water", "salt water", 
-      "not reported", "not reported", "not reported")
+    c(
+      "not reported", "not reported", "fresh water", "salt water",
+      "not reported", "not reported", "not reported"
+    )
   )
 })
 

@@ -20,7 +20,7 @@ Internal to allow for testing
 \examples{
 \dontrun{
 data <- combine_concentration_endpoints(
- endpoint_concentration_pick, db_endpoint_code
+  endpoint_concentration_pick, db_endpoint_code
 )
 }
 }

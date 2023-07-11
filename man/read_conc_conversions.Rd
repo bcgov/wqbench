@@ -19,8 +19,8 @@ Internal to allow for testing
 }
 \examples{
 \dontrun{
- concentration_unit_codes_std <-  read_conc_conversions(
-   concentration_std_file_path, db_concentration_unit_codes
- )
+concentration_unit_codes_std <- read_conc_conversions(
+  concentration_std_file_path, db_concentration_unit_codes
+)
 }
 }

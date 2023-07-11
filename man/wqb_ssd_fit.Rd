@@ -18,6 +18,6 @@ the concentrations used.
 }
 \examples{
 \dontrun{
- fit <- wqb_ssd_fit(data)
+fit <- wqb_ssd_fit(data)
 }
 }

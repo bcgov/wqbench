@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,19 +14,19 @@
 
 test_that("combine bc species by cas number in db chemical table", {
   bc_wqg <- data.frame(
-    Media = c("Water", "Water",  "Water",  "Water", "Water"),
+    Media = c("Water", "Water", "Water", "Water", "Water"),
     Type = c("Long-term chronic", "Long-term chronic", "Long-term chronic", "Long-term chronic", "Long-term chronic"),
     Use = c("Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c("(7429-90-5)", "(116-06-3)", "(120-12-7)", "(NA)", "(56-55-3)")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "784", "120127", "1234"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "784", "120127", "1234")
@@ -44,14 +44,14 @@ test_that("only water media are selected", {
     Use = c("Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c("(7429-90-5)", "(116-06-3)", "(120-12-7)", "(56-55-3)")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -69,14 +69,14 @@ test_that("only long term chronic is selected", {
     Use = c("Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c("(7429-90-5)", "(116-06-3)", "(120-12-7)", "(56-55-3)")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -94,14 +94,14 @@ test_that("use is aquatic fresh or marine long term chronic is selected", {
     Use = c("Agriculture - Livestock", "Wildlife", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c("(7429-90-5)", "(116-06-3)", "(120-12-7)", "(56-55-3)")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -119,14 +119,14 @@ test_that("spaces in cas do not cause issues", {
     Use = c("Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c(" (7429-90-5)", "( 116-06-3)", "(120- 12-7)", "(56-55-3)  ")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -144,14 +144,14 @@ test_that("spaces in Media column causes a mismatch due to filter condition", {
     Use = c("Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c(" (7429-90-5)", "( 116-06-3)", "(120- 12-7)", "(56-55-3)  ")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -170,14 +170,14 @@ test_that("no bc_wqg means no chemical is tagged as in wqg", {
     Use = character(),
     CAS_number = character()
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -195,14 +195,14 @@ test_that("all missing data bc_wqg means no chemical is tagged as in wqg", {
     Use = NA_character_,
     CAS_number = NA_character_
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl")
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553")
@@ -220,14 +220,14 @@ test_that("no db chemicals gives an a table with no rows", {
     Use = c("Agriculture - Livestock", "Wildlife", "Aquatic Life - Freshwater", "Aquatic Life - Freshwater"),
     CAS_number = c("(7429-90-5)", "(116-06-3)", "(120-12-7)", "(56-55-3)")
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = character(),
     chemical_name = character()
-  ) 
-  
+  )
+
   output <- combine_bc_wqg(bc_wqg, db_chemicals)
-  
+
   expect_equal(
     nrow(output),
     0L
@@ -243,24 +243,24 @@ test_that("read in actual wqg sheet and check things are added ", {
     "extdata/all-wqgs.csv",
     package = "wqbench"
   )
-  
+
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553", "1"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl", "H")
-  ) 
-  
+  )
+
   output <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
-  
+
   expect_equal(
     nrow(output),
     5L
   )
-  
+
   expect_equal(
     output$cas_number,
     c("7429905", "116063", "120127", "56553", "1")
   )
-  
+
   expect_equal(
     output$present_in_bc_wqg,
     c(TRUE, TRUE, TRUE, TRUE, FALSE)

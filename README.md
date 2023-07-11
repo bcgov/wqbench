@@ -62,7 +62,7 @@ data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
 data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "100016")
 data <- wqb_benchmark_method(data)
 
-data_agg <- wqb_aggregate(data) 
+data_agg <- wqb_aggregate(data)
 data_agg <- wqb_af(data_agg)
 
 ctv <- wqb_generate_ctv(data_agg)
@@ -78,7 +78,7 @@ To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
 
 ``` r
-benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
 benchmark
 ```
 
@@ -108,7 +108,7 @@ wqb_plot_det(data_agg)
 data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "1071836")
 data <- wqb_benchmark_method(data)
 
-data_agg <- wqb_aggregate(data) 
+data_agg <- wqb_aggregate(data)
 data_agg <- wqb_af(data_agg)
 
 ctv <- wqb_generate_ctv(data_agg)
@@ -118,18 +118,18 @@ ctv
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00199       0.0581
+    ## 1       0.0101      0.00198       0.0565
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
 
 ``` r
-benchmark <-  ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
 benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001991101   0.05809077
+    ## 1   0.01014924  0.001979132   0.05646545
 
 *SSD* method can generate a lower and upper confidence interval.
 

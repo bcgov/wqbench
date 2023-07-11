@@ -27,6 +27,6 @@ returned.
 }
 \examples{
 \dontrun{
- hc5 <- wqb_method_ssd(data, fit)
+hc5 <- wqb_method_ssd(data, fit)
 }
 }

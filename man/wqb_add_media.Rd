@@ -27,11 +27,11 @@ new categories are added to a column in the table called
 \examples{
 \dontrun{
 media_info <- wqb_add_media(
- database = "ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
 media_info <- wqb_add_media(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }
 }

@@ -39,8 +39,10 @@ of this function is fed into the app.
 }
 \examples{
 \dontrun{
- wqb_create_data_set(file_path = "~/Ecotoxicology/ecotox", 
- version = 1, 
- folder_path = "~/Ecotoxicology/ecotox_db/")
+wqb_create_data_set(
+  file_path = "~/Ecotoxicology/ecotox",
+  version = 1,
+  folder_path = "~/Ecotoxicology/ecotox_db/"
+)
 }
 }
