@@ -139,6 +139,7 @@ combine_bc_wqg <- function(bc_wqg, db_chemicals) {
       present_in_bc_wqg = tidyr::replace_na(.data$present_in_bc_wqg, FALSE)
     ) |>
     tibble::tibble()
+  chemicals_bc_wqg
 }
 
 

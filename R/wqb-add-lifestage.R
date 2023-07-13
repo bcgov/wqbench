@@ -137,6 +137,7 @@ combine_lifestage <- function(lifestage_codes, db_lifestage_codes) {
     ) |>
     dplyr::left_join(lifestage_codes, by = "code") |>
     tibble::tibble()
+  lifestage_groups
 }
 
 #' Read Life Stage Groups

@@ -164,6 +164,7 @@ combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
   duration_unit_codes_std <- db_duration_unit_codes |>
     dplyr::left_join(duration_std, by = "code") |>
     tibble::tibble()
+  duration_unit_codes_std
 }
 
 #' Read Duration Unit Conversation
