@@ -187,6 +187,7 @@ combine_trophic_group <- function(trophic_groups, db_species) {
       "ecological_group", "trophic_group",
     ) |>
     tibble::tibble()
+  species_trophic_group
 }
 
 #' Read Trophic Groups and DB species

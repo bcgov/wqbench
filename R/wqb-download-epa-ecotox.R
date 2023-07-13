@@ -127,14 +127,14 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
   )
 
   # write meta file
-  fileConn <- file(file.path(output_folder, "download_info.txt"))
+  file_conn <- file(file.path(output_folder, "download_info.txt"))
   text_msg <- paste0(
     "download_date | version \n",
     as.character(Sys.time()), "| ",
     file_name
   )
-  writeLines(text_msg, fileConn)
-  close(fileConn)
+  writeLines(text_msg, file_conn)
+  close(file_conn)
 
   invisible(output_folder)
 }

@@ -43,6 +43,7 @@ wqb_af_variation <- function(data) {
   no_trophic_levels <- data |>
     dplyr::count(.data$trophic_group) |>
     nrow()
+
   ## Trophic Level 1 ----
   if (no_trophic_levels == 1) {
     if (no_species == 1) {
@@ -57,10 +58,9 @@ wqb_af_variation <- function(data) {
       data$af_variation <- 10L
       return(data)
     }
-    if (no_species > 6) {
-      data$af_variation <- 5L
-      return(data)
-    }
+    # no_species > 6
+    data$af_variation <- 5L
+    return(data)
   }
   ## Trophic Level 2 ----
   if (no_trophic_levels == 2) { ## not possible so remove
@@ -72,14 +72,13 @@ wqb_af_variation <- function(data) {
       data$af_variation <- 5L
       return(data)
     }
-    if (no_species > 6) {
-      data$af_variation <- 3L
-      return(data)
-    }
+    # no_species > 6
+    data$af_variation <- 3L
+    return(data)
   }
   ## Trophic Level 3 ----
   if (no_trophic_levels == 3) {
-    if (no_species %in% 2:3) {
+    if (no_species == 3) {
       data$af_variation <- 5L
       return(data)
     }
@@ -87,10 +86,9 @@ wqb_af_variation <- function(data) {
       data$af_variation <- 3L
       return(data)
     }
-    if (no_species > 6) {
-      data$af_variation <- 2L
-      return(data)
-    }
+    # no_species > 6
+    data$af_variation <- 2L
+    return(data)
   }
   data$af_variation <- 1L
   data

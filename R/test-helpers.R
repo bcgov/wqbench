@@ -91,13 +91,12 @@ create_clean_test_data <- function(update_vals = list(0)) {
   data.frame(z)
 }
 
-
 save_png <- function(x, width = 400, height = 400) {
   path <- tempfile(fileext = ".png")
   grDevices::png(path, width = width, height = height)
   on.exit(grDevices::dev.off())
   print(x)
-  
+
   path
 }
 

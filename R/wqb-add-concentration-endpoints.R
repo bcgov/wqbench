@@ -144,6 +144,7 @@ combine_concentration_endpoints <- function(endpoint_concentration_pick,
       concentration_flag = tidyr::replace_na(.data$concentration_flag, FALSE)
     ) |>
     tibble::tibble()
+  endpoint_concentration
 }
 
 #' Read the Concentration Endpoints
