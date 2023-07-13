@@ -142,7 +142,6 @@ combine_bc_wqg <- function(bc_wqg, db_chemicals) {
   chemicals_bc_wqg
 }
 
-
 #' Read BC Water Quality Guidelines
 #'
 #' Internal to allow for testing
