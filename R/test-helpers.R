@@ -97,7 +97,6 @@ save_png <- function(x, width = 400, height = 400) {
   grDevices::png(path, width = width, height = height)
   on.exit(grDevices::dev.off())
   print(x)
-  
   path
 }
 
