@@ -53,9 +53,9 @@ Internal to wqb_join_data() to allow for testing.
 \examples{
 \dontrun{
 data <- wqb_join_data(
- db_results, db_tests, db_endpoint_codes, db_species, db_lifestage_codes, 
- db_chemicals, db_duration_unit_codes, db_concentration_unit_codes, 
- db_references, db_effect_codes, db_media_type_codes, db_meta_data_download
-) 
+  db_results, db_tests, db_endpoint_codes, db_species, db_lifestage_codes,
+  db_chemicals, db_duration_unit_codes, db_concentration_unit_codes,
+  db_references, db_effect_codes, db_media_type_codes, db_meta_data_download
+)
 }
 }

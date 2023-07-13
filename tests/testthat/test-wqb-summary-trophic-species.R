@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,9 +17,9 @@ test_that("error when missing value in trophic group column", {
   df <- data.frame(
     "trophic_group" = factor(rep(NA_character_, reps)),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "species_present_in_bc" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -42,9 +42,9 @@ test_that("error with character trophic groups", {
   df <- data.frame(
     "trophic_group" = rep("Fish", reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "species_present_in_bc" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -67,9 +67,9 @@ test_that("number of species outputs correct counts", {
   df <- data.frame(
     "trophic_group" = factor(rep("Fish", reps), levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "species_present_in_bc" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -96,13 +96,13 @@ test_that("number of species outputs correct counts with fish and amphibian", {
   reps <- 15L
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("Fish", 5L), rep("Amphibian", 10L)), 
+      c(rep("Fish", 5L), rep("Amphibian", 10L)),
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "species_present_in_bc" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -125,13 +125,13 @@ test_that("number of species outputs correct counts with all groups", {
   reps <- 27L
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("Fish", 5L), rep("Amphibian", 10L), rep("Plant", 2L), rep("Algae", 3L), rep("Invertebrate", 7L)), 
+      c(rep("Fish", 5L), rep("Amphibian", 10L), rep("Plant", 2L), rep("Algae", 3L), rep("Invertebrate", 7L)),
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "species_present_in_bc" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),

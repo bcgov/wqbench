@@ -32,11 +32,11 @@ table of the database and then adds the \code{trophic_group} and
 \examples{
 \dontrun{
 trophic_group <- wqb_add_trophic_group(
- database = "ecotox_ascii_09_15_2022.sqlite"
-) 
+  database = "ecotox_ascii_09_15_2022.sqlite"
+)
 
 trophic_group <- wqb_add_trophic_group(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
 }
 }

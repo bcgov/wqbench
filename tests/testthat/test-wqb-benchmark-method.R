@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,15 +30,15 @@ test_that("error if trophic group has missing values", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   expect_error(
     wqb_benchmark_method(df),
@@ -51,9 +51,11 @@ test_that("SSD when more then 3 fish, more then 3 inverts and more then 1 plant"
   reps <- 7
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 3),
-      rep("invertebrate", 3),
-      rep("plant", 1))
+      c(
+        rep("fish", 3),
+        rep("invertebrate", 3),
+        rep("plant", 1)
+      )
     ),
     "duration_class" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -68,15 +70,15 @@ test_that("SSD when more then 3 fish, more then 3 inverts and more then 1 plant"
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -89,9 +91,11 @@ test_that("SSD when more then 4 fish, more then 3 inverts and more then 1 plant"
   reps <- 8
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 4),
+      c(
+        rep("fish", 4),
         rep("invertebrate", 3),
-        rep("plant", 1))
+        rep("plant", 1)
+      )
     ),
     "duration_class" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -106,15 +110,15 @@ test_that("SSD when more then 4 fish, more then 3 inverts and more then 1 plant"
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -127,9 +131,11 @@ test_that("SSD when more then 3 fish, more then 3 inverts and 1 algae", {
   reps <- 7
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 3),
+      c(
+        rep("fish", 3),
         rep("invertebrate", 3),
-        rep("algae", 1))
+        rep("algae", 1)
+      )
     ),
     "duration_class" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -144,15 +150,15 @@ test_that("SSD when more then 3 fish, more then 3 inverts and 1 algae", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -166,9 +172,11 @@ test_that("Deterministic when 2 fish, 3 inverts, 1 alage. Because need at least 
   reps <- 6
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 2),
+      c(
+        rep("fish", 2),
         rep("invertebrate", 3),
-        rep("algae", 1))
+        rep("algae", 1)
+      )
     ),
     "duration_class" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -183,15 +191,15 @@ test_that("Deterministic when 2 fish, 3 inverts, 1 alage. Because need at least 
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -204,9 +212,11 @@ test_that("Deterministic when 2 fish, 4 inverts, 1 alage. Because need at least 
   reps <- 7
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 2),
+      c(
+        rep("fish", 2),
         rep("invertebrate", 4),
-        rep("algae", 1))
+        rep("algae", 1)
+      )
     ),
     "duration_class" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
@@ -221,15 +231,15 @@ test_that("Deterministic when 2 fish, 4 inverts, 1 alage. Because need at least 
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -242,7 +252,8 @@ test_that("Deterministic when 1 fish, 5 inverts, 5 plants, 5 alage. Because need
   reps <- 16
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 1),
+      c(
+        rep("fish", 1),
         rep("invertebrate", 5),
         rep("algae", 5),
         rep("plant", 5)
@@ -261,15 +272,15 @@ test_that("Deterministic when 1 fish, 5 inverts, 5 plants, 5 alage. Because need
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -282,7 +293,8 @@ test_that("Deterministic when 3 fish, 2 inverts, 5 plants, 5 alage. Because need
   reps <- 15
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 3),
+      c(
+        rep("fish", 3),
         rep("invertebrate", 2),
         rep("algae", 5),
         rep("plant", 5)
@@ -301,15 +313,15 @@ test_that("Deterministic when 3 fish, 2 inverts, 5 plants, 5 alage. Because need
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -322,7 +334,8 @@ test_that("Deterministic when 10 fish, 10 inverts, 5 amphibians. Because need at
   reps <- 25
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 10),
+      c(
+        rep("fish", 10),
         rep("invertebrate", 10),
         rep("amphibian", 5)
       )
@@ -340,15 +353,15 @@ test_that("Deterministic when 10 fish, 10 inverts, 5 amphibians. Because need at
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -361,7 +374,8 @@ test_that("Deterministic when 3 fish, 3 inverts. Because need at least 1 plant o
   reps <- 6
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("fish", 3),
+      c(
+        rep("fish", 3),
         rep("invertebrate", 3),
         rep("amphibian", 0),
         rep("plant", 0),
@@ -381,15 +395,15 @@ test_that("Deterministic when 3 fish, 3 inverts. Because need at least 1 plant o
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(
@@ -402,7 +416,8 @@ test_that("Deterministic when 3 fish, 2 plants+algae. Because need more or more 
   reps <- 5
   df <- data.frame(
     "trophic_group" = factor(
-      c(rep("invertebrate", 3),
+      c(
+        rep("invertebrate", 3),
         rep("plant", 1),
         rep("algae", 1)
       )
@@ -420,15 +435,15 @@ test_that("Deterministic when 3 fish, 2 plants+algae. Because need more or more 
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
     "species_number" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_benchmark_method(df)
   expect_equal(

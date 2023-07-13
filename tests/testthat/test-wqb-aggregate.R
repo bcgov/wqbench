@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,13 +31,13 @@ test_that("The single species is aggregated to a single row", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -64,13 +64,13 @@ test_that("The single species is aggregated to a single row with multiple lifest
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -97,13 +97,13 @@ test_that("The single species is aggregated to a single row with multiple lifest
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -130,13 +130,13 @@ test_that("Two species is aggregated to a single row each with multiple lifestag
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -164,13 +164,13 @@ test_that("Highest priorty group (with EC05) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -197,13 +197,13 @@ test_that("Highest priorty group (with EC10) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -230,13 +230,13 @@ test_that("Highest priorty group (with IC10) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -263,13 +263,13 @@ test_that("Highest priorty group (with IC05) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -296,13 +296,13 @@ test_that("Second highest priorty group (with EC11) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -329,13 +329,13 @@ test_that("Second highest priorty group (with EC15) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -362,13 +362,13 @@ test_that("Second highest priorty group (with EC20) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -395,13 +395,13 @@ test_that("Second highest priorty group (with IC11) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -428,13 +428,13 @@ test_that("Second highest priorty group (with IC15) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -461,13 +461,13 @@ test_that("Second highest priorty group (with IC20) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -494,13 +494,13 @@ test_that("Third highest priorty group (with MATC) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -527,13 +527,13 @@ test_that("Fourth highest priorty group (with NOEC) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -560,13 +560,13 @@ test_that("Fourth highest priorty group (with NOEL) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -593,13 +593,13 @@ test_that("Fifth highest priorty group (with LOEC) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -615,7 +615,7 @@ test_that("Fifth highest priorty group (with LOEL) selected with ssd method, mov
     "lifestage" = rep("Egg", reps),
     "effect" = rep("Mortality", reps),
     "effect_conc_std_mg.L" = c(6, 6, 10, 7, 7, 8, 8),
-    "endpoint" = c("EC21", "IC21", "LOEL",  "LC5", "LC19", "LC20", "LC21"),
+    "endpoint" = c("EC21", "IC21", "LOEL", "LC5", "LC19", "LC20", "LC21"),
     "method" = rep("SSD", reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -626,13 +626,13 @@ test_that("Fifth highest priorty group (with LOEL) selected with ssd method, mov
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -659,13 +659,13 @@ test_that("Fifth highest priorty group (with MCIG) selected with ssd method move
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -692,13 +692,13 @@ test_that("Sixth highest priorty group (with EC21) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -725,13 +725,13 @@ test_that("Sixth highest priorty group (with IC21) selected with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -758,13 +758,13 @@ test_that("Seventh highest priorty group (with LC19) selected with ssd method", 
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -791,13 +791,13 @@ test_that("Seventh highest priorty group (with LC08) selected with ssd method", 
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -824,13 +824,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -857,13 +857,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -890,13 +890,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -923,13 +923,13 @@ test_that("Choose highest priority group and calc geometric mean with 1 group", 
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -956,13 +956,13 @@ test_that("Choose highest priority group and calc geometric mean with 2 groups",
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -989,13 +989,13 @@ test_that("Choose highest priority group and calc geometric mean with ssd method
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1022,13 +1022,13 @@ test_that("Choose different priority for each species with ssd method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1056,13 +1056,13 @@ test_that("Choose highest priority (EC05) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1089,13 +1089,13 @@ test_that("Choose highest priority (EC10) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1122,13 +1122,13 @@ test_that("Choose highest priority (IC05) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1155,13 +1155,13 @@ test_that("Choose highest priority (IC10) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1189,13 +1189,13 @@ test_that("Choose 2nd priority (EC11) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1222,13 +1222,13 @@ test_that("Choose 2nd priority (EC20) endpoint for det method, move to show orde
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1255,13 +1255,13 @@ test_that("Choose 2nd priority (IC11) endpoint for det method, move to show orde
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1288,13 +1288,13 @@ test_that("Choose 2nd priority (IC20) endpoint for det method, move to show orde
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1321,13 +1321,13 @@ test_that("Choose 3rd priority (MATC) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1354,13 +1354,13 @@ test_that("Choose 4th priority (LOEC) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1387,13 +1387,13 @@ test_that("Choose 4th priority (LOEL) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1420,13 +1420,13 @@ test_that("Choose 4th priority (MCIG) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1453,13 +1453,13 @@ test_that("Choose 5th priority (EC21) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1487,13 +1487,13 @@ test_that("Choose 5th priority (IC21) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1520,13 +1520,13 @@ test_that("Choose 6th priority (LC19) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1554,13 +1554,13 @@ test_that("Choose 6th priority (LC09) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1587,13 +1587,13 @@ test_that("Choose 7th priority (LC21) endpoint for det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1620,13 +1620,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1653,13 +1653,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1686,13 +1686,13 @@ test_that("Second priorty value (EC11) is picked regardless of concentration val
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1719,13 +1719,13 @@ test_that("Choose highest priority group and calc geometric mean with 1 group fo
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1752,13 +1752,13 @@ test_that("Choose highest priority group and calc geometric mean with 2 groups f
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1785,13 +1785,13 @@ test_that("Choose highest priority group and calc geometric mean for det method"
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1818,13 +1818,13 @@ test_that("Choose different priority for each species with det method", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1853,13 +1853,13 @@ test_that("Ensure det method priority is used", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(
@@ -1886,13 +1886,13 @@ test_that("Ensure ssd method priority is used", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_aggregate(df)
   expect_equal(

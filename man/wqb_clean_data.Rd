@@ -23,6 +23,6 @@ filter conditions and cleaning steps. This is part of Step 1.
 }
 \examples{
 \dontrun{
-data <- wqb_clean_data(data) 
+data <- wqb_clean_data(data)
 }
 }

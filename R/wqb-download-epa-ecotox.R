@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -58,7 +58,7 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
   chk::chk_string(file_path)
   chk::chk_whole_number(version)
   chk::chk_range(version, range = c(1, 4))
-  
+
   ftp_url <- "https://gaftp.epa.gov/ecotox/"
   ftp_data <- ftp_url |>
     rvest::read_html() |>
@@ -67,30 +67,30 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
   closeAllConnections()
   zip_files <- grep("\\.zip$", ftp_data, value = TRUE)
   file_info <- data.frame(file = zip_files)
-  
+
   file_info$dates <- as.Date(
     stringr::str_extract(
-      zip_files, 
+      zip_files,
       "[0-9]{2}_[0-9]{2}_[0-9]{4}"
-    ), 
+    ),
     format = "%m_%d_%Y"
   )
   file_info$file_name <- tools::file_path_sans_ext(zip_files)
-  
-  file_info <- file_info[order(file_info$dates, decreasing = TRUE),] 
-  most_recent_version <- file_info$file[version] 
+
+  file_info <- file_info[order(file_info$dates, decreasing = TRUE), ]
+  most_recent_version <- file_info$file[version]
   file_url <- file.path(ftp_url, most_recent_version)
-  file_name <-  file_info$file_name[version] 
-  
-  if (ask){
+  file_name <- file_info$file_name[version]
+
+  if (ask) {
     dir_present <- dir.exists(file.path(file_path, file_name))
     if (dir_present) {
-      # Ask to end or to continue and overwrite 
+      # Ask to end or to continue and overwrite
       answer <- utils::askYesNo(
-        paste("The", file_name, "folder is already downloaded to", file_path,". Overwrite it?")
+        paste("The", file_name, "folder is already downloaded to", file_path, ". Overwrite it?")
       )
       # if no or cancel then exit function
-      if (!answer | is.na(answer)) {
+      if (!answer || is.na(answer)) {
         if (!quiet) {
           message("Skip downloading data files")
         }
@@ -103,7 +103,7 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
     withr::local_tempdir(),
     file_info$file[version]
   )
-  
+
   if (!quiet) {
     message("Downloading...")
   }
@@ -119,45 +119,45 @@ wqb_download_epa_ecotox <- function(file_path = ".", version = 1, ask = TRUE,
     zipfile = temp_zip,
     exdir = unzip_location_sub
   )
-  
+
   output_folder <- unzip_folder_correction(
-    unzip_location_sub, 
+    unzip_location_sub,
     file_name,
     file_path
   )
-  
+
   # write meta file
-  fileConn <- file(file.path(output_folder, "download_info.txt"))
+  file_conn <- file(file.path(output_folder, "download_info.txt"))
   text_msg <- paste0(
     "download_date | version \n",
     as.character(Sys.time()), "| ",
     file_name
   )
-  writeLines(text_msg, fileConn)
-  close(fileConn)
-  
+  writeLines(text_msg, file_conn)
+  close(file_conn)
+
   invisible(output_folder)
 }
 
 
 unzip_folder_correction <- function(unzip_location_sub, file_name, file_path) {
-  # ensure folders unzip into the expected folder structure 
+  # ensure folders unzip into the expected folder structure
   # some files behaved differently during the unzip process
   dirs <- list.dirs(unzip_location_sub, full.names = FALSE, recursive = FALSE)
-  
+
   if (any(dirs == file_name)) {
     files_from <- list.files(
-      file.path(unzip_location_sub, file_name), 
+      file.path(unzip_location_sub, file_name),
       recursive = TRUE,
       full.names = TRUE
     )
     files_to_move <- file.path(
-      file_path, 
+      file_path,
       list.files(unzip_location_sub, recursive = TRUE)
     )
     move_location <- file.path(file_path, file_name)
     dir.create(
-      file.path(move_location, "validation"), 
+      file.path(move_location, "validation"),
       recursive = TRUE,
       showWarnings = FALSE
     )
@@ -168,13 +168,13 @@ unzip_folder_correction <- function(unzip_location_sub, file_name, file_path) {
     )
   } else {
     files_from <- list.files(
-      file.path(unzip_location_sub), 
+      file.path(unzip_location_sub),
       recursive = TRUE,
       full.names = TRUE
     )
     move_location <- file.path(file_path, file_name)
     files_to_move <- file.path(
-      move_location, 
+      move_location,
       list.files(unzip_location_sub, recursive = TRUE)
     )
     dir.create(
@@ -188,6 +188,6 @@ unzip_folder_correction <- function(unzip_location_sub, file_name, file_path) {
       overwrite = TRUE
     )
   }
-  
+
   move_location
 }

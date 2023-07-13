@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,13 +30,13 @@ test_that("erros when latin name missing ", {
     "media_type" = rep(NA, reps),
     "trophic_group" = factor(rep(NA_character_, reps)),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   expect_error(
     wqb_plot(df),
@@ -62,13 +62,13 @@ test_that("erros when effect conc is missing ", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   expect_error(
     wqb_plot(df),
@@ -94,13 +94,13 @@ test_that("erros when endpoint is missing ", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   expect_error(
     wqb_plot(df),
@@ -126,13 +126,13 @@ test_that("erros when trophic group is missing ", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   expect_error(
     wqb_plot(df),
@@ -158,14 +158,77 @@ test_that("plot type is ggplot", {
     "acr" = rep(NA, reps),
     "media_type" = rep(NA, reps),
     "ecological_group" = rep(NA, reps),
-    "species_present_in_bc" = rep(NA, reps), 
+    "species_present_in_bc" = rep(NA, reps),
     "author" = rep(NA, reps),
     "title" = rep(NA, reps),
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
-    "download_date" = rep(NA, reps),   
-    "version" = rep(NA, reps) 
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
   )
   output <- wqb_plot(df)
   expect_equal(class(output), c("gg", "ggplot"))
+  expect_snapshot_plot(output, "wqb_plot")
+})
+
+test_that("shape is present when there are 5 groups or less", {
+  reps <- 5
+  df <- data.frame(
+    "latin_name" = rep("Blue Heron", reps),
+    "effect_conc_mg.L" = c(1, 2, 3, 4, 5),
+    "endpoint" = c("NOEC", "LOEC", "EC08", "EC10", "EC12.5"),
+    "trophic_group" = factor(rep("Fish", reps)),
+    "species_number" = rep(NA, reps),
+    "lifestage" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "method" = rep(NA, reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps),
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
+  )
+  output <- wqb_plot(df)
+  expect_equal(class(output), c("gg", "ggplot"))
+  expect_snapshot_plot(output, "shape_5_groups")
+})
+
+test_that("shape is removed after 6 endpoint group are present set", {
+  reps <- 6
+  df <- data.frame(
+    "latin_name" = rep("Blue Heron", reps),
+    "effect_conc_mg.L" = c(1, 2, 3, 4, 5, 6),
+    "endpoint" = c("NOEC", "LOEC", "EC08", "EC10", "EC12.5", "EC13"),
+    "trophic_group" = factor(rep("Fish", reps)),
+    "species_number" = rep(NA, reps),
+    "lifestage" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "method" = rep(NA, reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps),
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
+  )
+  output <- wqb_plot(df)
+  expect_equal(class(output), c("gg", "ggplot"))
+  expect_snapshot_plot(output, "color_6_groups")
 })

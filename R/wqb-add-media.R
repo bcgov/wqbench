@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,20 +29,20 @@
 #' @examples
 #' \dontrun{
 #' media_info <- wqb_add_media(
-#'  database = "ecotox_ascii_09_15_2022.sqlite"
+#'   database = "ecotox_ascii_09_15_2022.sqlite"
 #' )
 #'
 #' media_info <- wqb_add_media(
-#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#'   database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 #' )
 #' }
 wqb_add_media <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
-  
+
   # read in tables from db
   on.exit(DBI::dbDisconnect(con))
-  con  <- DBI::dbConnect(
+  con <- DBI::dbConnect(
     RSQLite::SQLite(),
     database
   )
@@ -50,16 +50,16 @@ wqb_add_media <- function(database, quiet = FALSE) {
     dplyr::mutate(
       description = stringr::str_squish(.data$description)
     )
-  
+
   if ("media_type_group" %in% colnames(db_media_type)) {
     stop(
       "Media type has already been added to the database"
     )
   }
-  
+
   media_type <- combine_media(db_media_type)
 
-  # write new tables 
+  # write new tables
   DBI::dbExecute(
     con,
     paste0(
@@ -84,18 +84,18 @@ wqb_add_media <- function(database, quiet = FALSE) {
     "ALTER TABLE media_type
   RENAME TO media_type_codes;"
   )
-  
+
   invisible(media_type)
 }
 
 #' Combine Media Type Coding
-#' 
+#'
 #' Internal to allow for testing
 #'
 #' @param db_media_type A data frame
 #'
 #' @return A data frame
-#' 
+#'
 #' @examples
 #' \dontrun{
 #' media_type <- combine_media(db_media_type)
@@ -111,6 +111,6 @@ combine_media <- function(db_media_type) {
       )
     ) |>
     tibble::tibble()
-  
+
   media_type
 }

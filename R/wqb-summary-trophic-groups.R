@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -24,28 +24,28 @@
 #' }
 wqb_summary_trophic_groups <- function(data) {
   chk::check_data(
-    data, 
+    data,
     list(
       ecological_group = factor(""),
       trophic_group = factor(""),
       species_present_in_bc = TRUE,
       latin_name = ""
     )
-  ) 
-  
-  bc_species_names <- 
+  )
+
+  bc_species_names <-
     data |>
     dplyr::filter(.data$species_present_in_bc) |>
     dplyr::select("latin_name") |>
     dplyr::pull()
-  
-  trophic_group_names <- 
+
+  trophic_group_names <-
     data |>
     dplyr::count(.data$trophic_group) |>
     dplyr::select("trophic_group") |>
     dplyr::pull()
-  
-  summary_tbl <- 
+
+  summary_tbl <-
     data |>
     dplyr::count(.data$ecological_group, .drop = FALSE) |>
     dplyr::filter(.data$ecological_group != "Other") |>
@@ -84,6 +84,6 @@ wqb_summary_trophic_groups <- function(data) {
       Consideration = dplyr::if_else(.data$Consideration == "Salmonid", "Salmonid(s)", .data$Consideration),
       Consideration = dplyr::if_else(.data$Consideration == "Planktonic Invertebrates", "Planktonic Invertebrate(s)", .data$Consideration)
     )
-  
+
   summary_tbl
 }

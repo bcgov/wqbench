@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,17 +16,19 @@ test_that("combine conc endpoints by codes", {
   endpoint_concentration_pick <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC")
   )
-  
+
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
-  
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
+
   output <- combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   )
-  
+
   expect_equal(
     output$code,
     c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20")
@@ -41,17 +43,19 @@ test_that("combines when spaced added to entered conc endpoints by codes", {
   endpoint_concentration_pick <- data.frame(
     code = c(" EC18", " LC20 ", "MATC  ", " NOEC")
   )
-  
+
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
-  
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
+
   output <- combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   )
-  
+
   expect_equal(
     output$code,
     c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20")
@@ -66,13 +70,15 @@ test_that("message when values are present in inputted but not master list", {
   endpoint_concentration_pick <- data.frame(
     code = c("EX18", "LC20 ", "ZZZ", "NOEC")
   )
-  
+
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
-  
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
+
   expect_message(
     expect_message(
       combine_concentration_endpoints(
@@ -88,13 +94,15 @@ test_that("mismatches don't cause issue with matches", {
   endpoint_concentration_pick <- data.frame(
     code = c("EX18", "LC20 ", "ZZZ", "NOEC")
   )
-  
+
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
-  
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
+
   output <- suppressMessages(combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   ))
@@ -114,9 +122,11 @@ test_that("empty conc means all coded as FALSE", {
   )
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
   output <- combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   )
@@ -136,9 +146,11 @@ test_that("all missing conc endpoints means all coded as FALSE", {
   )
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
   output <- suppressMessages(combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   ))
@@ -159,7 +171,7 @@ test_that("empty db table means no rows are returned", {
   db_endpoint_codes <- data.frame(
     code = character(),
     description = character()
-  ) 
+  )
   output <- suppressMessages(combine_concentration_endpoints(
     endpoint_concentration_pick, db_endpoint_codes
   ))
@@ -180,9 +192,11 @@ test_that("read in actual conc endpoint file", {
   )
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
   output <- suppressMessages(read_concentration_endpoints(
     conc_endpoints_file_path, db_endpoint_codes
   ))
@@ -203,10 +217,12 @@ test_that("read in actual conc endpoint file and check message", {
   )
   db_endpoint_codes <- data.frame(
     code = c("EC18", "LC20", "MATC", "NOEC", "--", "BCF", "BMC20"),
-    description = c("Effective conc", "Lethal conc", "Maximum acceptable", 
-                    "No-observable", "Bioconc", "", "Benchmark")
-  ) 
-  
+    description = c(
+      "Effective conc", "Lethal conc", "Maximum acceptable",
+      "No-observable", "Bioconc", "", "Benchmark"
+    )
+  )
+
   expect_message(
     expect_message(
       read_concentration_endpoints(

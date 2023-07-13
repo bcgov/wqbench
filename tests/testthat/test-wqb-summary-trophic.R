@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,9 +19,9 @@ test_that("errors when ecological group has missing values", {
     "trophic_group" = factor(rep("Fish", reps)),
     "species_present_in_bc" = rep(TRUE, reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -44,9 +44,9 @@ test_that("errors when trophic group has missing values", {
     "trophic_group" = factor(rep(NA_character_, reps)),
     "species_present_in_bc" = rep(TRUE, reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -69,9 +69,9 @@ test_that("errors when species present in bc has missing values", {
     "trophic_group" = factor(rep("Fish", reps)),
     "species_present_in_bc" = rep(NA, reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -95,9 +95,9 @@ test_that("errors when latin name has missing values", {
     "species_present_in_bc" = rep(TRUE, reps),
     "latin_name" = rep(NA_character_, reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -126,9 +126,9 @@ test_that("outputs column names and structure match", {
     "latin_name" = rep("Oncorhynchus mykiss", reps),
     "species_present_in_bc" = rep(FALSE, reps),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -169,9 +169,9 @@ test_that("outputs correct names salmonoid and fish", {
     "species_present_in_bc" = rep(TRUE, reps),
     "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss"),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -204,9 +204,9 @@ test_that("outputs correct values in salmonid and planktonic inverts", {
     "species_present_in_bc" = c(TRUE, TRUE, FALSE),
     "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex"),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -239,9 +239,9 @@ test_that("add invert to bc species", {
     "species_present_in_bc" = c(TRUE, TRUE, TRUE),
     "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex"),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -275,9 +275,9 @@ test_that("add algae trophic group", {
     "species_present_in_bc" = c(TRUE, TRUE, TRUE, FALSE),
     "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex", "Spirogyra crassa"),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -310,12 +310,14 @@ test_that("add plant trophic group", {
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "species_present_in_bc" = c(TRUE, TRUE, TRUE, FALSE, TRUE),
-    "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex", 
-                     "Spirogyra crassa", "Potamogeton foliosus"),
+    "latin_name" = c(
+      "Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex",
+      "Spirogyra crassa", "Potamogeton foliosus"
+    ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -328,9 +330,9 @@ test_that("add plant trophic group", {
   expect_equal(
     output$Result,
     c(
-      "Fish, Plant, Algae, Invertebrate", 
-      "Oncorhynchus mykiss", 
-      "Daphnia pulex", 
+      "Fish, Plant, Algae, Invertebrate",
+      "Oncorhynchus mykiss",
+      "Daphnia pulex",
       "Daphnia pulex, Oncorhynchus mykiss, Pimephales promelas, Potamogeton foliosus"
     )
   )
@@ -354,12 +356,14 @@ test_that("add amphibian trophic group", {
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "species_present_in_bc" = c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE),
-    "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex", 
-                     "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"),
+    "latin_name" = c(
+      "Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex",
+      "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"
+    ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -372,9 +376,9 @@ test_that("add amphibian trophic group", {
   expect_equal(
     output$Result,
     c(
-      "Fish, Plant, Algae, Invertebrate, Amphibian", 
-      "Oncorhynchus mykiss", 
-      "Daphnia pulex", 
+      "Fish, Plant, Algae, Invertebrate, Amphibian",
+      "Oncorhynchus mykiss",
+      "Daphnia pulex",
       "Daphnia pulex, Oncorhynchus mykiss, Pimephales promelas, Potamogeton foliosus"
     )
   )
@@ -398,12 +402,14 @@ test_that("set all species in bc to false", {
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "species_present_in_bc" = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-    "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex", 
-                     "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"),
+    "latin_name" = c(
+      "Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex",
+      "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"
+    ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -416,9 +422,9 @@ test_that("set all species in bc to false", {
   expect_equal(
     output$Result,
     c(
-      "Fish, Plant, Algae, Invertebrate, Amphibian", 
-      "Oncorhynchus mykiss", 
-      "Daphnia pulex", 
+      "Fish, Plant, Algae, Invertebrate, Amphibian",
+      "Oncorhynchus mykiss",
+      "Daphnia pulex",
       "None"
     )
   )
@@ -442,12 +448,14 @@ test_that("set ecological groups to be other", {
       levels = c("Fish", "Plant", "Algae", "Invertebrate", "Amphibian")
     ),
     "species_present_in_bc" = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE),
-    "latin_name" = c("Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex", 
-                     "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"),
+    "latin_name" = c(
+      "Pimephales promelas", "Oncorhynchus mykiss", "Daphnia pulex",
+      "Spirogyra crassa", "Potamogeton foliosus", "Microhyla ornata"
+    ),
     "af_variation" = rep(NA, reps),
-    "af_salmon" =  rep(NA, reps),
-    "af_planktonic" =  rep(NA, reps),
-    "af_bc_species" =  rep(NA, reps),
+    "af_salmon" = rep(NA, reps),
+    "af_planktonic" = rep(NA, reps),
+    "af_bc_species" = rep(NA, reps),
     "species_number" = rep(NA, reps),
     "chemical_name" = rep(NA, reps),
     "cas" = rep(NA, reps),
@@ -460,9 +468,9 @@ test_that("set ecological groups to be other", {
   expect_equal(
     output$Result,
     c(
-      "Fish, Plant, Algae, Invertebrate, Amphibian", 
-      "None", 
-      "None", 
+      "Fish, Plant, Algae, Invertebrate, Amphibian",
+      "None",
+      "None",
       "None"
     )
   )

@@ -1,11 +1,11 @@
 # Copyright 2023 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -14,8 +14,8 @@
 
 #' Add Life Stage Groups
 #'
-#' Read in the life stage simple groups and add a column in the lifestage_code 
-#' table in the database to mark the corresponding values. 
+#' Read in the life stage simple groups and add a column in the lifestage_code
+#' table in the database to mark the corresponding values.
 #'
 #' @param database A string to the location of the database.
 #' @param quiet Turn off message when quiet set to TRUE.
@@ -42,21 +42,21 @@
 #' @examples
 #' \dontrun{
 #' lifestage_codes <- wqb_add_lifestage(
-#'  database = "ecotox_ascii_09_15_2022.sqlite"
-#' ) 
-#' 
+#'   database = "ecotox_ascii_09_15_2022.sqlite"
+#' )
+#'
 #' lifestage_codes <- wqb_add_lifestage(
-#'  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-#' ) 
+#'   database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+#' )
 #' }
 wqb_add_lifestage <- function(database, quiet = FALSE) {
   chk::chk_file(database)
   chk::chk_ext(database, "sqlite")
-  
+
   # read in table from db
   on.exit(DBI::dbDisconnect(con))
-  con  <- DBI::dbConnect(
-    RSQLite::SQLite(), 
+  con <- DBI::dbConnect(
+    RSQLite::SQLite(),
     database
   )
   db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
@@ -74,7 +74,7 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     package = "wqbench"
   )
   lifestage_groups <- read_lifestage(lifestage_file_path, db_lifestage_codes)
-  
+
   # write new table to database
   DBI::dbExecute(
     con,
@@ -85,10 +85,10 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     )
   )
   DBI::dbWriteTable(
-    con, 
-    "lifestage_groups", 
-    value = lifestage_groups, 
-    append = TRUE, 
+    con,
+    "lifestage_groups",
+    value = lifestage_groups,
+    append = TRUE,
     row.names = FALSE
   )
   if (!quiet) {
@@ -100,14 +100,14 @@ wqb_add_lifestage <- function(database, quiet = FALSE) {
     "ALTER TABLE lifestage_groups
   RENAME TO lifestage_codes;"
   )
-  
+
   invisible(lifestage_groups)
 }
 
 #' Combine Life Stage Groups and db life stage
-#' 
+#'
 #' Internal to allow for testing
-#' 
+#'
 #' @param lifestage_codes A data frame
 #' @param db_lifestage_codes A data frame
 #'
@@ -130,19 +130,20 @@ combine_lifestage <- function(lifestage_codes, db_lifestage_codes) {
     message("Value(s) do not match code(s) in `endpoint_code` table in ECOTOX database:")
     message(chk::cc(lifestage_codes$code[dont_match]))
   }
-  
+
   lifestage_groups <- db_lifestage_codes |>
     dplyr::mutate(
       code = stringr::str_squish(.data$code)
     ) |>
-    dplyr:: left_join(lifestage_codes, by = "code") |>
-    tibble::tibble() 
+    dplyr::left_join(lifestage_codes, by = "code") |>
+    tibble::tibble()
+  lifestage_groups
 }
 
-#' Read Life Stage Groups 
-#' 
+#' Read Life Stage Groups
+#'
 #' Internal to allow for testing
-#' 
+#'
 #' @param lifestage_file_path A data frame
 #' @param db_lifestage_codes A data frame
 #'
@@ -164,8 +165,7 @@ read_lifestage <- function(lifestage_file_path, db_lifestage_codes) {
       simple_lifestage = ""
     )
   )
-  
+
   lifestage_groups <- combine_lifestage(lifestage_codes, db_lifestage_codes)
   lifestage_groups
 }
-

@@ -35,11 +35,11 @@ there is no match.
 \examples{
 \dontrun{
 bc_species <- wqb_add_bc_species(
- database = "ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
 bc_species <- wqb_add_bc_species(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }
 }

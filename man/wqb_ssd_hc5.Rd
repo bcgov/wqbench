@@ -22,6 +22,6 @@ row which is 5\%.
 }
 \examples{
 \dontrun{
- hc5 <- wqb_ssd_hc5(fit)
+hc5 <- wqb_ssd_hc5(fit)
 }
 }

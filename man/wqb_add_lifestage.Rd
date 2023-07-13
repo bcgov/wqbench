@@ -41,11 +41,11 @@ that match are coded in a new column called \code{simple_lifestage}.
 \examples{
 \dontrun{
 lifestage_codes <- wqb_add_lifestage(
- database = "ecotox_ascii_09_15_2022.sqlite"
-) 
+  database = "ecotox_ascii_09_15_2022.sqlite"
+)
 
 lifestage_codes <- wqb_add_lifestage(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
-) 
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+)
 }
 }

@@ -31,11 +31,11 @@ is not present in wqg.
 \examples{
 \dontrun{
 chem_bc_wqg <- wqb_add_bc_wqg(
- database = "ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_ascii_09_15_2022.sqlite"
 )
 
 chem_bc_wqg <- wqb_add_bc_wqg(
- database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
+  database = "ecotox_db/ecotox_ascii_09_15_2022.sqlite"
 )
 }
 }
