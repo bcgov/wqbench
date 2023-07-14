@@ -4,9 +4,9 @@
 <!-- badges: start -->
 
 [![img](https://img.shields.io/badge/Lifecycle-Experimental-339999)](https://github.com/bcgov/repomountie/blob/master/doc/lifecycle-badges.md)
-[![R-CMD-check](https://github.com/poissonconsulting/wqbench/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/poissonconsulting/wqbench/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/bcgov/wqbench/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bcgov/wqbench/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/poissonconsulting/wqbench/branch/main/graph/badge.svg)](https://app.codecov.io/gh/poissonconsulting/wqbench?branch=main)
+coverage](https://codecov.io/gh/bcgov/wqbench/branch/main/graph/badge.svg)](https://app.codecov.io/gh/bcgov/wqbench?branch=main)
 <!-- badges: end -->
 
 This package contains the functions and tools to generate aquatic life
@@ -112,13 +112,21 @@ data_agg <- wqb_aggregate(data)
 data_agg <- wqb_af(data_agg)
 
 ctv <- wqb_generate_ctv(data_agg)
+```
+
+    ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
+    ## TMB was built with Matrix version 1.5.4
+    ## Current Matrix version is 1.6.0
+    ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
+
+``` r
 ctv
 ```
 
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00198       0.0565
+    ## 1       0.0101      0.00200       0.0574
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
@@ -129,7 +137,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001979132   0.05646545
+    ## 1   0.01014924  0.001996596   0.05738983
 
 *SSD* method can generate a lower and upper confidence interval.
 
