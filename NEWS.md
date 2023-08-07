@@ -1,5 +1,6 @@
 # wqbench (development version)
 
+- Increase point size in `wqb_plot()`
 
 # wqbench 1.0.0
 
