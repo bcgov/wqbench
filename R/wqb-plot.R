@@ -51,7 +51,7 @@ wqb_plot <- function(data) {
           color = .data$endpoint,
         ),
         alpha = 0.8,
-        size = 1.5
+        size = 3
       ) +
       ggplot2::facet_grid(
         rows = ggplot2::vars(.data$trophic_group),
