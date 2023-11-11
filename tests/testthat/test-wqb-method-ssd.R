@@ -122,6 +122,40 @@ test_that("values match up", {
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
+    0.528
+  )
+  expect_equal(
+    signif(output$ctv_ucl_mg.L, 3),
+    1.90
+  )
+})
+
+test_that("values differ with more bootstraps", {
+  skip_if_testing_quick()
+  
+  set.seed(10)
+  reps <- 6L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- wqb_method_ssd(df, wqb_ssd_fit(df), nboot = 10000)
+  expect_s3_class(output, "tbl_df")
+  expect_equal(
+    signif(output$ctv_est_mg.L, 3),
+    0.950
+  )
+  expect_equal(
+    signif(output$ctv_lcl_mg.L, 3),
     0.526
   )
   expect_equal(
