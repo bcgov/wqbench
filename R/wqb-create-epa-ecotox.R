@@ -199,6 +199,8 @@ db_tbl_validation_structure <- function() {
     "geographic_codes" = NULL,
     "habitat_codes" = NULL,
     "ion_codes" = NULL,
+    "length_type_codes" = "code",
+    "length_unit_codes" = "code",
     "lifestage_codes" = "code",
     "measurement_codes" = "code",
     "media_char_unit_codes" = NULL,
