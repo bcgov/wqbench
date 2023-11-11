@@ -20,18 +20,17 @@
 #'
 #' @param data A data frame
 #' @param fit The fit
+#' @param nboot The number of bootstrap samples. Default value of 1000.
 #' @return A data frame
 #' @export
 #' @details A wrapper on the ssdtools package function
-#'  `ssdtools::ssd_hc_bcanz()`. The number of bootstrap samples is set to 10000
-#'  (which  can take a few minutes to run) and only the HC5 concentration is
-#'  returned.
+#'   [ssdtools::ssd_hc_bcanz()] that only returns the HC5 concentration.
 #'
 #' @examples
 #' \dontrun{
 #' hc5 <- wqb_method_ssd(data, fit)
 #' }
-wqb_method_ssd <- function(data, fit) {
+wqb_method_ssd <- function(data, fit, nboot = 1000) {
   chk::check_data(
     data,
     list(
@@ -39,7 +38,7 @@ wqb_method_ssd <- function(data, fit) {
       sp_aggre_conc_mg.L = 1
     )
   )
-  hc5 <- wqb_ssd_hc5(fit)
+  hc5 <- wqb_ssd_hc5(fit, nboot = nboot)
 
   value <- hc5 |>
     dplyr::select("est", "lcl", "ucl") |>
@@ -58,7 +57,7 @@ wqb_method_ssd <- function(data, fit) {
 
 #' Fit BCANZ Distributions
 #'
-#' Wrapper to `ssdtools::ssd_fit_bcanz()`. The sp_aggre_conc_mg.L values are
+#' Wrapper to [ssdtools::ssd_fit_bcanz()]. The sp_aggre_conc_mg.L values are
 #' the concentrations used.
 #'
 #' @param data A data frame
@@ -78,20 +77,21 @@ wqb_ssd_fit <- function(data) {
 
 #' Run SSD to get Hazard Concentrations
 #'
-#' Wrapper to the `ssdtools::ssd_hc_bcanz()` function and selects only the
-#' row which is 5%.
+#' Wrapper to the [ssdtools::ssd_hc_bcanz()] function and selects only the row
+#' which is 5%.
 #'
 #' @param fit The fit from ssd
 #' @param nboot A count of the number of bootstrap samples to use to estimate
-#'   the se and confidence limits. A value of 10000 is recommended for official
-#'   guidelines.
+#'   the SE and confidence limits. Default value of 1000.
 #' @return A data frame
+#' @details The number of bootstrap samples is set to 1000 so the estimates are
+#'   quick to generate. Check out [ssdtools::ssd_hc_bcanz()] for more details.
 #'
 #' @examples
 #' \dontrun{
 #' hc5 <- wqb_ssd_hc5(fit)
 #' }
-wqb_ssd_hc5 <- function(fit, nboot = 10000) {
+wqb_ssd_hc5 <- function(fit, nboot = 1000) {
   tbl <- ssdtools::ssd_hc_bcanz(fit, nboot = nboot) |>
     dplyr::filter(.data$percent == 5)
   tbl

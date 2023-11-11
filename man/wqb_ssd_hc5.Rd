@@ -4,21 +4,24 @@
 \alias{wqb_ssd_hc5}
 \title{Run SSD to get Hazard Concentrations}
 \usage{
-wqb_ssd_hc5(fit, nboot = 10000)
+wqb_ssd_hc5(fit, nboot = 1000)
 }
 \arguments{
 \item{fit}{The fit from ssd}
 
 \item{nboot}{A count of the number of bootstrap samples to use to estimate
-the se and confidence limits. A value of 10000 is recommended for official
-guidelines.}
+the SE and confidence limits. Default value of 1000.}
 }
 \value{
 A data frame
 }
 \description{
-Wrapper to the \code{ssdtools::ssd_hc_bcanz()} function and selects only the
-row which is 5\%.
+Wrapper to the \code{\link[ssdtools:ssd_hc_bcanz]{ssdtools::ssd_hc_bcanz()}} function and selects only the row
+which is 5\%.
+}
+\details{
+The number of bootstrap samples is set to 1000 so the estimates are
+quick to generate. Check out \code{\link[ssdtools:ssd_hc_bcanz]{ssdtools::ssd_hc_bcanz()}} for more details.
 }
 \examples{
 \dontrun{
