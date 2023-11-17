@@ -39,9 +39,62 @@ test_that("errors bad endpoint", {
     ecological_group = c("Salmonid", "Other", "Other"),
     species_present_in_bc = c(TRUE)
   )
-  
   expect_error(
     wqb_check_add_data(data, template),
     regexp = "The endpoint column has invalid value\\(s\\)\\. The allowed values include\\: \\(log\\)EC50, \\(log\\)LC50, EC05, EC08, EC10, EC12.5, EC13, EC15, EC16, EC18, EC20, EC22, EC23, EC24, EC25, EC30, EC31, EC32, EC34, EC35, EC37, EC38, EC40, EC41, EC45, EC46, EC50, EC52, EC55, EC58, IC05, IC07, IC10, IC15, IC16, IC20, IC25, IC27, IC30, IC40, IC50, LC05, LC08, LC10, LC15, LC16, LC20, LC25, LC30, LC31, LC34, LC35, LC38, LC40, LC45, LC50, LC51, LOEC, LOEL, MATC, MCIG, NOEC, NOEL."
   )
 })
+
+test_that("errors bad trophic group", {
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC34"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("XXXX", "Plant", "Plant"),
+    ecological_group = c("Salmonid", "Other", "Other"),
+    species_present_in_bc = c(TRUE)
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "The trophic_group column has invalid value\\(s\\). The allowed values include: Invertebrate, Algae, Amphibian, Bacteria, Fish, Plant."
+  )
+})
+
+test_that("errors bad ecological group", {
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC34"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("Invertebrate", "Plant", "Plant"),
+    ecological_group = c("XXXX", "Other", "Other"),
+    species_present_in_bc = c(TRUE)
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "The ecological_group column has invalid value\\(s\\). The allowed values include: Planktonic Invertebrate, Other, Salmonid."
+  )
+})
+
+test_that("errors bad combo of trophic and ecological group", {
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC34"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("Invertebrate", "Plant", "Plant"),
+    ecological_group = c("Salmonid", "Other", "Other"),
+    species_present_in_bc = c(TRUE)
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "There is an invalid combination of the trophic_group or ecological_group columns. The allowed values include: Invertebrate & Planktonic Invertebrate, Invertebrate & Other, Algae & Other, Amphibian & Other, Bacteria & Other, Fish & Other, Plant & Other, Fish & Salmonid."
+  )
+})
+
+
+
