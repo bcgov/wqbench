@@ -17,6 +17,7 @@ Description: Download recent versions of the US EPA ECOTOX database.
 License: Apache License (== 2)
 Imports: 
     chk,
+    chktemplate,
     DBI,
     dplyr,
     ggplot2,
@@ -37,6 +38,7 @@ Suggests:
     testthat (>= 3.0.0),
     wqbenchdata
 Remotes: 
+    poissonconsulting/chktemplate,
     bcgov/wqbenchdata
 Config/testthat/edition: 3
 Encoding: UTF-8
