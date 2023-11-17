@@ -7,6 +7,8 @@
 #'   \item{endpoint}{Toxicity endpoint.}
 #'   \item{effect}{The effect that was being tested.}
 #'   \item{lifestage}{The lifestage the species was during the test.}
+#'   \item{effect_conc_mg.L}{Contaminant concentration that corresponds to the
+#'   endpoint.}
 #'   \item{effect_conc_std_mg.L}{The effect concentration standardized to
 #'   include the acute to chronic ratio to extrapolate acute and/or effect
 #'   concentrations to chronic and/or no-effect concentrations in mg/L.}

@@ -4,6 +4,7 @@ test_that("data passes with single row of data", {
     endpoint = c("NOEL"),
     effect = c("Mortality"),
     lifestage = c("Adult"),
+    effect_conc_mg.L = c(1.1),
     effect_conc_std_mg.L = c(1.1),
     trophic_group = c("Plant"),
     ecological_group = c("Other"),
@@ -22,6 +23,7 @@ test_that("data passes species_present as logical", {
     endpoint = c("NOEL"),
     effect = c("Mortality"),
     lifestage = c("Adult"),
+    effect_conc_mg.L = c(1.1),
     effect_conc_std_mg.L = c(1.1),
     trophic_group = c("Plant"),
     ecological_group = c("Other"),
@@ -40,6 +42,7 @@ test_that("data passes with multiple rows of data", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Fish", "Plant", "Plant"),
     ecological_group = c("Salmonid", "Other", "Other"),
@@ -58,6 +61,7 @@ test_that("errors bad endpoint", {
     endpoint = c("NOEL", "EC50", "X2"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Fish", "Plant", "Plant"),
     ecological_group = c("Salmonid", "Other", "Other"),
@@ -75,6 +79,7 @@ test_that("errors bad trophic group", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("XXXX", "Plant", "Plant"),
     ecological_group = c("Salmonid", "Other", "Other"),
@@ -92,6 +97,7 @@ test_that("errors bad ecological group", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("XXXX", "Other", "Other"),
@@ -109,6 +115,7 @@ test_that("errors bad combo of trophic and ecological group", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Salmonid", "Other", "Other"),
@@ -120,12 +127,47 @@ test_that("errors bad combo of trophic and ecological group", {
   )
 })
 
+test_that("errors bad range in the effect_conc_mg.L", {
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC34"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(-1.1, 1.2, 1.3),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("Invertebrate", "Plant", "Plant"),
+    ecological_group = c("Other", "Other", "Other"),
+    species_present_in_bc = c("TRUE")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "data\\$effect_conc_mg.L` must have values between 0 and 9e\\+06."
+  )
+  
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC34"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(10000000, 1.2, 1.3),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("Invertebrate", "Plant", "Plant"),
+    ecological_group = c("Other", "Other", "Other"),
+    species_present_in_bc = c("TRUE")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "data\\$effect_conc_mg.L` must have values between 0 and 9e\\+06."
+  )
+})
+
 test_that("errors bad range in the effect_conc_std_mg.L", {
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(-0.1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -133,7 +175,7 @@ test_that("errors bad range in the effect_conc_std_mg.L", {
   )
   expect_error(
     wqb_check_add_data(data, template),
-    regexp = "data\\$effect_conc_std_mg.L` must have values between 0 and 10000."
+    regexp = "data\\$effect_conc_std_mg.L` must have values between 0 and 9e\\+05."
   )
 
   data <- data.frame(
@@ -141,14 +183,15 @@ test_that("errors bad range in the effect_conc_std_mg.L", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
-    effect_conc_std_mg.L = c(250000, 2, 3),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
+    effect_conc_std_mg.L = c(10000000, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
     species_present_in_bc = c("TRUE")
   )
   expect_error(
     wqb_check_add_data(data, template),
-    regexp = "data\\$effect_conc_std_mg.L` must have values between 0 and 10000."
+    regexp = "data\\$effect_conc_std_mg.L` must have values between 0 and 9e\\+05."
   )
 })
 
@@ -158,6 +201,7 @@ test_that("errors bad species_present_in_bc", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -175,6 +219,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC34"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -190,6 +235,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", NA_character_),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -205,6 +251,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", NA_character_),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -220,6 +267,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", NA_character_),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -229,12 +277,29 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$lifestage` must not have any missing values."
   )
+  
+  data <- data.frame(
+    latin_name = c("a", "b", "c"),
+    endpoint = c("NOEL", "EC50", "LC50"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, NA_real_),
+    effect_conc_std_mg.L = c(1, 2, 3),
+    trophic_group = c("Invertebrate", "Plant", "Plant"),
+    ecological_group = c("Other", "Other", "Other"),
+    species_present_in_bc = c("TRUE", "TRUE", "FALSE")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "`data\\$effect_conc_mg.L` must not have any missing values."
+  )
 
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, NA_real_),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
@@ -250,6 +315,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", NA_character_),
     ecological_group = c("Other", "Other", "Other"),
@@ -265,6 +331,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", NA_character_),
@@ -280,6 +347,7 @@ test_that("errors when missing values supplied", {
     endpoint = c("NOEL", "EC50", "LC50"),
     effect = c("Mortality", "Reproduction", "Mortality"),
     lifestage = c("Adult", "Young adult", "Embryo"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
     effect_conc_std_mg.L = c(1, 2, 3),
     trophic_group = c("Invertebrate", "Plant", "Plant"),
     ecological_group = c("Other", "Other", "Other"),
