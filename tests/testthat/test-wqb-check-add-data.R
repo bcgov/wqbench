@@ -11,7 +11,7 @@ test_that("data passes with single row of data", {
   )
   output <- wqb_check_add_data(data, template)
   expect_equal(
-    output, 
+    output,
     data |> dplyr::mutate(dplyr::across(species_present_in_bc, as.logical))
   )
 })
@@ -29,7 +29,7 @@ test_that("data passes species_present as logical", {
   )
   output <- wqb_check_add_data(data, template)
   expect_equal(
-    output, 
+    output,
     data |> dplyr::mutate(dplyr::across(species_present_in_bc, as.logical))
   )
 })
@@ -47,7 +47,7 @@ test_that("data passes with multiple rows of data", {
   )
   output <- wqb_check_add_data(data, template)
   expect_equal(
-    output, 
+    output,
     data |> dplyr::mutate(dplyr::across(species_present_in_bc, as.logical))
   )
 })
@@ -135,7 +135,7 @@ test_that("errors bad range in the effect_conc_std_mg.L", {
     wqb_check_add_data(data, template),
     regexp = "data\\$effect_conc_std_mg.L` must have values between 0 and 10000."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC34"),
@@ -184,7 +184,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$latin_name` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", NA_character_),
@@ -199,7 +199,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$endpoint` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -214,7 +214,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$effect` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -229,7 +229,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$lifestage` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -244,7 +244,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$effect_conc_std_mg.L` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -259,7 +259,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$trophic_group` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -274,7 +274,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$ecological_group` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -309,7 +309,7 @@ test_that("errors with no template supplied", {
     ecological_group = c("Other"),
     species_present_in_bc = c("TRUE")
   )
-  
+
   expect_error(
     wqb_check_add_data(data),
     regexp = 'argument "template" is missing, with no default'

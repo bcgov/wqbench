@@ -18,18 +18,17 @@
 #' data <- wqb_check_add_data(data, template)
 #' }
 wqb_check_add_data <- function(data, template) {
- 
   data <- chktemplate::check_data_format(
-   data = data, template = list(data = template)
- ) 
-  
+    data = data, template = list(data = template)
+  )
+
   data <- data$data
-  
+
   check_endpoint(data)
   check_trophic_eco_group(data)
   check_species_present(data)
   data$species_present_in_bc <- as.logical(data$species_present_in_bc)
-  
+
   data
 }
 
@@ -41,11 +40,11 @@ check_endpoint <- function(data) {
   endpoints <- readr::read_csv(
     endpoints_fp,
     show_col_types = FALSE
-  ) |> 
+  ) |>
     dplyr::select("code") |>
     dplyr::mutate(code = stringr::str_replace(.data$code, "\\*", "")) |>
     dplyr::distinct()
-  
+
   if (!all(data$endpoint %in% endpoints$code)) {
     chk::abort_chk(
       "The endpoint column has invalid value(s). The allowed values include: ",
@@ -64,39 +63,39 @@ check_trophic_eco_group <- function(data) {
     show_col_types = FALSE
   ) |>
     dplyr::select("trophic_group", "ecological_group") |>
-    dplyr::distinct() 
-  
+    dplyr::distinct()
+
   if (!all(data$trophic_group %in% trophic_eco_groups$trophic_group)) {
     chk::abort_chk(
-      "The trophic_group column has invalid value(s). The allowed values include: ", 
+      "The trophic_group column has invalid value(s). The allowed values include: ",
       paste(unique(trophic_eco_groups$trophic_group), collapse = ", ")
     )
   }
-  
+
   if (!all(data$ecological_group %in% trophic_eco_groups$ecological_group)) {
     chk::abort_chk(
-      "The ecological_group column has invalid value(s). The allowed values include: ", 
+      "The ecological_group column has invalid value(s). The allowed values include: ",
       paste(unique(trophic_eco_groups$ecological_group), collapse = ", ")
     )
   }
-  
+
   if (!chk::vld_join(data, trophic_eco_groups, by = c("trophic_group", "ecological_group"))) {
-    allowed_vals <- trophic_eco_groups  |>
+    allowed_vals <- trophic_eco_groups |>
       dplyr::mutate(
         trophic_eco_group = paste(
-          .data$trophic_group, 
-          .data$ecological_group, 
+          .data$trophic_group,
+          .data$ecological_group,
           sep = " & "
         )
       ) |>
       dplyr::pull("trophic_eco_group")
     chk::abort_chk(
       "There is an invalid combination of the trophic_group or ",
-      "ecological_group columns. The allowed values include: ", 
-       paste(allowed_vals, collapse = ", ")
+      "ecological_group columns. The allowed values include: ",
+      paste(allowed_vals, collapse = ", ")
     )
   }
-} 
+}
 
 check_species_present <- function(data) {
   if (!all(data$species_present_in_bc %in% c("TRUE", "FALSE"))) {

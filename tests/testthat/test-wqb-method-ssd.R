@@ -132,7 +132,7 @@ test_that("values match up", {
 
 test_that("values differ with more bootstraps", {
   skip_if_testing_quick()
-  
+
   set.seed(10)
   reps <- 6L
   df <- data.frame(
