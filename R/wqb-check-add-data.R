@@ -27,8 +27,10 @@ wqb_check_add_data <- function(data, template) {
   
   check_endpoint(data)
   check_trophic_eco_group(data)
+  check_species_present(data)
+  data$species_present_in_bc <- as.logical(data$species_present_in_bc)
   
- data
+  data
 }
 
 check_endpoint <- function(data) {
@@ -91,3 +93,12 @@ check_trophic_eco_group <- function(data) {
     )
   }
 } 
+
+check_species_present <- function(data) {
+  if (!all(data$species_present_in_bc %in% c("TRUE", "FALSE"))) {
+    chk::abort_chk(
+      "The species_present_in_bc column has invalid value(s). ",
+      "The allowed values include: TRUE or FALSE",
+    )
+  }
+}
