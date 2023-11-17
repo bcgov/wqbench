@@ -5,7 +5,7 @@
 #'
 #' @param data A data frame. The data you want to check.
 #' @param template A data frame. The format the data should be in, in the
-#'   [chktemplate] format.
+#'   [chktemplate](https://poissonconsulting.github.io/chktemplate/) format.
 #'
 #' @return A data frame
 #' @export
@@ -43,7 +43,7 @@ check_endpoint <- function(data) {
     show_col_types = FALSE
   ) |> 
     dplyr::select("code") |>
-    dplyr::mutate(code = stringr::str_replace(code, "\\*", "")) |>
+    dplyr::mutate(code = stringr::str_replace(.data$code, "\\*", "")) |>
     dplyr::distinct()
   
   if (!all(data$endpoint %in% endpoints$code)) {
@@ -83,12 +83,16 @@ check_trophic_eco_group <- function(data) {
   if (!chk::vld_join(data, trophic_eco_groups, by = c("trophic_group", "ecological_group"))) {
     allowed_vals <- trophic_eco_groups  |>
       dplyr::mutate(
-        trophic_eco_group = paste(trophic_group, ecological_group, sep = " & ")
+        trophic_eco_group = paste(
+          .data$trophic_group, 
+          .data$ecological_group, 
+          sep = " & "
+        )
       ) |>
-      dplyr::pull(trophic_eco_group)
+      dplyr::pull("trophic_eco_group")
     chk::abort_chk(
-      "There is an invalid combination of the trophic_group or ecological_group columns. ",
-      "The allowed values include: ", 
+      "There is an invalid combination of the trophic_group or ",
+      "ecological_group columns. The allowed values include: ", 
        paste(allowed_vals, collapse = ", ")
     )
   }
