@@ -1,0 +1,5 @@
+﻿name,latin_name,endpoint,effect,lifestage,effect_conc_std_mg.L,trophic_group,ecological_group,species_present_in_bc
+description,,,,,,,,
+example,Hyalella azteca,NOEL,Reproduction,Juvenile,0.1,Invertebrate,Other,FALSE
+chk,"c("""")","c("""")","c("""")","c("""")","c(0, 10000)","c("""")","c("""")","c(TRUE,  TRUE ,  FALSE)"
+pkey,,,,,,,,
