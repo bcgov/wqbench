@@ -1,13 +1,17 @@
 #' Check the Uploaded Data
 #'
-#' To allow for users to add there own data there needs to be checks to ensure
-#' the data is in the correct format.
+#' Checks the uploaded data for the basic requirements to ensure the data
+#' matches the downloaded Ecotox data.
+#'
+#' @param data A data frame. The data you want to check.
+#' @param template A data frame. The format the data should be in, in the
+#'   [chktemplate] format.
 #'
 #' @return A data frame
 #' @export
-#' @details The values from the endpoint, effect, lifestage, trophic_group, and
-#' ecological_group columns are checked against the data tables used to build
-#' the database.
+#' @details The values for the endpoint, trophic_group, and ecological_group
+#'   columns are checked against the data tables used to build the database. To
+#'   update the allowed values the corresponding csv file needs to be updated.
 #'
 #' @examples
 #' \dontrun{
@@ -67,7 +71,7 @@ check_trophic_eco_group <- function(data) {
     )
   }
   
-  if (!any(data$ecological_group %in% trophic_eco_groups$ecological_group)) {
+  if (!all(data$ecological_group %in% trophic_eco_groups$ecological_group)) {
     chk::abort_chk(
       "The ecological_group column has invalid value(s). The allowed values include: ", 
       paste(unique(trophic_eco_groups$ecological_group), collapse = ", ")
