@@ -10,7 +10,7 @@ wqb_check_add_data(data, template)
 \item{data}{A data frame. The data you want to check.}
 
 \item{template}{A data frame. The format the data should be in, in the
-\link{chktemplate} format.}
+\href{https://poissonconsulting.github.io/chktemplate/}{chktemplate} format.}
 }
 \value{
 A data frame
