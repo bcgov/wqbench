@@ -372,14 +372,50 @@ test_that("errors with no template supplied", {
     endpoint = c("NOEL"),
     effect = c("Mortality"),
     lifestage = c("Adult"),
+    effect_conc_mg.L = c(1.1),
     effect_conc_std_mg.L = c(1.1),
     trophic_group = c("Plant"),
     ecological_group = c("Other"),
     species_present_in_bc = c("TRUE")
   )
-
   expect_error(
     wqb_check_add_data(data),
     regexp = 'argument "template" is missing, with no default'
+  )
+})
+
+test_that("errors with column missing", {
+  data <- data.frame(
+    latin_name = c("a"),
+    endpoint = c("NOEL"),
+    effect = c("Mortality"),
+    lifestage = c("Adult"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
+    effect_conc_std_mg.L = c(1.1),
+    trophic_group = c("Plant"),
+    ecological_group = c("Other")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "Column names in data must include 'species_present_in_bc'."
+  )
+})
+
+test_that("errors with extra columns", {
+  data <- data.frame(
+    latin_name = c("a"),
+    endpoint = c("NOEL"),
+    effect = c("Mortality"),
+    lifestage = c("Adult"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
+    effect_conc_std_mg.L = c(1.1),
+    trophic_group = c("Plant"),
+    ecological_group = c("Other"),
+    species_present_in_bc = c("TRUE"),
+    cas = c("123456")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "The data can only contain the columns from the template, please remove'cas'."
   )
 })

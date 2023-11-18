@@ -21,9 +21,9 @@ wqb_check_add_data <- function(data, template) {
   data <- chktemplate::check_data_format(
     data = data, template = list(data = template)
   )
-
   data <- data$data
-
+  
+  check_no_extra_cols(data, template)
   check_endpoint(data)
   check_trophic_eco_group(data)
   check_species_present(data)
@@ -102,6 +102,15 @@ check_species_present <- function(data) {
     chk::abort_chk(
       "The species_present_in_bc column has invalid value(s). ",
       "The allowed values include: TRUE or FALSE",
+    )
+  }
+}
+
+check_no_extra_cols <- function(data, template) {
+  if (length(setdiff(names(data), colnames(template)[-1]))) {
+    chk::abort_chk(
+      "The data can only contain the columns from the template, please remove", 
+      chk::cc(setdiff(names(data), colnames(template)[-1]), conj = " or ")
     )
   }
 }
