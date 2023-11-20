@@ -16,6 +16,7 @@ Description: Download recent versions of the US EPA ECOTOX database.
     benchmark for a compound.
 License: Apache License (== 2)
 Imports: 
+    bcdata,
     chk,
     chktemplate,
     DBI,
