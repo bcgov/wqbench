@@ -121,7 +121,7 @@ check_species_present <- function(data) {
 }
 
 check_no_extra_cols <- function(data, template) {
-  data <- data %>% 
-    dplyr::select(all_of(names(template)[-1]))
+  data <- data |> 
+    dplyr::select(dplyr::all_of(names(template)[-1]))
   data
 }
