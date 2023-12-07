@@ -415,7 +415,7 @@ test_that("errors with column missing", {
   )
 })
 
-test_that("errors with extra columns", {
+test_that("drops extra columns", {
   data <- data.frame(
     latin_name = c("a"),
     endpoint = c("NOEL"),
@@ -428,8 +428,14 @@ test_that("errors with extra columns", {
     species_present_in_bc = c("TRUE"),
     cas = c("123456")
   )
-  expect_error(
-    wqb_check_add_data(data, template),
-    regexp = "Only the columns from the template can be contained in the uploaded file, please remove: 'cas'."
+  
+  output <- wqb_check_add_data(data, template)
+  expect_equal(
+    colnames(output),
+    c(
+      "latin_name", "endpoint", "effect", "lifestage", "effect_conc_mg.L", 
+      "effect_conc_std_mg.L", "trophic_group", "ecological_group", 
+      "species_present_in_bc"
+    )
   )
 })
