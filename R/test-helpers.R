@@ -23,7 +23,7 @@ skip_if_testing_quick <- function() {
 }
 
 # To skip slower tests while developing set option to quick
-options(wqb_testing = "quick")
+# options(wqb_testing = "quick")
 # Comment out/restart R
 
 create_clean_test_data <- function(update_vals = list(0)) {

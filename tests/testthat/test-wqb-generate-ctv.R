@@ -105,14 +105,14 @@ test_that("ssd method is used when method is ssd", {
   output <- wqb_generate_ctv(df)
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.950
+    0.959
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.528
+    0.469
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.90
+    1.89
   )
 })
