@@ -49,6 +49,10 @@ data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
 
 ### Generate Benchmark
 
+```{r}
+set.seed(101)
+```
+
 #### Deterministic Example
 
 ```{r}
