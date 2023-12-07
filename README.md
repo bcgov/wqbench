@@ -56,6 +56,10 @@ data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
 
 ### Generate Benchmark
 
+``` r
+set.seed(101)
+```
+
 #### Deterministic Example
 
 ``` r
@@ -93,14 +97,14 @@ columns will always be blank .
 wqb_plot(data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ``` r
 # Plot the results
 wqb_plot_det(data_agg)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 #### SSD Example
 
@@ -115,8 +119,8 @@ ctv <- wqb_generate_ctv(data_agg)
 ```
 
     ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
-    ## TMB was built with Matrix version 1.5.4
-    ## Current Matrix version is 1.6.0
+    ## TMB was built with Matrix version 1.6.0
+    ## Current Matrix version is 1.6.1.1
     ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
 
 ``` r
@@ -126,7 +130,7 @@ ctv
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00198       0.0583
+    ## 1       0.0101      0.00195       0.0583
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
@@ -137,7 +141,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001981239   0.05834417
+    ## 1   0.01014924  0.001954049   0.05831486
 
 *SSD* method can generate a lower and upper confidence interval.
 
@@ -146,7 +150,7 @@ benchmark
 wqb_plot(data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 ``` r
 # Plot the results
@@ -154,7 +158,7 @@ fit <- wqb_ssd_fit(data_agg)
 wqb_plot_ssd(data_agg, fit)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
 
 #### Summary Tables
 

@@ -44,7 +44,7 @@ wqb_af_bc_species <- function(data) {
     data$af_bc_species <- 3L
   } else if (no_bc_species %in% 2:3) {
     data$af_bc_species <- 2L
-  } else  { # no_bc_species >= 4
+  } else { # no_bc_species >= 4
     data$af_bc_species <- 1L
   }
 

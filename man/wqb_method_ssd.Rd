@@ -4,12 +4,14 @@
 \alias{wqb_method_ssd}
 \title{SSD Method to Calculate Critical Toxicity Value for the Chemical}
 \usage{
-wqb_method_ssd(data, fit)
+wqb_method_ssd(data, fit, nboot = 1000)
 }
 \arguments{
 \item{data}{A data frame}
 
 \item{fit}{The fit}
+
+\item{nboot}{The number of bootstrap samples. Default value of 1000.}
 }
 \value{
 A data frame
@@ -21,9 +23,7 @@ concentration for 5\% of species (HC5) when the SSD method is used.
 }
 \details{
 A wrapper on the ssdtools package function
-\code{ssdtools::ssd_hc_bcanz()}. The number of bootstrap samples is set to 10000
-(which  can take a few minutes to run) and only the HC5 concentration is
-returned.
+\code{\link[ssdtools:ssd_hc_bcanz]{ssdtools::ssd_hc_bcanz()}} that only returns the HC5 concentration.
 }
 \examples{
 \dontrun{

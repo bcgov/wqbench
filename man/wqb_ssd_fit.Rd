@@ -13,7 +13,7 @@ wqb_ssd_fit(data)
 A data frame
 }
 \description{
-Wrapper to \code{ssdtools::ssd_fit_bcanz()}. The sp_aggre_conc_mg.L values are
+Wrapper to \code{\link[ssdtools:ssd_fit_bcanz]{ssdtools::ssd_fit_bcanz()}}. The sp_aggre_conc_mg.L values are
 the concentrations used.
 }
 \examples{

@@ -84,7 +84,7 @@ test_that("det method is used when method is deterministic", {
   )
 })
 
-test_that("ssd method is used when method is deterministic", {
+test_that("ssd method is used when method is ssd", {
   skip_if_testing_quick()
 
   set.seed(10)
@@ -109,10 +109,10 @@ test_that("ssd method is used when method is deterministic", {
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.526
+    0.528
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.89
+    1.90
   )
 })
