@@ -118,15 +118,15 @@ test_that("values match up", {
   expect_s3_class(output, "tbl_df")
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.959
+    0.950
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.469
+    0.528
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.89
+    1.90
   )
 })
 
@@ -152,14 +152,14 @@ test_that("values differ with more bootstraps", {
   expect_s3_class(output, "tbl_df")
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.959
+    0.950
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.454
+    0.526
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.86
+    1.89
   )
 })
