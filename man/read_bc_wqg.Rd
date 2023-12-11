@@ -4,11 +4,9 @@
 \alias{read_bc_wqg}
 \title{Read BC Water Quality Guidelines}
 \usage{
-read_bc_wqg(bc_wqg_file_path, db_chemicals)
+read_bc_wqg(db_chemicals)
 }
 \arguments{
-\item{bc_wqg_file_path}{A file path}
-
 \item{db_chemicals}{A data frame}
 }
 \value{
@@ -19,6 +17,6 @@ Internal to allow for testing
 }
 \examples{
 \dontrun{
-chemicals_bc_wqg <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
+chemicals_bc_wqg <- read_bc_wqg(db_chemicals)
 }
 }

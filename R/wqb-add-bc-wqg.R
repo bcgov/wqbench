@@ -66,11 +66,7 @@ wqb_add_bc_wqg <- function(database, quiet = FALSE) {
     )
   }
 
-  bc_wqg_file_path <- system.file(
-    "extdata/all-wqgs.csv",
-    package = "wqbench"
-  )
-  chemicals_bc_wqg <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
+  chemicals_bc_wqg <- read_bc_wqg(db_chemicals)
 
   # create db tables
   DBI::dbExecute(
@@ -146,29 +142,34 @@ combine_bc_wqg <- function(bc_wqg, db_chemicals) {
 #'
 #' Internal to allow for testing
 #'
-#' @param bc_wqg_file_path A file path
 #' @param db_chemicals A data frame
 #'
 #' @return A data frame
 #' @examples
 #' \dontrun{
-#' chemicals_bc_wqg <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
+#' chemicals_bc_wqg <- read_bc_wqg(db_chemicals)
 #' }
-read_bc_wqg <- function(bc_wqg_file_path, db_chemicals) {
-  # read in bc wqg
-  # # pull from BC data when uploaded
-  # limits <-  bcdata::bcdc_get_data(
-  #   record = "85d3990a-ec0a-4436-8ebd-150de3ba0747",
-  #   resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
-  # )
+read_bc_wqg <- function(db_chemicals) {
+  # read in bc wqg from bcdata
+  bc_wqg <- suppressMessages(
+    bcdata::bcdc_get_data(
+      record = "85d3990a-ec0a-4436-8ebd-150de3ba0747",
+      resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
+    )   
+  )
 
-  bc_wqg <- readr::read_csv(bc_wqg_file_path, show_col_types = FALSE)
   chk::check_data(
     bc_wqg,
     list(
-      CAS_number = ""
+      `CAS_ number` = ""
     )
   )
+  
+  # FIXME: hack because column name has a space in it, can't fix until updated on bcdata
+  bc_wqg <- dplyr::rename(
+    bc_wqg,
+    CAS_number = "CAS_ number"
+  ) 
 
   data <- combine_bc_wqg(bc_wqg, db_chemicals)
   data

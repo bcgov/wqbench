@@ -239,17 +239,12 @@ test_that("no db chemicals gives an a table with no rows", {
 })
 
 test_that("read in actual wqg sheet and check things are added ", {
-  bc_wqg_file_path <- system.file(
-    "extdata/all-wqgs.csv",
-    package = "wqbench"
-  )
-
   db_chemicals <- data.frame(
     cas_number = c("7429905", "116063", "120127", "56553", "1"),
     chemical_name = c("H20", "NH3", "NO3", "NaCl", "H")
   )
 
-  output <- read_bc_wqg(bc_wqg_file_path, db_chemicals)
+  output <- read_bc_wqg(db_chemicals)
 
   expect_equal(
     nrow(output),
@@ -265,4 +260,14 @@ test_that("read in actual wqg sheet and check things are added ", {
     output$present_in_bc_wqg,
     c(TRUE, TRUE, TRUE, TRUE, FALSE)
   )
+})
+
+test_that("test typo in bc wqg file column name should be CAS_number", {
+  bc_wqg <- suppressMessages(
+    bcdata::bcdc_get_data(
+      record = "85d3990a-ec0a-4436-8ebd-150de3ba0747",
+      resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
+    )   
+  )
+  expect_true("CAS_ number" %in% colnames(bc_wqg))
 })
