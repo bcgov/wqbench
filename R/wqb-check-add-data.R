@@ -38,6 +38,14 @@ wqb_check_add_data <- function(data, template) {
   data <- data$data
   
   data <- check_no_extra_cols(data, template)
+  
+  data <- data %>% 
+    mutate(
+      endpoint = str_to_upper(endpoint),
+      trophic_group = str_to_sentence(trophic_group),
+      ecological_group = str_to_sentence(ecological_group)
+    )
+  
   check_endpoint(data)
   check_trophic_eco_group(data)
   check_species_present(data)
@@ -56,7 +64,8 @@ check_endpoint <- function(data) {
     show_col_types = FALSE
   ) |>
     dplyr::select("code") |>
-    dplyr::mutate(code = stringr::str_replace(.data$code, "\\*", "")) |>
+    dplyr::filter(!str_detect(code, "log")) |>
+    dplyr::filter(!str_detect(code, "\\*")) |>
     dplyr::distinct()
 
   if (!all(data$endpoint %in% endpoints$code)) {
