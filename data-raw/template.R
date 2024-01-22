@@ -16,10 +16,10 @@
 
 path <- system.file(
   package = "wqbench",
-  "template/template-data.xlsx"
+  "template/template-data-data.csv"
 )
 
-template <- readxl::read_excel(path, sheet = 1)
+template <- readr::read_csv(path)
 usethis::use_data(template, overwrite = TRUE)
 
 # add extra page to template file
@@ -41,14 +41,12 @@ if (!file.exists("inst/template/template-data.xlsx")) {
 }
   
 # need to read in whole work book then add each sheet back (just how xlsx files work)
-sheet_1 <- openxlsx::read.xlsx(
-  "inst/template/template-data.xlsx",
-  sheet = 1
-)
+sheet_1 <- readr::read_csv(
+  "inst/template/template-data-data.csv"
+)[0, -1]
 
-sheet_2 <- openxlsx::read.xlsx(
-  "inst/template/template-data.xlsx",
-  sheet = 2
+sheet_2 <- readr::read_csv(
+  "inst/template/template-data-instructions.csv"
 )
 
 wb <- openxlsx::createWorkbook()
