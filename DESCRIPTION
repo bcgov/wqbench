@@ -36,6 +36,9 @@ Imports:
     withr
 Suggests: 
     covr,
+    knitr,
+    openxlsx,
+    rmarkdown,
     testthat (>= 3.0.0),
     wqbenchdata
 Remotes: 
@@ -48,3 +51,4 @@ RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.1)
 LazyData: true
+VignetteBuilder: knitr
