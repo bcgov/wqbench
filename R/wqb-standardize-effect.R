@@ -34,7 +34,8 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
     list(
       endpoint = "",
       duration_class = "",
-      trophic_group = factor("")
+      trophic_group = factor(""),
+      effect_conc_mg = 1
     )
   )
   if (!quiet) {
