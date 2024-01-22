@@ -16,8 +16,52 @@
 
 path <- system.file(
   package = "wqbench",
-  "template/template-data.csv"
+  "template/template-data.xlsx"
 )
 
-template <- readr::read_csv(path)
+template <- readxl::read_excel(path, sheet = 1)
 usethis::use_data(template, overwrite = TRUE)
+
+# add extra page to template file
+endpoints_path <- system.file(
+  "extdata/concentration-endpoints.csv",
+  package = "wqbench"
+)
+endpoints <- readr::read_csv(
+  endpoints_path,
+  show_col_types = FALSE
+) |>
+  dplyr::filter(!stringr::str_detect(code, "log")) |>
+  dplyr::filter(!stringr::str_detect(code, "\\*")) |>
+  dplyr::distinct()
+
+# error if inst/template not present 
+if (!file.exists("inst/template/template-data.xlsx")) {
+  warning("Stop and find out why template file missing")
+}
+  
+# need to read in whole work book then add each sheet back (just how xlsx files work)
+sheet_1 <- openxlsx::read.xlsx(
+  "inst/template/template-data.xlsx",
+  sheet = 1
+)
+
+sheet_2 <- openxlsx::read.xlsx(
+  "inst/template/template-data.xlsx",
+  sheet = 2
+)
+
+wb <- openxlsx::createWorkbook()
+
+# add sheets to the workbook
+openxlsx::addWorksheet(wb, "data")
+openxlsx::addWorksheet(wb, "instructions")
+openxlsx::addWorksheet(wb, "endpoints")
+
+# write data to the sheets
+openxlsx::writeData(wb, sheet = "data", x = sheet_1)
+openxlsx::writeData(wb, sheet = "instructions", x = sheet_2)
+openxlsx::writeData(wb, sheet = "endpoints", x = endpoints)
+
+# export the file
+openxlsx::saveWorkbook(wb, "inst/template/template-data.xlsx", overwrite = TRUE)
