@@ -1,0 +1,40 @@
+---
+title: "Developer-instructions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Developer-instructions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(wqbench)
+```
+
+## Updating the Add Data Template
+
+The instructions in the uploading data template need to up updated when any changes to the reference data sheets occur. 
+
+- trophic-groups.csv
+  - need to update trophic_group column and ecological_group column instructions if new groups are added or groups are removed
+  - the groups have been manually added to the instruction tab
+  - the validation is done off of the trophic-groups.csv so it is possible for the instructions to get out of sync with the allowed values
+   
+- lifestage-codes.csv
+  - need to update simple_lifestage column instructions if new simple lifestages are added or removed 
+  - the validation is done off of the lifestage-codes.csv so it is possible for the instructions to get out of sync with the allowed values
+  
+- concentration-endpoints.csv
+  - need to update endpoint column instructions if endpoints are added or removed
+  - the list of endpoints on the third sheet are generated using the function XXX, this needs to be run each time the concentration-endpoints.csv file is updated
+  - the validation is done off of the concentration-endpoints.csv so it is possible for the instructions to get out of sync with the allowed values  
+  
+To regenerate the list of endpoints you will need to go to the *data-raw/template.R* file and run the script.
+This will add the template section to the package and regenerate the list of allowed endpoint codes.
