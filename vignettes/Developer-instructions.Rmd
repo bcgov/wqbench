@@ -38,3 +38,6 @@ The instructions in the uploading data template need to up updated when any chan
   
 To regenerate the list of endpoints you will need to go to the *data-raw/template.R* file and run the script.
 This will add the template section to the package and regenerate the list of allowed endpoint codes.
+
+In the templates folder only the csv files should be updated manually.
+The excel file is for people to use when filling in with their data and is generated from running the *data-raw/template.R* script.
