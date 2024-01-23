@@ -1,6 +1,6 @@
 ## code to prepare `concentration-endpoints` dataset goes here
 
-values <- str_pad(seq(from = 5, to = 58, by = 1), 2, pad = "0")
+values <- str_pad(seq(from = 5, to = 55, by = 1), 2, pad = "0")
 
 ec <- paste0("EC", values)
 ec_star <- paste0(ec, "*")
