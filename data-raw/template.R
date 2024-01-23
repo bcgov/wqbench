@@ -27,13 +27,6 @@ endpoints_path <- system.file(
   "extdata/concentration-endpoints.csv",
   package = "wqbench"
 )
-endpoints <- readr::read_csv(
-  endpoints_path,
-  show_col_types = FALSE
-) |>
-  dplyr::filter(!stringr::str_detect(code, "log")) |>
-  dplyr::filter(!stringr::str_detect(code, "\\*")) |>
-  dplyr::distinct()
 
 # error if inst/template not present 
 if (!file.exists("inst/template/template-data.xlsx")) {
@@ -54,12 +47,10 @@ wb <- openxlsx::createWorkbook()
 # add sheets to the workbook
 openxlsx::addWorksheet(wb, "data")
 openxlsx::addWorksheet(wb, "instructions")
-openxlsx::addWorksheet(wb, "endpoints")
 
 # write data to the sheets
 openxlsx::writeData(wb, sheet = "data", x = sheet_1)
 openxlsx::writeData(wb, sheet = "instructions", x = sheet_2)
-openxlsx::writeData(wb, sheet = "endpoints", x = endpoints)
 
 # export the file
 openxlsx::saveWorkbook(wb, "inst/template/template-data.xlsx", overwrite = TRUE)
