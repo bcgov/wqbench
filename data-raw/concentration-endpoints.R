@@ -1,6 +1,6 @@
 ## code to prepare `concentration-endpoints` dataset goes here
 
-values <- str_pad(seq(from = 5, to = 55, by = 1), 2, pad = "0")
+values <- stringr::str_pad(seq(from = 5, to = 55, by = 1), 2, pad = "0")
 
 ec <- paste0("EC", values)
 ec_star <- paste0(ec, "*")
@@ -24,5 +24,5 @@ codes <- c(
 
 conc_endpoints <- data.frame(code = codes)
 
-write_csv(conc_endpoints, "inst/extdata/concentration-endpoints.csv")
+readr::write_csv(conc_endpoints, "inst/extdata/concentration-endpoints.csv")
 #usethis::use_data(concentration-endpoints, overwrite = TRUE)
