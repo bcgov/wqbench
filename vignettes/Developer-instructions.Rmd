@@ -41,3 +41,11 @@ This will add the template section to the package and regenerate the list of all
 
 In the templates folder only the csv files should be updated manually.
 The excel file is for people to use when filling in with their data and is generated from running the *data-raw/template.R* script.
+
+
+## Updating Reference Data
+
+### Concentration Endpoints
+
+The list of concentration endpoints are generated in the *data-raw/concentration-endpoints.R* script. 
+
