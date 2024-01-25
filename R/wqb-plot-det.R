@@ -60,10 +60,9 @@ wqb_plot_det <- function(data) {
     ggplot2::xlab("Concentration (mg/L)") +
     ggplot2::ylab("") +
     ggplot2::labs(
-      caption = "The ecological group is shown with colour,
-                  the present of a species being from BC is shown with shape and
-                  the estimated values are shown with different linetype and colour.
-                  The concentration values are on a log scale."
+      caption = 
+        "The ecological group is shown with colour, the present of a species being from BC is shown with shape and the estimated values are shown with different 
+      linetype and colour. The concentration values are on a log scale."
     ) +
     ggplot2::scale_color_manual(
       "Value:",
@@ -103,7 +102,8 @@ wqb_plot_det <- function(data) {
       strip.text.y = ggplot2::element_text(angle = 0),
       text = ggplot2::element_text(size = 16),
       legend.direction = "vertical",
-      plot.margin = ggplot2::unit(c(0, 0, 0, 1), "cm")
+      plot.margin = ggplot2::unit(c(0.25, 0.25, 0.25, 1), "cm"),
+      plot.caption = ggplot2::element_text(hjust = 0)
     ) +
     ggplot2::scale_y_discrete(
       position = "right",
