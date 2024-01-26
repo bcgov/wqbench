@@ -28,7 +28,7 @@ Imports:
     RSQLite,
     rvest,
     scales,
-    ssdtools,
+    ssdtools (>= 1.0.6.9010),
     stringr,
     tibble,
     tidyr,
