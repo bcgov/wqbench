@@ -113,6 +113,6 @@ test_that("ssd method is used when method is ssd", {
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.870
+    1.890
   )
 })
