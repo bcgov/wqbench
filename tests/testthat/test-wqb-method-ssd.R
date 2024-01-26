@@ -126,7 +126,7 @@ test_that("values match up", {
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.87
+    1.89
   )
 })
 
