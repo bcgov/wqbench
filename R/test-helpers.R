@@ -107,6 +107,12 @@ expect_snapshot_plot <- function(x, name) {
   testthat::expect_snapshot_file(path, paste0(name, ".png"))
 }
 
+save_csv <- function(x) {
+  path <- tempfile(fileext = ".csv")
+  readr::write_csv(x, path)
+  path
+}
+
 expect_snapshot_data <- function(x, name, digits = 6) {
   fun <- function(x) signif(x, digits = digits)
   lapply_fun <- function(x) I(lapply(x, fun))
