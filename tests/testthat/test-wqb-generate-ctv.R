@@ -117,33 +117,33 @@ test_that("ssd method is used when method is ssd", {
   )
 })
 
-test_that("check ssdtools functions directly", {
-  skip_if_testing_quick()
-  
-  set.seed(10)
-  reps <- 6L
-  df <- data.frame(
-    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
-    "method" = rep("SSD", reps),
-    "species_number" = rep(NA, reps),
-    "trophic_group" = factor(rep(NA, reps)),
-    "species_present_in_bc" = rep(NA, reps),
-    "ecological_group" = factor(rep(NA, reps)),
-    "chemical_name" = rep(NA, reps),
-    "cas" = rep(NA, reps),
-    "latin_name" = rep(NA, reps),
-    "common_name" = rep(NA, reps),
-    "effect" = rep(NA, reps)
-  )
-  output <- ssdtools::ssd_fit_bcanz(
-    data = df,
-    left = "sp_aggre_conc_mg.L"
-  ) |>
-    ssdtools::ssd_hc_bcanz(nboot = 1000) |>
-    dplyr::filter(.data$proportion == 0.05)
-  
-  expect_snapshot_data(output, "ssdtool_bcanz")
-})
+# test_that("check ssdtools functions directly", {
+#   skip_if_testing_quick()
+#   
+#   set.seed(10)
+#   reps <- 6L
+#   df <- data.frame(
+#     "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+#     "method" = rep("SSD", reps),
+#     "species_number" = rep(NA, reps),
+#     "trophic_group" = factor(rep(NA, reps)),
+#     "species_present_in_bc" = rep(NA, reps),
+#     "ecological_group" = factor(rep(NA, reps)),
+#     "chemical_name" = rep(NA, reps),
+#     "cas" = rep(NA, reps),
+#     "latin_name" = rep(NA, reps),
+#     "common_name" = rep(NA, reps),
+#     "effect" = rep(NA, reps)
+#   )
+#   output <- ssdtools::ssd_fit_bcanz(
+#     data = df,
+#     left = "sp_aggre_conc_mg.L"
+#   ) |>
+#     ssdtools::ssd_hc_bcanz(nboot = 1000) |>
+#     dplyr::filter(.data$proportion == 0.05)
+#   
+#   expect_snapshot_data(output, "ssdtool_bcanz")
+# })
 
 test_that("check ssdtools functions directly", {
   skip_if_testing_quick()
