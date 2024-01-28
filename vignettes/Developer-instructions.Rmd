@@ -93,6 +93,17 @@ Thus this list is robust to new species added to the ECOTOX dataset.
 
 This data set should be reviewed each time a new pull from the ECOTOX dataset is generated. 
 
+After the database is created. 
+
+Run the script *scripts/review-concentration-conversion.R* to generate one file for review.
+
+The script will generate one file:
+
+1. Concentration conversion table from the database with the coding of whether the unit is retained and converted.
+   - Values with 1 in the conc_conversion_flag column are retained and converted based on the value in the conc_conversion_value_multiplier column to the unit listed in the conc_conversion_unit column.
+   - Look for values that have nothing in the conc_conversion_flag column.
+   - To add new values that need to be added in the compiled dataset write the conversion value in the add_new_multipler column and the corresponding converted unit in the add_new_unit column.
+
 ### Concentration Endpoints
 
 The list of concentration endpoints are generated in the *data-raw/concentration-endpoints.R* script. 
