@@ -124,6 +124,7 @@ The script will generate one file:
    - If a 0 is present in the duration_unit column then those values are not retained in the final compiled dataset. Values with 1 are retained and converted based on the value in the duration_value_multiplier_to_hours column.
    - Look for values that have nothing in the duration_unit column.
    - To add new values that need to be added in the compiled dataset write the conversion value in the add_new_multipler column.
+   - Add in the rational/assumption for the duration conversion in the add_comments column.
    
 ### Lifestage Codes
 

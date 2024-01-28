@@ -11,7 +11,8 @@ con <- DBI::dbConnect(
 
 db_duration_unit_codes <- DBI::dbReadTable(con, "duration_unit_codes") |>
   mutate(
-    add_new_multipler = NA_real_
+    add_new_multipler = NA_real_,
+    add_comments = NA_character_
   ) |>
   tibble()
 
