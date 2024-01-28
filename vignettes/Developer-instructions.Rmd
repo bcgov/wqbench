@@ -69,14 +69,29 @@ The excel file is for people to use when filling in with their data and is gener
 
 ## Updating Reference Data
 
+### Download Most Recent Database
+
+Start by downloading the most recent copy of the database and adding the current reference data to it
+
+```{r, eval=FALSE}
+wqb_create_data_set(
+  file_path = "~/Ecotoxicology/ecotox",
+  version = 1,
+  folder_path = "~/Ecotoxicology/ecotox_db/"
+)
+```
+
 ### BC Species
 
 This list should not vary or need to be reviewed often as it is not expected that the species in BC will vary from year to year.
 This is a comprehensive list that was generated from B.C. Conservation Data Centre.
 
+Any species that is not listed in the *bc-species.csv* reference file is marked as not present.
+Thus this list is robust to new species added to the ECOTOX dataset. 
+
 ### Concentration Conversion
 
-This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
+This data set should be reviewed each time a new pull from the ECOTOX dataset is generated. 
 
 ### Concentration Endpoints
 
@@ -94,11 +109,33 @@ This data set should be reviewed each time a new pull from the ECOTOX data set i
 
 This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
 
+After the database is created.
+
 Run the script *scripts/review-trophic-groups.R* to generate two lists for review.
-This generates two files
 
-1. Raw species data from the database, which can be helpful when things may be missed classified into the order or class. 
-2. The current reference data joined to the filtered and cleaned class and order list in the database. 
+The script will generate three files:
 
-Both of these files need to be reviewed and will guide any updates to the reference data for the trophic groups.
+1. Species data from the database. 
+   - Extra addition should be provided to species marked with a 1 in the be species column as these are species present in BC that are categorized into trophic groups.
+   - This file is provided for reference but should not be used for listing the new groups to add to the reference dataset. 
+2. A condensed list of the phylum, class, order and family of all the species that were not categorized with a trophic group.
+  -  For groups that need to be added to the reference data set these need to `TRUE` written in the Add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they can not be joined. 
+  - This file will be used to add the new trophic groups to the current reference file. 
+3. The current reference data joined to the filtered and cleaned class and order list in the database. 
+
+These files need to be reviewed and will guide any updates to the reference data for the trophic groups.
 Update the file *inst/extdata/trophic-groups.csv* based on the review.
+
+### After All Reference Datasets are Review
+
+Once all the reference data sets have been reviewed and updated (as needed), re-build the package. 
+
+Then restart your R session and create the dataset again. 
+
+```{r, eval=FALSE}
+wqb_create_data_set(
+  file_path = "~/Ecotoxicology/ecotox",
+  version = 1,
+  folder_path = "~/Ecotoxicology/ecotox_db/"
+)
+```
