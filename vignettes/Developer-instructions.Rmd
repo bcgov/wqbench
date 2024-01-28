@@ -104,6 +104,14 @@ This is a comprehensive list that should not need to be adjusted unless a differ
 
 This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
 
+After the database is created. 
+
+Run the script *scripts/review-lifestage-codes.R* to generate one file for review.
+
+The script will generate one file:
+
+1. Life stage codes from the database with their coding to the simple life stages. 
+   -  For values that need to be added to the reference dataset, write the simple life stage in the add column.
 
 ### Trophic Groups
 
@@ -111,7 +119,7 @@ This data set should be reviewed each time a new pull from the ECOTOX data set i
 
 After the database is created.
 
-Run the script *scripts/review-trophic-groups.R* to generate two lists for review.
+Run the script *scripts/review-trophic-groups.R* to generate two files for review.
 
 The script will generate three files:
 
@@ -119,7 +127,7 @@ The script will generate three files:
    - Extra addition should be provided to species marked with a 1 in the be species column as these are species present in BC that are categorized into trophic groups.
    - This file is provided for reference but should not be used for listing the new groups to add to the reference dataset. 
 2. A condensed list of the phylum, class, order and family of all the species that were not categorized with a trophic group.
-  -  For groups that need to be added to the reference data set these need to `TRUE` written in the Add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they can not be joined. 
+  -  For groups that need to be added to the reference data set these need to `TRUE` written in the add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they can not be joined. 
   - This file will be used to add the new trophic groups to the current reference file. 
 3. The current reference data joined to the filtered and cleaned class and order list in the database. 
 
