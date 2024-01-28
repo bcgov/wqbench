@@ -11,8 +11,8 @@ con <- DBI::dbConnect(
 
 db_species <- DBI::dbReadTable(con, "species") |>
   mutate(
-    class = str_squish(.data$class),
-    tax_order = str_squish(.data$tax_order)
+    class = str_squish(class),
+    tax_order = str_squish(tax_order)
   ) |>
   tibble()
 
