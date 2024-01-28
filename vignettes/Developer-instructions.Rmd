@@ -99,7 +99,21 @@ The list of concentration endpoints are generated in the *data-raw/concentration
 
 This is a comprehensive list that should not need to be adjusted unless a different set of endpoint codes allowed. 
 
+### Duration Conversion
 
+This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
+
+After the database is created. 
+
+Run the script *scripts/review-duration-conversion.R* to generate one file for review.
+
+The script will generate one file:
+
+1. Duration conversion table from the database with the coding of whether the unit is retained and converted.
+   - If a 0 is present in the duration_unit column then those values are not retained in the final compiled dataset. Values with 1 are retained and converted based on the value in the duration_value_multiplier_to_hours column.
+   - Look for values that have nothing in the duration_unit column.
+   - To add new values that need to be added in the compiled dataset write the conversion value in the add_new_multipler column.
+   
 ### Lifestage Codes
 
 This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
