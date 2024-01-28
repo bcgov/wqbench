@@ -1,7 +1,9 @@
 rm(list = ls())
 library(tidyverse)
 
-# Read --------------------------------------------------------------------
+
+# Duration Conversion -----------------------------------------------------
+## Read --------------------------------------------------------------------
 # read in reference file
 duration_std_file_path <- system.file(
   "extdata/duration-conversion.csv",
@@ -32,7 +34,7 @@ reviewed_duration_std <- readr::read_csv(
   reviewed_duration_std
 )
 
-# Combine Files -----------------------------------------------------------
+## Combine Files -----------------------------------------------------------
 # add new rows 
 new_durations <- 
   anti_join(reviewed_duration_std, duration_std,  by = c("code")) |>
@@ -78,7 +80,7 @@ new_duration_std <-
     duration_units_to_keep = as.logical(duration_units_to_keep)
   )
 
-# Write new reference file ------------------------------------------------
+## Write new reference file ------------------------------------------------
 write_csv(
   new_duration_std,
   "inst/extdata/duration-conversion.csv",
