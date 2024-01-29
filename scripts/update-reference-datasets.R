@@ -1,6 +1,59 @@
 rm(list = ls())
 library(tidyverse)
 
+# Concentration Conversion ------------------------------------------------
+## Read --------------------------------------------------------------------
+# read in reference file
+concentration_std_file_path <- system.file(
+  "extdata/concentration-conversion.csv",
+  package = "wqbench"
+)
+
+concentration_std <- readr::read_csv(
+  concentration_std_file_path,
+  show_col_types = FALSE
+)
+
+# read in reviewed and updated file
+reviewed_conc_std_fp <- list.files(
+  path = file.path(
+    "~",
+    "Poisson",
+    "Data",
+    "wqbench",
+    format(Sys.Date(), "%Y"),
+    "review",
+    "complete"
+  ),
+  pattern = "concentration-conversion",
+  full.names = TRUE
+)
+
+reviewed_conc_std <- readr::read_csv(
+  reviewed_conc_std_fp
+)
+
+## Combine Files -----------------------------------------------------------
+# add new rows 
+new_conc <- 
+  anti_join(reviewed_conc_std, concentration_std,  by = c("code")) |>
+  mutate(
+    conc_conversion_flag = if_else(!is.na(add_new_multipler), 1, 0),
+    conc_conversion_value_multiplier =  if_else(!is.na(add_new_multipler), add_new_multipler, NA_real_),
+    conc_conversion_unit =  if_else(!is.na(add_new_multipler), add_new_unit, NA_character_)
+  )
+
+# update any old ones
+reviewed_conc_std %>% 
+  filter(!is.na(add_new_multipler)) |>
+  filter(!is.na(conc_conversion_flag)) 
+### TO DO, need to make it so all are FALSE if not true
+### updated code on adding but need to review further
+
+# put together
+
+## Write new reference file ------------------------------------------------
+
 
 # Duration Conversion -----------------------------------------------------
 ## Read --------------------------------------------------------------------
@@ -50,13 +103,12 @@ updated_durations <-
   filter(!is.na(add_new_multipler)) |>
   filter(!is.na(duration_units_to_keep)) |>
   mutate(
-    duration_units_to_keep = 1,
-    duration_value_multiplier_to_hours = add_new_multipler
+    duration_units_to_keep = 1
   ) |>
   select(
     code, 
     duration_units_to_keep_2 = duration_units_to_keep, 
-    duration_value_multiplier_to_hours_2 = duration_value_multiplier_to_hours,
+    duration_value_multiplier_to_hours_2 = add_new_multipler,
     comments_2 = add_comments
   )
 
@@ -85,3 +137,4 @@ write_csv(
   new_duration_std,
   "inst/extdata/duration-conversion.csv",
 )
+
