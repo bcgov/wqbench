@@ -1,5 +1,7 @@
 library(tidyverse)
 
+# Setup -------------------------------------------------------------------
+
 # need to pull in raw database data
 # update the file to the most recent version of the database stored locally on your computer
 database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
@@ -9,18 +11,7 @@ con <- DBI::dbConnect(
   database
 )
 
-db_conc_unit_codes <- DBI::dbReadTable(con, "concentration_unit_codes") |>
-  mutate(
-    add_new_multipler = NA_real_,
-    add_new_unit = NA_character_
-  ) |>
-  tibble()
-
-DBI::dbDisconnect(con)
-
-# generate files for review
-write_csv(
-  db_conc_unit_codes,
+file_save_loc <- 
   file.path(
     "~",
     "Poisson",
@@ -28,6 +19,21 @@ write_csv(
     "wqbench",
     format(Sys.Date(), "%Y"),
     "review",
+    "to-be-reviewed"
+  )
+
+dir.create(file_save_loc)
+
+# Concentration Units -----------------------------------------------------
+
+db_conc_unit_codes <- DBI::dbReadTable(con, "concentration_unit_codes") |>
+  tibble()
+
+# generate files for review
+write_csv(
+  db_conc_unit_codes,
+  file.path(
+    file_save_loc,
     paste0(Sys.Date(), "-concentration-conversion-review", ".csv")
   ),
   na = ""
@@ -35,90 +41,38 @@ write_csv(
 
 # Duration Unit -----------------------------------------------------------
 
-# need to pull in raw database data
-# update the file to the most recent version of the database stored locally on your computer
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
-
-con <- DBI::dbConnect(
-  RSQLite::SQLite(),
-  database
-)
-
 db_duration_unit_codes <- DBI::dbReadTable(con, "duration_unit_codes") |>
-  mutate(
-    add_new_multipler = NA_real_,
-    add_comments = NA_character_
-  ) |>
   tibble()
-
-DBI::dbDisconnect(con)
 
 # generate files for review
 write_csv(
   db_duration_unit_codes,
   file.path(
-    "~",
-    "Poisson",
-    "Data",
-    "wqbench",
-    format(Sys.Date(), "%Y"),
-    "review",
+    file_save_loc,
     paste0(Sys.Date(), "-duration-conversion-review", ".csv")
   ),
   na = ""
 )
 
-
 # Lifestage Codes ---------------------------------------------------------
-
-library(tidyverse)
-
-# need to pull in raw database data
-# update the file to the most recent version of the database stored locally on your computer
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
-
-con <- DBI::dbConnect(
-  RSQLite::SQLite(),
-  database
-)
 
 db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
   dplyr::mutate(
-    code = stringr::str_squish(code),
-    add = NA_character_
+    code = stringr::str_squish(code)
   ) |>
   tibble()
-
-DBI::dbDisconnect(con)
 
 # generate files for review
 write_csv(
   db_lifestage_codes,
   file.path(
-    "~",
-    "Poisson",
-    "Data",
-    "wqbench",
-    format(Sys.Date(), "%Y"),
-    "review",
+    file_save_loc,
     paste0(Sys.Date(), "-lifestage-code-review", ".csv")
   ),
   na = ""
 )
 
-
 # Trophic Groups ----------------------------------------------------------
-
-library(tidyverse)
-
-# need to pull in raw database data
-# update the file to the most recent version of the database stored locally on your computer
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
-
-con <- DBI::dbConnect(
-  RSQLite::SQLite(),
-  database
-)
 
 db_species <- DBI::dbReadTable(con, "species") |>
   mutate(
@@ -126,8 +80,6 @@ db_species <- DBI::dbReadTable(con, "species") |>
     tax_order = str_squish(tax_order)
   ) |>
   tibble()
-
-DBI::dbDisconnect(con)
 
 missing_species <- 
   db_species |>
@@ -154,12 +106,7 @@ missing_groups <-
 write_csv(
   missing_species,
   file.path(
-    "~",
-    "Poisson",
-    "Data",
-    "wqbench",
-    format(Sys.Date(), "%Y"),
-    "review",
+    file_save_loc,
     paste0(Sys.Date(), "-species-not-coded-in-db", ".csv")
   ),
   na = ""
@@ -168,12 +115,7 @@ write_csv(
 write_csv(
   missing_groups,
   file.path(
-    "~",
-    "Poisson",
-    "Data",
-    "wqbench",
-    format(Sys.Date(), "%Y"),
-    "review",
+    file_save_loc,
     paste0(Sys.Date(), "-missing-trophic-group-review", ".csv")
   ),
   na = ""
@@ -185,13 +127,11 @@ file.copy(
     package = "wqbench"
   ),
   to = file.path(
-    "~",
-    "Poisson",
-    "Data",
-    "wqbench",
-    format(Sys.Date(), "%Y"),
-    "review",
+    file_save_loc,
     paste0(Sys.Date(), "-trophic-group", ".csv")
   )
 )
 
+# Clean Up ----------------------------------------------------------------
+
+DBI::dbDisconnect(con)
