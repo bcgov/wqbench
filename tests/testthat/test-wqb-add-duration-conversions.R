@@ -20,7 +20,9 @@ test_that("combine duration conversions by codes", {
       "days after pupation", "hours", "haun stage"
     ),
     duration_units_to_keep = c(FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
-    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_)
+    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_),
+    comments = c(NA_character_, NA_character_, "24 hours in a day", 
+                 "24 hours in a day", "1 hour in an hour", NA_character_)
   )
 
   db_duration_unit_codes <- data.frame(
@@ -57,7 +59,9 @@ test_that("spaces in duration conversion codes doesn't cause issues", {
       "days after pupation", "hours", "haun stage"
     ),
     duration_units_to_keep = c(FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
-    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_)
+    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_),
+    comments = c(NA_character_, NA_character_, "24 hours in a day", 
+                 "24 hours in a day", "1 hour in an hour", NA_character_)
   )
 
   db_duration_unit_codes <- data.frame(
@@ -94,7 +98,9 @@ test_that("-X excel error adjustment", {
       "days after pupation"
     ),
     duration_units_to_keep = c(FALSE, FALSE, TRUE, TRUE),
-    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24)
+    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24),
+    comments = c(NA_character_, NA_character_,
+                 "24 hours in a day", "24 hours in a day")
   )
 
   db_duration_unit_codes <- data.frame(
@@ -128,7 +134,8 @@ test_that("empty duration conversion codes means all coded as NA", {
     code = character(),
     description = character(),
     duration_units_to_keep = logical(),
-    duration_value_multiplier_to_hours = double()
+    duration_value_multiplier_to_hours = double(),
+    comments = character()
   )
 
   db_duration_unit_codes <- data.frame(
@@ -162,7 +169,8 @@ test_that("missing duration conversion codes means all coded as NA", {
     code = NA_character_,
     description = NA_character_,
     duration_units_to_keep = NA,
-    duration_value_multiplier_to_hours = NA_real_
+    duration_value_multiplier_to_hours = NA_real_,
+    comments = NA_character_
   )
 
   db_duration_unit_codes <- data.frame(
@@ -199,7 +207,9 @@ test_that("empty db table means no rows are returned", {
       "days after pupation", "hours", "haun stage"
     ),
     duration_units_to_keep = c(FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
-    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_)
+    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_),
+    comments = c(NA_character_, NA_character_, "24 hours in a day", 
+                 "24 hours in a day", "1 hour in an hour", NA_character_)
   )
 
   db_duration_unit_codes <- data.frame(
@@ -219,7 +229,7 @@ test_that("empty db table means no rows are returned", {
     colnames(output),
     c(
       "code", "description", "duration_units_to_keep",
-      "duration_value_multiplier_to_hours"
+      "duration_value_multiplier_to_hours", "comments"
     )
   )
 })
@@ -232,7 +242,9 @@ test_that("message when values are not present in the db table", {
       "days after pupation", "hours", "haun stage"
     ),
     duration_units_to_keep = c(FALSE, FALSE, TRUE, TRUE, TRUE, FALSE),
-    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_)
+    duration_value_multiplier_to_hours = c(NA_real_, NA_real_, 24, 24, 1, NA_real_),
+    comments = c(NA_character_, NA_character_, "24 hours in a day", 
+                 "24 hours in a day", "1 hour in an hour", NA_character_)
   )
 
   db_duration_unit_codes <- data.frame(

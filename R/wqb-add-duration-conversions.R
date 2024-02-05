@@ -151,7 +151,10 @@ combine_duration_conversions <- function(duration_std, db_duration_unit_codes) {
       ),
       code = stringr::str_squish(.data$code)
     ) |>
-    dplyr::select("code", "duration_units_to_keep", "duration_value_multiplier_to_hours")
+    dplyr::select(
+      "code", "duration_units_to_keep", "duration_value_multiplier_to_hours",
+      "comments"
+    )
 
   # print out name of any codes that don't match the db ones
   dont_match <- !(duration_std$code %in% db_duration_unit_codes$code)
