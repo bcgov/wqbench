@@ -4,6 +4,7 @@ library(tidyverse)
 
 # need to pull in raw database data
 # update the file to the most recent version of the database stored locally on your computer
+list.files("~/Ecotoxicology/ecotox_db/", pattern = "\\.sqlite")
 database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
 
 con <- DBI::dbConnect(
@@ -22,7 +23,7 @@ file_save_loc <-
     "to-be-reviewed"
   )
 
-dir.create(file_save_loc)
+dir.create(file_save_loc, recursive = TRUE)
 
 # Concentration Units -----------------------------------------------------
 
@@ -135,3 +136,15 @@ file.copy(
 # Clean Up ----------------------------------------------------------------
 
 DBI::dbDisconnect(con)
+
+dir.create(
+  file.path(
+    "~",
+    "Poisson",
+    "Data",
+    "wqbench",
+    format(Sys.Date(), "%Y"),
+    "review",
+    "completed"), 
+  recursive = TRUE
+)
