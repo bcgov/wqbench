@@ -120,32 +120,32 @@ This data set should be reviewed each time a new version of the ECOTOX database 
 
 - If there is no value in the **conc_conversion_flag** column this indicates it is a new concentration unit that was not in the previous version of the database.
 - The goal of the review is to ensure all cells in the **conc_conversion_flag** column are filled in. 
-  - A zero (`0`) indicates the concentration can not be converted to mg/L or ppm.
+  - A zero (`0`) indicates the concentration cannot be converted to mg/L or ppm.
     - If the units cannot be converted to mg/L or ppm then put a `0` in the row.
     - No additional columns need to be filled in if the unit is given a value of `0` in the **conc_conversion_flag** column.
   - A one (`1`) indicates the concentration can be converted to mg/L or ppm. 
     - If the units can be converted put a `1` in the row. 
-      - In the **conc_conversion_value_multiplier** column fill in the value needed to get the units into mg/L or ppm. 
+      - In the **conc_conversion_value_multiplier** column fill in the value needed to convert the units into mg/L or ppm. 
       - In the **conc_conversion_unit** column fill in either `mg/L` or `ppm`. 
 
 If any incorrect conversions are found then those rows can be updated.
 
 ### Duration Conversion
 
-This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
+This data set should be reviewed each time a new version of the ECOTOX database is released. 
 
-After the database is created. 
+- If there is no value in the **duration_units_to_keep** column this indicates it is a new concentration unit that was not in the previous version of the database.
+- The goal of the review is to ensure all cells in the **duration_units_to_keep** column are filled in.   
+  - A zero (`0`) indicates the duration cannot be converted to hours.
+    - If the units cannot be converted to hours then put a `0` in the row.
+    - No additional columns need to be filled in if the unit is given a value of `0` in the **duration_units_to_keep** column.
+  - A one (`1`) indicates the duration can be converted to hours. 
+    - If the units can be converted put a `1` in the row. 
+      - In the **duration_value_multiplier_to_hours** column fill in the value needed to convert the units into hours. 
+      - In the **comments** column write why the conversion was chosen since there may be an assumption made during the conversion. For example if converting month into hours are you basing the conversion on 30 or 31 days.   
 
-Run the script *scripts/review-duration-conversion.R* to generate one file for review.
+If any incorrect conversions are found then those rows can be updated.
 
-The script will generate one file:
-
-1. Duration conversion table from the database with the coding of whether the unit is retained and converted.
-   - If a 0 is present in the duration_unit column then those values are not retained in the final compiled dataset. Values with 1 are retained and converted based on the value in the duration_value_multiplier_to_hours column.
-   - Look for values that have nothing in the duration_unit column.
-   - To add new values that need to be added in the compiled dataset write the conversion value in the add_new_multipler column.
-   - Add in the rational/assumption for the duration conversion in the add_comments column.
-   
 ### Lifestage Codes
 
 This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
@@ -173,7 +173,7 @@ The script will generate three files:
    - Extra addition should be provided to species marked with a 1 in the be species column as these are species present in BC that are categorized into trophic groups.
    - This file is provided for reference but should not be used for listing the new groups to add to the reference dataset. 
 2. A condensed list of the phylum, class, order and family of all the species that were not categorized with a trophic group.
-  -  For groups that need to be added to the reference data set these need to `TRUE` written in the add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they can not be joined. 
+  -  For groups that need to be added to the reference data set these need to `TRUE` written in the add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they cannot be joined. 
   - This file will be used to add the new trophic groups to the current reference file. 
 3. The current reference data joined to the filtered and cleaned class and order list in the database. 
 
