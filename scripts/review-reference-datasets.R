@@ -1,3 +1,4 @@
+rm(list = ls())
 library(tidyverse)
 
 # Setup -------------------------------------------------------------------
@@ -141,6 +142,7 @@ dir.create(
     "wqbench",
     format(Sys.Date(), "%Y"),
     "review",
-    "completed"), 
+    "completed"
+  ), 
   recursive = TRUE
 )
