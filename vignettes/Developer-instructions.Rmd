@@ -158,35 +158,22 @@ If any incorrect values are found then those rows can be updated.
 
 ### Trophic Groups
 
-This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
+This data set should be reviewed each time a new version of the ECOTOX database is released.  
 
-After the database is created.
-
-Run the script *scripts/review-trophic-groups.R* to generate two files for review.
-
-The script will generate three files:
-
-1. Species data from the database. 
-   - Extra addition should be provided to species marked with a 1 in the be species column as these are species present in BC that are categorized into trophic groups.
-   - This file is provided for reference but should not be used for listing the new groups to add to the reference dataset. 
-2. A condensed list of the phylum, class, order and family of all the species that were not categorized with a trophic group.
-  -  For groups that need to be added to the reference data set these need to `TRUE` written in the add column. The class and tax_order column will be joined to the class and order column in the reference dataset, they need to match identically or they cannot be joined. 
-  - This file will be used to add the new trophic groups to the current reference file. 
-3. The current reference data joined to the filtered and cleaned class and order list in the database. 
-
-These files need to be reviewed and will guide any updates to the reference data for the trophic groups.
-Update the file *inst/extdata/trophic-groups.csv* based on the review.
-
-### After All Reference Datasets are Review
-
-Once all the reference data sets have been reviewed and updated (as needed), re-build the package. 
-
-Then restart your R session and create the dataset again. 
-
-```{r, eval=FALSE}
-wqb_create_data_set(
-  file_path = "~/Ecotoxicology/ecotox",
-  version = 1,
-  folder_path = "~/Ecotoxicology/ecotox_db/"
-)
-```
+- Three files will be generated to help review the trophic group data.
+  - *trophic-group.csv*
+    - This is the current list of trophic and ecological groups coded to the class and order of each species. 
+    - This file needs to be updated to add new trophic and ecological groups.
+    - To update add a new row and fill in the **trophic_group** and **ecological_group** columns and the required **class** and **order**.
+      - The **class** and **order** can either both be filled in or one of the value left blank. 
+      - The **class** and **order** columns must match up with the **class** and **tax_order** columns from the *species-coded-in-db.csv* or *missing-trophic-group.csv* file. 
+  - *species-coded-in-db.csv*
+    - This is a list of all the species data from the database.
+    - This file is to help find which **class** and **tax_order** (order) do not have coding for the ecological or trophic groups.
+      - Filter to rows that have no value in the **trophic_group** and **ecological_group** columns.
+    - This file is for reference and not to be updated or sent back for integration.
+    - This data is summarized in the *missing-trophic-group-review.csv* file because of the large amount of information.
+  - *missing-trophic-group-review.csv*
+    - This is a summary that shows only the unique phylum, class, order and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
+    - This file will help to determine which class and order need to be added. 
+    - This file is for reference and not to be updated or sent back for integration.
