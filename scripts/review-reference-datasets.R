@@ -84,10 +84,7 @@ db_species <- DBI::dbReadTable(con, "species") |>
 
 missing_species <- 
   db_species |>
-  filter(is.na(trophic_group) | is.na(ecological_group))
-
-missing_groups <- 
-  missing_species |>
+  filter(is.na(trophic_group) | is.na(ecological_group)) |>
   select(phylum_division, class, tax_order, family) |>
   distinct() |>
   mutate(
@@ -95,7 +92,6 @@ missing_groups <-
     class = str_squish(class),
     tax_order = str_squish(tax_order),
     family = str_squish(family),
-    add = NA_character_,
     across(c(phylum_division, class, tax_order, family), ~ na_if(.x, ""))
   ) |>
   filter(
@@ -105,16 +101,16 @@ missing_groups <-
 
 # generate files for review
 write_csv(
-  missing_species,
+  db_species,
   file.path(
     file_save_loc,
-    paste0(Sys.Date(), "-species-not-coded-in-db", ".csv")
+    paste0(Sys.Date(), "-species-coded-in-db", ".csv")
   ),
   na = ""
 )
 
 write_csv(
-  missing_groups,
+  missing_species,
   file.path(
     file_save_loc,
     paste0(Sys.Date(), "-missing-trophic-group-review", ".csv")
