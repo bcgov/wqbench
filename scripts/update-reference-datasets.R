@@ -33,6 +33,9 @@ concentration_std <- readr::read_csv(
   select(
     code, description, conc_conversion_flag, conc_conversion_value_multiplier, 
     conc_conversion_unit
+  ) |>
+  mutate(
+    conc_conversion_flag = as.logical(conc_conversion_flag)
   )
 
 reviewed_conc_std_fp <- list.files(
@@ -41,9 +44,13 @@ reviewed_conc_std_fp <- list.files(
   full.names = TRUE
 )
 
-reviewed_conc_std <- readr::read_csv(
-  reviewed_conc_std_fp
-)
+reviewed_conc_std <- 
+  readr::read_csv(
+    reviewed_conc_std_fp
+  ) |>
+  mutate(
+    conc_conversion_flag = as.logical(conc_conversion_flag)
+  )
 
 if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_flag)), 0)) {
   abort_chk("There should be no missing conc_conversion_flag values, correct before proceeding")
@@ -82,7 +89,10 @@ duration_std_file_path <- system.file(
 duration_std <- readr::read_csv(
   duration_std_file_path,
   show_col_types = FALSE
-)
+) |>
+  mutate(
+    duration_units_to_keep = as.logical(duration_units_to_keep)
+  )
 
 reviewed_duration_std <- list.files(
   path = file.path(reviewed_folder),
@@ -92,7 +102,10 @@ reviewed_duration_std <- list.files(
 
 reviewed_duration_std <- readr::read_csv(
   reviewed_duration_std
-)
+) |>
+  mutate(
+    duration_units_to_keep = as.logical(duration_units_to_keep)
+  )
 
 if (!vld_equal(sum(is.na(reviewed_duration_std$duration_units_to_keep)), 0)) {
   abort_chk("There should be no missing duration_units_to_keep values, correct before proceeding")
@@ -131,7 +144,7 @@ life_stage_file_path <- system.file(
 lifestage_std <- readr::read_csv(
   life_stage_file_path,
   show_col_types = FALSE
-)
+) 
 
 reviewed_lifestage_fp <- list.files(
   path = file.path(reviewed_folder),
@@ -139,13 +152,15 @@ reviewed_lifestage_fp <- list.files(
   full.names = TRUE
 )
 
-reviewed_lifestage_code <- readr::read_csv(
-  reviewed_lifestage_fp
-) |>
+reviewed_lifestage_code <- 
+  readr::read_csv(
+    reviewed_lifestage_fp
+  ) |>
   mutate(
     simple_lifestage = str_to_lower(simple_lifestage)
-  )
-
+  ) |>
+  rename(description_lifestage = description)
+  
 if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage)), 0)) {
   abort_chk("There should be no missing simple lifestage value, correct before proceeding")
 }
@@ -244,7 +259,7 @@ if (FALSE) {
   )
   
   write_csv(
-    reviewed_conc_std,
+    reviewed_lifestage_code,
     "inst/extdata/lifestage-codes.csv",
   )
   
@@ -252,5 +267,4 @@ if (FALSE) {
     reviewed_trophic_groups,
     "inst/extdata/trophic-group.csv",
   )
-  
 }
