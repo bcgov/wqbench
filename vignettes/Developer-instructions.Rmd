@@ -148,16 +148,13 @@ If any incorrect conversions are found then those rows can be updated.
 
 ### Lifestage Codes
 
-This data set should be reviewed each time a new pull from the ECOTOX data set is generated. 
+This data set should be reviewed each time a new version of the ECOTOX database is released. 
 
-After the database is created. 
+- If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous version of the database.
+- The goal of the review is to ensure all cells in the **simple_lifestage** column are filled in.  
+  - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
 
-Run the script *scripts/review-lifestage-codes.R* to generate one file for review.
-
-The script will generate one file:
-
-1. Life stage codes from the database with their coding to the simple life stages. 
-   -  For values that need to be added to the reference dataset, write the simple life stage in the add column.
+If any incorrect values are found then those rows can be updated.
 
 ### Trophic Groups
 
