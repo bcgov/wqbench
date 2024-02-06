@@ -150,10 +150,13 @@ if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage)), 0)) {
   abort_chk("There should be no missing simple lifestage value, correct before proceeding")
 }
 
+if (!vld_subset(unique(reviewed_lifestage_code$simple_lifestage), c("els", "juvenile", "adult"))) {
+  abort_chk("Ensure simple lifestage codes match allowed values")
+}
+
 if (!vld_equal(sum(duplicated(reviewed_lifestage_code)), 0)) {
   abort_chk("There should be no duplicate values")
 }
-
 
 lifestage_daff <- daff::diff_data(
   lifestage_std, 
