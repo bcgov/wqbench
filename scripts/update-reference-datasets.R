@@ -61,7 +61,11 @@ if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
-concentration_daff <- daff::diff_data(concentration_std, reviewed_conc_std)
+concentration_daff <- daff::diff_data(
+  concentration_std, 
+  reviewed_conc_std, 
+  ordered = FALSE
+)
 daff::render_diff(
   concentration_daff, 
   pretty = TRUE, 
@@ -106,8 +110,16 @@ if (!vld_equal(sum(duplicated(reviewed_duration_std)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
-duration_daff <- daff::diff_data(duration_std, reviewed_duration_std)
-daff::render_diff(duration_daff, pretty = TRUE, title = "Duration Conversion")
+duration_daff <- daff::diff_data(
+  duration_std, 
+  reviewed_duration_std, 
+  ordered = FALSE
+)
+daff::render_diff(
+  duration_daff, 
+  pretty = TRUE, 
+  title = "Duration Conversion"
+)
 
 # Life Stage --------------------------------------------------------------
 
@@ -143,8 +155,16 @@ if (!vld_equal(sum(duplicated(reviewed_lifestage_code)), 0)) {
 }
 
 
-lifestage_daff <- daff::diff_data(lifestage_std, reviewed_lifestage_code)
-daff::render_diff(lifestage_daff, pretty = TRUE, title = "Life Stage Codes")
+lifestage_daff <- daff::diff_data(
+  lifestage_std, 
+  reviewed_lifestage_code, 
+  ordered = FALSE
+)
+daff::render_diff(
+  lifestage_daff, 
+  pretty = TRUE, 
+  title = "Life Stage Codes"
+)
 
 # Trophic Groups ----------------------------------------------------------
 
@@ -194,8 +214,16 @@ if (!vld_equal(sum(duplicated(reviewed_trophic_groups)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
-trophic_daff <- daff::diff_data(trophic_group_file_path_std, reviewed_trophic_groups)
-daff::render_diff(trophic_daff, pretty = TRUE, title = "Trophic Groups")
+trophic_daff <- daff::diff_data(
+  trophic_group_file_path_std, 
+  reviewed_trophic_groups, 
+  ordered = FALSE
+)
+daff::render_diff(
+  trophic_daff, 
+  pretty = TRUE, 
+  title = "Trophic Groups"
+)
 
 ## Write new reference file ------------------------------------------------
 
