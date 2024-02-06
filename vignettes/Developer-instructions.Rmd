@@ -69,9 +69,9 @@ The excel file is for people to use when filling in with their data and is gener
 
 ## Updating Reference Data
 
-### Download Most Recent Database
+### Overview of Process
 
-Start by downloading the most recent copy of the database and adding the current reference data to it
+1. Ensure you have the most recent copy of the database with the reference files added. To do this run the function `wqb_create_data_set()`.
 
 ```{r, eval=FALSE}
 wqb_create_data_set(
@@ -81,34 +81,54 @@ wqb_create_data_set(
 )
 ```
 
+2. Execute the code in the script *scripts/review-reference-datasets.R*. 
+   - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps. 
+   - At the top of the script you will need to set the file path for the database and the location to save the files that are generated. 
+
+3. After the files are generated they need to be reviewed and updated by a technical expert.
+   - It is recommended to email them to the appropriate person for their review.
+   - The next step has to wait until the review is complete. 
+
+4. Once the files are reviewed the *script/update-reference-datasets.R* script needs to be run.
+   - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
+
+5. The package needs to be re-built for the files to be part of the package. 
+
+Below are instructions for how to fill out and complete each of the reference files. 
+
 ### BC Species
 
-This list should not vary or need to be reviewed often as it is not expected that the species in BC will vary from year to year.
+This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year. 
+
 This is a comprehensive list that was generated from B.C. Conservation Data Centre.
 
-Any species that is not listed in the *bc-species.csv* reference file is marked as not present.
-Thus this list is robust to new species added to the ECOTOX dataset. 
-
-### Concentration Conversion
-
-This data set should be reviewed each time a new pull from the ECOTOX dataset is generated. 
-
-After the database is created. 
-
-Run the script *scripts/review-concentration-conversion.R* to generate one file for review.
-
-The script will generate one file:
-
-1. Concentration conversion table from the database with the coding of whether the unit is retained and converted.
-   - Values with 1 in the conc_conversion_flag column are retained and converted based on the value in the conc_conversion_value_multiplier column to the unit listed in the conc_conversion_unit column.
-   - Look for values that have nothing in the conc_conversion_flag column.
-   - To add new values that need to be added in the compiled dataset write the conversion value in the add_new_multipler column and the corresponding converted unit in the add_new_unit column.
+Any species that is not listed in the *bc-species.csv* reference file is marked as not present in BC and thus it is robust to new species added to the ECOTOX dataset.
 
 ### Concentration Endpoints
 
-The list of concentration endpoints are generated in the *data-raw/concentration-endpoints.R* script. 
+This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year. 
 
-This is a comprehensive list that should not need to be adjusted unless a different set of endpoint codes allowed. 
+There is a comprehensive list that should not need to be adjusted. 
+
+The list of concentration endpoints are generated in the *scripts/concentration-endpoints.R* script. 
+
+If updates are required then update the *concentration-endpoints.R* script.
+
+### Concentration Conversion
+
+This data set should be reviewed each time a new version of the ECOTOX database is released. 
+
+- If there is no value in the **conc_conversion_flag** column this indicates it is a new concentration unit that was not in the previous version of the database.
+- The goal of the review is to ensure all cells in the **conc_conversion_flag** column are filled in. 
+  - A zero (`0`) indicates the concentration can not be converted to mg/L or ppm.
+    - If the units cannot be converted to mg/L or ppm then put a `0` in the row.
+    - No additional columns need to be filled in if the unit is given a value of `0` in the **conc_conversion_flag** column.
+  - A one (`1`) indicates the concentration can be converted to mg/L or ppm. 
+    - If the units can be converted put a `1` in the row. 
+      - In the **conc_conversion_value_multiplier** column fill in the value needed to get the units into mg/L or ppm. 
+      - In the **conc_conversion_unit** column fill in either `mg/L` or `ppm`. 
+
+If any incorrect conversions are found then those rows can be updated.
 
 ### Duration Conversion
 
