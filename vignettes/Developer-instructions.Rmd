@@ -59,7 +59,7 @@ The instructions in the upload data template need to be updated when changes to 
 - *lifestage-codes.csv*
   - Update **simple_lifestage** column instructions if new simple life stages categories are added or removed.
     - ie if `els` is removed as a simple life stage.
-  - The validation is done off of the *lifestage-codes.csv* which means it is possible for the instructions to get out of sync with the allowed values.
+  - The validation is done off the *lifestage-codes.csv* which means it is possible for the instructions to get out of sync with the allowed values.
   
 - *concentration-endpoints.csv*
   - Update **endpoint** column instructions if endpoints are added or removed.
@@ -93,9 +93,9 @@ wqb_create_data_set(
    - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps. 
    - At the top of the script you will need to set the file path for the database and the location to save the files that are generated. 
 
-3. After the files are generated they need to be reviewed and updated by a technical expert.
+3. After the files are generated, they need to be reviewed and updated by a technical expert.
    - It is recommended to email them to the appropriate person for their review.
-   - The next step has to wait until the review is complete. 
+   - The next step must wait until the review is complete. 
 
 4. Once the files are reviewed the *script/update-reference-datasets.R* script needs to be run.
    - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
@@ -117,6 +117,7 @@ Programmer/Analyst
   - Make sure basic checks pass in *update-reference-dataset.R* script.
   - Review all changes generated in the daff reports.
   - Communicate with technical expert as needed. 
+- Update package with new reference data. 
 
 Technical Expert
 
@@ -156,7 +157,7 @@ This data set should be reviewed each time a new version of the ECOTOX database 
       - In the **conc_conversion_value_multiplier** column fill in the value needed to convert the units into mg/L or ppm. 
       - In the **conc_conversion_unit** column fill in either `mg/L` or `ppm`. 
 
-If any incorrect conversions are found then those rows can be updated.
+If any incorrect conversions are found, then those rows can be updated.
 
 ### Duration Conversion
 
@@ -165,16 +166,16 @@ This data set should be reviewed each time a new version of the ECOTOX database 
 - If there is no value in the **duration_units_to_keep** column this indicates it is a new concentration unit that was not in the previous version of the database.
 - The goal of the review is to ensure all cells in the **duration_units_to_keep** column are filled in.   
   - A zero (`0`) indicates the duration cannot be converted to hours.
-    - If the units cannot be converted to hours then put a `0` in the row.
+    - If the units cannot be converted to hours, then put a `0` in the row.
     - No additional columns need to be filled in if the unit is given a value of `0` in the **duration_units_to_keep** column.
   - A one (`1`) indicates the duration can be converted to hours. 
     - If the units can be converted put a `1` in the row. 
       - In the **duration_value_multiplier_to_hours** column fill in the value needed to convert the units into hours. 
-      - In the **comments** column write why the conversion was chosen since there may be an assumption made during the conversion. For example if converting month into hours are you basing the conversion on 30 or 31 days.   
+      - In the **comments** column write why the conversion was chosen since there may be an assumption made during the conversion. For example, if converting month into hours are you basing the conversion on 30 or 31 days.   
 
-If any incorrect conversions are found then those rows can be updated.
+If any incorrect conversions are found, then those rows can be updated.
 
-### Lifestage Codes
+### Life Stage Codes
 
 This data set should be reviewed each time a new version of the ECOTOX database is released. 
 
@@ -182,7 +183,7 @@ This data set should be reviewed each time a new version of the ECOTOX database 
 - The goal of the review is to ensure all cells in the **simple_lifestage** column are filled in.  
   - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
 
-If any incorrect values are found then those rows can be updated.
+If any incorrect values are found, then those rows can be updated.
 
 ### Trophic Groups
 
@@ -193,7 +194,7 @@ This data set should be reviewed each time a new version of the ECOTOX database 
     - This is the current list of trophic and ecological groups coded to the class and order of each species. 
     - This file needs to be updated to add new trophic and ecological groups.
     - To update add a new row and fill in the **trophic_group** and **ecological_group** columns and the required **class** and **order**.
-      - The **class** and **order** can either both be filled in or one of the value left blank. 
+      - The **class** and **order** can either both be filled in or one of the values left blank. 
       - The **class** and **order** columns must match up with the **class** and **tax_order** columns from the *species-coded-in-db.csv* or *missing-trophic-group.csv* file. 
   - *species-coded-in-db.csv*
     - This is a list of all the species data from the database.
@@ -202,6 +203,8 @@ This data set should be reviewed each time a new version of the ECOTOX database 
     - This file is for reference and not to be updated or sent back for integration.
     - This data is summarized in the *missing-trophic-group-review.csv* file because of the large amount of information.
   - *missing-trophic-group-review.csv*
-    - This is a summary that shows only the unique phylum, class, order and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
+    - This is a summary that shows only the unique phylum, class, order, and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
     - This file will help to determine which class and order need to be added. 
     - This file is for reference and not to be updated or sent back for integration.
+
+If any incorrect values are found, then those rows can be updated.
