@@ -9,14 +9,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
 
-```{r setup}
+
+
+```r
 library(wqbench)
 ```
 
@@ -83,7 +79,8 @@ The instructions in the upload data template need to be updated when changes to 
 
 1. Ensure you have the most recent copy of the database with the reference files added. To do this run the function `wqb_create_data_set()`.
 
-```{r, eval=FALSE}
+
+```r
 wqb_create_data_set(
   file_path = "~/Ecotoxicology/ecotox",
   version = 1,
