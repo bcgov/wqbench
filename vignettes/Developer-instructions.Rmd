@@ -106,6 +106,24 @@ wqb_create_data_set(
 
 Below are instructions for how to fill out and complete each of the reference files. 
 
+#### Responsibilities
+
+Programmer/Analyst 
+
+- Generate reference files for review.
+- Send to technical expert for review.
+- Receive updated reference files.
+- Review updates to ensure they are compliant with rules.
+  - Make sure basic checks pass in *update-reference-dataset.R* script.
+  - Review all changes generated in the daff reports.
+  - Communicate with technical expert as needed. 
+
+Technical Expert
+
+- Review and update reference files.
+- Follow instructions for how to fill out and complete updates.
+- Send reviewed/updated reference files back to programmer. 
+
 ### BC Species
 
 This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year. 
