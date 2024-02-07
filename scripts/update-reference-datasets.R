@@ -64,6 +64,10 @@ if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_unit[reviewed_conc_st
   abort_chk("There can't be a flag of 1 with no conversion unit, correct before proceeding")
 }
 
+if (!vld_subset(unique(reviewed_conc_std$conc_conversion_unit), c("mg/L", "ppm", NA_character_))) {
+  abort_chk("Concentration units can only include ppm and mg/L, correct before proceeding")
+}
+
 if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
   abort_chk("There should be no duplicate values")
 }
