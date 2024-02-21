@@ -61,6 +61,7 @@ wqb_method_ssd <- function(data, fit, nboot = 1000) {
 #' the concentrations used.
 #'
 #' @param data A data frame
+#' @param dists A character vector of the distributions to fit
 #' @return A data frame
 #' @export
 #'
@@ -68,10 +69,11 @@ wqb_method_ssd <- function(data, fit, nboot = 1000) {
 #' \dontrun{
 #' fit <- wqb_ssd_fit(data)
 #' }
-wqb_ssd_fit <- function(data) {
+wqb_ssd_fit <- function(data, dists = ssdtools::ssd_dists_bcanz()) {
   ssdtools::ssd_fit_bcanz(
     data = data,
-    left = "sp_aggre_conc_mg.L"
+    left = "sp_aggre_conc_mg.L",
+    dists = dists
   )
 }
 
