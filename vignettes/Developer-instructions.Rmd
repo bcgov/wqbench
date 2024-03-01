@@ -1,13 +1,21 @@
 ---
 title: "Developer Instructions"
 output: 
-  rmarkdown::html_vignette:
+  rmarkdown::github_document:
   keep_md: true
 vignette: >
   %\VignetteIndexEntry{Developer Instructions}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
+
+<!-- 
+rmarkdown::html_vignette:
+rmarkdown::github_document:
+
+rmarkdown::render("vignettes/Developer-instructions.Rmd")
+-->
+
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -98,6 +106,7 @@ wqb_create_data_set(
 3. After the files are generated, they need to be reviewed and updated by a technical expert.
    - It is recommended to email them to the appropriate person for their review.
    - The next step must wait until the review is complete. 
+   - The life stage code file can't be reviewed until after the trophic groups have been updated. 
 
 4. Once the files are reviewed the *script/update-reference-datasets.R* script needs to be run.
    - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
@@ -105,6 +114,10 @@ wqb_create_data_set(
 5. The package needs to be re-built for the files to be part of the package. 
 
 6. Run the `wqb_create_data_set()` function to create the database with the new reference data.
+
+7. Then repeat this process but only send the life stage code review file to the client.
+   - This file depends on the updates from the trophic groups, first the trophic groups need to be review, updated, integrated into the database and then the life stage codes can be reviewed. 
+   - This also gives an opportunity to check the changes have been incoportated into the database and the other files should be fully up to date at this stage. 
 
 Below are instructions for how to fill out and complete each of the reference files. 
 
@@ -160,16 +173,6 @@ This data set should be reviewed each time a new version of the ECOTOX database 
 
 If any incorrect conversions are found, then those rows can be updated.
 
-### Life Stage Codes
-
-This data set should be reviewed each time a new version of the ECOTOX database is released. 
-
-- If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous version of the database.
-- The goal of the review is to ensure all cells in the **simple_lifestage** column are filled in.  
-  - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
-
-If any incorrect values are found, then those rows can be updated.
-
 ### Trophic Groups
 
 This data set should be reviewed each time a new version of the ECOTOX database is released.  
@@ -182,7 +185,7 @@ This data set should be reviewed each time a new version of the ECOTOX database 
       - The **class** and **order** can either both be filled in or one of the values left blank. 
       - The **class** and **order** columns must match up with the **class** and **tax_order** columns from the *species-coded-in-db.csv* or *missing-trophic-group.csv* file. 
   - *species-coded-in-db.csv*
-    - This is a list of all the species data from the database.
+    - This is a list of all the species data from the database that have been filter where **organism_habitat** is "Water".
     - This file is to help find which **class** and **tax_order** (order) do not have coding for the ecological or trophic groups.
       - Filter to rows that have no value in the **trophic_group** and **ecological_group** columns.
     - This file is for reference and not to be updated or sent back for integration.
@@ -191,6 +194,19 @@ This data set should be reviewed each time a new version of the ECOTOX database 
     - This is a summary that shows only the unique phylum, class, order, and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
     - This file will help to determine which class and order need to be added. 
     - This file is for reference and not to be updated or sent back for integration.
+
+If any incorrect values are found, then those rows can be updated.
+
+### Life Stage Codes
+
+This data set should be reviewed each time a new version of the ECOTOX database is released. 
+
+This data set will be sent separately after the first round of files is reviewed because this data depends on the updates to the trophic group data. 
+
+- If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous coding of the database.
+- The **trophic_group** column indicates if the **simple_lifestage** relates to a fish or amphibian. Only fish and amphibian groups need the life stage categorized into simple groups. 
+- The goal of the review is to ensure all cells in the **simple_lifestage** column that have fish or amphibian in the **trophic_group** column are filled in.  
+  - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
 
 If any incorrect values are found, then those rows can be updated.
 
