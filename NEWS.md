@@ -8,7 +8,7 @@
 - Updated data structure to account for ECOTOX version 09-14-2023 data structure.
 - Minimum version of R required is now 4.1.
 - Updated internal reference data sets to ECOTOX version 03-14-2024. 
-- Trophic groups reference data how includes phylum division and family.
+- Trophic groups reference data now includes phylum division and family.
 - Filtered out `"Moss, Hornworts"`, `"Miscellaneous"`, `"Fungi"`, `"Reptiles"` from ecotox_group column in species table.
 - Added developer instructions for updating reference data sets and other tasks.
 - ssdtools set to use (>= 1.0.6.9011) and use stable distributions.
