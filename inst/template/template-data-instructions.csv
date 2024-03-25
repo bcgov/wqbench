@@ -1,0 +1,11 @@
+﻿column_name,description,allowed_values,example,extra_details
+latin_name,The latin name of the test species.,Any species name,Hyalella azteca,
+endpoint,Toxicity endpoint.,"One of EC05 to EC55, IC05 to IC55, LC05 to LC55, LOEC, LOEL, MATC,  MCIG, NOEL, or NOEC",NOEL,
+effect,The effect being tested.,Any effect,Reproduction,
+lifestage,The lifestage of the species during the test.,Any lifestage,egg,
+simple_lifestage,A simplified lifestage that is based on the lifestage. ,"One of els, adult, or juvenile",els,early life stage (els)
+effect_conc_mg.L,Contaminant concentration that corresponds to the endpoint in mg/L.,A number between 0 and 9000000,1.2,
+duration_hrs,The number of hours the species was exposed to the chemical in hours.,A number between 0 and 40000,2,
+trophic_group,Trophic group of species.,"One of invertebrate, amphibian, algae, fish or plant",invertebrate,
+ecological_group,"Identification of salmonids and planktonic invertebrates. If neither of these, listed as “other”.","One of planktonic invertebrate,  salmonid or other",other,
+species_present_in_bc,Species is present in British Columbia if entry is TRUE.,TRUE or FALSE,TRUE,

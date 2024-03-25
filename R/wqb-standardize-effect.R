@@ -34,7 +34,8 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
     list(
       endpoint = "",
       duration_class = "",
-      trophic_group = factor("")
+      trophic_group = factor(""),
+      effect_conc_mg.L = 1
     )
   )
   if (!quiet) {
@@ -63,30 +64,34 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
       effect_conc_std_mg.L = .data$effect_conc_mg.L / .data$acr
     ) |>
     dplyr::select(
-      "chemical_name",
-      "cas",
-      "latin_name",
-      "common_name",
-      "endpoint",
-      "effect",
-      "effect_conc_mg.L",
-      "lifestage",
-      "duration_hrs",
-      "duration_class",
-      "effect_conc_std_mg.L",
-      "acr",
-      "media_type",
-      "trophic_group",
-      "ecological_group",
-      "species_present_in_bc",
-      "author",
-      "title",
-      "source",
-      "publication_year",
-      "present_in_bc_wqg",
-      "species_number",
-      "download_date",
-      "version"
+      dplyr::any_of(
+        c(
+          "chemical_name",
+          "cas",
+          "latin_name",
+          "common_name",
+          "endpoint",
+          "effect",
+          "effect_conc_mg.L",
+          "lifestage",
+          "duration_hrs",
+          "duration_class",
+          "effect_conc_std_mg.L",
+          "acr",
+          "media_type",
+          "trophic_group",
+          "ecological_group",
+          "species_present_in_bc",
+          "author",
+          "title",
+          "source",
+          "publication_year",
+          "present_in_bc_wqg",
+          "species_number",
+          "download_date",
+          "version"  
+        )
+      )
     )
 
   effect_std

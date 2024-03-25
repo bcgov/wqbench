@@ -15,7 +15,7 @@
 test_that("combine conc std by codes", {
   concentration_std <- data.frame(
     code = c("--", NA, "NR", "AI mg/dm3", "g/dm3", "PSU"),
-    conc_conversion_flag = c(FALSE, NA, FALSE, TRUE, TRUE, FALSE),
+    conc_conversion_flag = c(FALSE, FALSE, FALSE, TRUE, TRUE, FALSE),
     conc_conversion_value_multiplier = c(NA, NA, NA, 1, 1000, NA),
     conc_conversion_unit = c(NA, NA, NA, "mg/L", "mg/L", NA)
   )
@@ -33,7 +33,7 @@ test_that("combine conc std by codes", {
   )
   expect_equal(
     output$conc_conversion_flag,
-    c(FALSE, NA, FALSE, FALSE, TRUE, TRUE, NA)
+    c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, NA)
   )
   expect_equal(
     output$conc_conversion_value_multiplier,
@@ -44,7 +44,7 @@ test_that("combine conc std by codes", {
 test_that("no error if user adds a space to the entered codes", {
   concentration_std <- data.frame(
     code = c("--", NA, "NR ", "AI  mg/dm3", "g/dm3  ", "PSU"),
-    conc_conversion_flag = c(FALSE, NA, FALSE, TRUE, TRUE, FALSE),
+    conc_conversion_flag = c(FALSE, FALSE, FALSE, TRUE, TRUE, FALSE),
     conc_conversion_value_multiplier = c(NA, NA, NA, 1, 1000, NA),
     conc_conversion_unit = c(NA, NA, NA, "mg/L", "mg/L", NA)
   )
@@ -62,7 +62,7 @@ test_that("no error if user adds a space to the entered codes", {
   )
   expect_equal(
     output$conc_conversion_flag,
-    c(FALSE, NA, FALSE, FALSE, TRUE, TRUE, NA)
+    c(FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, NA)
   )
   expect_equal(
     output$conc_conversion_value_multiplier,
@@ -73,7 +73,7 @@ test_that("no error if user adds a space to the entered codes", {
 test_that("prints out message indicating which codes may be typos", {
   concentration_std <- data.frame(
     code = c("--", NA, "NRX", "AI mg/dm3", "g/dmm3", "PSU"),
-    conc_conversion_flag = c(FALSE, NA, FALSE, TRUE, TRUE, FALSE),
+    conc_conversion_flag = c(FALSE, FALSE, FALSE, TRUE, TRUE, FALSE),
     conc_conversion_value_multiplier = c(NA, NA, NA, 1, 1000, NA),
     conc_conversion_unit = c(NA, NA, NA, "mg/L", "mg/L", NA)
   )
@@ -113,7 +113,7 @@ test_that("empty conc std means no codes coded to keep", {
   )
   expect_equal(
     output$conc_conversion_flag,
-    c(NA, NA, NA, NA, NA, NA, NA)
+    c(NA, NA,  NA, NA, NA, NA, NA)
   )
   expect_equal(
     output$conc_conversion_value_multiplier,

@@ -157,7 +157,7 @@ read_bc_wqg <- function(db_chemicals) {
       resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
     )   
   )
-
+  
   chk::check_data(
     bc_wqg,
     list(

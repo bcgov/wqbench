@@ -102,7 +102,26 @@ save_png <- function(x, width = 400, height = 400) {
 expect_snapshot_plot <- function(x, name) {
   testthat::skip_on_os("windows")
   testthat::skip_on_os("linux")
-  testthat::skip_on_os("solaris")
+  
   path <- save_png(x)
   testthat::expect_snapshot_file(path, paste0(name, ".png"))
+}
+
+save_csv <- function(x) {
+  path <- tempfile(fileext = ".csv")
+  readr::write_csv(x, path)
+  path
+}
+
+expect_snapshot_data <- function(x, name, digits = 6) {
+  fun <- function(x) signif(x, digits = digits)
+  lapply_fun <- function(x) I(lapply(x, fun))
+  x <- dplyr::mutate(x, dplyr::across(dplyr::where(is.numeric), fun))
+  x <- dplyr::mutate(x, dplyr::across(dplyr::where(is.list), lapply_fun))
+  path <- save_csv(x)
+  testthat::expect_snapshot_file(
+    path, 
+    paste0(name, ".csv"), 
+    compare = testthat::compare_file_text
+  )
 }

@@ -1,68 +1,322 @@
-code,description
-(log)EC50,Log transformed effective concentration to 50% of test organisms
-(log)LC50 ,Log transformed lethal concentration to 50% of test organisms
-EC05,Effective concentration to 5% of test organisms
-EC08,Effective concentration to 8% of test organisms
-EC10,Effective concentration to 10% of test organisms
-EC12.5,Effective concentration to 12.5% of test organisms
-EC13,Effective concentration to 13% of test organisms
-EC15,Effective concentration to 15% of test organisms
-EC16,Effective concentration to 16% of test organisms
-EC18,Effective concentration to 18% of test organisms
-EC20,Effective concentration to 20% of test organisms
-EC22,Effective concentration to 22% of test organisms
-EC23,Effective concentration to 23% of test organisms
-EC24,Effective concentration to 24% of test organisms
-EC25,Effective concentration to 25% of test organisms
-EC30,Effective concentration to 30% of test organisms
-EC31,Effective concentration to 31% of test organisms
-EC32,Effective concentration to 32% of test organisms
-EC34,Effective concentration to 34% of test organisms
-EC35,Effective concentration to 35% of test organisms
-EC37,Effective concentration to 37% of test organisms
-EC38,Effective concentration to 38% of test organisms
-EC40,Effective concentration to 40% of test organisms
-EC41,Effective concentration to 41% of test organisms
-EC45,Effective concentration to 45% of test organisms
-EC46,Effective concentration to 46% of test organisms
-EC50,Effective concentration to 50% of test organisms
-EC50*,Effective concentration to 50% of test organisms
-EC52,Effective concentration to 52% of test organisms
-EC55,Effective concentration to 55% of test organisms
-EC58,Effective concentration to 58% of test organisms
-IC05,Inhibition concentration to 5% of test organisms
-IC07,Inhibition concentration to 7% of test organisms
-IC10,Inhibition concentration to 10% of test organisms
-IC15,Inhibition concentration to 15% of test organisms
-IC16,Inhibition concentration to 16% of test organisms
-IC20,Inhibition concentration to 20% of test organisms
-IC25,Inhibition concentration to 25% of test organisms
-IC27,Inhibition concentration to 27% of test organisms
-IC30,Inhibition concentration to 30% of test organisms
-IC40,Inhibition concentration to 40% of test organisms
-IC50,Inhibition concentration to 50% of test organisms
-LC05,Lethal concentration to 5% of test organisms
-LC08,Lethal concentration to 8% of test organisms
-LC10,Lethal concentration to 10% of test organisms
-LC10*,Lethal concentration to 10% of test organisms
-LC15,Lethal concentration to 15% of test organisms
-LC16,Lethal concentration to 16% of test organisms
-LC20,Lethal concentration to 20% of test organisms
-LC25,Lethal concentration to 25% of test organisms
-LC30,Lethal concentration to 30% of test organisms
-LC31,Lethal concentration to 31% of test organisms
-LC34,Lethal concentration to 34% of test organisms
-LC35,Lethal concentration to 35% of test organisms
-LC38,Lethal concentration to 38% of test organisms
-LC40,Lethal concentration to 40% of test organisms
-LC45,Lethal concentration to 45% of test organisms
-LC50,Lethal concentration to 50% of test organisms
-LC50*,Lethal concentration to 50% of test organisms
-LC51,Lethal concentration to 51% of test organisms
-LOEC,Lowest observable effect concentration
-LOEL,Lowest-observable-effect-level
-MATC,Maximum acceptable toxicant concentration
-MATC*,Maximum Acceptable Toxicant Concentration
-MCIG,Minimum concentration to inhibit growth.
-NOEC,No-observable-effect-concentration
-NOEL,No-observable-effect-level
+code
+EC05
+EC06
+EC07
+EC08
+EC09
+EC10
+EC11
+EC12
+EC13
+EC14
+EC15
+EC16
+EC17
+EC18
+EC19
+EC20
+EC21
+EC22
+EC23
+EC24
+EC25
+EC26
+EC27
+EC28
+EC29
+EC30
+EC31
+EC32
+EC33
+EC34
+EC35
+EC36
+EC37
+EC38
+EC39
+EC40
+EC41
+EC42
+EC43
+EC44
+EC45
+EC46
+EC47
+EC48
+EC49
+EC50
+EC51
+EC52
+EC53
+EC54
+EC55
+EC05*
+EC06*
+EC07*
+EC08*
+EC09*
+EC10*
+EC11*
+EC12*
+EC13*
+EC14*
+EC15*
+EC16*
+EC17*
+EC18*
+EC19*
+EC20*
+EC21*
+EC22*
+EC23*
+EC24*
+EC25*
+EC26*
+EC27*
+EC28*
+EC29*
+EC30*
+EC31*
+EC32*
+EC33*
+EC34*
+EC35*
+EC36*
+EC37*
+EC38*
+EC39*
+EC40*
+EC41*
+EC42*
+EC43*
+EC44*
+EC45*
+EC46*
+EC47*
+EC48*
+EC49*
+EC50*
+EC51*
+EC52*
+EC53*
+EC54*
+EC55*
+IC05
+IC06
+IC07
+IC08
+IC09
+IC10
+IC11
+IC12
+IC13
+IC14
+IC15
+IC16
+IC17
+IC18
+IC19
+IC20
+IC21
+IC22
+IC23
+IC24
+IC25
+IC26
+IC27
+IC28
+IC29
+IC30
+IC31
+IC32
+IC33
+IC34
+IC35
+IC36
+IC37
+IC38
+IC39
+IC40
+IC41
+IC42
+IC43
+IC44
+IC45
+IC46
+IC47
+IC48
+IC49
+IC50
+IC51
+IC52
+IC53
+IC54
+IC55
+IC05*
+IC06*
+IC07*
+IC08*
+IC09*
+IC10*
+IC11*
+IC12*
+IC13*
+IC14*
+IC15*
+IC16*
+IC17*
+IC18*
+IC19*
+IC20*
+IC21*
+IC22*
+IC23*
+IC24*
+IC25*
+IC26*
+IC27*
+IC28*
+IC29*
+IC30*
+IC31*
+IC32*
+IC33*
+IC34*
+IC35*
+IC36*
+IC37*
+IC38*
+IC39*
+IC40*
+IC41*
+IC42*
+IC43*
+IC44*
+IC45*
+IC46*
+IC47*
+IC48*
+IC49*
+IC50*
+IC51*
+IC52*
+IC53*
+IC54*
+IC55*
+LC05
+LC06
+LC07
+LC08
+LC09
+LC10
+LC11
+LC12
+LC13
+LC14
+LC15
+LC16
+LC17
+LC18
+LC19
+LC20
+LC21
+LC22
+LC23
+LC24
+LC25
+LC26
+LC27
+LC28
+LC29
+LC30
+LC31
+LC32
+LC33
+LC34
+LC35
+LC36
+LC37
+LC38
+LC39
+LC40
+LC41
+LC42
+LC43
+LC44
+LC45
+LC46
+LC47
+LC48
+LC49
+LC50
+LC51
+LC52
+LC53
+LC54
+LC55
+LC05*
+LC06*
+LC07*
+LC08*
+LC09*
+LC10*
+LC11*
+LC12*
+LC13*
+LC14*
+LC15*
+LC16*
+LC17*
+LC18*
+LC19*
+LC20*
+LC21*
+LC22*
+LC23*
+LC24*
+LC25*
+LC26*
+LC27*
+LC28*
+LC29*
+LC30*
+LC31*
+LC32*
+LC33*
+LC34*
+LC35*
+LC36*
+LC37*
+LC38*
+LC39*
+LC40*
+LC41*
+LC42*
+LC43*
+LC44*
+LC45*
+LC46*
+LC47*
+LC48*
+LC49*
+LC50*
+LC51*
+LC52*
+LC53*
+LC54*
+LC55*
+(log)EC50
+(log)LC50
+(log)IC50
+LOEC
+LOEL
+MATC
+MCIG
+NOEL
+NOEC
+LOEC*
+LOEL*
+MATC*
+MCIG*
+NOEL*
+NOEC*

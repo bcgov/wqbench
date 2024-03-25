@@ -69,7 +69,7 @@ test_that("det method is used when method is deterministic", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_generate_ctv(df)
+  output <- wqb_generate_ctv(df, dists = c("lnorm", "llogis"))
   expect_equal(
     output$ctv_est_mg.L,
     1
@@ -102,17 +102,182 @@ test_that("ssd method is used when method is ssd", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_generate_ctv(df)
+  output <- wqb_generate_ctv(df, dists = c("lnorm", "llogis"))
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.950
+    0.99
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.528
+    0.583
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.90
+    1.87
   )
 })
+
+test_that("check ssdtools functions directly", {
+  skip_if_testing_quick()
+
+  set.seed(10)
+  reps <- 6L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- ssdtools::ssd_fit_bcanz(
+    data = df,
+    left = "sp_aggre_conc_mg.L"
+  ) |>
+    ssdtools::ssd_hc_bcanz(nboot = 10)
+
+  expect_snapshot_data(output, "ssdtool_bcanz")
+})
+
+test_that("check ssdtools functions directly", {
+  skip_if_testing_quick()
+  
+  set.seed(10)
+  reps <- 6L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- ssdtools::ssd_fit_bcanz(
+    data = df,
+    left = "sp_aggre_conc_mg.L"
+  ) |>
+    ssdtools::ssd_hc(
+      nboot = 100, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
+    )
+  
+  expect_snapshot_data(output, "ssdtool_hc")
+})
+
+
+test_that("check ssdtools fit bcanz and hc functions directly", {
+  skip_if_testing_quick()
+  
+  set.seed(10)
+  reps <- 6L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- ssdtools::ssd_fit_bcanz(
+    data = df,
+    left = "sp_aggre_conc_mg.L"
+  ) |>
+    ssdtools::ssd_hc(
+      nboot = 100, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
+    )
+  
+  expect_equal(
+    output$dist,
+    c("gamma", "lgumbel", "llogis", "lnorm", "weibull")
+  )
+  
+  expect_equal(
+    signif(output$est, 3),
+    c(0.951, 1.030, 0.972, 1.000, 0.834)
+  )
+  
+  expect_equal(
+    signif(output$se, 3),
+    c(0.336, 0.239, 0.342, 0.296, 0.403)
+  )
+  
+  expect_equal(
+    signif(output$lcl, 3),
+    c(0.623, 0.707, 0.479, 0.68, 0.354)
+  )
+  
+  expect_equal(
+    signif(output$ucl, 3),
+    c(1.91, 1.75, 1.85, 1.88, 1.75)
+  )
+  
+  expect_equal(
+    signif(output$pboot, 3),
+    c(1, 1, 1, 1, 1)
+  )
+})
+
+test_that("check ssdtools fit bcanz and bcanz hc functions", {
+  skip_if_testing_quick()
+  
+  set.seed(10)
+  reps <- 6L
+  df <- data.frame(
+    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "method" = rep("SSD", reps),
+    "species_number" = rep(NA, reps),
+    "trophic_group" = factor(rep(NA, reps)),
+    "species_present_in_bc" = rep(NA, reps),
+    "ecological_group" = factor(rep(NA, reps)),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps)
+  )
+  output <- ssdtools::ssd_fit_bcanz(
+    data = df,
+    left = "sp_aggre_conc_mg.L"
+  ) |>
+    ssdtools::ssd_hc_bcanz(nboot = 100)
+  
+  expect_equal(
+    signif(output$est, 3),
+    c(0.615, 0.959, 1.160, 1.450)
+  )
+  
+  expect_equal(
+    signif(output$se, 3),
+    c(0.397, 0.422, 0.426, 0.429)
+  )
+  
+  expect_equal(
+    signif(output$lcl, 3),
+    c(0.214, 0.489, 0.639, 0.851)
+  )
+  
+  expect_equal(
+    signif(output$ucl, 3),
+    c(1.61, 2.05, 2.28, 2.6)
+  )
+  
+  expect_equal(
+    signif(output$pboot, 3),
+    c(1, 1, 1, 1)
+  )
+})
+
