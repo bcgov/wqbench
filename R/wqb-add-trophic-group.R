@@ -165,71 +165,71 @@ combine_trophic_group <- function(trophic_groups, db_species) {
   
   # create the joins for each category
   df_f <- dplyr::left_join(
-    db_species, 
+    db_species,
     dplyr::filter(
-      trophic_groups, 
-      !is.na(family)
-    ), 
+      trophic_groups,
+      !is.na(.data$family)
+    ),
     by = c("family", "tax_order" =  "order", "class", "phylum_division")
   )
-  
+
   df_o <- dplyr::left_join(
-    db_species, 
+    db_species,
     dplyr::select(
       dplyr::filter(
-        trophic_groups, 
-        !is.na(order) & is.na(family)
-      ), 
-    -family
-    ), 
+        trophic_groups,
+        !is.na(.data$order) & is.na(.data$family)
+      ),
+    -"family"
+    ),
     by = c("tax_order" =  "order", "class", "phylum_division")
   )
 
   df_c <- dplyr::left_join(
-    db_species, 
+    db_species,
     dplyr::select(
       dplyr::filter(
-        trophic_groups, 
-        !is.na(class) & is.na(family) & is.na(order)
-      ), 
-      -order, -family
-    ), 
+        trophic_groups,
+        !is.na(.data$class) & is.na(.data$family) & is.na(.data$order)
+      ),
+      -"order", -"family"
+    ),
     by = c("class", "phylum_division")
   )
-  
+
   df_p <- dplyr::left_join(
-    db_species, 
+    db_species,
     dplyr::select(
       dplyr::filter(
-        trophic_groups, 
-        !is.na(phylum_division) & is.na(family) & is.na(order) & is.na(class)
-      ), 
-      -family, -order, -class
-    ), 
+        trophic_groups,
+        !is.na(.data$phylum_division) & is.na(.data$family) & is.na(.data$order) & is.na(.data$class)
+      ),
+      -"family", -"order", -"class"
+    ),
     by = c("phylum_division")
   )
-  
-  f_sp_num <- 
-    df_f |> 
+
+  f_sp_num <-
+    df_f |>
     dplyr::filter(!is.na(.data$trophic_group)) |>
-    dplyr::select("species_number") |> 
+    dplyr::select("species_number") |>
     dplyr::distinct() |>
     dplyr::pull()
-  
-  o_sp_num <- 
+
+  o_sp_num <-
     df_o |>
     dplyr::filter(!is.na(.data$trophic_group)) |>
     dplyr::select("species_number") |>
     dplyr::distinct() |>
     dplyr::pull()
-  
-  c_sp_num <- 
+
+  c_sp_num <-
     df_c |>
     dplyr::filter(!is.na(.data$trophic_group)) |>
     dplyr::select("species_number") |>
     dplyr::distinct() |>
     dplyr::pull()
-  
+
   species_trophic_group <- df_p |>
     # add in class categories
     dplyr::filter(!.data$species_number %in% c_sp_num) |>
@@ -252,7 +252,7 @@ combine_trophic_group <- function(trophic_groups, db_species) {
     ) |>
     dplyr::arrange(.data$species_number) |>
     tibble::tibble()
-    
+
   species_trophic_group
 }
 
