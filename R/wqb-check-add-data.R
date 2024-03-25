@@ -114,19 +114,20 @@ check_trophic_eco_group <- function(data) {
   if (!all(data$trophic_group %in% trophic_eco_groups$trophic_group)) {
     chk::abort_chk(
       "The trophic_group column has invalid value(s). The allowed values include: ",
-      paste(unique(trophic_eco_groups$trophic_group), collapse = ", ")
+      paste(sort(unique(trophic_eco_groups$trophic_group)), collapse = ", ")
     )
   }
 
   if (!all(data$ecological_group %in% trophic_eco_groups$ecological_group)) {
     chk::abort_chk(
       "The ecological_group column has invalid value(s). The allowed values include: ",
-      paste(unique(trophic_eco_groups$ecological_group), collapse = ", ")
+      paste(sort(unique(trophic_eco_groups$ecological_group)), collapse = ", ")
     )
   }
 
   if (!chk::vld_join(data, trophic_eco_groups, by = c("trophic_group", "ecological_group"))) {
     allowed_vals <- trophic_eco_groups |>
+      dplyr::arrange(.data$trophic_group, .data$ecological_group) |>
       dplyr::mutate(
         trophic_eco_group = paste(
           .data$trophic_group,

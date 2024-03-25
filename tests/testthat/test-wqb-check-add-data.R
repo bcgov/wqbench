@@ -130,7 +130,7 @@ test_that("errors bad trophic group", {
   )
   expect_error(
     wqb_check_add_data(data, template),
-    regexp = "The trophic_group column has invalid value\\(s\\). The allowed values include: Invertebrate, Algae, Amphibian, Bacteria, Fish, Plant."
+    regexp = "The trophic_group column has invalid value\\(s\\). The allowed values include: Algae, Amphibian, Bacteria, Fish, Invertebrate, Plant."
   )
 })
 
@@ -168,7 +168,7 @@ test_that("errors bad combo of trophic and ecological group", {
   )
   expect_error(
     wqb_check_add_data(data, template),
-    regexp = "There is an invalid combination of the trophic_group or ecological_group columns. The allowed values include: Invertebrate & Planktonic Invertebrate, Invertebrate & Other, Algae & Other, Amphibian & Other, Bacteria & Other, Fish & Other, Plant & Other, Fish & Salmonid."
+    regexp = "There is an invalid combination of the trophic_group or ecological_group columns. The allowed values include: Algae & Other, Amphibian & Other, Bacteria & Other, Fish & Other, Fish & Salmonid, Invertebrate & Other, Invertebrate & Planktonic Invertebrate, Plant & Other."
   )
 })
 
