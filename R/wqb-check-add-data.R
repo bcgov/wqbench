@@ -36,17 +36,17 @@ wqb_check_add_data <- function(data, template) {
     data = data, template = list(data = template)
   )
   data <- data$data
-  
+
   data <- check_no_extra_cols(data, template)
-  
-  data <- data |> 
+
+  data <- data |>
     dplyr::mutate(
       simple_lifestage = stringr::str_to_lower(.data$simple_lifestage),
       endpoint = stringr::str_to_upper(.data$endpoint),
       trophic_group = stringr::str_to_sentence(.data$trophic_group),
       ecological_group = stringr::str_to_sentence(.data$ecological_group)
     )
-  
+
   check_simple_lifestage(data)
   check_endpoint(data)
   check_trophic_eco_group(data)
@@ -68,7 +68,7 @@ check_simple_lifestage <- function(data) {
     dplyr::select("simple_lifestage") |>
     dplyr::distinct() |>
     dplyr::mutate(simple_lifestage = stringr::str_to_lower(.data$simple_lifestage))
-  
+
   if (!all(data$simple_lifestage %in% lifestage$simple_lifestage)) {
     chk::abort_chk(
       "The simple_lifestage column has invalid value(s). The allowed values include: ",
@@ -154,7 +154,7 @@ check_species_present <- function(data) {
 }
 
 check_no_extra_cols <- function(data, template) {
-  data <- data |> 
+  data <- data |>
     dplyr::select(dplyr::all_of(names(template)[-1]))
   data
 }

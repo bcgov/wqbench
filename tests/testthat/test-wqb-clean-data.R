@@ -547,7 +547,7 @@ test_that("log endpoints and regular endpoints are treated properly", {
       conc_conversion_value_multiplier = 1000
     )
   )
-  
+
   df_2 <- create_clean_test_data(
     list(
       endpoint = "EC50",
@@ -556,9 +556,9 @@ test_that("log endpoints and regular endpoints are treated properly", {
       conc_conversion_value_multiplier = 1000
     )
   )
-  
+
   df <- dplyr::bind_rows(df_1, df_2)
-  
+
   output <- wqbench:::wqb_clean_data(df, quiet = TRUE)
   expect_equal(
     output$endpoint,

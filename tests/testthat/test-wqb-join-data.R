@@ -1788,7 +1788,7 @@ test_that("Fungi ecotox_group is filtered out", {
     obs_duration_unit = c("d", "d", "d", "d", "d"),
     additional_comments_results = c(" ", " ", " ", " ", " ")
   )
-  
+
   db_tests <- data.frame(
     stringsAsFactors = FALSE,
     test_cas = c(987, 123, 123),
@@ -1802,7 +1802,7 @@ test_that("Fungi ecotox_group is filtered out", {
     reference_number = c(2L, 2L, 2L),
     additional_comments_tests = c(" ", " ", " ")
   )
-  
+
   db_endpoint_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c("MATC", "LC50", "LC50*", "--", "AC50"),
@@ -1814,7 +1814,7 @@ test_that("Fungi ecotox_group is filtered out", {
     ),
     concentration_flag = c(TRUE, TRUE, TRUE, FALSE, FALSE)
   )
-  
+
   db_species <- data.frame(
     stringsAsFactors = FALSE,
     species_number = c(1L, 2L),
@@ -1836,7 +1836,7 @@ test_that("Fungi ecotox_group is filtered out", {
     ecological_group = c("Other", "Salmonid"),
     trophic_group = c("Invertebrate", "Fish")
   )
-  
+
   db_lifestage_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c("--", "AD", "AL", "BD", "BL", "BS"),
@@ -1846,14 +1846,14 @@ test_that("Fungi ecotox_group is filtered out", {
     ),
     simple_lifestage = c("adult", "adult", "els", NA, "els", NA)
   )
-  
+
   db_chemicals <- data.frame(
     stringsAsFactors = FALSE,
     cas_number = c(123, 987, 111),
     chemical_name = c("Ca", "ba", "Za"),
     present_in_bc_wqg = c(FALSE, TRUE, FALSE)
   )
-  
+
   db_duration_unit_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c("eslk", "lhv15-20", "d", "h", "wph"),
@@ -1865,7 +1865,7 @@ test_that("Fungi ecotox_group is filtered out", {
     duration_units_to_keep = c(FALSE, FALSE, FALSE, TRUE, TRUE),
     duration_value_multiplier_to_hours = c(NA, NA, 24, 1, 168)
   )
-  
+
   db_concentration_unit_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c(
@@ -1882,7 +1882,7 @@ test_that("Fungi ecotox_group is filtered out", {
     conc_conversion_value_multiplier = c(NA, NA, NA, 0.001, 1),
     conc_conversion_unit = c(NA, NA, NA, "mg/L", "mg/L")
   )
-  
+
   db_references <- data.frame(
     stringsAsFactors = FALSE,
     reference_number = c(2L, 4L),
@@ -1891,26 +1891,26 @@ test_that("Fungi ecotox_group is filtered out", {
     source = c("Journ. App. Chem.", "Journ. Bio"),
     publication_year = c("1967", "1991")
   )
-  
+
   db_effect_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c("--", "ACC", "POP"),
     effect_description = c("Unspecified", "Accumulation", "Population")
   )
-  
+
   db_media_type_codes <- data.frame(
     stringsAsFactors = FALSE,
     code = c("--", "FW", "SW"),
     media_description = c("Unspecified", "Fresh water", "Salt water"),
     media_type_group = c("not reported", "fresh water", "salt water")
   )
-  
+
   db_meta_data_download <- data.frame(
     stringsAsFactors = FALSE,
     download_date = c("2023-03-30 15:20:20"),
     version = c(" ecotox_ascii_09_15_2022")
   )
-  
+
   data <- wqbench:::join_data(
     db_results = db_results,
     db_tests = db_tests,
@@ -1925,7 +1925,7 @@ test_that("Fungi ecotox_group is filtered out", {
     db_media_type_codes = db_media_type_codes,
     db_meta_data_download = db_meta_data_download
   )
-  
+
   expect_equal(
     nrow(data),
     4L

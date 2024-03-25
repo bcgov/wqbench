@@ -68,7 +68,7 @@ test_that("data passes with multiple rows of data", {
   output <- wqb_check_add_data(data, template)
   expect_equal(
     output,
-    data |> 
+    data |>
       dplyr::mutate(dplyr::across(species_present_in_bc, as.logical)) |>
       dplyr::mutate(endpoint = stringr::str_to_upper(endpoint)) |>
       dplyr::mutate(trophic_group = stringr::str_to_sentence(trophic_group)) |>
@@ -189,7 +189,7 @@ test_that("errors bad range in the effect_conc_mg.L", {
     wqb_check_add_data(data, template),
     regexp = "data\\$effect_conc_mg.L` must have values between 0 and 9e\\+06."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC34"),
@@ -350,7 +350,7 @@ test_that("errors when missing values supplied", {
     wqb_check_add_data(data, template),
     regexp = "`data\\$simple_lifestage` must not have any missing values."
   )
-  
+
   data <- data.frame(
     latin_name = c("a", "b", "c"),
     endpoint = c("NOEL", "EC50", "LC50"),
@@ -495,13 +495,13 @@ test_that("drops extra columns", {
     species_present_in_bc = c("TRUE"),
     cas = c("123456")
   )
-  
+
   output <- wqb_check_add_data(data, template)
   expect_equal(
     colnames(output),
     c(
-      "latin_name", "endpoint", "effect", "lifestage", "simple_lifestage", 
-      "effect_conc_mg.L", "duration_hrs", "trophic_group", "ecological_group", 
+      "latin_name", "endpoint", "effect", "lifestage", "simple_lifestage",
+      "effect_conc_mg.L", "duration_hrs", "trophic_group", "ecological_group",
       "species_present_in_bc"
     )
   )

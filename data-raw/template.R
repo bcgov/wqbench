@@ -28,11 +28,11 @@ endpoints_path <- system.file(
   package = "wqbench"
 )
 
-# error if inst/template not present 
+# error if inst/template not present
 if (!file.exists("inst/template/template-data.xlsx")) {
   warning("Stop and find out why template file missing")
 }
-  
+
 # need to read in whole work book then add each sheet back (just how xlsx files work)
 sheet_1 <- readr::read_csv(
   "inst/template/template-data-data.csv"

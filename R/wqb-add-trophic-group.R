@@ -132,37 +132,37 @@ combine_trophic_group <- function(trophic_groups, db_species) {
       ecological_group = stringr::str_squish(.data$ecological_group),
       # ensure values are missing
       phylum_division = dplyr::if_else(
-        .data$phylum_division == "", 
-        NA_character_, 
+        .data$phylum_division == "",
+        NA_character_,
         .data$phylum_division
       ),
       class = dplyr::if_else(
-        .data$class == "", 
-        NA_character_, 
+        .data$class == "",
+        NA_character_,
         .data$class
       ),
       order = dplyr::if_else(
-        .data$order == "", 
-        NA_character_, 
+        .data$order == "",
+        NA_character_,
         .data$order
       ),
       family = dplyr::if_else(
-        .data$family == "", 
-        NA_character_, 
+        .data$family == "",
+        NA_character_,
         .data$family
       ),
       trophic_group = dplyr::if_else(
-        .data$trophic_group == "", 
-        NA_character_, 
+        .data$trophic_group == "",
+        NA_character_,
         .data$trophic_group
       ),
       ecological_group = dplyr::if_else(
-        .data$ecological_group == "", 
-        NA_character_, 
+        .data$ecological_group == "",
+        NA_character_,
         .data$ecological_group
       )
     )
-  
+
   # create the joins for each category
   df_f <- dplyr::left_join(
     db_species,
@@ -170,7 +170,7 @@ combine_trophic_group <- function(trophic_groups, db_species) {
       trophic_groups,
       !is.na(.data$family)
     ),
-    by = c("family", "tax_order" =  "order", "class", "phylum_division")
+    by = c("family", "tax_order" = "order", "class", "phylum_division")
   )
 
   df_o <- dplyr::left_join(
@@ -180,9 +180,9 @@ combine_trophic_group <- function(trophic_groups, db_species) {
         trophic_groups,
         !is.na(.data$order) & is.na(.data$family)
       ),
-    -"family"
+      -"family"
     ),
-    by = c("tax_order" =  "order", "class", "phylum_division")
+    by = c("tax_order" = "order", "class", "phylum_division")
   )
 
   df_c <- dplyr::left_join(
@@ -245,7 +245,7 @@ combine_trophic_group <- function(trophic_groups, db_species) {
     dplyr::filter(!.data$species_number %in% f_sp_num) |>
     dplyr::bind_rows(
       df_f |> dplyr::filter(!is.na(.data$trophic_group))
-    )  |>
+    ) |>
     dplyr::select(
       dplyr::all_of(colnames(db_species)),
       "ecological_group", "trophic_group",

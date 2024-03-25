@@ -58,7 +58,7 @@ wqb_clean_data <- function(data, quiet = FALSE) {
       conc1_mean = stringr::str_replace(.data$conc1_mean, "\\*", ""),
       conc1_mean = as.numeric(.data$conc1_mean),
       # convert logged endpoints to non logged values before they care converted to standard units
-      conc1_mean = dplyr::if_else(.data$endpoint_log_flag, 10 ^ .data$conc1_mean, .data$conc1_mean),
+      conc1_mean = dplyr::if_else(.data$endpoint_log_flag, 10^.data$conc1_mean, .data$conc1_mean),
       # convert duration units to hours
       duration_mean = as.numeric(.data$duration_mean),
       duration_hrs = .data$duration_mean * .data$duration_value_multiplier_to_hours,

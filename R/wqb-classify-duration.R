@@ -88,7 +88,7 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
           "source",
           "publication_year",
           "download_date",
-          "version"  
+          "version"
         )
       )
     )

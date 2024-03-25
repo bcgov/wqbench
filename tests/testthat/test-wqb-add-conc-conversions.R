@@ -113,7 +113,7 @@ test_that("empty conc std means no codes coded to keep", {
   )
   expect_equal(
     output$conc_conversion_flag,
-    c(NA, NA,  NA, NA, NA, NA, NA)
+    c(NA, NA, NA, NA, NA, NA, NA)
   )
   expect_equal(
     output$conc_conversion_value_multiplier,

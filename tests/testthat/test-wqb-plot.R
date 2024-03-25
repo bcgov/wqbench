@@ -168,7 +168,7 @@ test_that("plot type is ggplot", {
   )
   output <- wqb_plot(df)
   expect_equal(class(output), c("gg", "ggplot"))
-  
+
   skip_on_ci()
   expect_snapshot_plot(output, "wqb_plot")
 })
@@ -201,7 +201,7 @@ test_that("shape is present when there are 5 groups or less", {
   )
   output <- wqb_plot(df)
   expect_equal(class(output), c("gg", "ggplot"))
-  
+
   skip_on_ci()
   expect_snapshot_plot(output, "shape_5_groups")
 })
@@ -234,7 +234,7 @@ test_that("shape is removed after 6 endpoint group are present set", {
   )
   output <- wqb_plot(df)
   expect_equal(class(output), c("gg", "ggplot"))
-  
+
   skip_on_ci()
   expect_snapshot_plot(output, "color_6_groups")
 })

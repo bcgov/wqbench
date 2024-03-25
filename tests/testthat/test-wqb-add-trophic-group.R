@@ -15,7 +15,7 @@
 test_that("combine species by class and order", {
   trophic_groups <- data.frame(
     phylum_division = c(
-      "Arthropoda", "Arthropoda", "Arthropoda", "Bacillariophyta", 
+      "Arthropoda", "Arthropoda", "Arthropoda", "Bacillariophyta",
       "Annelida", "Chordata", "Chordata", "Arthropoda", "Arthropoda"
     ),
     class = c(
@@ -29,8 +29,8 @@ test_that("combine species by class and order", {
       NA_character_
     ),
     family = c(
-      NA_character_, NA_character_, NA_character_, NA_character_, "Opheliidae", 
-      NA_character_, NA_character_,  NA_character_, NA_character_
+      NA_character_, NA_character_, NA_character_, NA_character_, "Opheliidae",
+      NA_character_, NA_character_, NA_character_, NA_character_
     ),
     trophic_group = c(
       "Invertebrate", "Invertebrate", "Invertebrate", "Algae",
@@ -65,19 +65,19 @@ test_that("combine species by class and order", {
       "Naviculales"
     ),
     family = c(
-      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae", 
+      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae",
       NA_character_, "Gammaridae", "Opheliidae", "Phaeodactylaceae"
     ),
     species_number = 1:9
-  ) 
+  )
 
   output <- combine_trophic_group(trophic_groups, db_species)
 
   expect_equal(
     output$common_name,
     c(
-      "Brook trout", "Bluegill", "Water Flea", "Acorn Or Rock Barnacle", 
-      "Calanoid Copepod", "Copepod Subclass", "Sand Shrimp", "Bristleworm", 
+      "Brook trout", "Bluegill", "Water Flea", "Acorn Or Rock Barnacle",
+      "Calanoid Copepod", "Copepod Subclass", "Sand Shrimp", "Bristleworm",
       "Diatom"
     )
   )
@@ -129,11 +129,11 @@ test_that("no trophic groups passed all are set as NA", {
       "Naviculales"
     ),
     family = c(
-      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae", 
+      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae",
       NA_character_, "Gammaridae", "Opheliidae", "Phaeodactylaceae"
     ),
     species_number = 1:9
-  ) 
+  )
 
   output <- combine_trophic_group(trophic_groups, db_species)
 
@@ -142,7 +142,7 @@ test_that("no trophic groups passed all are set as NA", {
     c(
       "Brook trout", "Bluegill", "Water Flea",
       "Acorn Or Rock Barnacle", "Calanoid Copepod",
-      "Copepod Subclass", "Sand Shrimp", 
+      "Copepod Subclass", "Sand Shrimp",
       "Bristleworm", "Diatom"
     )
   )
@@ -194,11 +194,11 @@ test_that("all missing trophic groups passed all are set as NA", {
       "Naviculales"
     ),
     family = c(
-      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae", 
+      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae",
       NA_character_, "Gammaridae", "Opheliidae", "Phaeodactylaceae"
     ),
     species_number = 1:9
-  ) 
+  )
 
   output <- combine_trophic_group(trophic_groups, db_species)
 
@@ -283,10 +283,10 @@ test_that("spaces in values don't mess with joins", {
       "Chordata", "Arthropoda", "Arthropoda", "Arthropoda"
     ),
     class = c(
-      "Actinopterygii", "Branchiopoda",  "Maxillopoda", "Malacostraca"
+      "Actinopterygii", "Branchiopoda", "Maxillopoda", "Malacostraca"
     ),
     tax_order = c(
-      "Salmoniformes",  "Diplostraca", "Copepoda", "Decapoda"
+      "Salmoniformes", "Diplostraca", "Copepoda", "Decapoda"
     ),
     family = c(
       "Salmonidae", "Daphniidae", NA_character_, "Gammaridae"
@@ -319,18 +319,18 @@ test_that("phylum doesn't over ride class", {
     trophic_group = c("Algae", "Algae"),
     ecological_group = c("Other-1", "Other-2")
   )
-  
+
   db_species <- data.frame(
     common_name = c("Green Algae", "Green Algae"),
-    phylum_division = c("Chlorophyta",  "Chlorophyta"),
+    phylum_division = c("Chlorophyta", "Chlorophyta"),
     class = c("Ulvophyceae", "Mamiellophyceae"),
     tax_order = c("Cladophorales", "Mamiellales"),
     family = c("Cladophoraceae", "Bathycoccaceae"),
     species_number = 1:2
   )
-  
+
   output <- combine_trophic_group(trophic_groups, db_species)
-  
+
   expect_equal(
     output$common_name,
     c("Green Algae", "Green Algae")
@@ -354,18 +354,18 @@ test_that("phylum doesn't over ride class", {
     trophic_group = c("Invertebrate", "Invertebrate", "Invertebrate"),
     ecological_group = c("Other", "Other-2", "Other-3")
   )
-  
+
   db_species <- data.frame(
     common_name = c("Earthworm", "Lugworm", "Leech", "Marine Polychaete Worm"),
-    phylum_division = c("Annelida",  "Annelida", "Annelida",  "Annelida"),
+    phylum_division = c("Annelida", "Annelida", "Annelida", "Annelida"),
     class = c(NA_character_, NA_character_, "Clitellata", NA_character_),
     tax_order = c(NA_character_, "Capitellida", "Rhynchobdellida", "Canalipalpata"),
     family = c("Aeolosomatidae", "Arenicolidae", "Glossiphoniidae", "Sabellariidae"),
     species_number = 1:4
   )
-  
+
   output <- combine_trophic_group(trophic_groups, db_species)
-  
+
   expect_equal(
     output$common_name,
     c("Earthworm", "Lugworm", "Leech", "Marine Polychaete Worm")
@@ -408,7 +408,7 @@ test_that("empty db table means no rows returned ", {
   expect_equal(
     colnames(output),
     c(
-      "phylum_division", "common_name", "class", "tax_order", "family", 
+      "phylum_division", "common_name", "class", "tax_order", "family",
       "species_number", "ecological_group", "trophic_group"
     )
   )
@@ -441,11 +441,11 @@ test_that("read in actual trophic group file", {
       "Naviculales"
     ),
     family = c(
-      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae", 
+      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae",
       NA_character_, "Gammaridae", "Opheliidae", "Phaeodactylaceae"
     ),
     species_number = 1:9
-  ) 
+  )
   output <- read_trophic_group(trophic_groups_file_path, db_species)
   expect_equal(
     output$common_name,

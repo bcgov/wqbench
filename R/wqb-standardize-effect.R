@@ -89,7 +89,7 @@ wqb_standardize_effect <- function(data, quiet = FALSE) {
           "present_in_bc_wqg",
           "species_number",
           "download_date",
-          "version"  
+          "version"
         )
       )
     )
