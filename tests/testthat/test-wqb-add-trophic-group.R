@@ -423,37 +423,50 @@ test_that("read in actual trophic group file", {
     common_name = c(
       "Brook trout", "Bluegill", "Water Flea",
       "Acorn Or Rock Barnacle", "Calanoid Copepod",
-      "Copepod Subclass", "Sand Shrimp", "Horsehair Worm"
+      "Copepod Subclass", "Sand Shrimp", "Bristleworm",
+      "Diatom"
+    ),
+    phylum_division = c(
+      "Chordata", "Chordata", "Arthropoda", "Arthropoda", "Arthropoda",
+      "Arthropoda", "Arthropoda", "Annelida", "Bacillariophyta"
     ),
     class = c(
       "Actinopterygii", "Actinopterygii", "Branchiopoda", "Maxillopoda",
-      "Maxillopoda", "Maxillopoda", "Malacostraca", NA_character_
+      "Maxillopoda", "Maxillopoda", "Malacostraca", NA_character_,
+      "Bacillariophyceae"
     ),
     tax_order = c(
       "Salmoniformes", "Perciformes", "Diplostraca", "Sessilia",
-      "Calanoida", "Copepoda", "Decapoda", "Gordioidea"
-    )
-  )
+      "Calanoida", "Copepoda", "Decapoda", NA_character_,
+      "Naviculales"
+    ),
+    family = c(
+      "Salmonidae", "Centrarchidae", "Daphniidae", "Balanidae", "Metridinidae", 
+      NA_character_, "Gammaridae", "Opheliidae", "Phaeodactylaceae"
+    ),
+    species_number = 1:9
+  ) 
   output <- read_trophic_group(trophic_groups_file_path, db_species)
   expect_equal(
     output$common_name,
     c(
       "Brook trout", "Bluegill", "Water Flea", "Acorn Or Rock Barnacle",
-      "Calanoid Copepod", "Copepod Subclass", "Sand Shrimp", "Horsehair Worm"
+      "Calanoid Copepod", "Copepod Subclass", "Sand Shrimp", "Bristleworm",
+      "Diatom"
     )
   )
   expect_equal(
     output$ecological_group,
     c(
       "Salmonid", "Other", "Planktonic Invertebrate", "Other", "Other", "Other",
-      "Other", "Other"
+      "Other", "Other", "Other"
     )
   )
   expect_equal(
     output$trophic_group,
     c(
       "Fish", "Fish", "Invertebrate", "Invertebrate", "Invertebrate",
-      "Invertebrate", "Invertebrate", "Invertebrate"
+      "Invertebrate", "Invertebrate", "Invertebrate", "Algae"
     )
   )
 })

@@ -318,6 +318,6 @@ test_that("read in actual duration conversion file and check message", {
     expect_message(
       read_duration_conversions(duration_std_file_path, db_duration_unit_codes),
     ),
-    regexp = "'--', '-X', 'abs', 'ac', 'alv', 'ant', 'b0.25', 'bbch', \\.\\.\\., 'NA'"
+    regexp = "'--', '-X', 'BLM',"
   )
 })

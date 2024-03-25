@@ -149,7 +149,7 @@ test_that("errors bad ecological group", {
   )
   expect_error(
     wqb_check_add_data(data, template),
-    regexp = "The ecological_group column has invalid value\\(s\\). The allowed values include: Planktonic Invertebrate, Other, Salmonid."
+    regexp = "The ecological_group column has invalid value\\(s\\). The allowed values include: Other, Planktonic Invertebrate, Salmonid."
   )
 })
 

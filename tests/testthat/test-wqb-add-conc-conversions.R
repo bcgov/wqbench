@@ -165,6 +165,6 @@ test_that("read in actual conc conv file and check message", {
     expect_message(
       read_conc_conversions(concentration_std_file_path, db_concentration_unit_codes)
     ),
-    regexp = c("'g/m3', 'mg/100 ul', 'mg/200 ml', 'mg/dm3', 'mg/L media', 'mg/m3', 'pg/L', 'ug/10 L', ..., 'WO:LI'")
+    regexp = c("'%', '% INHIB',")
   )
 })
