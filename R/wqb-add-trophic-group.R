@@ -123,70 +123,135 @@ wqb_add_trophic_group <- function(database, quiet = FALSE) {
 combine_trophic_group <- function(trophic_groups, db_species) {
   trophic_groups <- trophic_groups |>
     dplyr::mutate(
+      # remove potenital extra spaces
+      phylum_division = stringr::str_squish(.data$phylum_division),
       class = stringr::str_squish(.data$class),
       order = stringr::str_squish(.data$order),
+      family = stringr::str_squish(.data$family),
       trophic_group = stringr::str_squish(.data$trophic_group),
       ecological_group = stringr::str_squish(.data$ecological_group),
-    )
-  # select group where both have class and order
-  trophic_levels_class_order <- trophic_groups |>
-    dplyr::filter(!is.na(.data$class) & !is.na(.data$order)) |>
-    dplyr::rename(
-      ecological_group_co = "trophic_group",
-      ecological_group_class_co = "ecological_group"
-    )
-  # select groups with only class
-  trophic_levels_class <- trophic_groups |>
-    dplyr::filter(is.na(.data$order)) |>
-    dplyr::rename(
-      ecological_group_c = "trophic_group",
-      ecological_group_class_c = "ecological_group"
-    ) |>
-    dplyr::select(
-      "class", "ecological_group_c", "ecological_group_class_c"
-    )
-  # select groups with only order
-  trophic_levels_order <- trophic_groups |>
-    dplyr::filter(is.na(.data$class)) |>
-    dplyr::rename(
-      ecological_group_o = "trophic_group",
-      ecological_group_class_o = "ecological_group"
-    ) |>
-    dplyr::select(
-      "order", "ecological_group_o", "ecological_group_class_o"
-    )
-
-  # process info
-  species_trophic_group <- db_species |>
-    dplyr::left_join(trophic_levels_class, by = "class") |>
-    dplyr::left_join(
-      trophic_levels_class_order,
-      by = c("class", "tax_order" = "order")
-    ) |>
-    dplyr::left_join(trophic_levels_order, by = c("tax_order" = "order")) |>
-    dplyr::mutate(
-      ecological_group = dplyr::case_when(
-        is.na(.data$ecological_group_class_c) &
-          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_class_o,
-        !is.na(.data$ecological_group_class_c) &
-          is.na(ecological_group_class_co) ~ .data$ecological_group_class_c,
-        !is.na(.data$ecological_group_class_c) &
-          !is.na(ecological_group_class_co) ~ .data$ecological_group_class_co
+      # ensure values are missing
+      phylum_division = dplyr::if_else(
+        .data$phylum_division == "", 
+        NA_character_, 
+        .data$phylum_division
       ),
-      trophic_group = dplyr::case_when(
-        is.na(.data$ecological_group_class_c) &
-          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_o,
-        !is.na(.data$ecological_group_class_c) &
-          is.na(.data$ecological_group_class_co) ~ .data$ecological_group_c,
-        !is.na(.data$ecological_group_class_c) &
-          !is.na(.data$ecological_group_class_co) ~ .data$ecological_group_co
+      class = dplyr::if_else(
+        .data$class == "", 
+        NA_character_, 
+        .data$class
+      ),
+      order = dplyr::if_else(
+        .data$order == "", 
+        NA_character_, 
+        .data$order
+      ),
+      family = dplyr::if_else(
+        .data$family == "", 
+        NA_character_, 
+        .data$family
+      ),
+      trophic_group = dplyr::if_else(
+        .data$trophic_group == "", 
+        NA_character_, 
+        .data$trophic_group
+      ),
+      ecological_group = dplyr::if_else(
+        .data$ecological_group == "", 
+        NA_character_, 
+        .data$ecological_group
       )
+    )
+  
+  # create the joins for each category
+  df_f <- dplyr::left_join(
+    db_species, 
+    dplyr::filter(
+      z, 
+      !is.na(family)
+    ), 
+    by = c("family", "tax_order" =  "order", "class", "phylum_division")
+  )
+  
+  df_o <- dplyr::left_join(
+    db_species, 
+    dplyr::select(
+      dplyr::filter(
+        z, 
+        !is.na(order) & is.na(family)
+      ), 
+    -family
+    ), 
+    by = c("tax_order" =  "order", "class", "phylum_division")
+  )
+
+  df_c <- dplyr::left_join(
+    db_species, 
+    dplyr::select(
+      dplyr::filter(
+        z, 
+        !is.na(class) & is.na(family) & is.na(order)
+      ), 
+      -order, -family
+    ), 
+    by = c("class", "phylum_division")
+  )
+  
+  df_p <- dplyr::left_join(
+    db_species, 
+    dplyr::select(
+      dplyr::filter(
+        z, 
+        !is.na(phylum_division) & is.na(family) & is.na(order) & is.na(class)
+      ), 
+      -family, -order, -class
+    ), 
+    by = c("phylum_division")
+  )
+  
+  f_sp_num <- 
+    df_f |> 
+    dplyr::filter(!is.na(trophic_group)) |>
+    dplyr::select(species_number) |> 
+    dplyr::distinct() |>
+    dplyr::pull()
+  
+  o_sp_num <- 
+    df_o |>
+    dplyr::filter(!is.na(trophic_group)) |>
+    dplyr::select(species_number) |>
+    dplyr::distinct() |>
+    dplyr::pull()
+  
+  c_sp_num <- 
+    df_c |>
+    dplyr::filter(!is.na(eco_test)) |>
+    dplyr::select(species_number) |>
+    dplyr::distinct() |>
+    dplyr::pull()
+  
+  species_trophic_group <- df_p |>
+    # add in class categories
+    dplyr::filter(!species_number %in% c_sp_num) |>
+    dplyr::bind_rows(
+      df_c |> dplyr::filter(!is.na(eco_test))
     ) |>
+    # add in order categories
+    dplyr::filter(!species_number %in% o_sp_num) |>
+    dplyr::bind_rows(
+      df_o |> dplyr::filter(!is.na(eco_test))
+    ) |>
+    # add in family categories
+    dplyr::filter(!species_number %in% f_sp_num) |>
+    dplyr::bind_rows(
+      df_f |> dplyr::filter(!is.na(eco_test))
+    )  |>
     dplyr::select(
       dplyr::all_of(colnames(db_species)),
       "ecological_group", "trophic_group",
     ) |>
     tibble::tibble()
+    
   species_trophic_group
 }
 
@@ -220,3 +285,88 @@ read_trophic_group <- function(trophic_groups_file_path, db_species) {
   species_trophic_group <- combine_trophic_group(trophic_groups, db_species)
   species_trophic_group
 }
+
+
+# library(tidyverse)
+# 
+# 
+# file_path <- "/Users/aylapearson/Poisson Consulting Dropbox/Data/wqbench/2024/review/completed/2024-03-01-trophic-group_additions.csv"
+# data <- read_csv(file_path)
+# database <- "/Users/aylapearson/Ecotoxicology/ecotox_db/ecotox_ascii_03_14_2024.sqlite"
+# 
+# 
+# con <- DBI::dbConnect(
+#   RSQLite::SQLite(),
+#   database
+# )
+# db_species <- DBI::dbReadTable(con, "species") |>
+#   dplyr::mutate(
+#     class = stringr::str_squish(.data$class),
+#     tax_order = stringr::str_squish(.data$tax_order)
+#   )
+# DBI::dbDisconnect(con)
+# 
+# 
+# 
+# db_species <- 
+#   db_species %>% 
+#   tibble() 
+# 
+# db_species_ann <- db_species %>% 
+#   #filter(phylum_division == "Annelida") %>% 
+#   select(-trophic_group, -ecological_group) %>% 
+#   mutate(
+#     phylum_division = if_else(phylum_division == "", NA_character_, phylum_division),
+#     class = if_else(class == "", NA_character_, class),
+#     tax_order = if_else(tax_order == "", NA_character_, tax_order),
+#     family = if_else(family == "", NA_character_, family)
+#   )
+# 
+# 
+# z <- data %>% 
+#   #filter(phylum_division == "Annelida") %>% 
+#   mutate(
+#     eco_test = 1:n()
+#   )
+# 
+# df_f <- left_join(db_species_ann, filter(z, !is.na(family)), by = c("family", "tax_order" =  "order", "class", "phylum_division"))
+# df_o <- left_join(db_species_ann, select(filter(z, !is.na(order) & is.na(family)), -family), by = c("tax_order" =  "order", "class", "phylum_division"))
+# df_c <- left_join(db_species_ann, select(filter(z, !is.na(class) & is.na(family) & is.na(order)), -order, -family), by = c("class", "phylum_division"))
+# df_p <- left_join(db_species_ann, select(filter(z, !is.na(phylum_division) & is.na(family) & is.na(order) & is.na(class)), -family, -order, -class), by = c("phylum_division"))
+# 
+# 
+# f_sp_num <- 
+#   df_f %>% 
+#   filter(!is.na(trophic_group)) %>% 
+#   select(species_number) %>% 
+#   distinct() %>% 
+#   pull()
+# 
+# o_sp_num <- 
+#   df_o %>% 
+#   filter(!is.na(eco_test)) %>% 
+#   select(species_number) %>% 
+#   distinct() %>% 
+#   pull()
+# 
+# c_sp_num <- 
+#   df_c %>% 
+#   filter(!is.na(eco_test)) %>% 
+#   select(species_number) %>% 
+#   distinct() %>% 
+#   pull()
+# 
+# 
+# xxx <- df_p %>% 
+#   # do this for each set and do in reverse order 
+#   filter(!species_number %in% c_sp_num) %>% 
+#   bind_rows(df_c %>% filter(!is.na(eco_test))) %>% 
+#   filter(!species_number %in% o_sp_num) %>% 
+#   bind_rows(df_o %>% filter(!is.na(eco_test))) %>% 
+#   filter(!species_number %in% f_sp_num) %>% 
+#   bind_rows(df_f %>% filter(!is.na(eco_test))) 
+#   
+# 
+
+
+
