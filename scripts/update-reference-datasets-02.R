@@ -49,7 +49,7 @@ reviewed_lifestage_code <-
   ) |>
   rename(description_lifestage = description)
 
-if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage)), 0)) {
+if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage[reviewed_lifestage_code$fish_amphibian_flag & !is.na(reviewed_lifestage_code$fish_amphibian_flag)])), 0)) {
   abort_chk("There should be no missing simple lifestage value, correct before proceeding")
 }
 
@@ -60,6 +60,10 @@ if (!vld_subset(unique(reviewed_lifestage_code$simple_lifestage), c("els", "juve
 if (!vld_equal(sum(duplicated(reviewed_lifestage_code)), 0)) {
   abort_chk("There should be no duplicate values")
 }
+
+reviewed_lifestage_code <- 
+  reviewed_lifestage_code |>
+  dplyr::select(-fish_amphibian_flag)
 
 lifestage_daff <- daff::diff_data(
   lifestage_std, 
