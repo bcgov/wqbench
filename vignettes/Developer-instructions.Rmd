@@ -99,7 +99,7 @@ wqb_create_data_set(
 )
 ```
 
-2. Execute the code in the script *scripts/review-reference-datasets.R*. 
+2. Execute the code in the script *scripts/review-reference-datasets-01.R*. 
    - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps. 
    - At the top of the script you will need to set the file path for the database and the location to save the files that are generated. 
 
@@ -108,16 +108,15 @@ wqb_create_data_set(
    - The next step must wait until the review is complete. 
    - The life stage code file can't be reviewed until after the trophic groups have been updated. 
 
-4. Once the files are reviewed the *script/update-reference-datasets.R* script needs to be run.
+4. Once the files are reviewed the *script/update-reference-datasets-01.R* script needs to be run.
    - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
 
 5. The package needs to be re-built for the files to be part of the package. 
 
 6. Run the `wqb_create_data_set()` function to create the database with the new reference data.
 
-7. Then repeat this process but only send the life stage code review file to the client.
-   - This file depends on the updates from the trophic groups, first the trophic groups need to be review, updated, integrated into the database and then the life stage codes can be reviewed. 
-   - This also gives an opportunity to check the changes have been incoportated into the database and the other files should be fully up to date at this stage. 
+7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R* and *script/update-reference-datasets-01.R*. 
+   - The life stage codes have to be generated seperately as they are based on the trophic groups. The trophic groups need to be updated before life stage codes can be reviewed. 
 
 Below are instructions for how to fill out and complete each of the reference files. 
 
@@ -205,7 +204,7 @@ This data set will be sent separately after the first round of files is reviewed
 
 - If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous coding of the database.
 - The **trophic_group** column indicates if the **simple_lifestage** relates to a fish or amphibian. Only fish and amphibian groups need the life stage categorized into simple groups. 
-- The goal of the review is to ensure all cells in the **simple_lifestage** column that have fish or amphibian in the **trophic_group** column are filled in.  
+- The goal of the review is to ensure all cells in the **simple_lifestage** column that have **fish_amphibian_flag** column as TRUE are filled in.  
   - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
 
 If any incorrect values are found, then those rows can be updated.

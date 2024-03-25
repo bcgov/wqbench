@@ -69,8 +69,10 @@ db_tests_aquatic <-
   
 db_species <- DBI::dbReadTable(con, "species") |>
   mutate(
+    phylum_division = str_squish(phylum_division),
     class = str_squish(class),
-    tax_order = str_squish(tax_order)
+    tax_order = str_squish(tax_order),
+    family = str_squish(family)
   ) |>
   tibble()
 
