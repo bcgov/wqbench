@@ -2,8 +2,10 @@ Developer Instructions
 ================
 
 <!-- 
-rmarkdown::render("vignettes/Developer-instructions.Rmd")
-&#10;-->
+rmarkdown::html_vignette:
+rmarkdown::github_document:
+&#10;rmarkdown::render("vignettes/Developer-instructions.Rmd")
+-->
 
 ``` r
 library(wqbench)
@@ -105,7 +107,7 @@ wqb_create_data_set(
 ```
 
 2.  Execute the code in the script
-    *scripts/review-reference-datasets.R*.
+    *scripts/review-reference-datasets-01.R*.
 
     - This script will generate and save a set of csv files that need to
       be reviewed and updated to allow new values through the data
@@ -123,8 +125,8 @@ wqb_create_data_set(
     - The life stage code file can’t be reviewed until after the trophic
       groups have been updated.
 
-4.  Once the files are reviewed the *script/update-reference-datasets.R*
-    script needs to be run.
+4.  Once the files are reviewed the
+    *script/update-reference-datasets-01.R* script needs to be run.
 
     - This will read in the reviewed files and update the reference
       files in the *inst/extdata* folder.
@@ -135,15 +137,13 @@ wqb_create_data_set(
 6.  Run the `wqb_create_data_set()` function to create the database with
     the new reference data.
 
-7.  Then repeat this process but only send the life stage code review
-    file to the client.
+7.  Repeat steps 2 through 6 but run
+    *scripts/review-reference-datasets-02.R* and
+    *script/update-reference-datasets-01.R*.
 
-    - This file depends on the updates from the trophic groups, first
-      the trophic groups need to be review, updated, integrated into the
-      database and then the life stage codes can be reviewed.
-    - This also gives an opportunity to check the changes have been
-      incoportated into the database and the other files should be fully
-      up to date at this stage.
+    - The life stage codes have to be generated seperately as they are
+      based on the trophic groups. The trophic groups need to be updated
+      before life stage codes can be reviewed.
 
 Below are instructions for how to fill out and complete each of the
 reference files.
@@ -277,8 +277,8 @@ data.
   relates to a fish or amphibian. Only fish and amphibian groups need
   the life stage categorized into simple groups.
 - The goal of the review is to ensure all cells in the
-  **simple_lifestage** column that have fish or amphibian in the
-  **trophic_group** column are filled in.
+  **simple_lifestage** column that have **fish_amphibian_flag** column
+  as TRUE are filled in.
   - In the **simple_lifestage** column fill in the empty cell with
     either `els` (early life stage), `juvenile` or `adult`.
 
