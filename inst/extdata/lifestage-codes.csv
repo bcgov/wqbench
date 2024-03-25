@@ -11,6 +11,7 @@ EX,Exponential growth phase (log),adult
 EY,"Eyed egg or stage, eyed embryo",els
 F0,F0 generation,adult
 F1,F1 generation,adult
+F2,F2 generation,adult
 FI,Fingerling,juvenile
 FY,Fry,juvenile
 GA,Gastrula,els
@@ -23,6 +24,7 @@ LR,Prolarva,els
 LV,Larva,els
 MA,Mature,adult
 ML,Morula,els
+MN,Mid-neurula,els
 MX,Multiple,adult
 NB,Newborn,els
 NC,Not coded,adult
@@ -31,6 +33,8 @@ NH,"New, newly or recent hatch",els
 NL,Neurala,els
 NOINT,Not intact,adult
 NR,Not reported,adult
+NU,Nauplii,els
+NY,Nymph,els
 OO,"Oocyte, ova",els
 PA,Parr,juvenile
 PC,Pre-hatch,els

@@ -47,7 +47,8 @@ reviewed_lifestage_code <-
   mutate(
     simple_lifestage = str_to_lower(simple_lifestage)
   ) |>
-  rename(description_lifestage = description)
+  rename(description_lifestage = description) |>
+  filter(fish_amphibian_flag)
 
 if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage[reviewed_lifestage_code$fish_amphibian_flag & !is.na(reviewed_lifestage_code$fish_amphibian_flag)])), 0)) {
   abort_chk("There should be no missing simple lifestage value, correct before proceeding")
