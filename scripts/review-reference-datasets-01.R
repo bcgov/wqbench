@@ -56,24 +56,6 @@ write_csv(
   na = ""
 )
 
-# Lifestage Codes ---------------------------------------------------------
-
-db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
-  dplyr::mutate(
-    code = stringr::str_squish(code)
-  ) |>
-  tibble()
-
-# generate files for review
-write_csv(
-  db_lifestage_codes,
-  file.path(
-    file_save_loc,
-    paste0(Sys.Date(), "-lifestage-code-review", ".csv")
-  ),
-  na = ""
-)
-
 # Trophic Groups ----------------------------------------------------------
 
 db_species <- DBI::dbReadTable(con, "species") |>

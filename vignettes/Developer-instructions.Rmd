@@ -91,7 +91,7 @@ wqb_create_data_set(
 )
 ```
 
-2. Execute the code in the script *scripts/review-reference-datasets.R*. 
+2. Execute the code in the script *scripts/review-reference-datasets-01.R*. 
    - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps. 
    - At the top of the script you will need to set the file path for the database and the location to save the files that are generated. 
 
@@ -99,12 +99,15 @@ wqb_create_data_set(
    - It is recommended to email them to the appropriate person for their review.
    - The next step must wait until the review is complete. 
 
-4. Once the files are reviewed the *script/update-reference-datasets.R* script needs to be run.
+4. Once the files are reviewed the *script/update-reference-datasets-01.R* script needs to be run.
    - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
 
 5. The package needs to be re-built for the files to be part of the package. 
 
 6. Run the `wqb_create_data_set()` function to create the database with the new reference data.
+
+7. Repeat steps 2 through 4 but run *scripts/review-reference-datasets-02.R* and *script/update-reference-datasets-01.R*. 
+  - The life stage codes have to be generated seperately as they are based on the trophic groups. The trophic groups need to be updated before life stage codes can be reviewed. 
 
 Below are instructions for how to fill out and complete each of the reference files. 
 
