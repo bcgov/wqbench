@@ -58,6 +58,15 @@ write_csv(
 
 # Trophic Groups ----------------------------------------------------------
 
+db_tests <- DBI::dbReadTable(con, "tests")
+
+db_tests_aquatic <- 
+  db_tests |>
+  select(species_number, organism_habitat) |>
+  distinct() |>
+  filter(organism_habitat == "Water") |>
+  tibble()
+  
 db_species <- DBI::dbReadTable(con, "species") |>
   mutate(
     phylum_division = str_squish(phylum_division),
@@ -67,8 +76,14 @@ db_species <- DBI::dbReadTable(con, "species") |>
   ) |>
   tibble()
 
-missing_species <- 
+  # this filters to only the aquatic tests
+db_species_aqutic <- 
   db_species |>
+  left_join(db_tests_aquatic, by = "species_number") |>
+  filter(organism_habitat == "Water")
+
+missing_species <- 
+  db_species_aqutic |>
   filter(is.na(trophic_group) | is.na(ecological_group)) |>
   select(phylum_division, class, tax_order, family) |>
   distinct() |>
@@ -86,7 +101,7 @@ missing_species <-
 
 # generate files for review
 write_csv(
-  db_species,
+  db_species_aqutic,
   file.path(
     file_save_loc,
     paste0(Sys.Date(), "-species-coded-in-db", ".csv")
@@ -112,6 +127,40 @@ file.copy(
     file_save_loc,
     paste0(Sys.Date(), "-trophic-group", ".csv")
   )
+)
+
+# Lifestage Codes ---------------------------------------------------------
+
+db_tests_aq_lifestage_sp <- 
+  db_tests |>
+  select(species_number, organism_habitat, organism_lifestage) |>
+  distinct() |>
+  filter(organism_habitat == "Water") |>
+  left_join(db_species, by = "species_number") |>
+  select(organism_lifestage, trophic_group) |>
+  filter(trophic_group %in% c("Amphibian", "Fish")) |>
+  distinct() |>
+  tibble() 
+
+
+db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
+  dplyr::mutate(
+    code = stringr::str_squish(code)
+  ) |>
+  tibble()
+
+lifestage_codes_fish_amphibian <- 
+  db_lifestage_codes |>
+  left_join(db_tests_aq_lifestage_sp, by = c("code" = "organism_lifestage"))
+
+# generate files for review
+write_csv(
+  lifestage_codes_fish_amphibian,
+  file.path(
+    file_save_loc,
+    paste0(Sys.Date(), "-lifestage-code-review", ".csv")
+  ),
+  na = ""
 )
 
 # Clean Up ----------------------------------------------------------------

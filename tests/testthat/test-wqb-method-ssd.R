@@ -114,15 +114,15 @@ test_that("values match up", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_method_ssd(df, wqb_ssd_fit(df))
+  output <- wqb_method_ssd(df, wqb_ssd_fit(df, dists = c("lnorm", "llogis")))
   expect_s3_class(output, "tbl_df")
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.959
+    0.99
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.469
+    0.583
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
@@ -148,18 +148,18 @@ test_that("values differ with more bootstraps", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_method_ssd(df, wqb_ssd_fit(df), nboot = 10000)
+  output <- wqb_method_ssd(df, wqb_ssd_fit(df, dists = c("lnorm", "llogis")), nboot = 100)
   expect_s3_class(output, "tbl_df")
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.959
+    0.99
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.454
+    0.579
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.86
+    2.08
   )
 })

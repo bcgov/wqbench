@@ -4,10 +4,12 @@
 \alias{wqb_ssd_fit}
 \title{Fit BCANZ Distributions}
 \usage{
-wqb_ssd_fit(data)
+wqb_ssd_fit(data, dists = ssdtools::ssd_dists_bcanz())
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{dists}{A character vector of the distributions to fit}
 }
 \value{
 A data frame

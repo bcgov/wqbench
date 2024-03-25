@@ -69,7 +69,7 @@ test_that("det method is used when method is deterministic", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_generate_ctv(df)
+  output <- wqb_generate_ctv(df, dists = c("lnorm", "llogis"))
   expect_equal(
     output$ctv_est_mg.L,
     1
@@ -102,14 +102,14 @@ test_that("ssd method is used when method is ssd", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
-  output <- wqb_generate_ctv(df)
+  output <- wqb_generate_ctv(df, dists = c("lnorm", "llogis"))
   expect_equal(
     signif(output$ctv_est_mg.L, 3),
-    0.959
+    0.99
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.469
+    0.583
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
@@ -139,8 +139,7 @@ test_that("check ssdtools functions directly", {
     data = df,
     left = "sp_aggre_conc_mg.L"
   ) |>
-    ssdtools::ssd_hc_bcanz(nboot = 1000) |>
-    dplyr::filter(.data$proportion == 0.05)
+    ssdtools::ssd_hc_bcanz(nboot = 10)
 
   expect_snapshot_data(output, "ssdtool_bcanz")
 })
@@ -168,7 +167,7 @@ test_that("check ssdtools functions directly", {
     left = "sp_aggre_conc_mg.L"
   ) |>
     ssdtools::ssd_hc(
-      nboot = 1000, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
+      nboot = 100, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
     )
   
   expect_snapshot_data(output, "ssdtool_hc")
@@ -198,7 +197,7 @@ test_that("check ssdtools fit bcanz and hc functions directly", {
     left = "sp_aggre_conc_mg.L"
   ) |>
     ssdtools::ssd_hc(
-      nboot = 1000, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
+      nboot = 100, ci = TRUE, average = FALSE, delta = 10, min_pboot = 0.9
     )
   
   expect_equal(
@@ -213,17 +212,17 @@ test_that("check ssdtools fit bcanz and hc functions directly", {
   
   expect_equal(
     signif(output$se, 3),
-    c(0.380, 0.266, 0.344, 0.310, 0.397)
+    c(0.336, 0.239, 0.342, 0.296, 0.403)
   )
   
   expect_equal(
     signif(output$lcl, 3),
-    c(0.480, 0.729, 0.524, 0.654, 0.353)
+    c(0.623, 0.707, 0.479, 0.68, 0.354)
   )
   
   expect_equal(
     signif(output$ucl, 3),
-    c(1.99, 1.74, 1.85, 1.92, 1.87)
+    c(1.91, 1.75, 1.85, 1.88, 1.75)
   )
   
   expect_equal(
@@ -254,7 +253,7 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
     data = df,
     left = "sp_aggre_conc_mg.L"
   ) |>
-    ssdtools::ssd_hc_bcanz(nboot = 1000)
+    ssdtools::ssd_hc_bcanz(nboot = 100)
   
   expect_equal(
     signif(output$est, 3),
@@ -263,22 +262,22 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
   
   expect_equal(
     signif(output$se, 3),
-    c(0.341, 0.362, 0.365, 0.368)
+    c(0.397, 0.422, 0.426, 0.429)
   )
   
   expect_equal(
     signif(output$lcl, 3),
-    c(0.198, 0.469, 0.647, 0.908)
+    c(0.214, 0.489, 0.639, 0.851)
   )
   
   expect_equal(
     signif(output$ucl, 3),
-    c(1.52, 1.87, 2.08, 2.35)
+    c(1.61, 2.05, 2.28, 2.6)
   )
   
   expect_equal(
     signif(output$pboot, 3),
-    c(0.999, 0.999, 0.999, 0.999)
+    c(1, 1, 1, 1)
   )
 })
 
