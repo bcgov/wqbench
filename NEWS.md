@@ -7,7 +7,7 @@
 - Updated to pull BC wqg data from `bcdata` package.
 - Updated data structure to account for ECOTOX version 09-14-2023 data structure.
 - Minimum version of R required is now 4.1.
-- Updated internal reference data sets to ECOTOX version 03-14-2024. 
+- Updated internal reference data sets to ECOTOX version 12-14-2023. 
 - Trophic groups reference data now includes phylum division and family.
 - Filtered out `"Moss, Hornworts"`, `"Miscellaneous"`, `"Fungi"`, `"Reptiles"` from ecotox_group column in species table.
 - Added developer instructions for updating reference data sets and other tasks.

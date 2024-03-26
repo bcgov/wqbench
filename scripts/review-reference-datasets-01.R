@@ -143,40 +143,6 @@ file.copy(
   )
 )
 
-# Lifestage Codes ---------------------------------------------------------
-
-db_tests_aq_lifestage_sp <- 
-  db_tests |>
-  select(species_number, organism_habitat, organism_lifestage) |>
-  distinct() |>
-  filter(organism_habitat == "Water") |>
-  left_join(db_species, by = "species_number") |>
-  select(organism_lifestage, trophic_group) |>
-  filter(trophic_group %in% c("Amphibian", "Fish")) |>
-  distinct() |>
-  tibble() 
-
-
-db_lifestage_codes <- DBI::dbReadTable(con, "lifestage_codes") |>
-  dplyr::mutate(
-    code = stringr::str_squish(code)
-  ) |>
-  tibble()
-
-lifestage_codes_fish_amphibian <- 
-  db_lifestage_codes |>
-  left_join(db_tests_aq_lifestage_sp, by = c("code" = "organism_lifestage"))
-
-# generate files for review
-write_csv(
-  lifestage_codes_fish_amphibian,
-  file.path(
-    file_save_loc,
-    paste0(Sys.Date(), "-lifestage-code-review", ".csv")
-  ),
-  na = ""
-)
-
 # Clean Up ----------------------------------------------------------------
 
 DBI::dbDisconnect(con)
