@@ -492,6 +492,88 @@ test_that("trophic group is a factor", {
   )
 })
 
+test_that("log endpoints are replaced and unlogged", {
+  df <- create_clean_test_data(
+    list(
+      endpoint = "(log)EC50",
+      conc1_mean = 1
+    )
+  )
+  output <- wqbench:::wqb_clean_data(df, quiet = TRUE)
+  expect_equal(
+    output$endpoint,
+    "EC50"
+  )
+  expect_equal(
+    output$conc1_mean,
+    10
+  )
+  expect_equal(
+    output$effect_conc_mg.L,
+    10
+  )
+})
+
+test_that("log endpoints are replaced and properly converted", {
+  df <- create_clean_test_data(
+    list(
+      endpoint = "(log)EC50",
+      conc1_mean = 1,
+      conc1_unit = "g/L",
+      conc_conversion_value_multiplier = 1000
+    )
+  )
+  output <- wqbench:::wqb_clean_data(df, quiet = TRUE)
+  expect_equal(
+    output$endpoint,
+    "EC50"
+  )
+  expect_equal(
+    output$conc1_mean,
+    10
+  )
+  expect_equal(
+    output$effect_conc_mg.L,
+    10000
+  )
+})
+
+test_that("log endpoints and regular endpoints are treated properly", {
+  df_1 <- create_clean_test_data(
+    list(
+      endpoint = "(log)EC50",
+      conc1_mean = 1,
+      conc1_unit = "g/L",
+      conc_conversion_value_multiplier = 1000
+    )
+  )
+
+  df_2 <- create_clean_test_data(
+    list(
+      endpoint = "EC50",
+      conc1_mean = 1,
+      conc1_unit = "g/L",
+      conc_conversion_value_multiplier = 1000
+    )
+  )
+
+  df <- dplyr::bind_rows(df_1, df_2)
+
+  output <- wqbench:::wqb_clean_data(df, quiet = TRUE)
+  expect_equal(
+    output$endpoint,
+    c("EC50", "EC50")
+  )
+  expect_equal(
+    output$conc1_mean,
+    c(10, 1)
+  )
+  expect_equal(
+    output$effect_conc_mg.L,
+    c(10000, 1000)
+  )
+})
+
 test_that("test with sample data", {
   raw_data <- wqbenchdata::get_wqbenchdata("raw_data")
   output <- wqbench:::wqb_clean_data(raw_data, quiet = TRUE) |>

@@ -210,7 +210,7 @@ test_that("read in actual lifestage codes file", {
     output$simple_lifestage,
     c(
       "adult", "adult", NA_character_, "els", NA_character_, "juvenile",
-      NA_character_
+      "adult"
     )
   )
 })

@@ -64,29 +64,33 @@ wqb_classify_duration <- function(data, quiet = FALSE) {
       )
     ) |>
     dplyr::select(
-      "chemical_name",
-      "cas",
-      "endpoint",
-      "effect",
-      "effect_conc_mg.L",
-      "duration_hrs",
-      "duration_class",
-      "organism_habitat",
-      "species_number",
-      "latin_name",
-      "common_name",
-      "species_present_in_bc",
-      "ecological_group",
-      "trophic_group",
-      "lifestage",
-      "media_type",
-      "present_in_bc_wqg",
-      "author",
-      "title",
-      "source",
-      "publication_year",
-      "download_date",
-      "version"
+      dplyr::any_of(
+        c(
+          "chemical_name",
+          "cas",
+          "endpoint",
+          "effect",
+          "effect_conc_mg.L",
+          "duration_hrs",
+          "duration_class",
+          "organism_habitat",
+          "species_number",
+          "latin_name",
+          "common_name",
+          "species_present_in_bc",
+          "ecological_group",
+          "trophic_group",
+          "lifestage",
+          "media_type",
+          "present_in_bc_wqg",
+          "author",
+          "title",
+          "source",
+          "publication_year",
+          "download_date",
+          "version"
+        )
+      )
     )
 
   data_classified

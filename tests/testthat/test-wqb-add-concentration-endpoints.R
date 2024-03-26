@@ -229,6 +229,6 @@ test_that("read in actual conc endpoint file and check message", {
         conc_endpoints_file_path, db_endpoint_codes
       )
     ),
-    regexp = "'\\(log\\)EC50', '\\(log\\)LC50', 'EC05', 'EC08', 'EC10', 'EC12.5', 'EC13', 'EC15', \\.\\.\\., 'NOEL'"
+    regexp = "'EC05', 'EC06', 'EC07', 'EC08', 'EC09', 'EC10', 'EC11', 'EC12', ..., 'NOEC\\*'"
   )
 })

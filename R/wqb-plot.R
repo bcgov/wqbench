@@ -73,7 +73,8 @@ wqb_plot <- function(data) {
         legend.box.background = ggplot2::element_rect(colour = "black"),
         strip.text.y = ggplot2::element_text(angle = 0),
         text = ggplot2::element_text(size = 16),
-        plot.margin = ggplot2::unit(c(0, 0, 0, 1), "cm")
+        plot.margin = ggplot2::unit(c(0.1, 0.1, 0.1, 1), "cm"),
+        plot.caption = ggplot2::element_text(hjust = 0)
       ) +
       ggplot2::scale_y_discrete(
         position = "right",

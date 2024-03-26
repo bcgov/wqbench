@@ -18,6 +18,7 @@
 #' apply the method listed in the method column.
 #'
 #' @param data A data frame
+#' @param dists A character vector of the distributions to fit.
 #' @return A data frame
 #' @export
 #' @details The ctv_est_mg.L is the estimate of the critical toxicity value for
@@ -31,7 +32,7 @@
 #' \dontrun{
 #' ctv <- wqb_generate_ctv(data)
 #' }
-wqb_generate_ctv <- function(data) {
+wqb_generate_ctv <- function(data, dists = ssdtools::ssd_dists_bcanz()) {
   chk::check_data(
     data,
     list(
@@ -44,7 +45,7 @@ wqb_generate_ctv <- function(data) {
   if (method == "Deterministic") {
     bench <- wqb_method_det(data)
   } else {
-    fit <- wqb_ssd_fit(data)
+    fit <- wqb_ssd_fit(data, dists = dists)
     bench <- wqb_method_ssd(data, fit)
   }
   bench

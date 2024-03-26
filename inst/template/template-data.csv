@@ -1,5 +1,0 @@
-﻿name,latin_name,endpoint,effect,lifestage,effect_conc_mg.L,effect_conc_std_mg.L,trophic_group,ecological_group,species_present_in_bc
-description,The latin name of the test species.,Toxicity endpoint.,The effect that was being tested.,The lifestage the species was during the test.,Contaminant concentration that corresponds to the endpoint,The effect concentration standardized to include the acute to chronic ratio to extrapolate acute and/or effect concentrations to chronic and/or no-effect concentrations in mg/L.,Trophic group of species.,"Identification of salmonids and planktonic invertebrates. If neither of these, listed as “other”.",Species is present in British Columbia if entry = TRUE.
-example,Hyalella azteca,NOEL,Reproduction,Juvenile,10,0.1,Invertebrate,Other,TRUE
-chk,"c("""")","c("""")","c("""")","c("""")","c(0, 9000000)","c(0, 900000)","c("""")","c("""")","c("""")"
-pkey,,,,,,,,,

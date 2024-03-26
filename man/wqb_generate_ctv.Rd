@@ -4,10 +4,12 @@
 \alias{wqb_generate_ctv}
 \title{Generate Critical Toxicity Value}
 \usage{
-wqb_generate_ctv(data)
+wqb_generate_ctv(data, dists = ssdtools::ssd_dists_bcanz())
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{dists}{A character vector of the distributions to fit.}
 }
 \value{
 A data frame
