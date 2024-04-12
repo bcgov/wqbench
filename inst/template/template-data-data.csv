@@ -1,0 +1,5 @@
+﻿name,latin_name,endpoint,effect,lifestage,simple_lifestage,effect_conc_mg.L,duration_hrs,trophic_group,ecological_group,species_present_in_bc
+description,,,,,,,,,,
+example,,,,,,,,,,
+chk,"c("""")","c("""")","c("""")","c("""")","c("""")","c(0, 9000000)","c(0, 40000)","c("""")","c("""")","c("""")"
+pkey,,,,,,,,,,

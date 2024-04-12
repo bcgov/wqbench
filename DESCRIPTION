@@ -28,7 +28,7 @@ Imports:
     RSQLite,
     rvest,
     scales,
-    ssdtools,
+    ssdtools (>= 1.0.6.9011),
     stringr,
     tibble,
     tidyr,
@@ -36,15 +36,20 @@ Imports:
     withr
 Suggests: 
     covr,
+    knitr,
+    openxlsx,
+    rmarkdown,
     testthat (>= 3.0.0),
     wqbenchdata
 Remotes: 
     poissonconsulting/chktemplate,
-    bcgov/wqbenchdata
+    bcgov/wqbenchdata,
+    bcgov/ssdtools
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Depends: 
     R (>= 4.1)
 LazyData: true
+VignetteBuilder: knitr

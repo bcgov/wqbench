@@ -146,6 +146,10 @@ join_data <- function(db_results, db_tests, db_endpoint_codes, db_species,
     dplyr::filter(.data$concentration_flag) |>
     # add species info
     dplyr::left_join(db_species, by = "species_number") |>
+    # remove non aquatic species
+    dplyr::filter(
+      !(.data$ecotox_group %in% c("Moss, Hornworts", "Miscellaneous", "Fungi", "Reptiles"))
+    ) |>
     # add life stage info
     dplyr::left_join(
       db_lifestage_codes,

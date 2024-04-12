@@ -29,7 +29,7 @@ test_that("type matches ggplot", {
     "effect" = rep(NA, reps),
     "method" = rep(NA_character_, reps)
   )
-  fit <- wqb_ssd_fit(df)
+  fit <- wqb_ssd_fit(df, dists = c("lnorm", "llogis"))
   output <- wqb_plot_ssd(df, fit)
   expect_equal(class(output), c("gg", "ggplot"))
 })
