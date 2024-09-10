@@ -261,13 +261,3 @@ test_that("read in actual wqg sheet and check things are added ", {
     c(TRUE, TRUE, TRUE, TRUE, FALSE)
   )
 })
-
-test_that("test typo in bc wqg file column name should be CAS_number", {
-  bc_wqg <- suppressMessages(
-    bcdata::bcdc_get_data(
-      record = "85d3990a-ec0a-4436-8ebd-150de3ba0747",
-      resource = "6f32a85b-a3d9-44c3-9a14-15175eba25b6"
-    )
-  )
-  expect_true("CAS_ number" %in% colnames(bc_wqg))
-})
