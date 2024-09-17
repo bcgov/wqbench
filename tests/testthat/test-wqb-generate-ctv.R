@@ -121,9 +121,10 @@ test_that("check ssdtools functions directly", {
   skip_if_testing_quick()
 
   set.seed(10)
-  reps <- 6L
+  reps <- 15L
+  
   df <- data.frame(
-    "sp_aggre_conc_mg.L" = c(1, 2, 1.5, 3, 4, 2.5),
+    "sp_aggre_conc_mg.L" = rep(c(1, 2, 1.5, 3, 4), 3),
     "method" = rep("SSD", reps),
     "species_number" = rep(NA, reps),
     "trophic_group" = factor(rep(NA, reps)),
