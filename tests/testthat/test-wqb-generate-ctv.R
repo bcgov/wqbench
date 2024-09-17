@@ -109,11 +109,11 @@ test_that("ssd method is used when method is ssd", {
   )
   expect_equal(
     signif(output$ctv_lcl_mg.L, 3),
-    0.583
+    0.537
   )
   expect_equal(
     signif(output$ctv_ucl_mg.L, 3),
-    1.87
+    1.86
   )
 })
 
@@ -249,6 +249,7 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
     "common_name" = rep(NA, reps),
     "effect" = rep(NA, reps)
   )
+
   output <- ssdtools::ssd_fit_bcanz(
     data = df,
     left = "sp_aggre_conc_mg.L"
@@ -262,17 +263,17 @@ test_that("check ssdtools fit bcanz and bcanz hc functions", {
 
   expect_equal(
     signif(output$se, 3),
-    c(0.397, 0.422, 0.426, 0.429)
+    c(0.315, 0.329, 0.342, 0.368)
   )
 
   expect_equal(
     signif(output$lcl, 3),
-    c(0.214, 0.489, 0.639, 0.851)
+    c(0.225, 0.473, 0.666, 0.983)
   )
 
   expect_equal(
     signif(output$ucl, 3),
-    c(1.61, 2.05, 2.28, 2.6)
+    c(1.43, 1.77, 2.02, 2.35)
   )
 
   expect_equal(
