@@ -55,7 +55,7 @@ wqb_plot <- function(data) {
       ) +
       ggplot2::facet_grid(
         rows = ggplot2::vars(.data$trophic_group),
-        scale = "free_y",
+        scales = "free_y",
         space = "free_y"
       ) +
       ggplot2::xlab("Concentration (mg/L)") +
@@ -82,7 +82,7 @@ wqb_plot <- function(data) {
       ) +
       ggplot2::scale_x_log10(
         breaks = scales::trans_breaks("log10", function(x) 10^x),
-        label = ~ ifelse(
+        labels = ~ ifelse(
           .x < 10,
           sprintf("%g", signif(.x, 3)),
           scales::comma(.x, accuracy = 1)
@@ -103,7 +103,7 @@ wqb_plot <- function(data) {
       ) +
       ggplot2::facet_grid(
         rows = ggplot2::vars(.data$trophic_group),
-        scale = "free_y",
+        scales = "free_y",
         space = "free_y"
       ) +
       ggplot2::xlab("Concentration (mg/L)") +
@@ -128,7 +128,7 @@ wqb_plot <- function(data) {
       ) +
       ggplot2::scale_x_log10(
         breaks = scales::trans_breaks("log10", function(x) 10^x),
-        label = ~ ifelse(
+        labels = ~ ifelse(
           .x < 10,
           sprintf("%g", signif(.x, 3)),
           scales::comma(.x, accuracy = 1)
