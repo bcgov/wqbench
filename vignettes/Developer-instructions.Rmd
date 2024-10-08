@@ -55,6 +55,21 @@ This will help to ensure the production app is always in a working state.
 
 ## Updating Reference Data for the Database
 
+Each time the Ecotox database is updated, the reference files in the package
+should be reviewed for necessary changes. This process involves generating
+some files to illustrate changes, having those files reviewed by
+an expert, and updated if necessary, and then updating the data
+files in the package with the new changes.
+
+These changes may involve:
+
+- concentration conversions and duration conversions for newly-added
+  concentration and duration units,
+- trophic groups and life stage codes for newly added species.
+
+Lists of BC species and concentration endpoints are unlikely to require changes
+but should be reviewed.
+
 ### Process
 
 1. Ensure you have the most recent copy of the database with the reference files added. To do this run the function `wqb_create_data_set()`.

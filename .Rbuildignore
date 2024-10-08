@@ -17,3 +17,5 @@
 ^CONTRIBUTING\.md$
 ^README_files$
 ^COMPLIANCE.yaml$
+^doc$
+^Meta$
