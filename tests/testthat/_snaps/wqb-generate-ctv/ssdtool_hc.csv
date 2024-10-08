@@ -2,5 +2,5 @@ dist,proportion,est,se,lcl,ucl,wt,method,nboot,pboot,samples
 gamma,0.05,0.950515,0.336198,0.622655,1.91211,0.236757,parametric,100,1,numeric(0)
 lgumbel,0.05,1.03321,0.239381,0.706971,1.75036,0.135692,parametric,100,1,numeric(0)
 llogis,0.05,0.972097,0.34172,0.478799,1.85409,0.175878,parametric,100,1,numeric(0)
-lnorm,0.05,1.00267,0.296022,0.680286,1.88285,0.218508,parametric,100,1,numeric(0)
+lnorm,0.05,1.00267,0.296023,0.680286,1.88285,0.218508,parametric,100,1,numeric(0)
 weibull,0.05,0.834054,0.403442,0.353718,1.74827,0.233166,parametric,100,1,numeric(0)
