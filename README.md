@@ -51,7 +51,7 @@ data_set <- wqb_create_data_set()
 The data set can be read in after it has been created.
 
 ``` r
-data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
+data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.rds")
 ```
 
 ### Generate Benchmark
@@ -133,7 +133,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1  0.009808019  0.001050889   0.05426475
+    ## 1  0.009808029  0.001050889   0.05426475
 
 *SSD* method can generate a lower and upper confidence interval.
 
