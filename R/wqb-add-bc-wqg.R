@@ -158,15 +158,13 @@ read_bc_wqg <- function(db_chemicals) {
     )
   )
 
-  
+
   chk::check_data(
     bc_wqg,
     list(
       `CAS_number` = character()
     )
   )
-  ## TEMP workaround
-  # bc_wqg <- dplyr::filter(bc_wqg, !is.na(.data$CAS_number))
 
   data <- combine_bc_wqg(bc_wqg, db_chemicals)
   data
