@@ -17,7 +17,7 @@ The shiny app is located in the
 [shinywqbench](https://github.com/bcgov/shinywqbench) repository. To
 update the internal data file
 
-1.  Go to the inst/extdata/data.R file.
+1.  Go to the `inst/extdata/data.R` file.
 2.  Run the script.
 
 This needs to occur each time the ECOTOX EPA data set is updated on the
