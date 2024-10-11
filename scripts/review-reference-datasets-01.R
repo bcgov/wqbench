@@ -136,7 +136,7 @@ write_csv(
   db_species_aquatic,
   file.path(
     file_save_loc,
-    paste0(Sys.Date(), "-species-coded-in-db", ".csv")
+    paste0(Sys.Date(), "-species-coded-in-db-ref", ".csv")
   ),
   na = ""
 )
