@@ -96,8 +96,21 @@ db_species_aquatic <-
   left_join(db_tests_aquatic, by = "species_number") |>
   filter(organism_habitat == "Water")
 
+# Predetermined list of ecotox_groups that have been deemed not relevant
+# to this work, so exclude them from the list to be reviewed - otherwise
+# they come up each time so adds a lot of unnecessary extra work for the reviewer
+exclude_ecotox_groups <- read_csv("inst/extdata/ecotox_groups_inclusion.csv") |>
+  filter(!include)
+
+# A list of taxa that have been manually identified as not relevant. These are
+# flagged by the reviewer when they review the list of potential new taxa to
+# add; this way they are removed the next time.
+exclude_taxa <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
+
 missing_species <-
   db_species_aquatic |>
+  anti_join(exclude_ecotox_groups, by = "ecotox_group") |>
+  anti_join(exclude_taxa, by = names(exclude_taxa)) |>
   filter(is.na(trophic_group) | is.na(ecological_group)) |>
   select(phylum_division, class, tax_order, family) |>
   distinct() |>
