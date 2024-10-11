@@ -1,11 +1,11 @@
 # Copyright 2024 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@ library(daff)
 
 # Setup -------------------------------------------------------------------
 
-reviewed_folder <- 
+reviewed_folder <-
   file.path(
     "~",
     "Poisson",
@@ -48,7 +48,7 @@ concentration_std <- readr::read_csv(
   show_col_types = FALSE
 ) |>
   select(
-    code, description, conc_conversion_flag, conc_conversion_value_multiplier, 
+    code, description, conc_conversion_flag, conc_conversion_value_multiplier,
     conc_conversion_unit
   ) |>
   mutate(
@@ -61,12 +61,16 @@ reviewed_conc_std_fp <- list.files(
   full.names = TRUE
 )
 
-reviewed_conc_std <- 
+reviewed_conc_std <-
   readr::read_csv(
-    reviewed_conc_std_fp
-  ) |>
-  mutate(
-    conc_conversion_flag = as.logical(conc_conversion_flag)
+    reviewed_conc_std_fp,
+    col_types = cols(
+      code = col_character(),
+      description = col_character(),
+      conc_conversion_flag = col_logical(),
+      conc_conversion_value_multiplier = col_double(),
+      conc_conversion_unit = col_character()
+    )
   )
 
 if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_flag)), 0)) {
@@ -90,13 +94,13 @@ if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
 }
 
 concentration_daff <- daff::diff_data(
-  concentration_std, 
-  reviewed_conc_std, 
+  concentration_std,
+  reviewed_conc_std,
   ordered = FALSE
 )
 daff::render_diff(
-  concentration_daff, 
-  pretty = TRUE, 
+  concentration_daff,
+  pretty = TRUE,
   title = "Concentration Conversion"
 )
 
@@ -109,11 +113,14 @@ duration_std_file_path <- system.file(
 
 duration_std <- readr::read_csv(
   duration_std_file_path,
-  show_col_types = FALSE
-) |>
-  mutate(
-    duration_units_to_keep = as.logical(duration_units_to_keep)
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    duration_units_to_keep = col_logical(),
+    duration_value_multiplier_to_hours = col_double(),
+    comments = col_character()
   )
+)
 
 reviewed_duration_std <- list.files(
   path = file.path(reviewed_folder),
@@ -145,13 +152,13 @@ if (!vld_equal(sum(duplicated(reviewed_duration_std)), 0)) {
 }
 
 duration_daff <- daff::diff_data(
-  duration_std, 
-  reviewed_duration_std, 
+  duration_std,
+  reviewed_duration_std,
   ordered = FALSE
 )
 daff::render_diff(
-  duration_daff, 
-  pretty = TRUE, 
+  duration_daff,
+  pretty = TRUE,
   title = "Duration Conversion"
 )
 
@@ -204,31 +211,31 @@ if (!vld_equal(sum(duplicated(reviewed_trophic_groups)), 0)) {
 }
 
 trophic_daff <- daff::diff_data(
-  trophic_group_file_path_std, 
-  reviewed_trophic_groups, 
+  trophic_group_file_path_std,
+  reviewed_trophic_groups,
   ordered = FALSE
 )
 daff::render_diff(
-  trophic_daff, 
-  pretty = TRUE, 
+  trophic_daff,
+  pretty = TRUE,
   title = "Trophic Groups"
 )
 
 ## Write new reference file ------------------------------------------------
 
 if (FALSE) {
-  # Only run this code if the html reports align with the requirements 
+  # Only run this code if the html reports align with the requirements
   # and all checks pass
   write_csv(
     reviewed_duration_std,
     "inst/extdata/duration-conversion.csv",
   )
-  
+
   write_csv(
     reviewed_conc_std,
     "inst/extdata/concentration-conversion.csv",
   )
-  
+
   write_csv(
     reviewed_trophic_groups,
     "inst/extdata/trophic-group.csv",
