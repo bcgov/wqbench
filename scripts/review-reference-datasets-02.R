@@ -20,7 +20,7 @@ library(tidyverse)
 # need to pull in raw database data
 # update the file to the most recent version of the database stored locally on your computer
 list.files("~/Ecotoxicology/ecotox_db/", pattern = "\\.sqlite")
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
+database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.sqlite"
 
 con <- DBI::dbConnect(
   RSQLite::SQLite(),
