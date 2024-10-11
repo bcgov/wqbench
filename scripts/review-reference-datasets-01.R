@@ -150,17 +150,6 @@ write_csv(
   na = ""
 )
 
-file.copy(
-  from = system.file(
-    "extdata/trophic-group.csv",
-    package = "wqbench"
-  ),
-  to = file.path(
-    file_save_loc,
-    paste0(Sys.Date(), "-trophic-group", ".csv")
-  )
-)
-
 # Clean Up ----------------------------------------------------------------
 
 DBI::dbDisconnect(con)
