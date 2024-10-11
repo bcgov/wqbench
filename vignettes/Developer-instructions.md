@@ -11,37 +11,6 @@ rmarkdown::github_document:
 library(wqbench)
 ```
 
-## Updating the Internal Data Set in the Shiny app
-
-The shiny app is located in the
-[shinywqbench](https://github.com/bcgov/shinywqbench) repository. To
-update the internal data file
-
-1.  Go to the `inst/extdata/data.R` file.
-2.  Run the script.
-
-This needs to occur each time the ECOTOX EPA data set is updated on the
-website.
-
-## How to Deploy the Shiny App
-
-The shiny app is located in the
-[shinywqbench](https://github.com/bcgov/shinywqbench) repository.
-
-1.  Go to the scripts/deploy.R file.
-2.  Run the script.
-
-It is advised to first run the code that deploys the app name of
-`shinywqbench-dev` and confirm the app deploys and functions as
-expected. This app is referred to as the development app.
-
-Once it has been confirmed that the app functions and deploys properly
-to then run the second chunk of code with the app name `shinywqbench`.
-This app is referred to as the production app.
-
-This will help to ensure the production app is always in a working
-state.
-
 ## Updating Reference Data for the Database
 
 Each time the Ecotox database is updated, the reference files in the
@@ -57,7 +26,7 @@ These changes may involve:
 - trophic groups and life stage codes for newly added species.
 
 Lists of BC species and concentration endpoints are unlikely to require
-changes but should be reviewed.
+changes but should be reviewed periodically.
 
 ### Process
 
@@ -76,46 +45,49 @@ wqb_create_data_set(
 2.  Execute the code in the script
     *scripts/review-reference-datasets-01.R*.
 
-    - This script will generate and save a set of csv files that need to
-      be reviewed and updated to allow new values through the data
-      cleaning steps.
-    - At the top of the script you will need to set the file path for
-      the database and the location to save the files that are
-      generated.
+- This script will generate and save a set of csv files that need to be
+  reviewed and updated to allow new values through the data cleaning
+  steps.
+- At the top of the script you will need to set the file path for the
+  database and the location to save the files that are generated. By
+  defeault they will save at:
+  `"~/Poisson/Data/wqbench/2024/review/to-be-reviewed/"`
 
 3.  After the files are generated, they need to be reviewed and updated
     by a technical expert.
 
-    - It is recommended to email them to the appropriate person for
-      their review.
-    - The next step must wait until the review is complete.
-    - The life stage code file can’t be reviewed until after the trophic
-      groups have been updated.
+- The next step must wait until the review is complete.
+- The life stage code file can’t be reviewed until after the trophic
+  groups have been updated.
 
-4.  Once the files are reviewed the
-    *script/update-reference-datasets-01.R* script needs to be run.
+4.  Once the files are reviewed they should be placed in:
+    `"~/Poisson/Data/wqbench/2024/review/completed/"`
 
-    - This will read in the reviewed files and update the reference
-      files in the *inst/extdata* folder.
+- Then run the *scripts/update-reference-datasets-01.R* script.
+- This will read in the reviewed files and update the reference files in
+  the *inst/extdata* folder.
 
 5.  The package needs to be re-built for the files to be part of the
-    package.
+    package. Run `devtools::load_all()`.
 
 6.  Run the `wqb_create_data_set()` function to create the database with
     the new reference data.
 
 7.  Repeat steps 2 through 6 but run
-    *scripts/review-reference-datasets-02.R* and
-    *script/update-reference-datasets-02.R*.
+    *scripts/review-reference-datasets-02.R*, review the file, and run
+    *scripts/update-reference-datasets-02.R*.
 
-    - The life stage codes have to be generated seperately as they are
-      based on the trophic groups. The trophic groups need to be updated
-      before life stage codes can be reviewed.
+- The life stage codes have to be generated seperately as they are based
+  on the trophic groups. The trophic groups need to be updated before
+  life stage codes can be reviewed.
 
 Below are instructions for how to fill out and complete each of the
 reference files.
 
 #### Responsibilities
+
+These responsibilities are broken out for roles of programmer/analyst
+and and technical expert, but they could be the same person.
 
 Programmer/Analyst
 
@@ -158,6 +130,8 @@ database is released.
         value needed to convert the units into mg/L or ppm.
       - In the **conc_conversion_unit** column fill in either `mg/L` or
         `ppm`.
+  - Once completed, this file should be saved in the `"completed"`
+    subfolder in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
@@ -184,6 +158,8 @@ database is released.
         since there may be an assumption made during the conversion. For
         example, if converting month into hours are you basing the
         conversion on 30 or 31 days.
+  - Once completed, this file should be saved in the `"completed"`
+    subfolder in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
@@ -192,21 +168,25 @@ If any incorrect conversions are found, then those rows can be updated.
 This data set should be reviewed each time a new version of the ECOTOX
 database is released.
 
-- Three files will be generated to help review the trophic group data.
-  - *trophic-group.csv*
-    - This is the current list of trophic and ecological groups coded to
-      the class and order of each species.
-    - This file needs to be updated to add new trophic and ecological
-      groups.
-    - To update add a new row and fill in the **trophic_group** and
-      **ecological_group** columns and the required **class** and
-      **order**.
-      - The **class** and **order** can either both be filled in or one
-        of the values left blank.
-      - The **class** and **order** columns must match up with the
-        **class** and **tax_order** columns from the
-        *species-coded-in-db.csv* or *missing-trophic-group.csv* file.
-  - *species-coded-in-db.csv*
+- Two files will be generated to help review the trophic group data.
+  - *missing-trophic-group-review.csv*
+    - This is a summary that shows the unique phylum, class, order, and
+      family of new taxa in the new version of Ecotox database, that do
+      not meet the exclusion criteria. In other words, these are
+      candidate taxa to be added to the internal dataset.
+    - This file contains three columns for the reviewer to consider:
+      **trophic_group**, **ecological_group**, and **exclude_from_db**.
+      - If the taxon is not appropriate for inclusion, put a `"Y"` in
+        the ** **exclude_from_db\*\* column. Otherwise leave it blank.
+      - If it is appropriate to include, fill out the **trophic_group**
+        and **ecological_group** columns. Valid values for
+        **trophic_group** are: “Invertebrate”, “Algae”, “Amphibian”,
+        “Plant”, “Bacteria”, “Fish”. Valid values for
+        **ecological_group** are: “Planktonic Invertebrate”, “Other”,
+        “Salmonid”. In these rows, leave **exclude_from_taxon** blank.
+    - Once completed, this file should be saved in the `"completed"`
+      subfolder in the review folder.
+  - *species-coded-in-db-ref.csv*
     - This is a list of all the species data from the database that have
       been filter where **organism_habitat** is “Water”.
     - This file is to help find which **class** and **tax_order**
@@ -215,18 +195,6 @@ database is released.
         **ecological_group** columns.
     - This file is for reference and not to be updated or sent back for
       integration.
-    - This data is summarized in the *missing-trophic-group-review.csv*
-      file because of the large amount of information.
-  - *missing-trophic-group-review.csv*
-    - This is a summary that shows only the unique phylum, class, order,
-      and family from the missing trophic and ecological groups in the
-      *species-coded-in-db.csv* file.
-    - This file will help to determine which class and order need to be
-      added.
-    - This file is for reference and not to be updated or sent back for
-      integration.
-
-If any incorrect values are found, then those rows can be updated.
 
 ### Life Stage Codes
 
@@ -235,21 +203,18 @@ database is released.
 
 This data set will be sent separately after the first round of files is
 reviewed because this data depends on the updates to the trophic group
-data.
+data. Only fish and amphibian groups need the life stage categorized
+into simple groups, so this file only contains fish and amphibians.
 
-- If there is no value in the **simple_lifestage** column this indicates
-  it is a new life stage that was not in the previous coding of the
-  database.
-- The **trophic_group** column indicates if the **simple_lifestage**
-  relates to a fish or amphibian. Only fish and amphibian groups need
-  the life stage categorized into simple groups.
-- The goal of the review is to ensure all cells in the
-  **simple_lifestage** column that have **fish_amphibian_flag** column
-  as TRUE are filled in.
-  - In the **simple_lifestage** column fill in the empty cell with
-    either `els` (early life stage), `juvenile` or `adult`.
+*lifestage-code-review.csv*: - If there is no value in the
+**simple_lifestage** column this indicates it is a new life stage that
+was not in the previous coding of the database. - The goal of the review
+is to ensure all cells in the **simple_lifestage** are filled in. - In
+the **simple_lifestage** column fill in any empty cells with either
+`els` (early life stage), `juvenile` or `adult`.
 
-If any incorrect values are found, then those rows can be updated.
+Once completed, this file should be saved in the `"completed"` subfolder
+in the review folder.
 
 ### BC Species
 
@@ -325,3 +290,9 @@ changes to the reference data sheets occur.
 4.  Review the *inst/template/template-data.xlsx* to confirm the edits
     came through and the template looks as expected.
     - Do not edit the file *inst/template/template-data.xlsx*.
+
+## Push and install the pacakge
+
+Finally, after all of the all of the updates are completed, push them to
+GitHub. Install the updated package with `devtools::install()`, or from
+GitHub with `devtools::install_github("bcgov/wqbench")`.
