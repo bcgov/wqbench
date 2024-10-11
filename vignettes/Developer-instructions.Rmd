@@ -269,3 +269,9 @@ The instructions in the upload data template need to be updated when changes to 
 3. To regenerate the template run the script *data-raw/template.R*.
 4. Review the *inst/template/template-data.xlsx* to confirm the edits came through and the template looks as expected.
    - Do not edit the file *inst/template/template-data.xlsx*.
+
+## Push and install the pacakge
+
+Finally, after all of the all of the updates are completed, push them
+to GitHub. Install the updated package with `devtools::install()`, or
+from GitHub with `devtools::install_github("bcgov/wqbench")`.
