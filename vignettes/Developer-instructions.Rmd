@@ -98,17 +98,18 @@ wqb_create_data_set(
 
 4. Once the files are reviewed they should be placed in:
   `"~/Poisson/Data/wqbench/2024/review/completed/"`
-  - Then run the *script/update-reference-datasets-01.R* script.
+  - Then run the *scripts/update-reference-datasets-01.R* script.
   - This will read in the reviewed files and update the reference files in the
     *inst/extdata* folder.
 
 5. The package needs to be re-built for the files to be part of the package.
+  Run `devtools::load_all()`.
 
 6. Run the `wqb_create_data_set()` function to create the database with the new
   reference data.
 
-7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R* and
-  *script/update-reference-datasets-02.R*.
+7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R*,
+  review the file, and run *scripts/update-reference-datasets-02.R*.
   - The life stage codes have to be generated seperately as they are based on
     the trophic groups. The trophic groups need to be updated before life stage
     codes can be reviewed.
@@ -213,7 +214,7 @@ is released.
           blank.
     - Once completed, this file should be saved in the `"completed"` subfolder
       in the review folder.
-  - *species-coded-in-db.csv*
+  - *species-coded-in-db-ref.csv*
     - This is a list of all the species data from the database that have been
       filter where **organism_habitat** is "Water".
     - This file is to help find which **class** and **tax_order** (order) do not
@@ -229,19 +230,17 @@ This data set should be reviewed each time a new version of the ECOTOX database
 is released.
 
 This data set will be sent separately after the first round of files is reviewed
-because this data depends on the updates to the trophic group data.
+because this data depends on the updates to the trophic group data. Only fish
+and amphibian groups need the life stage categorized into simple groups, so this
+file only contains fish and amphibians.
 
+*lifestage-code-review.csv*:
 - If there is no value in the **simple_lifestage** column this indicates it is a
   new life stage that was not in the previous coding of the database.
-- The **trophic_group** column indicates if the **simple_lifestage** relates to
-  a fish or amphibian. Only fish and amphibian groups need the life stage
-  categorized into simple groups.
 - The goal of the review is to ensure all cells in the **simple_lifestage**
-  column that have **fish_amphibian_flag** column as TRUE are filled in.
-  - In the **simple_lifestage** column fill in the empty cell with either `els`
+  are filled in.
+  - In the **simple_lifestage** column fill in any empty cells with either `els`
     (early life stage), `juvenile` or `adult`.
-
-If any incorrect values are found, then those rows can be updated.
 
 Once completed, this file should be saved in the `"completed"` subfolder in the
 review folder.
