@@ -19,7 +19,7 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -45,7 +45,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -66,7 +66,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
@@ -105,7 +105,7 @@
 <code class="sourceCode R"><span><span class="va">data_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_create_data_set.html">wqb_create_data_set</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The data set can be read in after it has been created.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.rds"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="generate-benchmark">Generate Benchmark<a class="anchor" aria-label="anchor" href="#generate-benchmark"></a>
@@ -154,29 +154,24 @@
 <span><span class="va">data_agg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_aggregate.html">wqb_aggregate</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">data_agg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_af.html">wqb_af</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">ctv</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_generate_ctv.html">wqb_generate_ctv</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="do">## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">## TMB was built with Matrix version 1.6.0</span></span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="do">## Current Matrix version is 1.6.1.1</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="do">## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ctv</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="do">##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="do">##          &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="do">## 1       0.0101      0.00195       0.0583</span></span></code></pre></div>
+<span><span class="va">ctv</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_generate_ctv.html">wqb_generate_ctv</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span>
+<span><span class="va">ctv</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 3</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="do">##          &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="do">## 1      0.00981      0.00105       0.0543</span></span></code></pre></div>
 <p>To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">benchmark</span> <span class="op">&lt;-</span> <span class="va">ctv</span> <span class="op">/</span> <span class="op">(</span><span class="va">data_agg</span><span class="op">$</span><span class="va">af_bc_species</span> <span class="op">*</span> <span class="va">data_agg</span><span class="op">$</span><span class="va">af_salmon</span> <span class="op">*</span> <span class="va">data_agg</span><span class="op">$</span><span class="va">af_planktonic</span> <span class="op">*</span> <span class="va">data_agg</span><span class="op">$</span><span class="va">af_variation</span><span class="op">)</span></span>
 <span><span class="va">benchmark</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="do">##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="do">## 1   0.01014924  0.001954049   0.05831486</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="do">##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="do">## 1  0.009808029  0.001050889   0.05426475</span></span></code></pre></div>
 <p><em>SSD</em> method can generate a lower and upper confidence interval.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot data set</span></span>
 <span><span class="fu"><a href="reference/wqb_plot.html">wqb_plot</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
 <p><img src="README_files/figure-gfm/unnamed-chunk-12-1.png"><!-- --></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the results</span></span>
 <span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/wqb_ssd_fit.html">wqb_ssd_fit</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/wqb_plot_ssd.html">wqb_plot_ssd</a></span><span class="op">(</span><span class="va">data_agg</span>, <span class="va">fit</span><span class="op">)</span></span></code></pre></div>
@@ -185,33 +180,33 @@
 <div class="section level4">
 <h4 id="summary-tables">Summary Tables<a class="anchor" aria-label="anchor" href="#summary-tables"></a>
 </h4>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/wqb_summary_trophic_species.html">wqb_summary_trophic_species</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="do">## # A tibble: 5 × 2</span></span>
-<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="do">##   `Trophic Group` `Number of Species`</span></span>
-<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="do">##   &lt;fct&gt;                         &lt;int&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="do">## 1 Algae                             6</span></span>
-<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="do">## 2 Amphibian                         4</span></span>
-<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="do">## 3 Fish                             11</span></span>
-<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">## 4 Invertebrate                     12</span></span>
-<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="do">## 5 Plant                             8</span></span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="do">## # A tibble: 5 × 2</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="do">##   `Trophic Group` `Number of Species`</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="do">##   &lt;fct&gt;                         &lt;int&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a><span class="do">## 1 Algae                             6</span></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a><span class="do">## 2 Amphibian                         4</span></span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="do">## 3 Fish                             11</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="do">## 4 Invertebrate                     12</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="do">## 5 Plant                             8</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/wqb_summary_trophic_groups.html">wqb_summary_trophic_groups</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 2</span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="do">##   Consideration           Result                                                </span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                   &lt;chr&gt;                                                 </span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="do">## 1 Trophic group(s)        Algae, Amphibian, Fish, Invertebrate, Plant           </span></span>
-<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="do">## 2 Salmonid(s)             Oncorhynchus kisutch, Oncorhynchus mykiss, Oncorhynch…</span></span>
-<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="do">## 3 Planktonic Invertebrate Artemia franciscana                                   </span></span>
-<span id="cb23-7"><a href="#cb23-7" tabindex="-1"></a><span class="do">## 4 B.C. species            Cyprinus carpio, Lemna minor, Myriophyllum aquaticum,…</span></span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 2</span></span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="do">##   Consideration           Result                                                </span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                   &lt;chr&gt;                                                 </span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="do">## 1 Trophic group(s)        Algae, Amphibian, Fish, Invertebrate, Plant           </span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="do">## 2 Salmonid(s)             Oncorhynchus kisutch, Oncorhynchus mykiss, Oncorhynch…</span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="do">## 3 Planktonic Invertebrate Artemia franciscana                                   </span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="do">## 4 B.C. species            Cyprinus carpio, Lemna minor, Myriophyllum aquaticum,…</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/wqb_summary_af.html">wqb_summary_af</a></span><span class="op">(</span><span class="va">data_agg</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="do">##   Consideration                `Assessment Factor` Description                  </span></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                                      &lt;int&gt; &lt;chr&gt;                        </span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="do">## 1 Species variation factor                       1 Accounts for uncertainty due…</span></span>
-<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a><span class="do">## 2 Ecological assessment factor                   1 Accounts for uncertainty whe…</span></span>
-<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a><span class="do">## 3 B.C. species                                   1 Accounts for uncertainty of …</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 3</span></span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="do">##   Consideration                `Assessment Factor` Description                  </span></span>
+<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                                      &lt;int&gt; &lt;chr&gt;                        </span></span>
+<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="do">## 1 Species variation factor                       1 Accounts for uncertainty due…</span></span>
+<span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a><span class="do">## 2 Ecological assessment factor                   1 Accounts for uncertainty whe…</span></span>
+<span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="do">## 3 B.C. species                                   1 Accounts for uncertainty of …</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -301,16 +296,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
