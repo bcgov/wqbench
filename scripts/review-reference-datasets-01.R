@@ -91,13 +91,13 @@ db_species <- DBI::dbReadTable(con, "species") |>
   tibble()
 
   # this filters to only the aquatic tests
-db_species_aqutic <-
+db_species_aquatic <-
   db_species |>
   left_join(db_tests_aquatic, by = "species_number") |>
   filter(organism_habitat == "Water")
 
 missing_species <-
-  db_species_aqutic |>
+  db_species_aquatic |>
   filter(is.na(trophic_group) | is.na(ecological_group)) |>
   select(phylum_division, class, tax_order, family) |>
   distinct() |>
@@ -115,7 +115,7 @@ missing_species <-
 
 # generate files for review
 write_csv(
-  db_species_aqutic,
+  db_species_aquatic,
   file.path(
     file_save_loc,
     paste0(Sys.Date(), "-species-coded-in-db", ".csv")
