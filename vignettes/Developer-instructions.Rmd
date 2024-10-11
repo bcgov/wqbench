@@ -225,14 +225,21 @@ is released.
 
 ### Life Stage Codes
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-This data set will be sent separately after the first round of files is reviewed because this data depends on the updates to the trophic group data.
+This data set will be sent separately after the first round of files is reviewed
+because this data depends on the updates to the trophic group data.
 
-- If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous coding of the database.
-- The **trophic_group** column indicates if the **simple_lifestage** relates to a fish or amphibian. Only fish and amphibian groups need the life stage categorized into simple groups.
-- The goal of the review is to ensure all cells in the **simple_lifestage** column that have **fish_amphibian_flag** column as TRUE are filled in.
-  - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
+- If there is no value in the **simple_lifestage** column this indicates it is a
+  new life stage that was not in the previous coding of the database.
+- The **trophic_group** column indicates if the **simple_lifestage** relates to
+  a fish or amphibian. Only fish and amphibian groups need the life stage
+  categorized into simple groups.
+- The goal of the review is to ensure all cells in the **simple_lifestage**
+  column that have **fish_amphibian_flag** column as TRUE are filled in.
+  - In the **simple_lifestage** column fill in the empty cell with either `els`
+    (early life stage), `juvenile` or `adult`.
 
 If any incorrect values are found, then those rows can be updated.
 
