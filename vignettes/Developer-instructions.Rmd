@@ -243,6 +243,9 @@ because this data depends on the updates to the trophic group data.
 
 If any incorrect values are found, then those rows can be updated.
 
+Once completed, this file should be saved in the `"completed"` subfolder in the
+review folder.
+
 ### BC Species
 
 This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year.
