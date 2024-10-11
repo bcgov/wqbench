@@ -73,20 +73,44 @@ reviewed_conc_std <-
     )
   )
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_flag)), 0)) {
-  abort_chk("There should be no missing conc_conversion_flag values, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(reviewed_conc_std$conc_conversion_flag)),
+  0
+)) {
+  abort_chk(
+    "There should be no missing conc_conversion_flag values, correct before proceeding"
+  )
 }
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_value_multiplier[reviewed_conc_std$conc_conversion_flag == 1])), 0)) {
-  abort_chk("There can't be a flag of 1 with no multipler, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(
+    reviewed_conc_std$conc_conversion_value_multiplier[reviewed_conc_std$conc_conversion_flag == 1]
+  )),
+  0
+)) {
+  abort_chk(
+    "There can't be a flag of 1 with no multipler, correct before proceeding"
+  )
 }
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_unit[reviewed_conc_std$conc_conversion_flag == 1])), 0)) {
-  abort_chk("There can't be a flag of 1 with no conversion unit, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(
+    reviewed_conc_std$conc_conversion_unit[reviewed_conc_std$conc_conversion_flag == 1]
+  )),
+  0
+)) {
+  abort_chk(
+    "There can't be a flag of 1 with no conversion unit, correct before proceeding"
+  )
 }
 
-if (!vld_subset(unique(reviewed_conc_std$conc_conversion_unit), c("mg/L", "ppm", NA_character_))) {
-  abort_chk("Concentration units can only include ppm and mg/L, correct before proceeding")
+if (!vld_subset(
+  unique(reviewed_conc_std$conc_conversion_unit),
+  c("mg/L", "ppm", NA_character_)
+)) {
+  abort_chk(
+    "Concentration units can only include ppm and mg/L, correct before proceeding"
+  )
 }
 
 if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
@@ -135,15 +159,28 @@ reviewed_duration_std <- readr::read_csv(
     duration_units_to_keep = as.logical(duration_units_to_keep)
   )
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$duration_units_to_keep)), 0)) {
+if (!vld_equal(
+  sum(is.na(reviewed_duration_std$duration_units_to_keep)),
+  0
+)) {
   abort_chk("There should be no missing duration_units_to_keep values, correct before proceeding")
 }
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$duration_value_multiplier_to_hours[reviewed_duration_std$duration_units_to_keep == 1])), 0)) {
+if (!vld_equal(
+  sum(is.na(
+    reviewed_duration_std$duration_value_multiplier_to_hours[reviewed_duration_std$duration_units_to_keep == 1]
+  )),
+  0
+)) {
   abort_chk("There can't be a flag of 1 with no multipler, correct before proceeding")
 }
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$comments[reviewed_duration_std$duration_units_to_keep == 1])), 0)) {
+if (!vld_equal(
+  sum(is.na(
+    reviewed_duration_std$comments[reviewed_duration_std$duration_units_to_keep == 1]
+  )),
+  0
+)) {
   abort_chk("There can't be a flag of 1 with no comment, correct before proceeding")
 }
 
@@ -197,18 +234,28 @@ add_trophic_groups <- reviewed_trophic_groups |>
   rename(order = tax_order)
 
 if (!vld_equal(sum(is.na(add_trophic_groups$trophic_group)), 0)) {
-  abort_chk("There should be no missing trophic groups, correct before proceeding")
+  abort_chk(
+    "There should be no missing trophic groups, correct before proceeding"
+  )
 }
 
 if (!vld_equal(sum(is.na(add_trophic_groups$ecological_group)), 0)) {
-  abort_chk("There should be no missing trophic groups, correct before proceeding")
+  abort_chk(
+    "There should be no missing trophic groups, correct before proceeding"
+  )
 }
 
-if (!vld_subset(unique(add_trophic_groups$trophic_group), c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish"))) {
+if (!vld_subset(
+  unique(add_trophic_groups$trophic_group),
+  c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish")
+)) {
   abort_chk("Ensure trophic groups match allowed values")
 }
 
-if (!vld_subset(unique(add_trophic_groups$ecological_group), c("Planktonic Invertebrate", "Other", "Salmonid"))) {
+if (!vld_subset(
+  unique(add_trophic_groups$ecological_group),
+  c("Planktonic Invertebrate", "Other", "Salmonid")
+)) {
   abort_chk("Ensure ecological groups match allowed values")
 }
 
