@@ -194,7 +194,13 @@ combine_conc_conversions <- function(concentration_std,
 read_conc_conversions <- function(concentration_std_file_path, db_concentration_unit_codes) {
   concentration_std <- readr::read_csv(
     concentration_std_file_path,
-    show_col_types = FALSE
+    col_types = readr::cols(
+      code = readr::col_character(),
+      description = readr::col_character(),
+      conc_conversion_flag = readr::col_logical(),
+      conc_conversion_value_multiplier = readr::col_double(),
+      conc_conversion_unit = readr::col_character()
+    )
   )
 
   chk::check_data(

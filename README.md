@@ -25,7 +25,7 @@ devtools::install_github("bcgov/wqbench")
 library(wqbench)
 ```
 
-### Create Data Set for App
+### Create Data Set for Shiny App
 
 The `wqb_create_data_set()` function will download the US EPA
 ECOTOX<sup>1</sup> database, create a local .sqlite database, add other
@@ -189,6 +189,20 @@ wqb_summary_af(data_agg)
     ## 1 Species variation factor                       1 Accounts for uncertainty due…
     ## 2 Ecological assessment factor                   1 Accounts for uncertainty whe…
     ## 3 B.C. species                                   1 Accounts for uncertainty of …
+
+## Developer Instructions
+
+See the [Developer Instructions](vignettes/Developer-instructions.md)
+for instructions on:
+
+- [Updating the Ecotox data in the Shiny
+  App](vignettes/Developer-instructions.md#updating-the-internal-data-set-in-the-shiny-app)
+- [Deploying the Shiny
+  App](vignettes/Developer-instructions.md#how-to-deploy-the-shiny-app)
+- [Updating the reference data for the
+  database](vignettes/Developer-instructions.md#updating-reference-data-for-the-database)
+- [Updating the “Add Data”
+  template](vignettes/Developer-instructions.md#updating-the-add-data-template)
 
 ## Getting Help or Reporting an Issue
 

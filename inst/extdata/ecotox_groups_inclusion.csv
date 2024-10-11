@@ -1,0 +1,55 @@
+ecotox_group,include
+"Flowers, Trees, Shrubs, Ferns",FALSE
+"Flowers, Trees, Shrubs, FernsStandard Test Species",FALSE
+"Flowers, Trees, Shrubs, FernsU.S. Invasive Species",FALSE
+Fungi,FALSE
+Insects/Spiders,FALSE
+Insects/SpidersStandard Test Species,FALSE
+Insects/SpidersU.S. Invasive Species,FALSE
+Mammals,FALSE
+"Moss, Hornworts",FALSE
+Reptiles,FALSE
+ReptilesU.S. Threatened and Endangered Species,FALSE
+"Standard Test SpeciesFlowers, Trees, Shrubs, Ferns",FALSE
+"Standard Test SpeciesFlowers, Trees, Shrubs, FernsU.S. Invasive Species",FALSE
+"Standard Test SpeciesU.S. Invasive SpeciesFlowers, Trees, Shrubs, Ferns",FALSE
+"U.S. Invasive SpeciesFlowers, Trees, Shrubs, Ferns",FALSE
+U.S. Threatened and Endangered SpeciesReptiles,FALSE
+Algae,TRUE
+Amphibians,TRUE
+AmphibiansStandard Test Species,TRUE
+AmphibiansU.S. Invasive Species,TRUE
+AmphibiansU.S. Threatened and Endangered Species,TRUE
+Crustaceans,TRUE
+CrustaceansStandard Test Species,TRUE
+CrustaceansStandard Test SpeciesU.S. Invasive Species,TRUE
+CrustaceansU.S. Invasive Species,TRUE
+CrustaceansU.S. Threatened and Endangered Species,TRUE
+Fish,TRUE
+FishStandard Test Species,TRUE
+FishStandard Test SpeciesU.S. Threatened and Endangered Species,TRUE
+FishU.S. Invasive Species,TRUE
+FishU.S. Threatened and Endangered Species,TRUE
+Invertebrates,TRUE
+InvertebratesStandard Test Species,TRUE
+InvertebratesU.S. Invasive Species,TRUE
+InvertebratesU.S. Threatened and Endangered Species,TRUE
+Miscellaneous,TRUE
+Molluscs,TRUE
+MolluscsStandard Test Species,TRUE
+MolluscsStandard Test SpeciesU.S. Invasive Species,TRUE
+MolluscsU.S. Invasive Species,TRUE
+MolluscsU.S. Threatened and Endangered Species,TRUE
+Standard Test SpeciesAlgae,TRUE
+Standard Test SpeciesAmphibians,TRUE
+Standard Test SpeciesCrustaceans,TRUE
+Standard Test SpeciesFish,TRUE
+Standard Test SpeciesMolluscs,TRUE
+U.S. Invasive SpeciesAlgae,TRUE
+U.S. Invasive SpeciesCrustaceans,TRUE
+U.S. Threatened and Endangered SpeciesAmphibians,TRUE
+U.S. Threatened and Endangered SpeciesCrustaceans,TRUE
+U.S. Threatened and Endangered SpeciesMolluscs,TRUE
+Worms,TRUE
+WormsStandard Test Species,TRUE
+WormsU.S. Invasive Species,TRUE
