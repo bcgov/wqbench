@@ -1,4 +1,4 @@
-﻿phylum_division,class,order,family,trophic_group,ecological_group
+phylum_division,class,order,family,trophic_group,ecological_group
 Acanthocephala,Palaeacanthocephala,,,Invertebrate,Other
 Annelida,,,Aeolosomatidae,Invertebrate,Other
 Annelida,,Capitellida,Arenicolidae,Invertebrate,Other
@@ -168,3 +168,17 @@ Xanthophyta,,,,Algae,Other
 ,Oligohymenophora,,,Invertebrate,Other
 ,Polychaeta,,,Invertebrate,Other
 ,Sarcoptergii,,,Fish,Other
+Acanthocephala,Eoacanthocephala,Neoechinorhynchida,Tenuisentidae,Invertebrate,Other
+Annelida,,Canalipalpata,Ampharetidae,Invertebrate,Other
+Annelida,,Canalipalpata,Cirratulidae,Invertebrate,Other
+Annelida,,Canalipalpata,Ctenodrilidae,Invertebrate,Other
+Annelida,,Canalipalpata,Oweniidae,Invertebrate,Other
+Annelida,,Canalipalpata,Pectinariidae,Invertebrate,Other
+Annelida,,Canalipalpata,Sabellariidae,Invertebrate,Other
+Annelida,,Canalipalpata,Sabellidae,Invertebrate,Other
+Annelida,,Canalipalpata,Serpulidae,Invertebrate,Other
+Annelida,,Canalipalpata,Spionidae,Invertebrate,Other
+Annelida,,Canalipalpata,Terebellidae,Invertebrate,Other
+Annelida,,,,Invertebrate,Other
+Arthropoda,,,,Invertebrate,Other
+Bacillariophyta,,,,Algae,Other

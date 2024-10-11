@@ -1,6 +1,6 @@
 code,description,duration_units_to_keep,duration_value_multiplier_to_hours,comments
 --,Unspecified,FALSE,NA,NA
-#NAME?,"Pretreatment, time unknown",FALSE,NA,NA
+-X,"Pretreatment, time unknown",FALSE,NA,NA
 BLM,Bloom stage,FALSE,NA,NA
 LSI,Larval stage index,FALSE,NA,NA
 MULT,Multiple durations (for terrestrial rollup),FALSE,NA,NA
@@ -152,6 +152,7 @@ swm,Swim-up,FALSE,NA,NA
 tls,Tiller stage,FALSE,NA,NA
 tr,1st trifoliate leaf,FALSE,NA,NA
 ts,Time to tassle,FALSE,NA,NA
+tsp,To stationary phase,FALSE,NA,NA
 ubi,Until birth,FALSE,NA,NA
 utl,Until larva,FALSE,NA,NA
 utp,Until pupa,FALSE,NA,NA
