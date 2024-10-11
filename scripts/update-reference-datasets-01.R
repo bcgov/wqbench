@@ -185,34 +185,44 @@ reviewed_trophic_groups <- readr::read_csv(
 ) |>
   mutate(
     class = str_to_title(class),
-    order = str_to_title(order),
+    tax_order = str_to_title(tax_order),
     trophic_group = str_to_title(trophic_group),
     ecological_group = str_to_title(ecological_group)
   )
 
-if (!vld_equal(sum(is.na(reviewed_trophic_groups$trophic_group)), 0)) {
+# Extract those that were not flagged to exclude
+add_trophic_groups <- reviewed_trophic_groups |>
+  filter(is.na(exclude_from_db)) |>
+  select(-exclude_from_db) |>
+  rename(order = tax_order)
+
+if (!vld_equal(sum(is.na(add_trophic_groups$trophic_group)), 0)) {
   abort_chk("There should be no missing trophic groups, correct before proceeding")
 }
 
-if (!vld_equal(sum(is.na(reviewed_trophic_groups$ecological_group)), 0)) {
+if (!vld_equal(sum(is.na(add_trophic_groups$ecological_group)), 0)) {
   abort_chk("There should be no missing trophic groups, correct before proceeding")
 }
 
-if (!vld_subset(unique(reviewed_trophic_groups$trophic_group), c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish"))) {
+if (!vld_subset(unique(add_trophic_groups$trophic_group), c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish"))) {
   abort_chk("Ensure trophic groups match allowed values")
 }
 
-if (!vld_subset(unique(reviewed_trophic_groups$ecological_group), c("Planktonic Invertebrate", "Other", "Salmonid"))) {
+if (!vld_subset(unique(add_trophic_groups$ecological_group), c("Planktonic Invertebrate", "Other", "Salmonid"))) {
   abort_chk("Ensure ecological groups match allowed values")
 }
 
-if (!vld_equal(sum(duplicated(reviewed_trophic_groups)), 0)) {
+# Combine new trophic groups with existing
+new_trophic_groups <- bind_rows(trophic_group_file_path_std, add_trophic_groups) |>
+  distinct()
+
+if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
 trophic_daff <- daff::diff_data(
   trophic_group_file_path_std,
-  reviewed_trophic_groups,
+  new_trophic_groups,
   ordered = FALSE
 )
 daff::render_diff(
@@ -220,6 +230,16 @@ daff::render_diff(
   pretty = TRUE,
   title = "Trophic Groups"
 )
+
+## Update exclusions -------------------------------------------------------
+exclude_taxa <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
+
+add_exclude_taxa <- reviewed_trophic_groups |>
+  filter(!is.na(exclude_from_db)) |>
+  select(-trophic_group, -ecological_group, -exclude_from_db)
+
+new_exclude_taxa <- bind_rows(exclude_taxa, add_exclude_taxa) |>
+  distinct()
 
 ## Write new reference file ------------------------------------------------
 
@@ -237,7 +257,12 @@ if (FALSE) {
   )
 
   write_csv(
-    reviewed_trophic_groups,
+    new_trophic_groups,
     "inst/extdata/trophic-group.csv",
+  )
+
+  write_csv(
+    new_exclude_taxa,
+    "inst/extdata/exclude_taxa.csv",
   )
 }
