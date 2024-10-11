@@ -124,7 +124,12 @@ missing_species <-
   filter(
     !(is.na(phylum_division) & is.na(class) & is.na(tax_order) & is.na(family))
   ) |>
-  arrange(phylum_division, class, tax_order, family)
+  arrange(phylum_division, class, tax_order, family) |>
+  mutate(
+    trophic_group = "",
+    ecological_group = "",
+    exclude_from_db = ""
+  )
 
 # generate files for review
 write_csv(
