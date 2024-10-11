@@ -51,7 +51,7 @@ data_set <- wqb_create_data_set()
 The data set can be read in after it has been created.
 
 ``` r
-data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
+data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.rds")
 ```
 
 ### Generate Benchmark
@@ -116,21 +116,13 @@ data_agg <- wqb_aggregate(data)
 data_agg <- wqb_af(data_agg)
 
 ctv <- wqb_generate_ctv(data_agg)
-```
-
-    ## Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
-    ## TMB was built with Matrix version 1.6.0
-    ## Current Matrix version is 1.6.1.1
-    ## Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
-
-``` r
 ctv
 ```
 
     ## # A tibble: 1 × 3
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
     ##          <dbl>        <dbl>        <dbl>
-    ## 1       0.0101      0.00195       0.0583
+    ## 1      0.00981      0.00105       0.0543
 
 To calculate the benchmark for the chemical, divide the critical
 toxicity value (ctv) by the assessment factors.
@@ -141,7 +133,7 @@ benchmark
 ```
 
     ##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
-    ## 1   0.01014924  0.001954049   0.05831486
+    ## 1  0.009808029  0.001050889   0.05426475
 
 *SSD* method can generate a lower and upper confidence interval.
 

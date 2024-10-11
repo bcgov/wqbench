@@ -1,11 +1,11 @@
 # Copyright 2024 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,14 +20,14 @@ library(tidyverse)
 # need to pull in raw database data
 # update the file to the most recent version of the database stored locally on your computer
 list.files("~/Ecotoxicology/ecotox_db/", pattern = "\\.sqlite")
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_12_14_2023.sqlite"
+database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.sqlite"
 
 con <- DBI::dbConnect(
   RSQLite::SQLite(),
   database
 )
 
-file_save_loc <- 
+file_save_loc <-
   file.path(
     "~",
     "Poisson",
@@ -74,13 +74,13 @@ write_csv(
 
 db_tests <- DBI::dbReadTable(con, "tests")
 
-db_tests_aquatic <- 
+db_tests_aquatic <-
   db_tests |>
   select(species_number, organism_habitat) |>
   distinct() |>
   filter(organism_habitat == "Water") |>
   tibble()
-  
+
 db_species <- DBI::dbReadTable(con, "species") |>
   mutate(
     phylum_division = str_squish(phylum_division),
@@ -91,12 +91,12 @@ db_species <- DBI::dbReadTable(con, "species") |>
   tibble()
 
   # this filters to only the aquatic tests
-db_species_aqutic <- 
+db_species_aqutic <-
   db_species |>
   left_join(db_tests_aquatic, by = "species_number") |>
   filter(organism_habitat == "Water")
 
-missing_species <- 
+missing_species <-
   db_species_aqutic |>
   filter(is.na(trophic_group) | is.na(ecological_group)) |>
   select(phylum_division, class, tax_order, family) |>
@@ -156,6 +156,6 @@ dir.create(
     format(Sys.Date(), "%Y"),
     "review",
     "completed"
-  ), 
+  ),
   recursive = TRUE
 )

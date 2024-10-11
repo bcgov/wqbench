@@ -25,26 +25,26 @@ devtools::install_github("bcgov/wqbench")
 library(wqbench)
 ```
 
-### Create Data Set for App
+### Create Data Set for Shiny App
 
 The `wqb_create_data_set()` function will download the US EPA ECOTOX<sup>1</sup> database, create a local .sqlite database, add other data sources and filter conditions, clean and process the data, classify the duration, standardize the effect and output the completed data set needed for the shinywqbench app.
 The function will create an RDS file of the data set as well.
-It takes a few minutes to download and create the data set. 
+It takes a few minutes to download and create the data set.
 
-The default argument for: 
+The default argument for:
 
 - `file_path` will save the raw text files at `"~/Ecotoxicology/ecotox"`.
 - `folder_path` will save the .sqlite database and RDS file is at `"~/Ecotoxicology/ecotox_db/"`.
-- `version` will download the most recent version of the data set available on the website. 
+- `version` will download the most recent version of the data set available on the website.
 
 ```{r, eval=FALSE}
 data_set <- wqb_create_data_set()
 ```
 
-The data set can be read in after it has been created. 
+The data set can be read in after it has been created.
 
 ```{r, eval=FALSE}
-data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_03_15_2023.rds")
+data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.rds")
 ```
 
 ### Generate Benchmark
@@ -66,7 +66,7 @@ ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
 
-To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors.  
+To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors.
 
 ```{r}
 benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
@@ -98,7 +98,7 @@ ctv <- wqb_generate_ctv(data_agg)
 ctv
 ```
 
-To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors. 
+To calculate the benchmark for the chemical, divide the critical toxicity value (ctv) by the assessment factors.
 
 ```{r}
 benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
@@ -126,28 +126,38 @@ wqb_summary_trophic_groups(data_agg)
 wqb_summary_af(data_agg)
 ```
 
+## Developer Instructions
+
+See the [Developer Instructions](vignettes/Developer-instructions.md) for
+instructions on:
+
+- [Updating the Ecotox data in the Shiny App](vignettes/Developer-instructions.md#updating-the-internal-data-set-in-the-shiny-app)
+- [Deploying the Shiny App](vignettes/Developer-instructions.md#how-to-deploy-the-shiny-app)
+- [Updating the reference data for the database](vignettes/Developer-instructions.md#updating-reference-data-for-the-database)
+- [Updating the "Add Data" template](vignettes/Developer-instructions.md#updating-the-add-data-template)
+
 ## Getting Help or Reporting an Issue
 
-To report issues, bugs or enhancements, please file an [issue](https://github.com/bcgov/wqbench/issues). 
-Check out the [support](https://github.com/bcgov/wqbench/blob/main/.github/SUPPORT.md) for more info. 
+To report issues, bugs or enhancements, please file an [issue](https://github.com/bcgov/wqbench/issues).
+Check out the [support](https://github.com/bcgov/wqbench/blob/main/.github/SUPPORT.md) for more info.
 
 ## Code of Conduct
 
-Please note that the shinywqbench project is released with a [Contributor Code of Conduct](https://github.com/bcgov/wqbench/CODE_OF_CONDUCT.md). 
+Please note that the shinywqbench project is released with a [Contributor Code of Conduct](https://github.com/bcgov/wqbench/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
-## License 
+## License
 
 The code is released under the Apache License 2.0
 
 > Copyright 2023 Province of British Columbia
-> 
+>
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
-> You may obtain a copy of the License at 
-> 
+> You may obtain a copy of the License at
+>
 > https://www.apache.org/licenses/LICENSE-2.0
-> 
+>
 > Unless required by applicable law or agreed to in writing, software
 > distributed under the License is distributed on an "AS IS" BASIS,
 > WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

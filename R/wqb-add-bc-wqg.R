@@ -158,17 +158,12 @@ read_bc_wqg <- function(db_chemicals) {
     )
   )
 
+
   chk::check_data(
     bc_wqg,
     list(
-      `CAS_ number` = ""
+      `CAS_number` = character()
     )
-  )
-
-  # FIXME: hack because column name has a space in it, can't fix until updated on bcdata
-  bc_wqg <- dplyr::rename(
-    bc_wqg,
-    CAS_number = "CAS_ number"
   )
 
   data <- combine_bc_wqg(bc_wqg, db_chemicals)
