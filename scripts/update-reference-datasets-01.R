@@ -213,7 +213,7 @@ trophic_group_orig <- readr::read_csv(
 
 reviewed_trophic_group_fp <- list.files(
   path = file.path(reviewed_folder),
-  pattern = "trophic-group",
+  pattern = "trophic-group-review",
   full.names = TRUE
 )
 
@@ -226,6 +226,13 @@ reviewed_trophic_groups <- readr::read_csv(
     trophic_group = str_to_title(trophic_group),
     ecological_group = str_to_title(ecological_group)
   )
+
+  if (!vld_subset(
+    unique(reviewed_trophic_groups$exclude_from_db),
+    c("Y", NA_character_)
+  )) {
+    abort_chk("Column `exclude_from_db` should only contain 'Y' or nothing (NA)")
+  }
 
 # Extract those that were not flagged to exclude
 add_trophic_groups <- reviewed_trophic_groups |>
