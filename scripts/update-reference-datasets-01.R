@@ -248,21 +248,23 @@ if (FALSE) {
   # and all checks pass
   write_csv(
     reviewed_duration_std,
-    "inst/extdata/duration-conversion.csv",
+    "inst/extdata/duration-conversion.csv"
   )
 
   write_csv(
     reviewed_conc_std,
-    "inst/extdata/concentration-conversion.csv",
+    "inst/extdata/concentration-conversion.csv"
   )
 
   write_csv(
     new_trophic_groups,
     "inst/extdata/trophic-group.csv",
+    na = ""
   )
 
   write_csv(
     new_exclude_taxa,
     "inst/extdata/exclude_taxa.csv",
+    na = ""
   )
 }
