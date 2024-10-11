@@ -28,31 +28,6 @@ knitr::opts_chunk$set(
 library(wqbench)
 ```
 
-## Updating the Internal Data Set in the Shiny app
-
-The shiny app is located in the [shinywqbench](https://github.com/bcgov/shinywqbench) repository.
-To update the internal data file
-
-1. Go to the `inst/extdata/data.R` file.
-2. Run the script.
-
-This needs to occur each time the ECOTOX EPA data set is updated on the website.
-
-## How to Deploy the Shiny App
-
-The shiny app is located in the [shinywqbench](https://github.com/bcgov/shinywqbench) repository.
-
-1. Go to the scripts/deploy.R file.
-2. Run the script.
-
-It is advised to first run the code that deploys the app name of `shinywqbench-dev` and confirm the app deploys and functions as expected.
-This app is referred to as the development app.
-
-Once it has been confirmed that the app functions and deploys properly to then run the second chunk of code with the app name `shinywqbench`.
-This app is referred to as the production app.
-
-This will help to ensure the production app is always in a working state.
-
 ## Updating Reference Data for the Database
 
 Each time the Ecotox database is updated, the reference files in the package
