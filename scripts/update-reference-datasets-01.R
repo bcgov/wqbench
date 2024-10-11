@@ -169,7 +169,7 @@ trophic_group_file_path <- system.file(
   package = "wqbench"
 )
 
-trophic_group_file_path_std <- readr::read_csv(
+trophic_group_orig <- readr::read_csv(
   trophic_group_file_path,
   show_col_types = FALSE
 )
@@ -213,7 +213,7 @@ if (!vld_subset(unique(add_trophic_groups$ecological_group), c("Planktonic Inver
 }
 
 # Combine new trophic groups with existing
-new_trophic_groups <- bind_rows(trophic_group_file_path_std, add_trophic_groups) |>
+new_trophic_groups <- bind_rows(trophic_group_orig, add_trophic_groups) |>
   distinct()
 
 if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
@@ -221,7 +221,7 @@ if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
 }
 
 trophic_daff <- daff::diff_data(
-  trophic_group_file_path_std,
+  trophic_group_orig,
   new_trophic_groups,
   ordered = FALSE
 )
@@ -232,13 +232,13 @@ daff::render_diff(
 )
 
 ## Update exclusions -------------------------------------------------------
-exclude_taxa <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
+exclude_taxa_orig <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
 
 add_exclude_taxa <- reviewed_trophic_groups |>
   filter(!is.na(exclude_from_db)) |>
   select(-trophic_group, -ecological_group, -exclude_from_db)
 
-new_exclude_taxa <- bind_rows(exclude_taxa, add_exclude_taxa) |>
+new_exclude_taxa <- bind_rows(exclude_taxa_orig, add_exclude_taxa) |>
   distinct()
 
 ## Write new reference file ------------------------------------------------
