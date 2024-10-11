@@ -63,9 +63,13 @@ only_fish_amphibian_life_stages <-
   dplyr::distinct() |>
   dplyr::mutate("fish_amphibian_flag" = TRUE)
 
-life_stage_review <-
-  db_lifestage_codes %>%
-  dplyr::left_join(only_fish_amphibian_life_stages, by = c("code" = "organism_lifestage"))
+life_stage_review2 <-
+  db_lifestage_codes |>
+  dplyr::right_join(
+    only_fish_amphibian_life_stages,
+    by = c("code" = "organism_lifestage")
+  ) |>
+  select(-fish_amphibian_flag)
 
 # generate files for review
 write_csv(
