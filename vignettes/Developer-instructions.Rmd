@@ -68,11 +68,12 @@ These changes may involve:
 - trophic groups and life stage codes for newly added species.
 
 Lists of BC species and concentration endpoints are unlikely to require changes
-but should be reviewed.
+but should be reviewed periodically.
 
 ### Process
 
-1. Ensure you have the most recent copy of the database with the reference files added. To do this run the function `wqb_create_data_set()`.
+1. Ensure you have the most recent copy of the database with the reference files
+added. To do this run the function `wqb_create_data_set()`.
 
 ```{r, eval=FALSE}
 wqb_create_data_set(
@@ -83,27 +84,42 @@ wqb_create_data_set(
 ```
 
 2. Execute the code in the script *scripts/review-reference-datasets-01.R*.
-   - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps.
-   - At the top of the script you will need to set the file path for the database and the location to save the files that are generated.
+  - This script will generate and save a set of csv files that need to be
+    reviewed and updated to allow new values through the data cleaning steps.
+  - At the top of the script you will need to set the file path for the database
+    and the location to save the files that are generated. By defeault they
+    will save at: `"~/Poisson/Data/wqbench/2024/review/to-be-reviewed/"`
 
-3. After the files are generated, they need to be reviewed and updated by a technical expert.
-   - It is recommended to email them to the appropriate person for their review.
-   - The next step must wait until the review is complete.
-   - The life stage code file can't be reviewed until after the trophic groups have been updated.
+3. After the files are generated, they need to be reviewed and updated by a
+  technical expert.
+  - The next step must wait until the review is complete.
+  - The life stage code file can't be reviewed until after the trophic groups
+    have been updated.
 
-4. Once the files are reviewed the *script/update-reference-datasets-01.R* script needs to be run.
-   - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
+4. Once the files are reviewed they should be placed in:
+  `"~/Poisson/Data/wqbench/2024/review/completed/"`
+  - Then run the *script/update-reference-datasets-01.R* script.
+  - This will read in the reviewed files and update the reference files in the
+    *inst/extdata* folder.
 
 5. The package needs to be re-built for the files to be part of the package.
 
-6. Run the `wqb_create_data_set()` function to create the database with the new reference data.
+6. Run the `wqb_create_data_set()` function to create the database with the new
+  reference data.
 
-7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R* and *script/update-reference-datasets-02.R*.
-   - The life stage codes have to be generated seperately as they are based on the trophic groups. The trophic groups need to be updated before life stage codes can be reviewed.
+7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R* and
+  *script/update-reference-datasets-02.R*.
+  - The life stage codes have to be generated seperately as they are based on
+    the trophic groups. The trophic groups need to be updated before life stage
+    codes can be reviewed.
 
-Below are instructions for how to fill out and complete each of the reference files.
+Below are instructions for how to fill out and complete each of the reference
+files.
 
 #### Responsibilities
+
+These responsibilities are broken out for roles of programmer/analyst and
+and technical expert, but they could be the same person.
 
 Programmer/Analyst
 
@@ -125,59 +141,87 @@ Technical Expert
 
 ### Concentration Conversion
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-- If there is no value in the **conc_conversion_flag** column this indicates it is a new concentration unit that was not in the previous version of the database.
-- The goal of the review is to ensure all cells in the **conc_conversion_flag** column are filled in.
+- If there is no value in the **conc_conversion_flag** column this indicates it
+  is a new concentration unit that was not in the previous version of the
+  database.
+- The goal of the review is to ensure all cells in the **conc_conversion_flag**
+  column are filled in.
   - A zero (`0`) indicates the concentration cannot be converted to mg/L or ppm.
     - If the units cannot be converted to mg/L or ppm then put a `0` in the row.
-    - No additional columns need to be filled in if the unit is given a value of `0` in the **conc_conversion_flag** column.
+    - No additional columns need to be filled in if the unit is given a value of
+     `0` in the **conc_conversion_flag** column.
   - A one (`1`) indicates the concentration can be converted to mg/L or ppm.
     - If the units can be converted put a `1` in the row.
-      - In the **conc_conversion_value_multiplier** column fill in the value needed to convert the units into mg/L or ppm.
+      - In the **conc_conversion_value_multiplier** column fill in the value
+        needed to convert the units into mg/L or ppm.
       - In the **conc_conversion_unit** column fill in either `mg/L` or `ppm`.
+  - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
 ### Duration Conversion
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-- If there is no value in the **duration_units_to_keep** column this indicates it is a new concentration unit that was not in the previous version of the database.
-- The goal of the review is to ensure all cells in the **duration_units_to_keep** column are filled in.
+- If there is no value in the **duration_units_to_keep** column this indicates
+  it is a new concentration unit that was not in the previous version of the
+  database.
+- The goal of the review is to ensure all cells in the
+  **duration_units_to_keep** column are filled in.
   - A zero (`0`) indicates the duration cannot be converted to hours.
     - If the units cannot be converted to hours, then put a `0` in the row.
-    - No additional columns need to be filled in if the unit is given a value of `0` in the **duration_units_to_keep** column.
+    - No additional columns need to be filled in if the unit is given a value of
+      `0` in the **duration_units_to_keep** column.
   - A one (`1`) indicates the duration can be converted to hours.
     - If the units can be converted put a `1` in the row.
-      - In the **duration_value_multiplier_to_hours** column fill in the value needed to convert the units into hours.
-      - In the **comments** column write why the conversion was chosen since there may be an assumption made during the conversion. For example, if converting month into hours are you basing the conversion on 30 or 31 days.
+      - In the **duration_value_multiplier_to_hours** column fill in the value
+        needed to convert the units into hours.
+      - In the **comments** column write why the conversion was chosen since
+        there may be an assumption made during the conversion. For example, if
+        converting month into hours are you basing the conversion on 30 or 31
+        days.
+  - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
 ### Trophic Groups
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-- Three files will be generated to help review the trophic group data.
-  - *trophic-group.csv*
-    - This is the current list of trophic and ecological groups coded to the class and order of each species.
-    - This file needs to be updated to add new trophic and ecological groups.
-    - To update add a new row and fill in the **trophic_group** and **ecological_group** columns and the required **class** and **order**.
-      - The **class** and **order** can either both be filled in or one of the values left blank.
-      - The **class** and **order** columns must match up with the **class** and **tax_order** columns from the *species-coded-in-db.csv* or *missing-trophic-group.csv* file.
-  - *species-coded-in-db.csv*
-    - This is a list of all the species data from the database that have been filter where **organism_habitat** is "Water".
-    - This file is to help find which **class** and **tax_order** (order) do not have coding for the ecological or trophic groups.
-      - Filter to rows that have no value in the **trophic_group** and **ecological_group** columns.
-    - This file is for reference and not to be updated or sent back for integration.
-    - This data is summarized in the *missing-trophic-group-review.csv* file because of the large amount of information.
+- Two files will be generated to help review the trophic group data.
   - *missing-trophic-group-review.csv*
-    - This is a summary that shows only the unique phylum, class, order, and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
-    - This file will help to determine which class and order need to be added.
-    - This file is for reference and not to be updated or sent back for integration.
-
-If any incorrect values are found, then those rows can be updated.
+    - This is a summary that shows the unique phylum, class, order, and
+      family of new taxa in the new version of Ecotox database, that do not meet
+      the exclusion criteria. In other words, these are candidate taxa to be
+      added to the internal dataset.
+    - This file contains three columns for the reviewer to consider:
+      **trophic_group**, **ecological_group**, and **exclude_from_db**.
+        - If the taxon is not appropriate for inclusion, put a `"Y"` in the **
+          **exclude_from_db** column. Otherwise leave it blank.
+        - If it is appropriate to include, fill out the **trophic_group** and
+          **ecological_group** columns. Valid values for **trophic_group** are:
+          "Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish".
+          Valid values for **ecological_group** are: "Planktonic Invertebrate",
+          "Other", "Salmonid". In these rows, leave **exclude_from_taxon**
+          blank.
+    - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
+  - *species-coded-in-db.csv*
+    - This is a list of all the species data from the database that have been
+      filter where **organism_habitat** is "Water".
+    - This file is to help find which **class** and **tax_order** (order) do not
+      have coding for the ecological or trophic groups.
+      - Filter to rows that have no value in the **trophic_group** and
+        **ecological_group** columns.
+    - This file is for reference and not to be updated or sent back for
+      integration.
 
 ### Life Stage Codes
 
