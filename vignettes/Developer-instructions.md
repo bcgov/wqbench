@@ -7,10 +7,6 @@ rmarkdown::github_document:
 &#10;rmarkdown::render("vignettes/Developer-instructions.Rmd")
 -->
 
-``` r
-library(wqbench)
-```
-
 ## Updating Reference Data for the Database
 
 Each time the Ecotox database is updated, the reference files in the
@@ -29,6 +25,8 @@ Lists of BC species and concentration endpoints are unlikely to require
 changes but should be reviewed periodically.
 
 ### Process
+
+0.  Download (clone or pull) the `wqbench` repo and open in RStudio.
 
 1.  Ensure you have the most recent copy of the database with the
     reference files added. To do this run the function
@@ -53,8 +51,8 @@ wqb_create_data_set(
   defeault they will save at:
   `"~/Poisson/Data/wqbench/2024/review/to-be-reviewed/"`
 
-3.  After the files are generated, they need to be reviewed and updated
-    by a technical expert.
+3.  After the files are generated, they need to be [reviewed and
+    updated](#review-process) by a technical expert.
 
 - The next step must wait until the review is complete.
 - The life stage code file can’t be reviewed until after the trophic
@@ -81,33 +79,12 @@ wqb_create_data_set(
   on the trophic groups. The trophic groups need to be updated before
   life stage codes can be reviewed.
 
+### Review process
+
 Below are instructions for how to fill out and complete each of the
 reference files.
 
-#### Responsibilities
-
-These responsibilities are broken out for roles of programmer/analyst
-and and technical expert, but they could be the same person.
-
-Programmer/Analyst
-
-- Generate reference files.
-- Send to technical expert for review.
-- Receive updated reference files.
-- Review updates to ensure they are compliant with rules.
-  - Make sure checks pass in *update-reference-dataset.R* script.
-  - Review all changes generated in the daff reports.
-  - Communicate with technical expert as needed.
-- Update package with new reference data.
-- Check reference data can be integrated into the ECOTOX data.
-
-Technical Expert
-
-- Review and update reference files.
-- Follow instructions for how to fill out and complete updates.
-- Send reviewed/updated reference files back to programmer.
-
-### Concentration Conversion
+#### Concentration Conversion
 
 This data set should be reviewed each time a new version of the ECOTOX
 database is released.
@@ -135,7 +112,7 @@ database is released.
 
 If any incorrect conversions are found, then those rows can be updated.
 
-### Duration Conversion
+#### Duration Conversion
 
 This data set should be reviewed each time a new version of the ECOTOX
 database is released.
@@ -163,7 +140,7 @@ database is released.
 
 If any incorrect conversions are found, then those rows can be updated.
 
-### Trophic Groups
+#### Trophic Groups
 
 This data set should be reviewed each time a new version of the ECOTOX
 database is released.
@@ -176,27 +153,32 @@ database is released.
       candidate taxa to be added to the internal dataset.
     - This file contains three columns for the reviewer to consider:
       **trophic_group**, **ecological_group**, and **exclude_from_db**.
-      - If the taxon is not appropriate for inclusion, put a `"Y"` in
-        the ** **exclude_from_db\*\* column. Otherwise leave it blank.
+      - If the taxon is not appropriate for inclusion, put a `1` in the
+        **exclude_from_db** column. Otherwise leave it blank.
       - If it is appropriate to include, fill out the **trophic_group**
         and **ecological_group** columns. Valid values for
         **trophic_group** are: “Invertebrate”, “Algae”, “Amphibian”,
         “Plant”, “Bacteria”, “Fish”. Valid values for
         **ecological_group** are: “Planktonic Invertebrate”, “Other”,
-        “Salmonid”. In these rows, leave **exclude_from_taxon** blank.
+        “Salmonid”.
+      - If there is a row in the “missing-trophic-review” sheet that
+        doesn’t have family or order, do one of two things: if the
+        phylum/division is really small and the whole taxon can be
+        assigned an ecological group and trophic group, do so. If not
+        (e.g. Annelida, Arthropoda), just leave it blank - and rest
+        assured that lower taxonomic entities have likely been assigned
+        to the appropriate trophic group and ecological group.
     - Once completed, this file should be saved in the `"completed"`
       subfolder in the review folder.
   - *species-coded-in-db-ref.csv*
     - This is a list of all the species data from the database that have
-      been filter where **organism_habitat** is “Water”.
+      been filtered where **organism_habitat** is “Water”.
     - This file is to help find which **class** and **tax_order**
       (order) do not have coding for the ecological or trophic groups.
-      - Filter to rows that have no value in the **trophic_group** and
-        **ecological_group** columns.
     - This file is for reference and not to be updated or sent back for
       integration.
 
-### Life Stage Codes
+#### Life Stage Codes
 
 This data set should be reviewed each time a new version of the ECOTOX
 database is released.
@@ -216,7 +198,7 @@ the **simple_lifestage** column fill in any empty cells with either
 Once completed, this file should be saved in the `"completed"` subfolder
 in the review folder.
 
-### BC Species
+#### BC Species
 
 This reference dataset has not been included in the
 *review-reference-datasets.R* script as it should not vary from year to
@@ -229,7 +211,7 @@ Any species that is not listed in the *bc-species.csv* reference file is
 marked as not present in BC and thus it is robust to new species added
 to the ECOTOX dataset.
 
-### Concentration Endpoints
+#### Concentration Endpoints
 
 This reference dataset has not been included in the
 *review-reference-datasets.R* script as it should not vary from year to
@@ -243,7 +225,10 @@ The list of concentration endpoints are generated in the
 If updates are required then update the *concentration-endpoints.R*
 script.
 
-## Updating the Add Data Template
+### Updating the Add Data Template
+
+**This will rarely need to be done as additions / removals to ecological
+groups and trophic groups are uncommon**
 
 #### Associated Reference Data
 
