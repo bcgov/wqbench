@@ -45,14 +45,17 @@ concentration_std_file_path <- system.file(
 
 concentration_std <- readr::read_csv(
   concentration_std_file_path,
-  show_col_types = FALSE
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    conc_conversion_flag = col_logical(),
+    conc_conversion_value_multiplier = col_double(),
+    conc_conversion_unit = col_character()
+  )
 ) |>
   select(
     code, description, conc_conversion_flag, conc_conversion_value_multiplier,
     conc_conversion_unit
-  ) |>
-  mutate(
-    conc_conversion_flag = as.logical(conc_conversion_flag)
   )
 
 reviewed_conc_std_fp <- list.files(
@@ -153,11 +156,15 @@ reviewed_duration_std <- list.files(
 )
 
 reviewed_duration_std <- readr::read_csv(
-  reviewed_duration_std
-) |>
-  mutate(
-    duration_units_to_keep = as.logical(duration_units_to_keep)
+  reviewed_duration_std,
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    duration_units_to_keep = col_logical(),
+    duration_value_multiplier_to_hours = col_double(),
+    comments = col_character()
   )
+)
 
 if (!vld_equal(
   sum(is.na(reviewed_duration_std$duration_units_to_keep)),
@@ -218,25 +225,35 @@ reviewed_trophic_group_fp <- list.files(
 )
 
 reviewed_trophic_groups <- readr::read_csv(
-  reviewed_trophic_group_fp
+  reviewed_trophic_group_fp,
+  col_types = cols(
+    phylum_division = col_character(),
+    class = col_character(),
+    tax_order = col_character(),
+    family = col_character(),
+    trophic_group = col_character(),
+    ecological_group = col_character(),
+    exclude_from_db = col_logical()
+  )
 ) |>
   mutate(
     class = str_to_title(class),
     tax_order = str_to_title(tax_order),
     trophic_group = str_to_title(trophic_group),
-    ecological_group = str_to_title(ecological_group)
+    ecological_group = str_to_title(ecological_group),
+    exclude_from_db = vapply(exclude_from_db, isTRUE, FUN.VALUE = TRUE)
   )
 
   if (!vld_subset(
     unique(reviewed_trophic_groups$exclude_from_db),
-    c("Y", NA_character_)
+    c(TRUE, FALSE, NA)
   )) {
-    abort_chk("Column `exclude_from_db` should only contain 'Y' or nothing (NA)")
+    abort_chk("Column `exclude_from_db` should only contain '1', '0', or nothing (NA)")
   }
 
 # Extract those that were not flagged to exclude
 add_trophic_groups <- reviewed_trophic_groups |>
-  filter(is.na(exclude_from_db)) |>
+  filter(!exclude_from_db) |>
   select(-exclude_from_db) |>
   rename(order = tax_order)
 
@@ -289,11 +306,22 @@ daff::render_diff(
 exclude_taxa_orig <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
 
 add_exclude_taxa <- reviewed_trophic_groups |>
-  filter(!is.na(exclude_from_db)) |>
+  filter(exclude_from_db) |>
   select(-trophic_group, -ecological_group, -exclude_from_db)
 
 new_exclude_taxa <- bind_rows(exclude_taxa_orig, add_exclude_taxa) |>
   distinct()
+
+exclude_daff <- daff::diff_data(
+  exclude_taxa_orig,
+  new_exclude_taxa,
+  ordered = FALSE
+)
+daff::render_diff(
+  exclude_daff,
+  pretty = TRUE,
+  title = "Taxa to Exclude"
+)
 
 ## Write new reference file ------------------------------------------------
 
