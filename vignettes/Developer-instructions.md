@@ -97,7 +97,9 @@ wqb_create_data_set(
     RStudio. Commit these files to Git, and push it to GitHub. Go to the
     GitHub repository, and open a pull request from your branch (created
     in step 1). Best practice is to have someone review the PR, but if
-    you know the changes are good, you can merge it yourself.
+    you know the changes are good, you can merge it yourself. At the
+    very least, ensure that all of the automated checks pass before you
+    merge.
 
 10. Once your update is merged, install the new version:
     `devtools::install_github("bcgov/wqbench")`.
