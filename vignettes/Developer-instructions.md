@@ -188,11 +188,13 @@ database is released.
         “Salmonid”.
       - If there is a row in the “missing-trophic-review” sheet that
         doesn’t have family or order, do one of two things: if the
-        phylum/division is really small and the whole taxon can be
+        phylum/division is really small and/or the whole taxon can be
         assigned an ecological group and trophic group, do so. If not
-        (e.g. Annelida, Arthropoda), just leave it blank - and rest
-        assured that lower taxonomic entities have likely been assigned
-        to the appropriate trophic group and ecological group.
+        (e.g. Annelida, Arthropoda), put `1` in the **exclude_from_db**
+        column so that high-level taxon won’t appear for you to review
+        again, but lower levels within that phylum/division will. It is
+        also likely that lower taxonomic entities have been assigned to
+        the appropriate trophic group and ecological group.
     - Once completed, this file should be saved in the `"completed"`
       subfolder in the review folder.
   - *species-coded-in-db-ref.csv*
