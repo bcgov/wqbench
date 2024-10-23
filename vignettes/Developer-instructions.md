@@ -304,5 +304,5 @@ changes to the reference data sheets occur.
 ## Push and install the pacakge
 
 Finally, after all of the all of the updates are completed, push them to
-GitHub. Install the updated package with `devtools::install()`, or from
-GitHub with `devtools::install_github("bcgov/wqbench")`.
+GitHub. Install the updated package with
+`devtools::install_github("bcgov/wqbench")`.

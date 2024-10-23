@@ -280,5 +280,5 @@ The instructions in the upload data template need to be updated when changes to 
 ## Push and install the pacakge
 
 Finally, after all of the all of the updates are completed, push them
-to GitHub. Install the updated package with `devtools::install()`, or
-from GitHub with `devtools::install_github("bcgov/wqbench")`.
+to GitHub. Install the updated package with
+`devtools::install_github("bcgov/wqbench")`.
