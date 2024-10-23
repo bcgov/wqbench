@@ -3,7 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   Developer-instructions: Developer-instructions.html
-last_built: 2024-10-23T21:13Z
+last_built: 2024-10-23T22:09Z
 urls:
   reference: https://bcgov.github.io/wqbench/reference
   article: https://bcgov.github.io/wqbench/articles
