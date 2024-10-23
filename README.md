@@ -12,6 +12,11 @@ coverage](https://codecov.io/gh/bcgov/wqbench/branch/main/graph/badge.svg)](http
 This package contains the functions and tools to generate aquatic life
 water quality benchmarks.
 
+## Documentation
+
+See the [package website](https://bcgov.github.io/wqbench/) for
+documentation on how to use the package.
+
 ## Installation
 
 ``` r
@@ -192,17 +197,15 @@ wqb_summary_af(data_agg)
 
 ## Developer Instructions
 
-See the [Developer Instructions](vignettes/Developer-instructions.md)
-for instructions on:
+See the [Developer
+Instructions](https://bcgov.github.io/wqbench/articles/Developer-instructions.html)
+on the package website for instructions on updating the reference data
+for the database and updating the “Add Data” template
 
-- [Updating the Ecotox data in the Shiny
-  App](vignettes/Developer-instructions.md#updating-the-internal-data-set-in-the-shiny-app)
-- [Deploying the Shiny
-  App](vignettes/Developer-instructions.md#how-to-deploy-the-shiny-app)
-- [Updating the reference data for the
-  database](vignettes/Developer-instructions.md#updating-reference-data-for-the-database)
-- [Updating the “Add Data”
-  template](vignettes/Developer-instructions.md#updating-the-add-data-template)
+See the [README in the shinywqbench
+repository](https://github.com/bcgov/shinywqbench?tab=readme-ov-file#shinywqbench)
+for instructions for updating and deploying the [shiny
+app](https://bcgov-env.shinyapps.io/shinywqbench/).
 
 ## Getting Help or Reporting an Issue
 
