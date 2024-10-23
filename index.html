@@ -89,7 +89,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">wqbench</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
-<h3 id="create-data-set-for-app">Create Data Set for App<a class="anchor" aria-label="anchor" href="#create-data-set-for-app"></a>
+<h3 id="create-data-set-for-shiny-app">Create Data Set for Shiny App<a class="anchor" aria-label="anchor" href="#create-data-set-for-shiny-app"></a>
 </h3>
 <p>The <code><a href="reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function will download the US EPA ECOTOX<sup>1</sup> database, create a local .sqlite database, add other data sources and filter conditions, clean and process the data, classify the duration, standardize the effect and output the completed data set needed for the shinywqbench app. The function will create an RDS file of the data set as well. It takes a few minutes to download and create the data set.</p>
 <p>The default argument for:</p>
@@ -209,6 +209,17 @@
 <span id="cb23-6"><a href="#cb23-6" tabindex="-1"></a><span class="do">## 3 B.C. species                                   1 Accounts for uncertainty of …</span></span></code></pre></div>
 </div>
 </div>
+</div>
+<div class="section level2">
+<h2 id="developer-instructions">Developer Instructions<a class="anchor" aria-label="anchor" href="#developer-instructions"></a>
+</h2>
+<p>See the <a href="vignettes/Developer-instructions.html">Developer Instructions</a> for instructions on:</p>
+<ul>
+<li><a href="vignettes/Developer-instructions.html#updating-the-internal-data-set-in-the-shiny-app">Updating the Ecotox data in the Shiny App</a></li>
+<li><a href="vignettes/Developer-instructions.html#how-to-deploy-the-shiny-app">Deploying the Shiny App</a></li>
+<li><a href="vignettes/Developer-instructions.html#updating-reference-data-for-the-database">Updating the reference data for the database</a></li>
+<li><a href="vignettes/Developer-instructions.html#updating-the-add-data-template">Updating the “Add Data” template</a></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="getting-help-or-reporting-an-issue">Getting Help or Reporting an Issue<a class="anchor" aria-label="anchor" href="#getting-help-or-reporting-an-issue"></a>

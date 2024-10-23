@@ -86,39 +86,6 @@ rmarkdown::github_document:
 
 rmarkdown::render("vignettes/Developer-instructions.Rmd")
 -->
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">wqbench</span><span class="op">)</span></span></code></pre></div>
-<div class="section level2">
-<h2 id="updating-the-internal-data-set-in-the-shiny-app">Updating the Internal Data Set in the Shiny app<a class="anchor" aria-label="anchor" href="#updating-the-internal-data-set-in-the-shiny-app"></a>
-</h2>
-<p>The shiny app is located in the <a href="https://github.com/bcgov/shinywqbench" class="external-link">shinywqbench</a>
-repository. To update the internal data file</p>
-<ol style="list-style-type: decimal">
-<li>Go to the <code>inst/extdata/data.R</code> file.</li>
-<li>Run the script.</li>
-</ol>
-<p>This needs to occur each time the ECOTOX EPA data set is updated on
-the website.</p>
-</div>
-<div class="section level2">
-<h2 id="how-to-deploy-the-shiny-app">How to Deploy the Shiny App<a class="anchor" aria-label="anchor" href="#how-to-deploy-the-shiny-app"></a>
-</h2>
-<p>The shiny app is located in the <a href="https://github.com/bcgov/shinywqbench" class="external-link">shinywqbench</a>
-repository.</p>
-<ol style="list-style-type: decimal">
-<li>Go to the scripts/deploy.R file.</li>
-<li>Run the script.</li>
-</ol>
-<p>It is advised to first run the code that deploys the app name of
-<code>shinywqbench-dev</code> and confirm the app deploys and functions
-as expected. This app is referred to as the development app.</p>
-<p>Once it has been confirmed that the app functions and deploys
-properly to then run the second chunk of code with the app name
-<code>shinywqbench</code>. This app is referred to as the production
-app.</p>
-<p>This will help to ensure the production app is always in a working
-state.</p>
-</div>
 <div class="section level2">
 <h2 id="updating-reference-data-for-the-database">Updating Reference Data for the Database<a class="anchor" aria-label="anchor" href="#updating-reference-data-for-the-database"></a>
 </h2>
@@ -134,100 +101,102 @@ concentration and duration units,</li>
 <li>trophic groups and life stage codes for newly added species.</li>
 </ul>
 <p>Lists of BC species and concentration endpoints are unlikely to
-require changes but should be reviewed.</p>
+require changes but should be reviewed periodically.</p>
 <div class="section level3">
 <h3 id="process">Process<a class="anchor" aria-label="anchor" href="#process"></a>
 </h3>
-<ol style="list-style-type: decimal">
-<li>Ensure you have the most recent copy of the database with the
-reference files added. To do this run the function
-<code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code>.</li>
+<ol start="0" style="list-style-type: decimal">
+<li><p>Download (clone or pull) the <code>wqbench</code> repo and open
+in RStudio. The best practice is to open a new git branch, called
+something like <code>update-[date-of-new-ecotox]</code>. In Rstudio, git
+pane -&gt; New branch -&gt; give it a name, and check “Sync branch with
+remote”.</p></li>
+<li><p>Ensure you have the most recent copy of the database with the
+reference files added. To do this, load the package, and run the
+function <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code>:</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/wqb_create_data_set.html">wqb_create_data_set</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">load_all</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/wqb_create_data_set.html">wqb_create_data_set</a></span><span class="op">(</span></span>
 <span>  file_path <span class="op">=</span> <span class="st">"~/Ecotoxicology/ecotox"</span>,</span>
 <span>  version <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  folder_path <span class="op">=</span> <span class="st">"~/Ecotoxicology/ecotox_db/"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>
-<p>Execute the code in the script
-<em>scripts/review-reference-datasets-01.R</em>.</p>
+<li>Execute the code in the script
+<em>scripts/review-reference-datasets-01.R</em>.</li>
+</ol>
 <ul>
 <li>This script will generate and save a set of csv files that need to
 be reviewed and updated to allow new values through the data cleaning
 steps.</li>
 <li>At the top of the script you will need to set the file path for the
-database and the location to save the files that are generated.</li>
-</ul>
+database and the location to save the files that are generated. By
+defeault they will save at:
+<code>"~/Poisson/Data/wqbench/[current-year]/review/to-be-reviewed/"</code>
 </li>
-<li>
-<p>After the files are generated, they need to be reviewed and
-updated by a technical expert.</p>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>After the files are generated, they need to be <a href="#review-process">reviewed and updated</a> by a technical
+expert.</li>
+</ol>
 <ul>
-<li>It is recommended to email them to the appropriate person for their
-review.</li>
 <li>The next step must wait until the review is complete.</li>
 <li>The life stage code file can’t be reviewed until after the trophic
 groups have been updated.</li>
 </ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Once the files are reviewed they should be placed in:
+<code>"~/Poisson/Data/wqbench/[current-year]/review/completed/"</code>
 </li>
-<li>
-<p>Once the files are reviewed the
-<em>script/update-reference-datasets-01.R</em> script needs to be
-run.</p>
+</ol>
 <ul>
+<li>Then run the <em>scripts/update-reference-datasets-01.R</em>
+script.</li>
+<li>Run this line by line - You will be shown several displays showing
+the updates that will be made to the internal data - ensure these look
+ok. If they do, continue executing the script, if not you will need to
+revisit your review and the changes you made to the csv files in the
+<code>completed</code> folder.</li>
 <li>This will read in the reviewed files and update the reference files
 in the <em>inst/extdata</em> folder.</li>
 </ul>
-</li>
+<ol start="5" style="list-style-type: decimal">
 <li><p>The package needs to be re-built for the files to be part of the
-package.</p></li>
+package. Run <code>devtools::load_all()</code>.</p></li>
 <li><p>Run the <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function to create the
 database with the new reference data.</p></li>
-<li>
-<p>Repeat steps 2 through 6 but run
-<em>scripts/review-reference-datasets-02.R</em> and
-<em>script/update-reference-datasets-02.R</em>.</p>
+<li><p>Repeat steps 2 through 6 but run
+<em>scripts/review-reference-datasets-02.R</em>, review the file, and
+run <em>scripts/update-reference-datasets-02.R</em>.</p></li>
+</ol>
 <ul>
 <li>The life stage codes have to be generated seperately as they are
 based on the trophic groups. The trophic groups need to be updated
 before life stage codes can be reviewed.</li>
 </ul>
-</li>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Run the <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function again to
+create the database with the new reference data.</p></li>
+<li><p>These steps will have caused changes to several files in
+<code>inst/extdata</code>. The changes will be shown in the Git pane in
+RStudio. Commit these files to Git, and push it to GitHub. Go to the
+GitHub repository, and open a pull request from your branch (created in
+step 1). Best practice is to have someone review the PR, but if you know
+the changes are good, you can merge it yourself.</p></li>
+<li><p>Once your update is merged, install the new version:
+<code>devtools::install_github("bcgov/wqbench")</code>.</p></li>
 </ol>
+</div>
+<div class="section level3">
+<h3 id="review-process">Review process<a class="anchor" aria-label="anchor" href="#review-process"></a>
+</h3>
 <p>Below are instructions for how to fill out and complete each of the
 reference files.</p>
 <div class="section level4">
-<h4 id="responsibilities">Responsibilities<a class="anchor" aria-label="anchor" href="#responsibilities"></a>
+<h4 id="concentration-conversion">Concentration Conversion<a class="anchor" aria-label="anchor" href="#concentration-conversion"></a>
 </h4>
-<p>Programmer/Analyst</p>
-<ul>
-<li>Generate reference files.</li>
-<li>Send to technical expert for review.</li>
-<li>Receive updated reference files.</li>
-<li>Review updates to ensure they are compliant with rules.
-<ul>
-<li>Make sure checks pass in <em>update-reference-dataset.R</em>
-script.</li>
-<li>Review all changes generated in the daff reports.</li>
-<li>Communicate with technical expert as needed.</li>
-</ul>
-</li>
-<li>Update package with new reference data.</li>
-<li>Check reference data can be integrated into the ECOTOX data.</li>
-</ul>
-<p>Technical Expert</p>
-<ul>
-<li>Review and update reference files.</li>
-<li>Follow instructions for how to fill out and complete updates.</li>
-<li>Send reviewed/updated reference files back to programmer.</li>
-</ul>
-</div>
-</div>
-<div class="section level3">
-<h3 id="concentration-conversion">Concentration Conversion<a class="anchor" aria-label="anchor" href="#concentration-conversion"></a>
-</h3>
 <p>This data set should be reviewed each time a new version of the
 ECOTOX database is released.</p>
 <ul>
@@ -260,15 +229,17 @@ in the value needed to convert the units into mg/L or ppm.</li>
 </li>
 </ul>
 </li>
+<li>Once completed, this file should be saved in the
+<code>"completed"</code> subfolder in the review folder.</li>
 </ul>
 </li>
 </ul>
 <p>If any incorrect conversions are found, then those rows can be
 updated.</p>
 </div>
-<div class="section level3">
-<h3 id="duration-conversion">Duration Conversion<a class="anchor" aria-label="anchor" href="#duration-conversion"></a>
-</h3>
+<div class="section level4">
+<h4 id="duration-conversion">Duration Conversion<a class="anchor" aria-label="anchor" href="#duration-conversion"></a>
+</h4>
 <p>This data set should be reviewed each time a new version of the
 ECOTOX database is released.</p>
 <ul>
@@ -303,71 +274,62 @@ example, if converting month into hours are you basing the conversion on
 </li>
 </ul>
 </li>
+<li>Once completed, this file should be saved in the
+<code>"completed"</code> subfolder in the review folder.</li>
 </ul>
 </li>
 </ul>
 <p>If any incorrect conversions are found, then those rows can be
 updated.</p>
 </div>
-<div class="section level3">
-<h3 id="trophic-groups">Trophic Groups<a class="anchor" aria-label="anchor" href="#trophic-groups"></a>
-</h3>
+<div class="section level4">
+<h4 id="trophic-groups">Trophic Groups<a class="anchor" aria-label="anchor" href="#trophic-groups"></a>
+</h4>
 <p>This data set should be reviewed each time a new version of the
 ECOTOX database is released.</p>
 <ul>
-<li>Three files will be generated to help review the trophic group data.
+<li>Two files will be generated to help review the trophic group data.
 <ul>
-<li>
-<em>trophic-group.csv</em>
-<ul>
-<li>This is the current list of trophic and ecological groups coded to
-the class and order of each species.</li>
-<li>This file needs to be updated to add new trophic and ecological
-groups.</li>
-<li>To update add a new row and fill in the
-<strong>trophic_group</strong> and <strong>ecological_group</strong>
-columns and the required <strong>class</strong> and
-<strong>order</strong>.
-<ul>
-<li>The <strong>class</strong> and <strong>order</strong> can either
-both be filled in or one of the values left blank.</li>
-<li>The <strong>class</strong> and <strong>order</strong> columns must
-match up with the <strong>class</strong> and <strong>tax_order</strong>
-columns from the <em>species-coded-in-db.csv</em> or
-<em>missing-trophic-group.csv</em> file.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<em>species-coded-in-db.csv</em>
-<ul>
-<li>This is a list of all the species data from the database that have
-been filter where <strong>organism_habitat</strong> is “Water”.</li>
-<li>This file is to help find which <strong>class</strong> and
-<strong>tax_order</strong> (order) do not have coding for the ecological
-or trophic groups.
-<ul>
-<li>Filter to rows that have no value in the
-<strong>trophic_group</strong> and <strong>ecological_group</strong>
-columns.</li>
-</ul>
-</li>
-<li>This file is for reference and not to be updated or sent back for
-integration.</li>
-<li>This data is summarized in the
-<em>missing-trophic-group-review.csv</em> file because of the large
-amount of information.</li>
-</ul>
-</li>
 <li>
 <em>missing-trophic-group-review.csv</em>
 <ul>
-<li>This is a summary that shows only the unique phylum, class, order,
-and family from the missing trophic and ecological groups in the
-<em>species-coded-in-db.csv</em> file.</li>
-<li>This file will help to determine which class and order need to be
-added.</li>
+<li>This is a summary that shows the unique phylum, class, order, and
+family of new taxa in the new version of Ecotox database, that do not
+meet the exclusion criteria. In other words, these are candidate taxa to
+be added to the internal dataset.</li>
+<li>This file contains three columns for the reviewer to consider:
+<strong>trophic_group</strong>, <strong>ecological_group</strong>, and
+<strong>exclude_from_db</strong>.
+<ul>
+<li>If the taxon is not appropriate for inclusion, put a <code>1</code>
+in the <strong>exclude_from_db</strong> column. Otherwise leave it
+blank.</li>
+<li>If it is appropriate to include, fill out the
+<strong>trophic_group</strong> and <strong>ecological_group</strong>
+columns. Valid values for <strong>trophic_group</strong> are:
+“Invertebrate”, “Algae”, “Amphibian”, “Plant”, “Bacteria”, “Fish”. Valid
+values for <strong>ecological_group</strong> are: “Planktonic
+Invertebrate”, “Other”, “Salmonid”.</li>
+<li>If there is a row in the “missing-trophic-review” sheet that doesn’t
+have family or order, do one of two things: if the phylum/division is
+really small and the whole taxon can be assigned an ecological group and
+trophic group, do so. If not (e.g. Annelida, Arthropoda), just leave it
+blank - and rest assured that lower taxonomic entities have likely been
+assigned to the appropriate trophic group and ecological group.</li>
+</ul>
+</li>
+<li>Once completed, this file should be saved in the
+<code>"completed"</code> subfolder in the review folder.</li>
+</ul>
+</li>
+<li>
+<em>species-coded-in-db-ref.csv</em>
+<ul>
+<li>This is a list of all the species data from the database that have
+been filtered where <strong>organism_habitat</strong> is “Water”.</li>
+<li>This file is to help find which <strong>class</strong> and
+<strong>tax_order</strong> (order) do not have coding for the ecological
+or trophic groups.</li>
 <li>This file is for reference and not to be updated or sent back for
 integration.</li>
 </ul>
@@ -375,41 +337,31 @@ integration.</li>
 </ul>
 </li>
 </ul>
-<p>If any incorrect values are found, then those rows can be
-updated.</p>
 </div>
-<div class="section level3">
-<h3 id="life-stage-codes">Life Stage Codes<a class="anchor" aria-label="anchor" href="#life-stage-codes"></a>
-</h3>
+<div class="section level4">
+<h4 id="life-stage-codes">Life Stage Codes<a class="anchor" aria-label="anchor" href="#life-stage-codes"></a>
+</h4>
 <p>This data set should be reviewed each time a new version of the
 ECOTOX database is released.</p>
 <p>This data set will be sent separately after the first round of files
 is reviewed because this data depends on the updates to the trophic
-group data.</p>
-<ul>
-<li>If there is no value in the <strong>simple_lifestage</strong> column
-this indicates it is a new life stage that was not in the previous
-coding of the database.</li>
-<li>The <strong>trophic_group</strong> column indicates if the
-<strong>simple_lifestage</strong> relates to a fish or amphibian. Only
-fish and amphibian groups need the life stage categorized into simple
-groups.</li>
-<li>The goal of the review is to ensure all cells in the
-<strong>simple_lifestage</strong> column that have
-<strong>fish_amphibian_flag</strong> column as TRUE are filled in.
-<ul>
-<li>In the <strong>simple_lifestage</strong> column fill in the empty
-cell with either <code>els</code> (early life stage),
-<code>juvenile</code> or <code>adult</code>.</li>
-</ul>
-</li>
-</ul>
-<p>If any incorrect values are found, then those rows can be
-updated.</p>
+group data. Only fish and amphibian groups need the life stage
+categorized into simple groups, so this file only contains fish and
+amphibians.</p>
+<p><em>lifestage-code-review.csv</em>: - If there is no value in the
+<strong>simple_lifestage</strong> column this indicates it is a new life
+stage that was not in the previous coding of the database. - The goal of
+the review is to ensure all cells in the
+<strong>simple_lifestage</strong> are filled in. - In the
+<strong>simple_lifestage</strong> column fill in any empty cells with
+either <code>els</code> (early life stage), <code>juvenile</code> or
+<code>adult</code>.</p>
+<p>Once completed, this file should be saved in the
+<code>"completed"</code> subfolder in the review folder.</p>
 </div>
-<div class="section level3">
-<h3 id="bc-species">BC Species<a class="anchor" aria-label="anchor" href="#bc-species"></a>
-</h3>
+<div class="section level4">
+<h4 id="bc-species">BC Species<a class="anchor" aria-label="anchor" href="#bc-species"></a>
+</h4>
 <p>This reference dataset has not been included in the
 <em>review-reference-datasets.R</em> script as it should not vary from
 year to year.</p>
@@ -419,9 +371,9 @@ Conservation Data Centre.</p>
 reference file is marked as not present in BC and thus it is robust to
 new species added to the ECOTOX dataset.</p>
 </div>
-<div class="section level3">
-<h3 id="concentration-endpoints">Concentration Endpoints<a class="anchor" aria-label="anchor" href="#concentration-endpoints"></a>
-</h3>
+<div class="section level4">
+<h4 id="concentration-endpoints">Concentration Endpoints<a class="anchor" aria-label="anchor" href="#concentration-endpoints"></a>
+</h4>
 <p>This reference dataset has not been included in the
 <em>review-reference-datasets.R</em> script as it should not vary from
 year to year.</p>
@@ -433,9 +385,11 @@ adjusted.</p>
 <em>concentration-endpoints.R</em> script.</p>
 </div>
 </div>
-<div class="section level2">
-<h2 id="updating-the-add-data-template">Updating the Add Data Template<a class="anchor" aria-label="anchor" href="#updating-the-add-data-template"></a>
-</h2>
+<div class="section level3">
+<h3 id="updating-the-add-data-template">Updating the Add Data Template<a class="anchor" aria-label="anchor" href="#updating-the-add-data-template"></a>
+</h3>
+<p><strong>This will rarely need to be done as additions / removals to
+ecological groups and trophic groups are uncommon</strong></p>
 <div class="section level4">
 <h4 id="associated-reference-data">Associated Reference Data<a class="anchor" aria-label="anchor" href="#associated-reference-data"></a>
 </h4>
@@ -513,6 +467,15 @@ edits came through and the template looks as expected.
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="push-and-install-the-pacakge">Push and install the pacakge<a class="anchor" aria-label="anchor" href="#push-and-install-the-pacakge"></a>
+</h2>
+<p>Finally, after all of the all of the updates are completed, push them
+to GitHub. Install the updated package with
+<code>devtools::install()</code>, or from GitHub with
+<code>devtools::install_github("bcgov/wqbench")</code>.</p>
 </div>
   </div>
 
