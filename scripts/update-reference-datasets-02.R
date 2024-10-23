@@ -86,9 +86,12 @@ daff::render_diff(
   title = "Life Stage Codes"
 )
 
-if (FALSE) {
-  # Only run this code if the html reports align with the requirements
-  # and all checks pass
+## Write new reference file ------------------------------------------------
+# Only run this code if the html reports align with the requirements
+# and all checks pass. Change this variable to TRUE and run the rest of the code
+all_checks_ok <- FALSE
+
+if (all_checks_ok) {
   write_csv(
     reviewed_lifestage_code,
     "inst/extdata/lifestage-codes.csv",

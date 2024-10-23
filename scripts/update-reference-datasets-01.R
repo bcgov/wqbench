@@ -324,10 +324,11 @@ daff::render_diff(
 )
 
 ## Write new reference file ------------------------------------------------
+# Only run this code if the html reports align with the requirements
+# and all checks pass. Change this variable to TRUE and run the rest of the code
+all_checks_ok <- FALSE
 
-if (FALSE) {
-  # Only run this code if the html reports align with the requirements
-  # and all checks pass
+if (all_checks_ok) {
   write_csv(
     reviewed_duration_std,
     "inst/extdata/duration-conversion.csv"
