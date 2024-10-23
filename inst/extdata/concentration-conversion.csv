@@ -80,7 +80,6 @@ code,description,conc_conversion_flag,conc_conversion_value_multiplier,conc_conv
 %RBC,percent red blood cells,FALSE,NA,NA
 %succ br/fm,percent successful broods per female,FALSE,NA,NA
 --,Unspecified,FALSE,NA,NA
-0/00,parts per thousand,TRUE,1000,ppm
 0/00 diet,parts per thousand diet,FALSE,NA,NA
 0/00 v/v,parts per thousand volume per volume,FALSE,NA,NA
 1 mg/10 ml,1 milligram per 10 milliliters,FALSE,NA,NA
@@ -355,12 +354,10 @@ AI mg/300 ml,active ingredient milligrams per 300 millilters,FALSE,NA,NA
 AI mg/4.41 m2,active ingredient milligrams per 4.41 square meters,FALSE,NA,NA
 AI mg/50 ml H2O,active ingredient milligrams per 50 milliliters water,FALSE,NA,NA
 AI mg/60000 sd,active ingredient milligrams per 60000 seeds,FALSE,NA,NA
-AI mg/L,active ingredient milligram per Liter,TRUE,1,mg/L
 AI mg/L diet,active ingredient milligrams per liter diet,FALSE,NA,NA
 AI mg/cm2,active ingredient milligrams per square centimeter,FALSE,NA,NA
 AI mg/cm3,active ingredient milligrams per cubic centimeter,FALSE,NA,NA
 AI mg/d,active ingredient milligrams per day,FALSE,NA,NA
-AI mg/dm3,active ingredient milligrams per cubic decimeter,TRUE,1,mg/L
 AI mg/eu,active ingredient milligrams per experimental unit,FALSE,NA,NA
 AI mg/g,active ingredient milligrams per gram,FALSE,NA,NA
 AI mg/g diet,active ingredient milligrams per gram diet,FALSE,NA,NA
@@ -379,7 +376,6 @@ AI mg/kg wet wt soil,Active ingredient milligrams per kilogram wet weight soil,F
 AI mg/kg/d,active ingredient milligrams per kilogram per day,FALSE,NA,NA
 AI mg/m,Active ingredient milligrams per meter,FALSE,NA,NA
 AI mg/m2,active ingredient milligrams per square meter,FALSE,NA,NA
-AI mg/ml,active ingredient milligrams per milliliter,TRUE,1000,mg/L
 AI mg/ml diet,active ingredient milligrams per milliliter diet,FALSE,NA,NA
 AI mg/org,active ingredient milligrams per organism,FALSE,NA,NA
 AI mg/sd,active ingredient milligrams per seed,FALSE,NA,NA
@@ -409,7 +405,6 @@ AI mol/eu,active ingredient moles per experimental unit,FALSE,NA,NA
 AI mol/kg,Active ingredient moles per kilogram,FALSE,NA,NA
 AI nL/L,active ingredient nanoliters per liter,FALSE,NA,NA
 AI ng,active ingredient nanograms,FALSE,NA,NA
-AI ng/L,active ingredient nanograms per liter,TRUE,1e-6,mg/L
 AI ng/L diet,active ingredient nanograms per liter diet,FALSE,NA,NA
 AI ng/cm2,active ingredient. nanograms per square centimeter,FALSE,NA,NA
 AI ng/cm2 lf,active ingredient nanograms per square centimeter leaf,FALSE,NA,NA
@@ -439,10 +434,8 @@ AI oz/cwt sd,active ingredient ounces per hundredweight seed,FALSE,NA,NA
 AI oz/gal,active ingredient ounces per gallon,FALSE,NA,NA
 AI oz/in dbh,active ingredient ounces per inches diameter at breast height,FALSE,NA,NA
 AI oz/lb seed,active ingredient ounces per pound seed,FALSE,NA,NA
-AI ppb,active ingredient parts per billion,TRUE,0.001,ppm
 AI ppb diet,active ingredient parts per billion diet,FALSE,NA,NA
 AI pph sd,active ingredient parts per one hundred parts seed,FALSE,NA,NA
-AI ppm,active ingredient parts per million,TRUE,1,ppm
 AI ppm H2O,active ingredient parts per million water,FALSE,NA,NA
 AI ppm diet,active ingredient parts per million diet,FALSE,NA,NA
 AI ppm dry soil,active ingredient parts per million dry soil,FALSE,NA,NA
@@ -453,7 +446,6 @@ AI ppm w/w,active ingredient parts per million weight per weight,FALSE,NA,NA
 AI ppm w/w bt,active ingredient parts per million weight per weight bait,FALSE,NA,NA
 AI ppm w/w dry bt,active ingredient parts per million weight per weight dry bait,FALSE,NA,NA
 AI ppmw/soil vol,active ingredient parts per million by weight per soil volume,FALSE,NA,NA
-AI ppt,Active ingredient parts per trillion,TRUE,1e-6,ppm
 AI pt/acre,active ingredient pints per acre,FALSE,NA,NA
 AI uM,active ingredient microMolar,FALSE,NA,NA
 AI ug,active ingredient micrograms,FALSE,NA,NA
@@ -463,7 +455,6 @@ AI ug/100 cm2,active ingredient micrograms per 100 square centimeters,FALSE,NA,N
 AI ug/100 org,active ingredient micrograms per 100 organisms,FALSE,NA,NA
 AI ug/120 g soil,active ingredient micrograms per 120 grams soil,FALSE,NA,NA
 AI ug/40 ml diet,active ingredient micrograms per 40 milliliters diet,FALSE,NA,NA
-AI ug/L,active ingredient micrograms per Liter,TRUE,0.001,mg/L
 AI ug/L diet,active ingredient micrograms per liter diet,FALSE,NA,NA
 AI ug/cm2,active ingredient micrograms per square centimeter,FALSE,NA,NA
 AI ug/cm2 diet,active ingredient micrograms per square centimeters diet,FALSE,NA,NA
@@ -488,7 +479,6 @@ AI ug/kg soil,active ingredient micrograms per kilogram soil,FALSE,NA,NA
 AI ug/kg wet media,active ingredient micrograms per kilogram wet media,FALSE,NA,NA
 AI ug/mg 100 ml solv,active ingredient micrograms per milligram in 100 milliliters of solvent,FALSE,NA,NA
 AI ug/mg bdwt,active ingredient micrograms per milligram body weight,FALSE,NA,NA
-AI ug/ml,active ingredient micrograms per milliliter,TRUE,1,mg/L
 AI ug/ml diet,active ingredient micrograms per milliliter diet,FALSE,NA,NA
 AI ug/org,active ingredient micrograms per organism,FALSE,NA,NA
 AI ug/org/d,active ingredient micrograms per organism per day,FALSE,NA,NA
@@ -1021,7 +1011,6 @@ g/50 seeds,grams per 50 seeds,FALSE,NA,NA
 g/500 g diet,grams per 500 grams diet,FALSE,NA,NA
 g/500 ml,grams per 500 milliliters,FALSE,NA,NA
 g/500 sd,grams per 500 seeds,FALSE,NA,NA
-g/6 L,grams per 6 liters,TRUE,6000,mg/L
 g/60 cm,grams per 60 centimeters,FALSE,NA,NA
 g/7 kg,grams per 7 kilograms,FALSE,NA,NA
 g/70 d,grams per 70 days,FALSE,NA,NA
@@ -1029,7 +1018,6 @@ g/800 ml,grams per 800 milliliters,FALSE,NA,NA
 g/946 ml,grams per 946 milliliters,FALSE,NA,NA
 g/BDAY,grams per bird-day,FALSE,NA,NA
 g/FM,grams per female,FALSE,NA,NA
-g/L,grams per liter,TRUE,1000,mg/L
 g/L H2O,grams per liter water,FALSE,NA,NA
 g/L diet,grams per liter diet,FALSE,NA,NA
 g/L soil,grams per liter soil,FALSE,NA,NA
@@ -1052,7 +1040,6 @@ g/d/100 kg org,grams per day per 100 kilograms organism,FALSE,NA,NA
 g/d/org,grams per day per organism,FALSE,NA,NA
 g/d/wght,grams per day per weight,FALSE,NA,NA
 g/dl,grams per deciliter,FALSE,NA,NA
-g/dm3,grams per cubic decimeter,TRUE,1000,mg/L
 g/dn(Std),"grams per dunam, dunum or donum (Std 1000m2)",FALSE,NA,NA
 g/eu,grams per experimental unit,FALSE,NA,NA
 g/eu/d,gramss per experimental unit per day,FALSE,NA,NA
@@ -1095,8 +1082,6 @@ g/linear ft,grams per linear foot,FALSE,NA,NA
 g/m,grams per meter,FALSE,NA,NA
 g/m2,grams per square meter,FALSE,NA,NA
 g/m2 soil,grams per square meter soil,FALSE,NA,NA
-g/m3,grams per cubic meter,TRUE,1,mg/L
-g/ml,grams per milliliter,TRUE,1000000,mg/L
 g/ml/100 L,grams per milliliter per 100 liters,FALSE,NA,NA
 g/ml/eu,grams per milliliter per experimental unit,FALSE,NA,NA
 g/org,grams per organism,FALSE,NA,NA
@@ -1225,7 +1210,6 @@ lb/1000 ft2,pounds per 1000 square feet,FALSE,NA,NA
 lb/1000 ft3,pounds per 1000 cubic feet,FALSE,NA,NA
 lb/11 gal/acre,pound per 11 gallons per acre,FALSE,NA,NA
 lb/40 gal,pounds per 40 gallons,FALSE,NA,NA
-lb/5 gal,pounds per 5 gallons,TRUE,24000,mg/L
 lb/5 gal/acre,pounds per 5 gallons per acre,FALSE,NA,NA
 lb/90 ft2,pounds per 90 square feet,FALSE,NA,NA
 lb/ac ft,pounds per acre foot,FALSE,NA,NA
@@ -1241,8 +1225,6 @@ lb/org/d,pounds per organism per day,FALSE,NA,NA
 lb/plot,pounds per plot,FALSE,NA,NA
 lb/rod2,pounds per square rod,FALSE,NA,NA
 lbs ae/ac,pounds acid equivalent per acre,FALSE,NA,NA
-lbs/200 gal,pounds per 200 gallons,TRUE,599,mg/L
-lbs/50 gal,pounds per 50 gallons,TRUE,2400,mg/L
 lf prog/lf intl,ratio of live females per live females initial,FALSE,NA,NA
 lit,litters,FALSE,NA,NA
 lit/pr,litters per pair,FALSE,NA,NA
@@ -1350,14 +1332,12 @@ mg/100 lbs,milligrams per 100 pounds,FALSE,NA,NA
 mg/100 mg TI,milligrams per 100 milligrams tissue,FALSE,NA,NA
 mg/100 ml,milligrams per 100 milliliters,FALSE,NA,NA
 mg/100 ml diet,milligrams per 100 milliliters diet,FALSE,NA,NA
-mg/100 ul,milligrams per 100 microliters,TRUE,10000,mg/L
 mg/12 h,milligrams per 12 hours,FALSE,NA,NA
 mg/15 cm3,milligrams per 15 cubic centimeters,FALSE,NA,NA
 mg/15 g diet,milligrams per 15 grams diet,FALSE,NA,NA
 mg/150 ml,milligrams per 150 milliliters,FALSE,NA,NA
 mg/2.5 cm dia,milligrams per 2.5 centimeter diameter,FALSE,NA,NA
 mg/20 cm3,milligrams per 20 cubic centimeters,FALSE,NA,NA
-mg/200 ml,milligrams per 200 milliliters,TRUE,5,mg/L
 mg/24 h,milligrams per 24 hours,FALSE,NA,NA
 mg/24 h/kg,milligrams per 24 hours per kilogram,FALSE,NA,NA
 mg/25 mL,milligrams per 25 milliliters,FALSE,NA,NA
@@ -1380,10 +1360,8 @@ mg/60 g egg,milligrams per 60 grams egg,FALSE,NA,NA
 mg/60 ml,milligrams per 60 milliliters,FALSE,NA,NA
 mg/650 g soil,milligrams per 650 grams soil,FALSE,NA,NA
 mg/70 g,milligrams per 70 grams,FALSE,NA,NA
-mg/L,miligram per liter,TRUE,1,mg/L
 mg/L 10 mi,milligrams per liter 10 minutes,FALSE,NA,NA
 mg/L diet,milligrams per liter diet,FALSE,NA,NA
-mg/L media,milligrams per liter media,TRUE,1,mg/L
 mg/L/d,milligrams per liter per day,FALSE,NA,NA
 mg/L/h,milligrams per liter per hour,FALSE,NA,NA
 mg/TI,milligrams per tissue,FALSE,NA,NA
@@ -1402,7 +1380,6 @@ mg/d/bdwt,milligrams per day per body weight,FALSE,NA,NA
 mg/d/wght,milligrams per day per weight,FALSE,NA,NA
 mg/dl,milligrams per deciliter,FALSE,NA,NA
 mg/dm2/h,milligrams per square decimeter per hour,FALSE,NA,NA
-mg/dm3,milligrams per cubed decimeter,TRUE,1,mg/L
 mg/dose,milligrams per dose,FALSE,NA,NA
 mg/egg,milligrams per egg,FALSE,NA,NA
 mg/eu,milligrams per experimental unit,FALSE,NA,NA
@@ -1473,14 +1450,12 @@ mg/kg/org,milligrams per kilogram per organism,FALSE,NA,NA
 mg/kg/wk,milligrams per kilogram per week,FALSE,NA,NA
 mg/lb,milligrams per pound,FALSE,NA,NA
 mg/m2,milligrams per square meter,FALSE,NA,NA
-mg/m3,milligrams per cubic meter,TRUE,0.001,mg/L
 mg/mg,milligrams per milligrams,FALSE,NA,NA
 mg/mg CREA,milligrams per milligrams creatinine,FALSE,NA,NA
 mg/mg bdwt,milligrams per milligram body weight,FALSE,NA,NA
 mg/mg node,milligrams per milligram nodules,FALSE,NA,NA
 mg/mg wet bdwt,milligrams per milligram wet body weight,FALSE,NA,NA
 mg/mi,milligrams per minute,FALSE,NA,NA
-mg/ml,milligrams per milliliter,TRUE,1000,mg/L
 mg/ml diet,milligrams per milliliter diet,FALSE,NA,NA
 mg/ml/g wt,milligrams per milliliter per gram weight,FALSE,NA,NA
 mg/mm2,milligrams per square milliliter,FALSE,NA,NA
@@ -1753,7 +1728,6 @@ ng/24 h,nanograms per 24 hours,FALSE,NA,NA
 ng/25 mL,nanograms per 25 milliliters,FALSE,NA,NA
 ng/3 ul diet,nanograms per 3 microliters diet,FALSE,NA,NA
 ng/45 ml,nanograms per 45 milliliters,FALSE,NA,NA
-ng/L,nanograms per liter,TRUE,1e-6,mg/L
 ng/TI,nanograms per tissue,FALSE,NA,NA
 ng/cm,nanograms per centimeter,FALSE,NA,NA
 ng/cm2,nanograms per square centimeter,FALSE,NA,NA
@@ -1788,7 +1762,6 @@ ng/kg bdwt/d,nanograms per kilogram body weight per day,FALSE,NA,NA
 ng/kg diet,nanograms per kilogram diet,FALSE,NA,NA
 ng/kg soil,nanograms per kilogram soil,FALSE,NA,NA
 ng/kg/wk,nanograms per kilogram per week,FALSE,NA,NA
-ng/m3,nanograms per cubic meter,TRUE,1e-9,mg/L
 ng/mg,nanograms per milligram,FALSE,NA,NA
 ng/mg bdwt,nanograms per milligram body weight,FALSE,NA,NA
 ng/mg diet,nanograms per milligram diet,FALSE,NA,NA
@@ -1796,7 +1769,6 @@ ng/mg pro,nanograms per milligram protein,FALSE,NA,NA
 ng/mg/mi,nanograms per milligram per minute,FALSE,NA,NA
 ng/mi/kg bdwt,nanograms per minute per kilograms body weight,FALSE,NA,NA
 ng/min,nanograms per minute,FALSE,NA,NA
-ng/ml,nanograms per milliliter,TRUE,0.001,mg/L
 ng/ml blood/d,nanograms per milliliter blood per day,FALSE,NA,NA
 ng/ml diet,nanograms per milliliter diet,FALSE,NA,NA
 ng/ml/h,nanograms per milliliter per hour,FALSE,NA,NA
@@ -2013,7 +1985,6 @@ pellet/org/d,pellets per organism per day,FALSE,NA,NA
 pellets,pellets,FALSE,NA,NA
 pg,picograms,FALSE,NA,NA
 pg TE/g egg,picograms Toxic Equivalent per gram egg,FALSE,NA,NA
-pg/L,picograms per liter,TRUE,1e-9,mg/L
 pg/TI,picograms per tissue,FALSE,NA,NA
 pg/cell,picograms per cell,FALSE,NA,NA
 pg/cm2,picograms per square centimeter,FALSE,NA,NA
@@ -2058,13 +2029,11 @@ pmol/ml,picomoles per milliliter,FALSE,NA,NA
 pmol/nl,picomoles per nanoliter,FALSE,NA,NA
 pmol/nm p450/mi,picomoles per nanomol cytochrome P450 per minute,FALSE,NA,NA
 pmol/org,picomoles per organism,FALSE,NA,NA
-ppb,parts per billion,TRUE,0.001,ppm
 ppb diet,parts per billion diet,FALSE,NA,NA
 ppb dry wt,parts per billion dry weight,FALSE,NA,NA
 ppb/2 H/org,parts per billion per two hours per organism,FALSE,NA,NA
 ppb/ml,parts per billion per milliliter,FALSE,NA,NA
 pphr,parts per hundred rubber,FALSE,NA,NA
-ppm,parts per million,TRUE,1,ppm
 ppm H2O,parts per million water,FALSE,NA,NA
 ppm diet,parts per million diet,FALSE,NA,NA
 ppm diet/d,parts per million diet per day,FALSE,NA,NA
@@ -2093,13 +2062,10 @@ ppmv,parts per million by volume,FALSE,NA,NA
 ppmv/eu,parts per million by weight per pot,FALSE,NA,NA
 ppmw,parts per million by weight,FALSE,NA,NA
 ppmw diet,parts per million by weight diet,FALSE,NA,NA
-ppt,parts per trillion,TRUE,1e-6,ppm
 prdt/mi/mg pro,product formed per minute per milligram protein,FALSE,NA,NA
 pt,pints,FALSE,NA,NA
 pt/100 ft2,pints per 100 square feet,FALSE,NA,NA
 pt/100 gal,pints per 100 gallons,FALSE,NA,NA
-pt/30 gal,pints per 30 gallons,TRUE,3470,mg/L
-pt/40 gal,pints per 40 gallons,TRUE,2600,mg/L
 pt/acre,pints per acre,FALSE,NA,NA
 pt/gal,pints per gallon,FALSE,NA,NA
 ptm,parts per thousand million,FALSE,NA,NA
@@ -2235,7 +2201,6 @@ ug-atoms/L,micrograms atoms per liter,FALSE,NA,NA
 ug/0.1 ml/d/org,micrograms per 0.1 milliliter per day per organism,FALSE,NA,NA
 ug/0.2 ml diet,micrograms per 0.2 milliliters diet,FALSE,NA,NA
 ug/0.5 g,micrograms per 0.5 grams,FALSE,NA,NA
-ug/10 L,micrograms per 10 liters,TRUE,1e-4,mg/L
 ug/10 g bdwt,micrograms per 10 grams body weight,FALSE,NA,NA
 ug/100 g,micrograms per 100 grams,FALSE,NA,NA
 ug/100 g bdwt,micrograms per 100 grams body weight,FALSE,NA,NA
@@ -2246,7 +2211,6 @@ ug/100 mg,micrograms per 100 milligrams,FALSE,NA,NA
 ug/100 mg TI,micrograms per 100 milligram tissue,FALSE,NA,NA
 ug/100 mg/30mi,micrograms per 100 milligrams per 30 minutes,FALSE,NA,NA
 ug/100 mg/h,micrograms per 100 milligrams per hour,FALSE,NA,NA
-ug/100 ml,micrograms per 100 milliliters,TRUE,0.01,mg/L
 ug/100 ml RBC,micrograms per 100 milliliters red blood cells,FALSE,NA,NA
 ug/100 ml diet,micrograms per 100 milliliters diet,FALSE,NA,NA
 ug/2 ml diet,Micrograms per 2 milliliters diet,FALSE,NA,NA
@@ -2257,16 +2221,13 @@ ug/24 h,micrograms per 24 hours,FALSE,NA,NA
 ug/24 h/org,micrograms per 24 hours per organism,FALSE,NA,NA
 ug/25 mL,micrograms per 25 milliliters,FALSE,NA,NA
 ug/250 g bdwt,micrograms per 250 grams body weight,FALSE,NA,NA
-ug/3.5 L,micrograms per 3.5 liters,TRUE,2.86e-4,mg/L
 ug/300 g bdwt,micrograms per 300 grams body weight,FALSE,NA,NA
 ug/4 d,micrograms per 4 days,FALSE,NA,NA
-ug/5 ml,micrograms per 5 milliliters,TRUE,0.2,mg/L
 ug/50 g bdwt,micrograms per 50 grams body weight,FALSE,NA,NA
 ug/50 ml,micrograms per 50 milliliters,FALSE,NA,NA
 ug/50 ul,micrograms per 50 microliters,FALSE,NA,NA
 ug/500 g,micrograms per 500 grams,FALSE,NA,NA
 ug/72 h,micrograms per 72 hours,FALSE,NA,NA
-ug/L,micrograms per liter,TRUE,0.001,mg/L
 ug/L diet,micrograms per liter diet,FALSE,NA,NA
 ug/L/d,micrograms per liter per day,FALSE,NA,NA
 ug/L/hr,microgram per liter per hour,FALSE,NA,NA
@@ -2278,7 +2239,6 @@ ug/cm2,micrograms per square centimeter,FALSE,NA,NA
 ug/cm2 lf,micrograms per square centimeter leaf,FALSE,NA,NA
 ug/cm2 org,micrograms per square centimeter of organism,FALSE,NA,NA
 ug/cm2/d,micrograms per square centimeter per day,FALSE,NA,NA
-ug/cm3,micrograms per cubic centimeter,TRUE,1,mg/L
 ug/d,micrograms per day,FALSE,NA,NA
 ug/d/org,micrograms per day per organism,FALSE,NA,NA
 ug/disk,micrograms per disk,FALSE,NA,NA
@@ -2372,18 +2332,15 @@ ug/mg pro/hr,micrograms per milligram protein per hour,FALSE,NA,NA
 ug/mi,micrograms per minute,FALSE,NA,NA
 ug/mi/mg pro,micrograms per minute per milligram protein,FALSE,NA,NA
 ug/min/ml,micrograms per minute per milliliter,FALSE,NA,NA
-ug/ml,micrograms per milliliter,TRUE,1,mg/L
 ug/ml H2O,micrograms per milliliter water,FALSE,NA,NA
 ug/ml diet,micrograms per milliliter diet,FALSE,NA,NA
 ug/ml soil,micrograms per milliliter soil,FALSE,NA,NA
-ug/mm3,micrograms per cubic millimeter,TRUE,1000,mg/L
 ug/org,micrograms per organism,FALSE,NA,NA
 ug/org dry wt,micrograms per organism dry weight,FALSE,NA,NA
 ug/org/d,micrograms per organism per day,FALSE,NA,NA
 ug/org/wk,micrograms per organism per week,FALSE,NA,NA
 ug/sample,micrograms per sample,FALSE,NA,NA
 ug/tank/wk,micrograms per tank per week,FALSE,NA,NA
-ug/ul,micrograms per microliter,TRUE,1000,mg/L
 ug/ul diet,micrograms per microliter diet,FALSE,NA,NA
 ul,microliters,FALSE,NA,NA
 ul Eq/ml,microliters equivalents per milliliter,FALSE,NA,NA
@@ -2536,3 +2493,57 @@ units/ml RBC,units per milliliter red blood cells,FALSE,NA,NA
 v/v,volume per volume,FALSE,NA,NA
 wght/lit,weight per litter,FALSE,NA,NA
 wk,Week,FALSE,NA,NA
+0/00,parts per thousand,TRUE,1000,ppm
+AI mg/L,active ingredient milligram per Liter,TRUE,1,mg/L
+AI mg/dm3,active ingredient milligrams per cubic decimeter,TRUE,1,mg/L
+AI mg/ml,active ingredient milligrams per milliliter,TRUE,1000,mg/L
+AI ng/L,active ingredient nanograms per liter,TRUE,1e-6,mg/L
+AI ppb,active ingredient parts per billion,TRUE,0.001,ppm
+AI ppm,active ingredient parts per million,TRUE,1,ppm
+AI ppt,Active ingredient parts per trillion,TRUE,1e-6,ppm
+AI ug/L,active ingredient micrograms per Liter,TRUE,0.001,mg/L
+AI ug/ml,active ingredient micrograms per milliliter,TRUE,1,mg/L
+g/6 L,grams per 6 liters,TRUE,6000,mg/L
+g/L,grams per liter,TRUE,1000,mg/L
+g/dm3,grams per cubic decimeter,TRUE,1000,mg/L
+g/m3,grams per cubic meter,TRUE,1,mg/L
+g/ml,grams per milliliter,TRUE,1000000,mg/L
+lb/5 gal,pounds per 5 gallons,TRUE,24000,mg/L
+lbs/200 gal,pounds per 200 gallons,TRUE,599,mg/L
+lbs/50 gal,pounds per 50 gallons,TRUE,2400,mg/L
+mg/100 ul,milligrams per 100 microliters,TRUE,10000,mg/L
+mg/200 ml,milligrams per 200 milliliters,TRUE,5,mg/L
+mg/L,miligram per liter,TRUE,1,mg/L
+mg/L media,milligrams per liter media,TRUE,1,mg/L
+mg/dm3,milligrams per cubed decimeter,TRUE,1,mg/L
+mg/m3,milligrams per cubic meter,TRUE,0.001,mg/L
+mg/ml,milligrams per milliliter,TRUE,1000,mg/L
+ng/L,nanograms per liter,TRUE,1e-6,mg/L
+ng/m3,nanograms per cubic meter,TRUE,1e-9,mg/L
+ng/ml,nanograms per milliliter,TRUE,0.001,mg/L
+pg/L,picograms per liter,TRUE,1e-9,mg/L
+ppb,parts per billion,TRUE,0.001,ppm
+ppm,parts per million,TRUE,1,ppm
+ppt,parts per trillion,TRUE,1e-6,ppm
+pt/30 gal,pints per 30 gallons,TRUE,3470,mg/L
+pt/40 gal,pints per 40 gallons,TRUE,2600,mg/L
+ug/10 L,micrograms per 10 liters,TRUE,1e-4,mg/L
+ug/100 ml,micrograms per 100 milliliters,TRUE,0.01,mg/L
+ug/3.5 L,micrograms per 3.5 liters,TRUE,2.86e-4,mg/L
+ug/5 ml,micrograms per 5 milliliters,TRUE,0.2,mg/L
+ug/L,micrograms per liter,TRUE,0.001,mg/L
+ug/cm3,micrograms per cubic centimeter,TRUE,1,mg/L
+ug/ml,micrograms per milliliter,TRUE,1,mg/L
+ug/mm3,micrograms per cubic millimeter,TRUE,1000,mg/L
+ug/ul,micrograms per microliter,TRUE,1000,mg/L
+AI g/200 L/ha,active ingredient grams per 200 liters per hectare,FALSE,NA,NA
+AI g/hm,active ingredient grams per hectometer,FALSE,NA,NA
+AI ml/200 L/ha,active ingredient milliliters per 200 liters per hectare,FALSE,NA,NA
+cm3/20 L,cubic centimeters per 20 liters,FALSE,NA,NA
+cm3/20 L diet,cubic centimeters per 20 liters diet,FALSE,NA,NA
+g/L/org,grams per liter per organism,FALSE,NA,NA
+nM/org,nanomolar per organism,FALSE,NA,NA
+uMd,micromolar day,FALSE,NA,NA
+ug/0.25 ml/org/d,micrograms per 0.25 milliliters per organism per day,FALSE,NA,NA
+ug/100 ul/org,micrograms per 100 ul per org,FALSE,NA,NA
+ug/g eu/35 ml,micrograms per gram experimental unit per 35 milliliters,FALSE,NA,NA
