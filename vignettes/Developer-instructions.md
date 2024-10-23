@@ -26,13 +26,18 @@ changes but should be reviewed periodically.
 
 ### Process
 
-0.  Download (clone or pull) the `wqbench` repo and open in RStudio.
+0.  Download (clone or pull) the `wqbench` repo and open in RStudio. The
+    best practice is to open a new git branch, called something like
+    `update-[date-of-new-ecotox]`. In Rstudio, git pane -\> New branch
+    -\> give it a name, and check “Sync branch with remote”.
 
 1.  Ensure you have the most recent copy of the database with the
-    reference files added. To do this run the function
-    `wqb_create_data_set()`.
+    reference files added. To do this, load the package, and run the
+    function `wqb_create_data_set()`:
 
 ``` r
+devtools::load_all()
+
 wqb_create_data_set(
   file_path = "~/Ecotoxicology/ecotox",
   version = 1,
@@ -49,7 +54,7 @@ wqb_create_data_set(
 - At the top of the script you will need to set the file path for the
   database and the location to save the files that are generated. By
   defeault they will save at:
-  `"~/Poisson/Data/wqbench/2024/review/to-be-reviewed/"`
+  `"~/Poisson/Data/wqbench/[current-year]/review/to-be-reviewed/"`
 
 3.  After the files are generated, they need to be [reviewed and
     updated](#review-process) by a technical expert.
@@ -59,9 +64,14 @@ wqb_create_data_set(
   groups have been updated.
 
 4.  Once the files are reviewed they should be placed in:
-    `"~/Poisson/Data/wqbench/2024/review/completed/"`
+    `"~/Poisson/Data/wqbench/[current-year]/review/completed/"`
 
 - Then run the *scripts/update-reference-datasets-01.R* script.
+- Run this line by line - You will be shown several displays showing the
+  updates that will be made to the internal data - ensure these look ok.
+  If they do, continue executing the script, if not you will need to
+  revisit your review and the changes you made to the csv files in the
+  `completed` folder.
 - This will read in the reviewed files and update the reference files in
   the *inst/extdata* folder.
 
@@ -78,6 +88,19 @@ wqb_create_data_set(
 - The life stage codes have to be generated seperately as they are based
   on the trophic groups. The trophic groups need to be updated before
   life stage codes can be reviewed.
+
+8.  Run the `wqb_create_data_set()` function again to create the
+    database with the new reference data.
+
+9.  These steps will have caused changes to several files in
+    `inst/extdata`. The changes will be shown in the Git pane in
+    RStudio. Commit these files to Git, and push it to GitHub. Go to the
+    GitHub repository, and open a pull request from your branch (created
+    in step 1). Best practice is to have someone review the PR, but if
+    you know the changes are good, you can merge it yourself.
+
+10. Once your update is merged, install the new version:
+    `devtools::install_github("bcgov/wqbench")`.
 
 ### Review process
 
