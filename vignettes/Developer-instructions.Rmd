@@ -24,35 +24,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(wqbench)
-```
-
-## Updating the Internal Data Set in the Shiny app
-
-The shiny app is located in the [shinywqbench](https://github.com/bcgov/shinywqbench) repository.
-To update the internal data file
-
-1. Go to the `inst/extdata/data.R` file.
-2. Run the script.
-
-This needs to occur each time the ECOTOX EPA data set is updated on the website.
-
-## How to Deploy the Shiny App
-
-The shiny app is located in the [shinywqbench](https://github.com/bcgov/shinywqbench) repository.
-
-1. Go to the scripts/deploy.R file.
-2. Run the script.
-
-It is advised to first run the code that deploys the app name of `shinywqbench-dev` and confirm the app deploys and functions as expected.
-This app is referred to as the development app.
-
-Once it has been confirmed that the app functions and deploys properly to then run the second chunk of code with the app name `shinywqbench`.
-This app is referred to as the production app.
-
-This will help to ensure the production app is always in a working state.
-
 ## Updating Reference Data for the Database
 
 Each time the Ecotox database is updated, the reference files in the package
@@ -68,13 +39,21 @@ These changes may involve:
 - trophic groups and life stage codes for newly added species.
 
 Lists of BC species and concentration endpoints are unlikely to require changes
-but should be reviewed.
+but should be reviewed periodically.
 
 ### Process
 
-1. Ensure you have the most recent copy of the database with the reference files added. To do this run the function `wqb_create_data_set()`.
+0. Download (clone or pull) the `wqbench` repo and open in RStudio. The best practice
+  is to open a new git branch, called something like `update-[date-of-new-ecotox]`.
+  In Rstudio, git pane -> New branch -> give it a name, and check "Sync branch
+  with remote".
+
+1. Ensure you have the most recent copy of the database with the reference files
+added. To do this, load the package, and run the function `wqb_create_data_set()`:
 
 ```{r, eval=FALSE}
+devtools::load_all()
+
 wqb_create_data_set(
   file_path = "~/Ecotoxicology/ecotox",
   version = 1,
@@ -83,116 +62,168 @@ wqb_create_data_set(
 ```
 
 2. Execute the code in the script *scripts/review-reference-datasets-01.R*.
-   - This script will generate and save a set of csv files that need to be reviewed and updated to allow new values through the data cleaning steps.
-   - At the top of the script you will need to set the file path for the database and the location to save the files that are generated.
+  - This script will generate and save a set of csv files that need to be
+    reviewed and updated to allow new values through the data cleaning steps.
+  - At the top of the script you will need to set the file path for the database
+    and the location to save the files that are generated. By defeault they
+    will save at: `"~/Poisson/Data/wqbench/[current-year]/review/to-be-reviewed/"`
 
-3. After the files are generated, they need to be reviewed and updated by a technical expert.
-   - It is recommended to email them to the appropriate person for their review.
-   - The next step must wait until the review is complete.
-   - The life stage code file can't be reviewed until after the trophic groups have been updated.
+3. After the files are generated, they need to be [reviewed and updated](#review-process) by a
+  technical expert.
+  - The next step must wait until the review is complete.
+  - The life stage code file can't be reviewed until after the trophic groups
+    have been updated.
 
-4. Once the files are reviewed the *script/update-reference-datasets-01.R* script needs to be run.
-   - This will read in the reviewed files and update the reference files in the *inst/extdata* folder.
+4. Once the files are reviewed they should be placed in:
+  `"~/Poisson/Data/wqbench/[current-year]/review/completed/"`
+  - Then run the *scripts/update-reference-datasets-01.R* script.
+  - Run this line by line - You will be shown several displays showing the
+    updates that will be made to the internal data - ensure these look ok. If
+    they do, continue executing the script, if not you will need to revisit your
+    review and the changes you made to the csv files in the `completed` folder.
+  - This will read in the reviewed files and update the reference files in the
+    *inst/extdata* folder.
 
 5. The package needs to be re-built for the files to be part of the package.
+  Run `devtools::load_all()`.
 
-6. Run the `wqb_create_data_set()` function to create the database with the new reference data.
+6. Run the `wqb_create_data_set()` function to create the database with the new
+  reference data.
 
-7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R* and *script/update-reference-datasets-02.R*.
-   - The life stage codes have to be generated seperately as they are based on the trophic groups. The trophic groups need to be updated before life stage codes can be reviewed.
+7. Repeat steps 2 through 6 but run *scripts/review-reference-datasets-02.R*,
+  review the file, and run *scripts/update-reference-datasets-02.R*.
+  - The life stage codes have to be generated seperately as they are based on
+    the trophic groups. The trophic groups need to be updated before life stage
+    codes can be reviewed.
 
-Below are instructions for how to fill out and complete each of the reference files.
+8. Run the `wqb_create_data_set()` function again to create the database with
+  the new reference data.
 
-#### Responsibilities
+9. These steps will have caused changes to several files in `inst/extdata`. The
+  changes will be shown in the Git pane in RStudio. Commit these files to Git,
+  and push it to GitHub. Go to the GitHub repository, and open
+  a pull request from your branch (created in step 1). Best practice is to have
+  someone review the PR, but if you know the changes are good, you can merge it
+  yourself.
 
-Programmer/Analyst
+10. Once your update is merged, install the new version:
+  `devtools::install_github("bcgov/wqbench")`.
 
-- Generate reference files.
-- Send to technical expert for review.
-- Receive updated reference files.
-- Review updates to ensure they are compliant with rules.
-  - Make sure checks pass in *update-reference-dataset.R* script.
-  - Review all changes generated in the daff reports.
-  - Communicate with technical expert as needed.
-- Update package with new reference data.
-- Check reference data can be integrated into the ECOTOX data.
+### Review process
 
-Technical Expert
+Below are instructions for how to fill out and complete each of the reference
+files.
 
-- Review and update reference files.
-- Follow instructions for how to fill out and complete updates.
-- Send reviewed/updated reference files back to programmer.
+#### Concentration Conversion
 
-### Concentration Conversion
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
-
-- If there is no value in the **conc_conversion_flag** column this indicates it is a new concentration unit that was not in the previous version of the database.
-- The goal of the review is to ensure all cells in the **conc_conversion_flag** column are filled in.
+- If there is no value in the **conc_conversion_flag** column this indicates it
+  is a new concentration unit that was not in the previous version of the
+  database.
+- The goal of the review is to ensure all cells in the **conc_conversion_flag**
+  column are filled in.
   - A zero (`0`) indicates the concentration cannot be converted to mg/L or ppm.
     - If the units cannot be converted to mg/L or ppm then put a `0` in the row.
-    - No additional columns need to be filled in if the unit is given a value of `0` in the **conc_conversion_flag** column.
+    - No additional columns need to be filled in if the unit is given a value of
+     `0` in the **conc_conversion_flag** column.
   - A one (`1`) indicates the concentration can be converted to mg/L or ppm.
     - If the units can be converted put a `1` in the row.
-      - In the **conc_conversion_value_multiplier** column fill in the value needed to convert the units into mg/L or ppm.
+      - In the **conc_conversion_value_multiplier** column fill in the value
+        needed to convert the units into mg/L or ppm.
       - In the **conc_conversion_unit** column fill in either `mg/L` or `ppm`.
+  - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
-### Duration Conversion
+#### Duration Conversion
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-- If there is no value in the **duration_units_to_keep** column this indicates it is a new concentration unit that was not in the previous version of the database.
-- The goal of the review is to ensure all cells in the **duration_units_to_keep** column are filled in.
+- If there is no value in the **duration_units_to_keep** column this indicates
+  it is a new concentration unit that was not in the previous version of the
+  database.
+- The goal of the review is to ensure all cells in the
+  **duration_units_to_keep** column are filled in.
   - A zero (`0`) indicates the duration cannot be converted to hours.
     - If the units cannot be converted to hours, then put a `0` in the row.
-    - No additional columns need to be filled in if the unit is given a value of `0` in the **duration_units_to_keep** column.
+    - No additional columns need to be filled in if the unit is given a value of
+      `0` in the **duration_units_to_keep** column.
   - A one (`1`) indicates the duration can be converted to hours.
     - If the units can be converted put a `1` in the row.
-      - In the **duration_value_multiplier_to_hours** column fill in the value needed to convert the units into hours.
-      - In the **comments** column write why the conversion was chosen since there may be an assumption made during the conversion. For example, if converting month into hours are you basing the conversion on 30 or 31 days.
+      - In the **duration_value_multiplier_to_hours** column fill in the value
+        needed to convert the units into hours.
+      - In the **comments** column write why the conversion was chosen since
+        there may be an assumption made during the conversion. For example, if
+        converting month into hours are you basing the conversion on 30 or 31
+        days.
+  - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
 
 If any incorrect conversions are found, then those rows can be updated.
 
-### Trophic Groups
+#### Trophic Groups
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-- Three files will be generated to help review the trophic group data.
-  - *trophic-group.csv*
-    - This is the current list of trophic and ecological groups coded to the class and order of each species.
-    - This file needs to be updated to add new trophic and ecological groups.
-    - To update add a new row and fill in the **trophic_group** and **ecological_group** columns and the required **class** and **order**.
-      - The **class** and **order** can either both be filled in or one of the values left blank.
-      - The **class** and **order** columns must match up with the **class** and **tax_order** columns from the *species-coded-in-db.csv* or *missing-trophic-group.csv* file.
-  - *species-coded-in-db.csv*
-    - This is a list of all the species data from the database that have been filter where **organism_habitat** is "Water".
-    - This file is to help find which **class** and **tax_order** (order) do not have coding for the ecological or trophic groups.
-      - Filter to rows that have no value in the **trophic_group** and **ecological_group** columns.
-    - This file is for reference and not to be updated or sent back for integration.
-    - This data is summarized in the *missing-trophic-group-review.csv* file because of the large amount of information.
+- Two files will be generated to help review the trophic group data.
   - *missing-trophic-group-review.csv*
-    - This is a summary that shows only the unique phylum, class, order, and family from the missing trophic and ecological groups in the *species-coded-in-db.csv* file.
-    - This file will help to determine which class and order need to be added.
-    - This file is for reference and not to be updated or sent back for integration.
+    - This is a summary that shows the unique phylum, class, order, and
+      family of new taxa in the new version of Ecotox database, that do not meet
+      the exclusion criteria. In other words, these are candidate taxa to be
+      added to the internal dataset.
+    - This file contains three columns for the reviewer to consider:
+      **trophic_group**, **ecological_group**, and **exclude_from_db**.
+        - If the taxon is not appropriate for inclusion, put a `1` in the
+          **exclude_from_db** column. Otherwise leave it blank.
+        - If it is appropriate to include, fill out the **trophic_group** and
+          **ecological_group** columns. Valid values for **trophic_group** are:
+          "Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish".
+          Valid values for **ecological_group** are: "Planktonic Invertebrate",
+          "Other", "Salmonid".
+        - If there is a row in the "missing-trophic-review" sheet that doesn't
+          have family or order, do one of two things: if the phylum/division is
+          really small and the whole taxon can be assigned an ecological group
+          and trophic group, do so. If not (e.g. Annelida, Arthropoda), just
+          leave it blank - and rest assured that lower taxonomic entities have
+          likely been assigned to the appropriate trophic group and ecological
+          group.
+    - Once completed, this file should be saved in the `"completed"` subfolder
+      in the review folder.
+  - *species-coded-in-db-ref.csv*
+    - This is a list of all the species data from the database that have been
+      filtered where **organism_habitat** is "Water".
+    - This file is to help find which **class** and **tax_order** (order) do not
+      have coding for the ecological or trophic groups.
+    - This file is for reference and not to be updated or sent back for
+      integration.
 
-If any incorrect values are found, then those rows can be updated.
+#### Life Stage Codes
 
-### Life Stage Codes
+This data set should be reviewed each time a new version of the ECOTOX database
+is released.
 
-This data set should be reviewed each time a new version of the ECOTOX database is released.
+This data set will be sent separately after the first round of files is reviewed
+because this data depends on the updates to the trophic group data. Only fish
+and amphibian groups need the life stage categorized into simple groups, so this
+file only contains fish and amphibians.
 
-This data set will be sent separately after the first round of files is reviewed because this data depends on the updates to the trophic group data.
+*lifestage-code-review.csv*:
+- If there is no value in the **simple_lifestage** column this indicates it is a
+  new life stage that was not in the previous coding of the database.
+- The goal of the review is to ensure all cells in the **simple_lifestage**
+  are filled in.
+  - In the **simple_lifestage** column fill in any empty cells with either `els`
+    (early life stage), `juvenile` or `adult`.
 
-- If there is no value in the **simple_lifestage** column this indicates it is a new life stage that was not in the previous coding of the database.
-- The **trophic_group** column indicates if the **simple_lifestage** relates to a fish or amphibian. Only fish and amphibian groups need the life stage categorized into simple groups.
-- The goal of the review is to ensure all cells in the **simple_lifestage** column that have **fish_amphibian_flag** column as TRUE are filled in.
-  - In the **simple_lifestage** column fill in the empty cell with either `els` (early life stage), `juvenile` or `adult`.
+Once completed, this file should be saved in the `"completed"` subfolder in the
+review folder.
 
-If any incorrect values are found, then those rows can be updated.
-
-### BC Species
+#### BC Species
 
 This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year.
 
@@ -200,7 +231,7 @@ This data set is a comprehensive list that was generated from B.C. Conservation 
 
 Any species that is not listed in the *bc-species.csv* reference file is marked as not present in BC and thus it is robust to new species added to the ECOTOX dataset.
 
-### Concentration Endpoints
+#### Concentration Endpoints
 
 This reference dataset has not been included in the *review-reference-datasets.R* script as it should not vary from year to year.
 
@@ -210,7 +241,10 @@ The list of concentration endpoints are generated in the *scripts/concentration-
 
 If updates are required then update the *concentration-endpoints.R* script.
 
-## Updating the Add Data Template
+### Updating the Add Data Template
+
+**This will rarely need to be done as additions / removals to ecological groups
+and trophic groups are uncommon**
 
 #### Associated Reference Data
 
@@ -241,3 +275,9 @@ The instructions in the upload data template need to be updated when changes to 
 3. To regenerate the template run the script *data-raw/template.R*.
 4. Review the *inst/template/template-data.xlsx* to confirm the edits came through and the template looks as expected.
    - Do not edit the file *inst/template/template-data.xlsx*.
+
+## Push and install the pacakge
+
+Finally, after all of the all of the updates are completed, push them
+to GitHub. Install the updated package with `devtools::install()`, or
+from GitHub with `devtools::install_github("bcgov/wqbench")`.

@@ -1,11 +1,11 @@
 # Copyright 2024 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@ library(daff)
 
 # Setup -------------------------------------------------------------------
 
-reviewed_folder <- 
+reviewed_folder <-
   file.path(
     "~",
     "Poisson",
@@ -46,7 +46,7 @@ life_stage_file_path <- system.file(
 lifestage_std <- readr::read_csv(
   life_stage_file_path,
   show_col_types = FALSE
-) 
+)
 
 reviewed_lifestage_fp <- list.files(
   path = file.path(reviewed_folder),
@@ -54,15 +54,14 @@ reviewed_lifestage_fp <- list.files(
   full.names = TRUE
 )
 
-reviewed_lifestage_code <- 
+reviewed_lifestage_code <-
   readr::read_csv(
     reviewed_lifestage_fp
   ) |>
   mutate(
     simple_lifestage = str_to_lower(simple_lifestage)
   ) |>
-  rename(description_lifestage = description) |>
-  filter(fish_amphibian_flag)
+  rename(description_lifestage = description)
 
 if (!vld_equal(sum(is.na(reviewed_lifestage_code$simple_lifestage[reviewed_lifestage_code$fish_amphibian_flag & !is.na(reviewed_lifestage_code$fish_amphibian_flag)])), 0)) {
   abort_chk("There should be no missing simple lifestage value, correct before proceeding")
@@ -76,24 +75,23 @@ if (!vld_equal(sum(duplicated(reviewed_lifestage_code)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
-reviewed_lifestage_code <- 
-  reviewed_lifestage_code |>
-  dplyr::select(-fish_amphibian_flag)
-
 lifestage_daff <- daff::diff_data(
-  lifestage_std, 
-  reviewed_lifestage_code, 
+  lifestage_std,
+  reviewed_lifestage_code,
   ordered = FALSE
 )
 daff::render_diff(
-  lifestage_daff, 
-  pretty = TRUE, 
+  lifestage_daff,
+  pretty = TRUE,
   title = "Life Stage Codes"
 )
 
-if (FALSE) {
-  # Only run this code if the html reports align with the requirements 
-  # and all checks pass
+## Write new reference file ------------------------------------------------
+# Only run this code if the html reports align with the requirements
+# and all checks pass. Change this variable to TRUE and run the rest of the code
+all_checks_ok <- FALSE
+
+if (all_checks_ok) {
   write_csv(
     reviewed_lifestage_code,
     "inst/extdata/lifestage-codes.csv",

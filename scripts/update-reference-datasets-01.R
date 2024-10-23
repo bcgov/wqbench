@@ -1,11 +1,11 @@
 # Copyright 2024 Province of British Columbia
-# 
+#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at 
-# 
+# You may obtain a copy of the License at
+#
 # http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -22,7 +22,7 @@ library(daff)
 
 # Setup -------------------------------------------------------------------
 
-reviewed_folder <- 
+reviewed_folder <-
   file.path(
     "~",
     "Poisson",
@@ -45,14 +45,17 @@ concentration_std_file_path <- system.file(
 
 concentration_std <- readr::read_csv(
   concentration_std_file_path,
-  show_col_types = FALSE
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    conc_conversion_flag = col_logical(),
+    conc_conversion_value_multiplier = col_double(),
+    conc_conversion_unit = col_character()
+  )
 ) |>
   select(
-    code, description, conc_conversion_flag, conc_conversion_value_multiplier, 
+    code, description, conc_conversion_flag, conc_conversion_value_multiplier,
     conc_conversion_unit
-  ) |>
-  mutate(
-    conc_conversion_flag = as.logical(conc_conversion_flag)
   )
 
 reviewed_conc_std_fp <- list.files(
@@ -61,28 +64,56 @@ reviewed_conc_std_fp <- list.files(
   full.names = TRUE
 )
 
-reviewed_conc_std <- 
+reviewed_conc_std <-
   readr::read_csv(
-    reviewed_conc_std_fp
-  ) |>
-  mutate(
-    conc_conversion_flag = as.logical(conc_conversion_flag)
+    reviewed_conc_std_fp,
+    col_types = cols(
+      code = col_character(),
+      description = col_character(),
+      conc_conversion_flag = col_logical(),
+      conc_conversion_value_multiplier = col_double(),
+      conc_conversion_unit = col_character()
+    )
   )
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_flag)), 0)) {
-  abort_chk("There should be no missing conc_conversion_flag values, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(reviewed_conc_std$conc_conversion_flag)),
+  0
+)) {
+  abort_chk(
+    "There should be no missing conc_conversion_flag values, correct before proceeding"
+  )
 }
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_value_multiplier[reviewed_conc_std$conc_conversion_flag == 1])), 0)) {
-  abort_chk("There can't be a flag of 1 with no multipler, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(
+    reviewed_conc_std$conc_conversion_value_multiplier[reviewed_conc_std$conc_conversion_flag == 1]
+  )),
+  0
+)) {
+  abort_chk(
+    "There can't be a flag of 1 with no multipler, correct before proceeding"
+  )
 }
 
-if (!vld_equal(sum(is.na(reviewed_conc_std$conc_conversion_unit[reviewed_conc_std$conc_conversion_flag == 1])), 0)) {
-  abort_chk("There can't be a flag of 1 with no conversion unit, correct before proceeding")
+if (!vld_equal(
+  sum(is.na(
+    reviewed_conc_std$conc_conversion_unit[reviewed_conc_std$conc_conversion_flag == 1]
+  )),
+  0
+)) {
+  abort_chk(
+    "There can't be a flag of 1 with no conversion unit, correct before proceeding"
+  )
 }
 
-if (!vld_subset(unique(reviewed_conc_std$conc_conversion_unit), c("mg/L", "ppm", NA_character_))) {
-  abort_chk("Concentration units can only include ppm and mg/L, correct before proceeding")
+if (!vld_subset(
+  unique(reviewed_conc_std$conc_conversion_unit),
+  c("mg/L", "ppm", NA_character_)
+)) {
+  abort_chk(
+    "Concentration units can only include ppm and mg/L, correct before proceeding"
+  )
 }
 
 if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
@@ -90,13 +121,13 @@ if (!vld_equal(sum(duplicated(reviewed_conc_std)), 0)) {
 }
 
 concentration_daff <- daff::diff_data(
-  concentration_std, 
-  reviewed_conc_std, 
+  concentration_std,
+  reviewed_conc_std,
   ordered = FALSE
 )
 daff::render_diff(
-  concentration_daff, 
-  pretty = TRUE, 
+  concentration_daff,
+  pretty = TRUE,
   title = "Concentration Conversion"
 )
 
@@ -109,11 +140,14 @@ duration_std_file_path <- system.file(
 
 duration_std <- readr::read_csv(
   duration_std_file_path,
-  show_col_types = FALSE
-) |>
-  mutate(
-    duration_units_to_keep = as.logical(duration_units_to_keep)
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    duration_units_to_keep = col_logical(),
+    duration_value_multiplier_to_hours = col_double(),
+    comments = col_character()
   )
+)
 
 reviewed_duration_std <- list.files(
   path = file.path(reviewed_folder),
@@ -122,21 +156,38 @@ reviewed_duration_std <- list.files(
 )
 
 reviewed_duration_std <- readr::read_csv(
-  reviewed_duration_std
-) |>
-  mutate(
-    duration_units_to_keep = as.logical(duration_units_to_keep)
+  reviewed_duration_std,
+  col_types = cols(
+    code = col_character(),
+    description = col_character(),
+    duration_units_to_keep = col_logical(),
+    duration_value_multiplier_to_hours = col_double(),
+    comments = col_character()
   )
+)
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$duration_units_to_keep)), 0)) {
+if (!vld_equal(
+  sum(is.na(reviewed_duration_std$duration_units_to_keep)),
+  0
+)) {
   abort_chk("There should be no missing duration_units_to_keep values, correct before proceeding")
 }
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$duration_value_multiplier_to_hours[reviewed_duration_std$duration_units_to_keep == 1])), 0)) {
+if (!vld_equal(
+  sum(is.na(
+    reviewed_duration_std$duration_value_multiplier_to_hours[reviewed_duration_std$duration_units_to_keep == 1]
+  )),
+  0
+)) {
   abort_chk("There can't be a flag of 1 with no multipler, correct before proceeding")
 }
 
-if (!vld_equal(sum(is.na(reviewed_duration_std$comments[reviewed_duration_std$duration_units_to_keep == 1])), 0)) {
+if (!vld_equal(
+  sum(is.na(
+    reviewed_duration_std$comments[reviewed_duration_std$duration_units_to_keep == 1]
+  )),
+  0
+)) {
   abort_chk("There can't be a flag of 1 with no comment, correct before proceeding")
 }
 
@@ -145,13 +196,13 @@ if (!vld_equal(sum(duplicated(reviewed_duration_std)), 0)) {
 }
 
 duration_daff <- daff::diff_data(
-  duration_std, 
-  reviewed_duration_std, 
+  duration_std,
+  reviewed_duration_std,
   ordered = FALSE
 )
 daff::render_diff(
-  duration_daff, 
-  pretty = TRUE, 
+  duration_daff,
+  pretty = TRUE,
   title = "Duration Conversion"
 )
 
@@ -162,75 +213,141 @@ trophic_group_file_path <- system.file(
   package = "wqbench"
 )
 
-trophic_group_file_path_std <- readr::read_csv(
+trophic_group_orig <- readr::read_csv(
   trophic_group_file_path,
   show_col_types = FALSE
 )
 
 reviewed_trophic_group_fp <- list.files(
   path = file.path(reviewed_folder),
-  pattern = "trophic-group",
+  pattern = "trophic-group-review",
   full.names = TRUE
 )
 
 reviewed_trophic_groups <- readr::read_csv(
-  reviewed_trophic_group_fp
+  reviewed_trophic_group_fp,
+  col_types = cols(
+    phylum_division = col_character(),
+    class = col_character(),
+    tax_order = col_character(),
+    family = col_character(),
+    trophic_group = col_character(),
+    ecological_group = col_character(),
+    exclude_from_db = col_logical()
+  )
 ) |>
   mutate(
     class = str_to_title(class),
-    order = str_to_title(order),
+    tax_order = str_to_title(tax_order),
     trophic_group = str_to_title(trophic_group),
-    ecological_group = str_to_title(ecological_group)
+    ecological_group = str_to_title(ecological_group),
+    exclude_from_db = vapply(exclude_from_db, isTRUE, FUN.VALUE = TRUE)
   )
 
-if (!vld_equal(sum(is.na(reviewed_trophic_groups$trophic_group)), 0)) {
-  abort_chk("There should be no missing trophic groups, correct before proceeding")
+  if (!vld_subset(
+    unique(reviewed_trophic_groups$exclude_from_db),
+    c(TRUE, FALSE, NA)
+  )) {
+    abort_chk("Column `exclude_from_db` should only contain '1', '0', or nothing (NA)")
+  }
+
+# Extract those that were not flagged to exclude
+add_trophic_groups <- reviewed_trophic_groups |>
+  filter(!exclude_from_db) |>
+  select(-exclude_from_db) |>
+  rename(order = tax_order)
+
+if (!vld_equal(sum(is.na(add_trophic_groups$trophic_group)), 0)) {
+  abort_chk(
+    "There should be no missing trophic groups, correct before proceeding"
+  )
 }
 
-if (!vld_equal(sum(is.na(reviewed_trophic_groups$ecological_group)), 0)) {
-  abort_chk("There should be no missing trophic groups, correct before proceeding")
+if (!vld_equal(sum(is.na(add_trophic_groups$ecological_group)), 0)) {
+  abort_chk(
+    "There should be no missing trophic groups, correct before proceeding"
+  )
 }
 
-if (!vld_subset(unique(reviewed_trophic_groups$trophic_group), c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish"))) {
+if (!vld_subset(
+  unique(add_trophic_groups$trophic_group),
+  c("Invertebrate", "Algae", "Amphibian", "Plant", "Bacteria", "Fish")
+)) {
   abort_chk("Ensure trophic groups match allowed values")
 }
 
-if (!vld_subset(unique(reviewed_trophic_groups$ecological_group), c("Planktonic Invertebrate", "Other", "Salmonid"))) {
+if (!vld_subset(
+  unique(add_trophic_groups$ecological_group),
+  c("Planktonic Invertebrate", "Other", "Salmonid")
+)) {
   abort_chk("Ensure ecological groups match allowed values")
 }
 
-if (!vld_equal(sum(duplicated(reviewed_trophic_groups)), 0)) {
+# Combine new trophic groups with existing
+new_trophic_groups <- bind_rows(trophic_group_orig, add_trophic_groups) |>
+  distinct()
+
+if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
   abort_chk("There should be no duplicate values")
 }
 
 trophic_daff <- daff::diff_data(
-  trophic_group_file_path_std, 
-  reviewed_trophic_groups, 
+  trophic_group_orig,
+  new_trophic_groups,
   ordered = FALSE
 )
 daff::render_diff(
-  trophic_daff, 
-  pretty = TRUE, 
+  trophic_daff,
+  pretty = TRUE,
   title = "Trophic Groups"
 )
 
-## Write new reference file ------------------------------------------------
+## Update exclusions -------------------------------------------------------
+exclude_taxa_orig <- read_csv("inst/extdata/exclude_taxa.csv", na = character())
 
-if (FALSE) {
-  # Only run this code if the html reports align with the requirements 
-  # and all checks pass
+add_exclude_taxa <- reviewed_trophic_groups |>
+  filter(exclude_from_db) |>
+  select(-trophic_group, -ecological_group, -exclude_from_db)
+
+new_exclude_taxa <- bind_rows(exclude_taxa_orig, add_exclude_taxa) |>
+  distinct()
+
+exclude_daff <- daff::diff_data(
+  exclude_taxa_orig,
+  new_exclude_taxa,
+  ordered = FALSE
+)
+daff::render_diff(
+  exclude_daff,
+  pretty = TRUE,
+  title = "Taxa to Exclude"
+)
+
+## Write new reference file ------------------------------------------------
+# Only run this code if the html reports align with the requirements
+# and all checks pass. Change this variable to TRUE and run the rest of the code
+all_checks_ok <- FALSE
+
+if (all_checks_ok) {
   write_csv(
     reviewed_duration_std,
-    "inst/extdata/duration-conversion.csv",
+    "inst/extdata/duration-conversion.csv"
   )
-  
+
   write_csv(
     reviewed_conc_std,
-    "inst/extdata/concentration-conversion.csv",
+    "inst/extdata/concentration-conversion.csv"
   )
-  
+
   write_csv(
-    reviewed_trophic_groups,
+    new_trophic_groups,
     "inst/extdata/trophic-group.csv",
+    na = ""
+  )
+
+  write_csv(
+    new_exclude_taxa,
+    "inst/extdata/exclude_taxa.csv",
+    na = ""
   )
 }
