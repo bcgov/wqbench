@@ -34,6 +34,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/Developer-instructions.html">Developer Instructions</a></li>
+    <li><a class="dropdown-item" href="../articles/update-add-data-template.html">Update the Add Data Templates</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -73,19 +74,12 @@ rmarkdown::render("vignettes/Developer-instructions.Rmd")
 <div class="section level2">
 <h2 id="updating-reference-data-for-the-database">Updating Reference Data for the Database<a class="anchor" aria-label="anchor" href="#updating-reference-data-for-the-database"></a>
 </h2>
-<p>Each time the Ecotox database is updated, the reference files in the
-package should be reviewed for necessary changes. This process involves
-generating some files to illustrate changes, having those files reviewed
-by an expert, and updated if necessary, and then updating the data files
-in the package with the new changes.</p>
-<p>These changes may involve:</p>
-<ul>
-<li>concentration conversions and duration conversions for newly-added
-concentration and duration units,</li>
-<li>trophic groups and life stage codes for newly added species.</li>
-</ul>
-<p>Lists of BC species and concentration endpoints are unlikely to
-require changes but should be reviewed periodically.</p>
+<p>The Ecotox database is updated quarterly by the US EPA. Updating this
+database within wqbench involves several steps including downloading the
+new database, reviewing and updating reference files in the package, and
+updating and redeploying the shiny app. The process below outlines the
+steps necessary to update the wqbench package. The instructions to
+update and redeploy the shinyapp can be found <a href="https://github.com/bcgov/shinywqbench?tab=readme-ov-file#shinywqbench" class="external-link">here</a>.</p>
 <div class="section level3">
 <h3 id="process">Process<a class="anchor" aria-label="anchor" href="#process"></a>
 </h3>
@@ -151,31 +145,31 @@ in the <em>inst/extdata</em> folder.</li>
 package. Run <code>devtools::load_all()</code>.</p></li>
 <li><p>Run the <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function to create the
 database with the new reference data.</p></li>
-<li><p>Repeat steps 2 through 6 but run
-<em>scripts/review-reference-datasets-02.R</em>, review the file, and
-run <em>scripts/update-reference-datasets-02.R</em>.</p></li>
-</ol>
-<ul>
-<li>The life stage codes have to be generated seperately as they are
-based on the trophic groups. The trophic groups need to be updated
-before life stage codes can be reviewed.</li>
-</ul>
-<ol start="8" style="list-style-type: decimal">
+<li><p>To review/update the life stage codes, repeat steps 2 through 6
+but run <em>scripts/review-reference-datasets-02.R</em>, review the
+file, and run <em>scripts/update-reference-datasets-02.R</em>.The
+trophic groups need to be updated before life stage codes can be
+reviewed.</p></li>
 <li><p>Run the <code><a href="../reference/wqb_create_data_set.html">wqb_create_data_set()</a></code> function again to
 create the database with the new reference data.</p></li>
-<li><p>These steps will have caused changes to several files in
+<li>
+<p>These steps will have caused changes to several files in
 <code>inst/extdata</code>. The changes will be shown in the Git pane in
 RStudio. Commit these files to Git, and push it to GitHub. Go to the
 GitHub repository, and open a pull request from your branch (created in
 step 1). Best practice is to have someone review the PR, but if you know
 the changes are good, you can merge it yourself. At the very least,
-ensure that all of the automated checks pass before you merge.</p></li>
+ensure that all of the automated checks pass before you merge.</p>
+<p>9a. In rare cases, the “Add Data” templates may also need to be
+updated after the reference files are updated. See the <a href="https://bcgov.github.io/wqbench/articles/update-add-data-template.html">“Update
+the Add Data Templates</a> article for instructions.</p>
+</li>
 <li><p>Once your update is merged, install the new version:
 <code>devtools::install_github("bcgov/wqbench")</code>.</p></li>
 </ol>
 </div>
 <div class="section level3">
-<h3 id="review-process">Review process<a class="anchor" aria-label="anchor" href="#review-process"></a>
+<h3 id="reference-file-review-process">Reference File Review Process<a class="anchor" aria-label="anchor" href="#reference-file-review-process"></a>
 </h3>
 <p>Below are instructions for how to fill out and complete each of the
 reference files.</p>
@@ -183,7 +177,7 @@ reference files.</p>
 <h4 id="concentration-conversion">Concentration Conversion<a class="anchor" aria-label="anchor" href="#concentration-conversion"></a>
 </h4>
 <p>This data set should be reviewed each time a new version of the
-ECOTOX database is released.</p>
+database is downloaded.</p>
 <ul>
 <li>If there is no value in the <strong>conc_conversion_flag</strong>
 column this indicates it is a new concentration unit that was not in the
@@ -226,7 +220,7 @@ updated.</p>
 <h4 id="duration-conversion">Duration Conversion<a class="anchor" aria-label="anchor" href="#duration-conversion"></a>
 </h4>
 <p>This data set should be reviewed each time a new version of the
-ECOTOX database is released.</p>
+database is downloaded.</p>
 <ul>
 <li>If there is no value in the <strong>duration_units_to_keep</strong>
 column this indicates it is a new concentration unit that was not in the
@@ -271,7 +265,7 @@ updated.</p>
 <h4 id="trophic-groups">Trophic Groups<a class="anchor" aria-label="anchor" href="#trophic-groups"></a>
 </h4>
 <p>This data set should be reviewed each time a new version of the
-ECOTOX database is released.</p>
+database is downloaded.</p>
 <ul>
 <li>Two files will be generated to help review the trophic group data.
 <ul>
@@ -300,10 +294,8 @@ have family or order, do one of two things: if the phylum/division is
 really small and/or the whole taxon can be assigned an ecological group
 and trophic group, do so. If not (e.g. Annelida, Arthropoda), put
 <code>1</code> in the <strong>exclude_from_db</strong> column so that
-high-level taxon won’t appear for you to review again, but lower levels
-within that phylum/division will. It is also likely that lower taxonomic
-entities have been assigned to the appropriate trophic group and
-ecological group.</li>
+this phylum/division won’t appear for you to review again, but lower
+levels within that phylum/division will.</li>
 </ul>
 </li>
 <li>Once completed, this file should be saved in the
@@ -315,9 +307,6 @@ ecological group.</li>
 <ul>
 <li>This is a list of all the species data from the database that have
 been filtered where <strong>organism_habitat</strong> is “Water”.</li>
-<li>This file is to help find which <strong>class</strong> and
-<strong>tax_order</strong> (order) do not have coding for the ecological
-or trophic groups.</li>
 <li>This file is for reference and not to be updated or sent back for
 integration.</li>
 </ul>
@@ -330,7 +319,7 @@ integration.</li>
 <h4 id="life-stage-codes">Life Stage Codes<a class="anchor" aria-label="anchor" href="#life-stage-codes"></a>
 </h4>
 <p>This data set should be reviewed each time a new version of the
-ECOTOX database is released.</p>
+database is downloaded.</p>
 <p>This data set will be sent separately after the first round of files
 is reviewed because this data depends on the updates to the trophic
 group data. Only fish and amphibian groups need the life stage
@@ -355,9 +344,9 @@ either <code>els</code> (early life stage), <code>juvenile</code> or
 year to year.</p>
 <p>This data set is a comprehensive list that was generated from B.C.
 Conservation Data Centre.</p>
-<p>Any species that is not listed in the <em>bc-species.csv</em>
-reference file is marked as not present in BC and thus it is robust to
-new species added to the ECOTOX dataset.</p>
+<p>Any species that is in ECOTOX, but not listed in the
+<em>bc-species.csv</em> reference file is treated as not present in
+BC.</p>
 </div>
 <div class="section level4">
 <h4 id="concentration-endpoints">Concentration Endpoints<a class="anchor" aria-label="anchor" href="#concentration-endpoints"></a>
@@ -373,96 +362,6 @@ adjusted.</p>
 <em>concentration-endpoints.R</em> script.</p>
 </div>
 </div>
-<div class="section level3">
-<h3 id="updating-the-add-data-template">Updating the Add Data Template<a class="anchor" aria-label="anchor" href="#updating-the-add-data-template"></a>
-</h3>
-<p><strong>This will rarely need to be done as additions / removals to
-ecological groups and trophic groups are uncommon</strong></p>
-<div class="section level4">
-<h4 id="associated-reference-data">Associated Reference Data<a class="anchor" aria-label="anchor" href="#associated-reference-data"></a>
-</h4>
-<p>The instructions in the upload data template need to be updated when
-changes to the reference data sheets occur.</p>
-<ul>
-<li>
-<em>trophic-groups.csv</em>
-<ul>
-<li>Update <strong>trophic_group</strong> and
-<strong>ecological_group</strong> column instructions if new groups are
-added or groups are removed.
-<ul>
-<li>ie if <code>Plant</code> is removed as a trophic group or
-<code>Salmonid</code> is removed as an ecological group.</li>
-<li>Since the groups (Plant, Bacteria, Amphibian, etc) have been written
-into the instruction tab this is why updates to the instructions are
-needed if new categories are added.</li>
-</ul>
-</li>
-<li>The validation of the values is done from the
-<em>trophic-groups.csv</em> which means it is possible for the
-instructions to get out of sync with the allowed values.</li>
-<li>Adding new species to the <em>trophic-groups.csv</em> does not
-trigger a change to the instructions.</li>
-</ul>
-</li>
-<li>
-<em>lifestage-codes.csv</em>
-<ul>
-<li>Update <strong>simple_lifestage</strong> column instructions if new
-simple life stages categories are added or removed.
-<ul>
-<li>ie if <code>els</code> is removed as a simple life stage.</li>
-</ul>
-</li>
-<li>The validation is done off the <em>lifestage-codes.csv</em> which
-means it is possible for the instructions to get out of sync with the
-allowed values.</li>
-</ul>
-</li>
-<li>
-<em>concentration-endpoints.csv</em>
-<ul>
-<li>Update <strong>endpoint</strong> column instructions if endpoints
-are added or removed.</li>
-<li>The list of endpoints are generated by the script
-<em>scripts/concentration-endpoints.R</em>.</li>
-<li>The validation is done off of the
-<em>concentration-endpoints.csv</em> so it is possible for the
-instructions to get out of sync with the allowed values.</li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section level4">
-<h4 id="to-update-the-template">To update the template<a class="anchor" aria-label="anchor" href="#to-update-the-template"></a>
-</h4>
-<ol style="list-style-type: decimal">
-<li>Make any required changes to the trophic groups, life stage codes or
-concentration endpoints reference data.</li>
-<li>Edit the <em>inst/template/template-data-data.csv</em> and
-<em>inst/template/template-data-instructions.csv</em> files.
-<ul>
-<li>Do not edit the file <em>inst/template/template-data.xlsx</em>.</li>
-</ul>
-</li>
-<li>To regenerate the template run the script
-<em>data-raw/template.R</em>.</li>
-<li>Review the <em>inst/template/template-data.xlsx</em> to confirm the
-edits came through and the template looks as expected.
-<ul>
-<li>Do not edit the file <em>inst/template/template-data.xlsx</em>.</li>
-</ul>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="section level2">
-<h2 id="push-and-install-the-pacakge">Push and install the pacakge<a class="anchor" aria-label="anchor" href="#push-and-install-the-pacakge"></a>
-</h2>
-<p>Finally, after all of the all of the updates are completed, push them
-to GitHub. Install the updated package with
-<code>devtools::install_github("bcgov/wqbench")</code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
