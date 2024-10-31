@@ -8,6 +8,13 @@
 \description{
 Download recent versions of the US EPA ECOTOX database. Clean, standardize and classify data so values are comparable. Use a SSD or deterministic method to determine the critical toxicity value and assessment factors to compute the aquatic life water quality benchmark for a compound.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://bcgov.github.io/wqbench/}
+}
+
+}
 \author{
 \strong{Maintainer}: Angeline Tillmanns \email{Angeline.Tillmanns@gov.bc.ca}
 
