@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   Developer-instructions: Developer-instructions.html
   update-add-data-template: update-add-data-template.html
-last_built: 2024-10-31T19:12Z
+last_built: 2024-10-31T20:35Z
 urls:
   reference: https://bcgov.github.io/wqbench/reference
   article: https://bcgov.github.io/wqbench/articles
