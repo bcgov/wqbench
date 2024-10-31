@@ -12,11 +12,6 @@ coverage](https://codecov.io/gh/bcgov/wqbench/branch/main/graph/badge.svg)](http
 This package contains the functions and tools to generate aquatic life
 water quality benchmarks.
 
-## Documentation
-
-See the [package website](https://bcgov.github.io/wqbench/) for
-documentation on how to use the package.
-
 ## Installation
 
 ``` r
