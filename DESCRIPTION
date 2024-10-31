@@ -1,12 +1,14 @@
 Package: wqbench
 Title: Calculate Aquatic Life Benchmarks
-Version: 0.2.0
+Version: 0.3.0
 Authors@R: c(
     person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-7388-1222")),
     person("Angeline", "Tillmanns", , "Angeline.Tillmanns@gov.bc.ca", role = c("aut", "cre")),
     person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
            comment = c(ORCID = "0000-0002-7683-4592")),
+    person("Andy", "Teucher", , "andy@andyteucher.ca", role = "ctb",
+           comment = c(ORCID = "0000-0002-7840-692X")),
     person("Province of British Columbia", role = "cph")
   )
 Description: Download recent versions of the US EPA ECOTOX database.
@@ -15,7 +17,7 @@ Description: Download recent versions of the US EPA ECOTOX database.
     and assessment factors to compute the aquatic life water quality
     benchmark for a compound.
 License: Apache License (== 2)
-Imports: 
+Imports:
     bcdata,
     chk,
     chktemplate,
@@ -28,20 +30,20 @@ Imports:
     RSQLite,
     rvest,
     scales,
-    ssdtools (>= 1.0.6.9011),
+    ssdtools (>= 2.1.0),
     stringr,
     tibble,
     tidyr,
     utils,
     withr
-Suggests: 
+Suggests:
     covr,
     knitr,
     openxlsx,
     rmarkdown,
     testthat (>= 3.0.0),
     wqbenchdata
-Remotes: 
+Remotes:
     poissonconsulting/chktemplate,
     bcgov/wqbenchdata,
     bcgov/ssdtools
@@ -49,7 +51,7 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Depends: 
+Depends:
     R (>= 4.1)
 LazyData: true
 VignetteBuilder: knitr
