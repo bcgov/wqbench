@@ -1,4 +1,4 @@
-﻿latin_name
+latin_name
 Aaptos simplex
 Abagrotis apposita
 Abagrotis baueri
@@ -28,12 +28,10 @@ Abdera firma
 Abies amabilis
 Abies grandis
 Abies lasiocarpa
-Abies lasiocarpa / Rhododendron
-Abies lasiocarpa / Vaccinium
 Abietinella abietina
 Abortiporus biennis
 Abronia latifolia
-Abronia umbellata
+Abronia umbellata var. breviflora
 Abrostola urentis
 Absconditella amabilis
 Absconditella celata
@@ -47,7 +45,7 @@ Acallis gripalis
 Acalymma vittatum
 Acalyptus carpini
 Acanthancora cyanocrypta
-Acanthascus cf.
+Acanthascus cf. platei
 Acanthephyra curtirostris
 Acanthis flammea
 Acanthis hornemanni
@@ -56,7 +54,7 @@ Acanthobasidium weirii
 Acanthocinus obliquus
 Acanthocinus princeps
 Acanthocinus pusillus
-Acanthogorgia sp.
+Acanthogorgia sp. 1
 Acantholiparis caecus
 Acantholiparis opercularis
 Acantholithodes hispidus
@@ -92,20 +90,22 @@ Acarospora thamnina
 Acarospora veronensis
 Acarospora verruciformis
 Acasis viridata
-Acaulon muticum
+Acaulon muticum var. rufescens
 Acaulon triquetrum
 Accipiter cooperii
 Accipiter gentilis
+Accipiter gentilis atricapillus
+Accipiter gentilis laingi
 Accipiter striatus
 Acentrella insignificans
 Acentrella turbida
 Acer circinatum
-Acer glabrum
+Acer glabrum var. douglasii
 Acer macrophyllum
 Acer negundo
 Acer platanoides
 Acer pseudoplatanus
-Acer rubrum
+Acer rubrum var. rubrum
 Acerpenna pygmaea
 Acerra normalis
 Acheta domesticus
@@ -116,9 +116,10 @@ Achillea millefolium
 Achillea ptarmica
 Achlys triphylla
 Achnatherum hymenoides
-Achnatherum lemmonii
-Achnatherum nelsonii
-Achnatherum occidentale
+Achnatherum lemmonii ssp. lemmonii
+Achnatherum nelsonii ssp. dorei
+Achnatherum nelsonii ssp. nelsonii
+Achnatherum occidentale ssp. pubescens
 Achnatherum richardsonii
 Achnatherum thurberianum
 Achroia grisella
@@ -130,6 +131,10 @@ Acilius semisulcatus
 Acinos arvensis
 Acipenser medirostris
 Acipenser transmontanus
+Acipenser transmontanus pop. 1
+Acipenser transmontanus pop. 2
+Acipenser transmontanus pop. 4
+Acipenser transmontanus pop. 5
 Acleris aenigmana
 Acleris albicomana
 Acleris arcticana
@@ -179,11 +184,11 @@ Acmaeodera idahoensis
 Acmaeodera vandykei
 Acmaeops proteus
 Acmaeopsoides rufula
-Acmispon americanus
+Acmispon americanus var. americanus
 Acmispon denticulatus
 Acmispon parviflorus
 Acolium karelicum
-Aconitum columbianum
+Aconitum columbianum ssp. columbianum
 Aconitum delphiniifolium
 Acopa perpallida
 Acorus americanus
@@ -245,7 +250,7 @@ Acrotrichis vicina
 Acrotrichis volans
 Acrotrichis xanthocera
 Acrulia tumidula
-Actaea elata
+Actaea elata var. elata
 Actaea rubra
 Actebia balanitis
 Actebia fennica
@@ -275,7 +280,8 @@ Adelphagrotis indeterminata
 Adelphagrotis stellaris
 Adenocaulon bicolor
 Aderus populneus
-Adiantum aleuticum
+Adiantum aleuticum var. aleuticum
+Adiantum aleuticum var. subpumilum
 Adiantum capillus-veneris
 Admetovis oxymorus
 Admetovis similaris
@@ -329,6 +335,7 @@ Aegialites charlottae
 Aegialites latus
 Aegilops cylindrica
 Aegolius acadicus
+Aegolius acadicus brooksi
 Aegolius funereus
 Aegopinella nitidula
 Aegopodium podagraria
@@ -537,10 +544,11 @@ Agonum simile
 Agonum sordens
 Agonum suturale
 Agonum thoreyi
-Agoseris aurantiaca
-Agoseris glauca
-Agoseris grandiflora
-Agoseris heterophylla
+Agoseris aurantiaca var. aurantiaca
+Agoseris glauca var. dasycephala
+Agoseris glauca var. glauca
+Agoseris grandiflora var. leptophylla
+Agoseris heterophylla var. heterophylla
 Agoseris lackschewitzii
 Agraylea multipunctata
 Agraylea saltesea
@@ -551,6 +559,9 @@ Agrenia cyanura
 Agrenia riparia
 Agrestia hispida
 Agriades glandon
+Agriades glandon lacustris
+Agriades glandon megalo
+Agriades glandon rustica
 Agriades optilete
 Agrilus anxius
 Agrilus burkei
@@ -690,10 +701,11 @@ Alces alces
 Alchemilla mollis
 Alchemilla monticola
 Alchemilla subcrenata
-Alcyonium sp.
+Alcyonium sp. 1
 Alectoria imshaugii
 Alectoria ochroleuca
-Alectoria sarmentosa
+Alectoria sarmentosa ssp. sarmentosa
+Alectoria sarmentosa ssp. vexillifera
 Alectoria sorediosa
 Alectoria vancouverensis
 Alectoris chukar
@@ -750,8 +762,8 @@ Allium acuminatum
 Allium amplectens
 Allium cernuum
 Allium crenulatum
-Allium geyeri
-Allium sativum
+Allium geyeri var. tenerum
+Allium sativum var. sativum
 Allium schoenoprasum
 Allium vineale
 Allocalicium adaequatum
@@ -789,10 +801,11 @@ Allotropa virgata
 Alnicola luteolofibrillosa
 Alniphagus aspericollis
 Alniphagus hirsutus
-Alnus alnobetula
-Alnus incana
+Alnus alnobetula ssp. crispa
+Alnus alnobetula ssp. fruticosa
+Alnus alnobetula ssp. sinuata
+Alnus incana ssp. tenuifolia
 Alnus rubra
-Alnus spp.
 Alocentron attenuatum
 Aloconota cambrica
 Aloconota carmanah
@@ -802,7 +815,7 @@ Aloina rigida
 Alopecosa aculeata
 Alopecosa kochi
 Alopecosa pictilis
-Alopecurus aequalis
+Alopecurus aequalis var. aequalis
 Alopecurus arundinaceus
 Alopecurus carolinianus
 Alopecurus geniculatus
@@ -916,10 +929,11 @@ Amara transberingiensis
 Amaradix euphorbi
 Amaranthus albus
 Amaranthus blitoides
-Amaranthus blitum
+Amaranthus blitum ssp. emarginatus
 Amaranthus cruentus
 Amaranthus hypochondriacus
-Amaranthus powellii
+Amaranthus powellii ssp. bouchonii
+Amaranthus powellii ssp. powellii
 Amaranthus retroflexus
 Amaurobius borealis
 Amaurodon mustialaensis
@@ -935,7 +949,8 @@ Amblyomma americanum
 Amblyptilia pica
 Amblyraja badia
 Amblyscirtes vialis
-Amblystegium serpens
+Amblystegium serpens var. juratzkanum
+Amblystegium serpens var. serpens
 Ambrosia artemisiifolia
 Ambrosia chamissonis
 Ambystoma gracile
@@ -943,7 +958,8 @@ Ambystoma macrodactylum
 Ambystoma mavortium
 Ameiurus melas
 Ameiurus nebulosus
-Amelanchier alnifolia
+Amelanchier alnifolia var. alnifolia
+Amelanchier alnifolia var. semiintegrifolia
 Amelanchier cusickii
 Amelanchier lamarckii
 Ameletus celer
@@ -969,8 +985,8 @@ Amiocentrus aspilus
 Ammannia robusta
 Ammodramus savannarum
 Ammodytes hexapterus
-Ammophila arenaria
-Ammophila breviligulata
+Ammophila arenaria ssp. arenaria
+Ammophila breviligulata ssp. breviligulata
 Ammospiza leconteii
 Ammospiza nelsoni
 Amorbia cuneana
@@ -1119,6 +1135,7 @@ Anchomenus aeneolus
 Anchomenus quadratus
 Anchusa arvensis
 Anchusa azurea
+Anchusa azurea var. azurea
 Anchusa officinalis
 Ancistrocerus adiabatus
 Ancistrocerus albolacteus
@@ -1158,7 +1175,7 @@ Andreaea mutabilis
 Andreaea nivalis
 Andreaea obovata
 Andreaea rothii
-Andreaea rupestris
+Andreaea rupestris var. rupestris
 Andreaea schofieldiana
 Andreaea sinuosa
 Andreaeobryum macrosporum
@@ -1262,18 +1279,18 @@ Andrena trizonata
 Andrena vicina
 Andrena vicinoides
 Andrena vierecki
-Andrena w-scripta
 Andrena walleyi
 Andrena washingtoni
 Andrena wheeleri
+Andrena w-scripta
 Andrenosoma fulvicaudum
 Androloma maccullochii
-Andromeda polifolia
+Andromeda polifolia var. polifolia
 Andropolia aedon
 Andropolia contacta
 Andropolia diversilineata
 Andropolia theodori
-Androsace chamaejasme
+Androsace chamaejasme ssp. lehmanniana
 Androsace occidentalis
 Androsace septentrionalis
 Aneides vagrans
@@ -1284,16 +1301,17 @@ Anemonastrum richardsonii
 Anemonastrum sibiricum
 Anemonastrum villosissimum
 Anemone cylindrica
-Anemone drummondii
+Anemone drummondii var. drummondii
+Anemone drummondii var. lithophila
 Anemone lyallii
-Anemone multifida
+Anemone multifida var. multifida
+Anemone multifida var. saxicola
 Anemone nemorosa
-Anemone occidentalis
 Anemone parviflora
 Anemone piperi
-Anemone virginiana
+Anemone virginiana var. cylindroidea
 Anethum graveolens
-Aneura pinguis
+Aneura pinguis var. pinguis
 Angelica arguta
 Angelica dawsonii
 Angelica genuflexa
@@ -1336,8 +1354,8 @@ Annaphila diva
 Annettenia eremonoma
 Annulohypoxylon thouarsianum
 Anobium punctatum
-Anodonta californiensis/nuttalliana
-Anodonta kennerlyi/oregonensis
+Anodonta californiensis/nuttalliana clade
+Anodonta kennerlyi/oregonensis clade
 Anoectangium aestivum
 Anoectangium sikkimense
 Anoectangium stracheyanum
@@ -1374,19 +1392,24 @@ Antaeotricha manzanitae
 Antennaria anaphaloides
 Antennaria dimorpha
 Antennaria flagellaris
-Antennaria howellii
+Antennaria howellii ssp. howellii
+Antennaria howellii ssp. neodioica
+Antennaria howellii ssp. petaloidea
 Antennaria lanata
-Antennaria luzuloides
+Antennaria luzuloides ssp. luzuloides
 Antennaria media
 Antennaria microphylla
-Antennaria monocephala
+Antennaria monocephala ssp. angustata
+Antennaria monocephala ssp. monocephala
 Antennaria neglecta
 Antennaria pallida
 Antennaria parvifolia
-Antennaria pulcherrima
+Antennaria pulcherrima ssp. pulcherrima
 Antennaria pulvinata
 Antennaria racemosa
-Antennaria rosea
+Antennaria rosea ssp. arida
+Antennaria rosea ssp. confinis
+Antennaria rosea ssp. rosea
 Antennaria umbrinella
 Antennulariella lichenisata
 Antepirrhoe atrifasciata
@@ -1442,7 +1465,9 @@ Anthobium reflexicolle
 Anthobium sinuosum
 Anthoceros fusiformis
 Anthocharis julia
-Anthomastus cf.
+Anthocharis julia alaskensis
+Anthocharis julia flora
+Anthomastus cf. grandiflorus
 Anthonomus albus
 Anthonomus confusus
 Anthonomus consors
@@ -1477,9 +1502,9 @@ Anthophora ursina
 Anthoporia albobrunnea
 Anthoptilum grandiflorum
 Anthothela pacifica
-Anthoxanthum aristatum
+Anthoxanthum aristatum ssp. aristatum
 Anthoxanthum hirtum
-Anthoxanthum monticola
+Anthoxanthum monticola ssp. alpinum
 Anthoxanthum odoratum
 Anthracobia macrocystis
 Anthracobia maurilabra
@@ -1509,7 +1534,7 @@ Anticlea occidentalis
 Anticlea vasiliata
 Antigone canadensis
 Antimora microlepis
-Antipathes sp.
+Antipathes sp. 1
 Antispila freemani
 Antistea brunnea
 Antitrichia californica
@@ -1598,8 +1623,8 @@ Aphthona cyparissiae
 Aphthona czwalinae
 Aphthona flava
 Aphthona nigriscutis
-Aphyllon californicum
-Aphyllon corymbosum
+Aphyllon californicum ssp. californicum
+Aphyllon corymbosum ssp. mutabile
 Aphyllon fasciculatum
 Aphyllon ludovicianum
 Aphyllon pinorum
@@ -1659,9 +1684,9 @@ Aptocyclus ventricosus
 Aquila chrysaetos
 Aquilegia brevistyla
 Aquilegia flavescens
-Aquilegia formosa
+Aquilegia formosa var. formosa
 Aquilegia vulgaris
-Arabidopsis lyrata
+Arabidopsis lyrata ssp. kamchatica
 Arabidopsis thaliana
 Arabis eschscholtziana
 Arabis nuttallii
@@ -1687,7 +1712,9 @@ Arceuthobium americanum
 Arceuthobium campylopodum
 Arceuthobium douglasii
 Arceuthobium laricis
-Arceuthobium tsugense
+Arceuthobium tsugense ssp. contortae
+Arceuthobium tsugense ssp. mertensianae
+Arceuthobium tsugense ssp. tsugense
 Archiboreoiulus pallidus
 Archiearis infans
 Archilestes californicus
@@ -1707,8 +1734,8 @@ Archips purpurana
 Archips rosana
 Archips striana
 Archips tsuganus
-Arctagrostis latifolia
-Arctanthemum arcticum
+Arctagrostis latifolia ssp. arundinacea
+Arctanthemum arcticum ssp. arcticum
 Arctella lapponica
 Arcteranthis cooleyae
 Arctia caja
@@ -1741,7 +1768,6 @@ Arctostaphylos columbiana
 Arctostaphylos uva-ursi
 Arctostaphylos x media
 Arctous alpinus
-Arctous ruber
 Arctous rubra
 Arctozenus risso
 Arcuphantes arcuatulus
@@ -1749,6 +1775,8 @@ Arcuphantes sylvaticus
 Arcynopteryx dichroa
 Ardea alba
 Ardea herodias
+Ardea herodias fannini
+Ardea herodias herodias
 Ardenna bulleri
 Ardenna carneipes
 Ardenna creatopus
@@ -1758,7 +1786,7 @@ Ardenna tenuirostris
 Arenaria interpres
 Arenaria longipedunculata
 Arenaria melanocephala
-Arenaria serpyllifolia
+Arenaria serpyllifolia var. serpyllifolia
 Argas cooleyi
 Argas persicus
 Argenna obesa
@@ -1811,14 +1839,15 @@ Arion intermedius
 Arion rufus
 Arion silvaticus
 Arion subfuscus
-Aristida purpurea
+Aristida purpurea var. longiseta
 Aristostomias scintillans
 Aristotelia devexella
 Aristotelia fungivorella
 Aristotelia isopelta
 Aristotelia roseosuffusella
 Aristotelia rubidella
-Armeria maritima
+Armeria maritima ssp. californica
+Armeria maritima ssp. maritima
 Armillaria cepistipes
 Armillaria gallica
 Armillaria gemina
@@ -1828,13 +1857,14 @@ Armillaria sinapina
 Armillaria solidipes
 Armoracia rusticana
 Arnellia fennica
-Arnica angustifolia
+Arnica angustifolia ssp. angustifolia
+Arnica angustifolia ssp. tomentosa
 Arnica chamissonis
 Arnica cordifolia
 Arnica fulgens
 Arnica gracilis
-Arnica griscomii
-Arnica lanceolata
+Arnica griscomii ssp. frigida
+Arnica lanceolata ssp. prima
 Arnica latifolia
 Arnica lessingii
 Arnica lonchophylla
@@ -1849,7 +1879,8 @@ Aroga websteri
 Arpedium cribratum
 Arphia conspersa
 Arphia pseudonietana
-Arrhenatherum elatius
+Arrhenatherum elatius ssp. bulbosum
+Arrhenatherum elatius ssp. elatius
 Arrhenia acerosa
 Arrhenia auriscalpium
 Arrhenia chlorocyanea
@@ -1875,22 +1906,24 @@ Artedius lateralis
 Artemisia absinthium
 Artemisia alaskana
 Artemisia biennis
-Artemisia borealis
-Artemisia campestris
+Artemisia borealis ssp. borealis
+Artemisia campestris ssp. pacifica
 Artemisia douglasiana
 Artemisia dracunculus
 Artemisia frigida
 Artemisia furcata
 Artemisia herriotii
 Artemisia lindleyana
-Artemisia ludoviciana
+Artemisia ludoviciana ssp. candicans
+Artemisia ludoviciana ssp. ludoviciana
 Artemisia michauxiana
-Artemisia norvegica
+Artemisia norvegica ssp. saxatilis
 Artemisia princeps
 Artemisia suksdorfii
 Artemisia tilesii
-Artemisia tridentata
-Artemisia tripartita
+Artemisia tridentata ssp. tridentata
+Artemisia tridentata ssp. vaseyana
+Artemisia tripartita ssp. tripartita
 Artemisia vulgaris
 Artemisiospiza nevadensis
 Arthonia anombrophila
@@ -1935,7 +1968,7 @@ Arthrorhaphis citrinella
 Artochia productifrons
 Artomyces piperatus
 Arum italicum
-Aruncus dioicus
+Aruncus dioicus var. acuminatus
 Asagena americana
 Asahinea scholanderi
 Asaphidion yukonense
@@ -2015,12 +2048,13 @@ Aspidotis densa
 Aspilidea myrinii
 Aspitates aberrata
 Asplenium adulterinum
-Asplenium trichomanes
+Asplenium trichomanes ssp. quadrivalens
+Asplenium trichomanes ssp. trichomanes
 Asplenium viride
 Aspropaxillus septentrionalis
 Astenus cinctus
 Astenus longiusculus
-Aster alpinus
+Aster alpinus ssp. vierhapperi
 Asterella lindenbergiana
 Asterodon ferruginosus
 Asterophora lycoperdoides
@@ -2029,33 +2063,38 @@ Asterostroma andinum
 Asterostroma cervicolor
 Astraeus hygrometricus
 Astragalus agrestis
-Astragalus alpinus
+Astragalus alpinus var. alpinus
 Astragalus americanus
 Astragalus australis
-Astragalus beckwithii
+Astragalus beckwithii var. weiserensis
 Astragalus bourgovii
-Astragalus canadensis
+Astragalus canadensis var. brevidens
+Astragalus canadensis var. canadensis
+Astragalus canadensis var. mortonii
 Astragalus cicer
-Astragalus collinus
-Astragalus crassicarpus
+Astragalus collinus var. collinus
+Astragalus crassicarpus var. paysonii
 Astragalus drummondii
 Astragalus eucosmus
 Astragalus falcatus
 Astragalus filipes
-Astragalus laxmannii
-Astragalus lentiginosus
+Astragalus laxmannii var. robustior
+Astragalus laxmannii var. tananaicus
+Astragalus lentiginosus var. lentiginosus
 Astragalus lotiflorus
 Astragalus microcystis
-Astragalus miser
-Astragalus missouriensis
+Astragalus miser var. miser
+Astragalus miser var. serotinus
+Astragalus missouriensis var. missouriensis
 Astragalus nutzotinensis
-Astragalus purshii
-Astragalus robbinsii
+Astragalus purshii var. glareosus
+Astragalus purshii var. purshii
+Astragalus robbinsii var. minor
 Astragalus sclerocarpus
 Astragalus spaldingii
 Astragalus tenellus
 Astragalus umbellatus
-Astragalus vexilliflexus
+Astragalus vexilliflexus var. vexilliflexus
 Astrophanes adonis
 Astrosporina graveolens
 Astrotischeria occidentalis
@@ -2126,8 +2165,8 @@ Athous scissus
 Athous sierrae
 Athous vittiger
 Athrips rancidella
-Athyrium distentifolium
-Athyrium filix-femina
+Athyrium distentifolium var. americanum
+Athyrium filix-femina var. cyclosorum
 Athysanus pusillus
 Atimia confusa
 Atimia hoppingi
@@ -2155,9 +2194,9 @@ Atrichum flavisetum
 Atrichum selwynii
 Atrichum tenellum
 Atrichum undulatum
-Atriplex argentea
+Atriplex argentea var. argentea
 Atriplex dioica
-Atriplex gardneri
+Atriplex gardneri var. gardneri
 Atriplex gmelinii
 Atriplex hortensis
 Atriplex longipes
@@ -2315,7 +2354,9 @@ Barbilophozia lycopodioides
 Barbilophozia sudetica
 Barbourisia rufa
 Barbula amplexifolia
-Barbula convoluta
+Barbula convoluta var. convoluta
+Barbula convoluta var. eustegia
+Barbula convoluta var. gallinula
 Barbula unguiculata
 Baris stacesmithi
 Barrmaelia sustenta
@@ -2381,8 +2422,9 @@ Bazzania ambigua
 Bazzania denudata
 Bazzania flaccida
 Bazzania pearsonii
-Bazzania tricrenata
-Bazzania trilobata
+Bazzania tricrenata var. fulfordiae
+Bazzania tricrenata var. tricrenata
+Bazzania trilobata var. trilobata
 Beckmannia syzigachne
 Bedellia somnulentella
 Beeria nematocera
@@ -2518,12 +2560,11 @@ Betaeus harrimani
 Betaeus setosus
 Betocalea pacifica
 Betula glandulosa
-Betula nana
 Betula neoalaskana
 Betula occidentalis
 Betula papyrifera
 Betula pendula
-Betula pubescens
+Betula pubescens ssp. pubescens
 Betula pumila
 Betulapion simile
 Biatora alnetorum
@@ -2539,7 +2580,8 @@ Biatora globulosa
 Biatora helvola
 Biatora hypophaea
 Biatora ligni-mollis
-Biatora meiocarpa
+Biatora meiocarpa var. meiocarpa
+Biatora meiocarpa var. tacomensis
 Biatora nobilis
 Biatora oligocarpa
 Biatora pallens
@@ -2628,7 +2670,7 @@ Bledius viriosus
 Bledius washingtonensis
 Bledius zophus
 Blepharostoma arachnoideum
-Blepharostoma trichophyllum
+Blepharostoma trichophyllum ssp. trichophyllum
 Blepsias bilobus
 Blepsias cirrhosus
 Bleptina caradrinalis
@@ -2665,7 +2707,7 @@ Bolbitius reticulatus
 Bolbitius titubans
 Bolboschoenus fluviatilis
 Bolboschoenus glaucus
-Bolboschoenus maritimus
+Bolboschoenus maritimus ssp. paludosus
 Boletinus punctatipes
 Boletinus spectabilis
 Boletopsis grisea
@@ -2692,10 +2734,20 @@ Bollmaniulus spenceri
 Boloria alaskensis
 Boloria alberta
 Boloria astarte
+Boloria astarte astarte
+Boloria astarte distincta
 Boloria bellona
+Boloria bellona jenistae
+Boloria bellona toddi
 Boloria chariclea
+Boloria chariclea butleri
+Boloria chariclea grandis
+Boloria chariclea rainieri
 Boloria epithore
+Boloria epithore chermocki
+Boloria epithore sigridae
 Boloria eunomia
+Boloria eunomia dawsoni
 Boloria freija
 Boloria frigga
 Boloria improba
@@ -2764,6 +2816,9 @@ Boreus nix
 Boreus pilosus
 Boreus reductus
 Bos bison
+Bos bison athabascae
+Bos bison bison
+Bos bison bison (Introduced)
 Boschella fasciata
 Boschniakia rossica
 Botaurus lentiginosus
@@ -2777,7 +2832,7 @@ Bothropolys hoples
 Bothropolys victorianus
 Botrychium alaskense
 Botrychium ascendens
-Botrychium campestre
+Botrychium campestre var. lineare
 Botrychium crenulatum
 Botrychium hesperium
 Botrychium lanceolatum
@@ -2789,7 +2844,7 @@ Botrychium pallidum
 Botrychium paradoxum
 Botrychium pedunculosum
 Botrychium pinnatum
-Botrychium simplex
+Botrychium simplex var. compositum
 Botrychium spathulatum
 Botrychium tunux
 Botrychium yaaxudakeit
@@ -2860,13 +2915,15 @@ Brachythecium cirrosum
 Brachythecium coruscum
 Brachythecium digastrum
 Brachythecium erythrorrhizon
+Brachythecium erythrorrhizon var. erythrorrhizon
 Brachythecium frigidum
 Brachythecium laetum
 Brachythecium rivulare
 Brachythecium rotaeanum
 Brachythecium rutabulum
 Brachythecium turgidum
-Brachythecium velutinum
+Brachythecium velutinum var. velutinum
+Brachythecium velutinum var. venustum
 Brachyusa americana
 Bradycellus californicus
 Bradycellus conformis
@@ -2881,52 +2938,57 @@ Bradynotes obesa
 Brama japonica
 Branta bernicla
 Branta canadensis
+Branta canadensis occidentalis
 Branta hutchinsii
 Brasenia schreberi
 Brassica juncea
 Brassica napus
 Brassica nigra
-Brassica oleracea
+Brassica oleracea var. oleracea
 Brassica rapa
 Brassicogethes aeneus
 Brassicogethes cleominis
 Brauniellula nancyae
-Braya glabella
-Braya humilis
+Braya glabella ssp. glabella
+Braya humilis ssp. humilis
+Braya humilis ssp. maccallae
+Braya humilis ssp. porsildii
 Brevicellicium olivascens
 Brianaria bauschiana
 Brianaria lutulata
 Brianaria sylvicola
 Brickellia grandiflora
-Brickellia oblongifolia
+Brickellia oblongifolia var. oblongifolia
 Brigantiaea fuscolutea
 Brigantiaea praetermissa
 Brisaster latifrons
 Briza maxima
 Briza minor
 Brodiaea coronaria
-Brodiaea rosea
+Brodiaea rosea ssp. rosea
 Brodoa oroarctica
 Bromius obscurus
 Brommella monticola
 Bromus aleutensis
 Bromus briziformis
-Bromus carinatus
+Bromus carinatus var. carinatus
+Bromus carinatus var. marginatus
 Bromus ciliatus
 Bromus commutatus
-Bromus diandrus
+Bromus diandrus ssp. rigidus
 Bromus hordeaceus
 Bromus inermis
 Bromus japonicus
 Bromus pacificus
 Bromus porteri
-Bromus pumpellianus
+Bromus pumpellianus ssp. pumpellianus
 Bromus racemosus
 Bromus richardsonii
 Bromus riparius
 Bromus secalinus
 Bromus sitchensis
-Bromus squarrosus
+Bromus squarrosus var. squarrosus
+Bromus squarrosus var. villosus
 Bromus sterilis
 Bromus tectorum
 Bromus vulgaris
@@ -2955,7 +3017,7 @@ Bryocaulon divergens
 Bryocaulon pseudosatoanum
 Bryoerythrophyllum columbianum
 Bryoerythrophyllum ferruginascens
-Bryoerythrophyllum recurvirostre
+Bryoerythrophyllum recurvirostre var. recurvirostre
 Bryoglossum gracile
 Bryolawtonia vancouveriensis
 Bryonora castanea
@@ -3128,9 +3190,10 @@ Cafius canescens
 Cafius lithocharinus
 Cafius luteipennis
 Cafius seminitens
-Cakile edentula
-Cakile maritima
-Calamagrostis canadensis
+Cakile edentula ssp. edentula
+Cakile maritima ssp. maritima
+Calamagrostis canadensis var. canadensis
+Calamagrostis canadensis var. langsdorfii
 Calamagrostis epigeios
 Calamagrostis lapponica
 Calamagrostis montanensis
@@ -3138,10 +3201,11 @@ Calamagrostis nutkaensis
 Calamagrostis purpurascens
 Calamagrostis rubescens
 Calamagrostis sesquiflora
-Calamagrostis stricta
+Calamagrostis stricta ssp. inexpansa
+Calamagrostis stricta ssp. stricta
 Calamospiza melanocorys
 Calamosternus granarius
-Calamovilfa longifolia
+Calamovilfa longifolia var. longifolia
 Calandrinia ciliata
 Calastacus stilirostris
 Calathella eruciformis
@@ -3220,9 +3284,10 @@ Callipepla californica
 Callisto denticulella
 Callistopsyllus terinus
 Callistosporium luteo-olivaceum
-Callitriche brutia
+Callitriche brutia var. hamulata
 Callitriche hermaphroditica
-Callitriche heterophylla
+Callitriche heterophylla var. bolanderi
+Callitriche heterophylla var. heterophylla
 Callitriche marginata
 Callitriche palustris
 Callitriche stagnalis
@@ -3235,13 +3300,21 @@ Callobius enus
 Callobius nomeus
 Callobius pictus
 Callobius severus
-Callogorgia sp.
+Callogorgia sp. 1
 Callophrys affinis
 Callophrys augustinus
+Callophrys augustinus iroides
 Callophrys eryphon
+Callophrys eryphon eryphon
+Callophrys eryphon sheltonensis
 Callophrys gryneus
+Callophrys gryneus plicataria
+Callophrys gryneus rosneri
+Callophrys gryneus siva
 Callophrys johnsoni
 Callophrys mossii
+Callophrys mossii mossii
+Callophrys mossii schryveri
 Callophrys nelsoni
 Callophrys niphon
 Callophrys polios
@@ -3260,7 +3333,7 @@ Calocera cornea
 Calocera viscosa
 Calochortus apiculatus
 Calochortus lyallii
-Calochortus macrocarpus
+Calochortus macrocarpus var. macrocarpus
 Calochromus dimidiatus
 Calochromus fervens
 Calocybe carnea
@@ -3337,7 +3410,8 @@ Calosoma wilkesii
 Caltha biflora
 Caltha leptosepala
 Caltha natans
-Caltha palustris
+Caltha palustris ssp. palustris
+Caltha palustris ssp. radicans
 Calvatia bovista
 Calvatia cyathiformis
 Calvatia gigantea
@@ -3358,19 +3432,22 @@ Calypogeia muelleriana
 Calypogeia neesiana
 Calypogeia sphagnicola
 Calypogeia suecica
-Calypso bulbosa
+Calypso bulbosa var. americana
+Calypso bulbosa var. occidentalis
 Calypte anna
 Calypte costae
 Calyptella capula
 Calyptomerus oblongulus
 Calyptridium umbellatum
 Calystegia macounii
-Calystegia sepium
-Calystegia silvatica
+Calystegia sepium ssp. erratica
+Calystegia sepium ssp. sepium
+Calystegia silvatica ssp. silvatica
 Calystegia soldanella
 Camarophyllopsis phaeoxantha
-Camassia leichtlinii
-Camassia quamash
+Camassia leichtlinii ssp. suksdorfii
+Camassia quamash ssp. maxima
+Camassia quamash ssp. quamash
 Camelina microcarpa
 Cameraria agrifoliella
 Cameraria gaultheriella
@@ -3400,11 +3477,12 @@ Camponotus novaeboracensis
 Camponotus semitestaceus
 Camponotus vicinus
 Campylium calcareum
-Campylium chrysophyllum
-Campylium stellatum
+Campylium chrysophyllum var. chrysophyllum
+Campylium stellatum var. protensum
+Campylium stellatum var. stellatum
 Campylophyllum halleri
 Campylophyllum hispidulum
-Campylopus atrovirens
+Campylopus atrovirens var. atrovirens
 Campylopus flexuosus
 Campylopus fragilis
 Campylopus gracilis
@@ -3533,7 +3611,7 @@ Cardiophorus pubescens
 Cardiophorus tenebrosus
 Cardiophorus tumidicollis
 Cardiophorus tutus
-Carduus acanthoides
+Carduus acanthoides ssp. acanthoides
 Carduus nutans
 Careproctus cypselurus
 Careproctus gilberti
@@ -3546,7 +3624,8 @@ Carex albonigra
 Carex amplifolia
 Carex anthoxanthea
 Carex aperta
-Carex aquatilis
+Carex aquatilis var. aquatilis
+Carex aquatilis var. substricta
 Carex arcta
 Carex arctiformis
 Carex arctogena
@@ -3561,9 +3640,10 @@ Carex bicolor
 Carex bigelowii
 Carex bolanderi
 Carex brevior
-Carex brunnescens
+Carex brunnescens ssp. brunnescens
 Carex buxbaumii
-Carex canescens
+Carex canescens ssp. canescens
+Carex canescens ssp. disjuncta
 Carex capillaris
 Carex capitata
 Carex chordorrhiza
@@ -3575,29 +3655,31 @@ Carex cordillerana
 Carex crawei
 Carex crawfordii
 Carex cusickii
-Carex debilis
-Carex deflexa
-Carex deweyana
+Carex debilis var. rudgei
+Carex deflexa var. boottii
+Carex deflexa var. deflexa
+Carex deweyana var. deweyana
 Carex diandra
 Carex disperma
 Carex douglasii
 Carex duriuscula
 Carex eburnea
-Carex echinata
+Carex echinata ssp. echinata
+Carex echinata ssp. phyllomanica
 Carex eleusinoides
 Carex enanderi
 Carex engelmannii
 Carex epapillosa
 Carex exsiccata
 Carex feta
-Carex filifolia
+Carex filifolia var. filifolia
 Carex flava
 Carex foenea
 Carex fuliginosa
 Carex garberi
 Carex geyeri
 Carex glacialis
-Carex glareosa
+Carex glareosa ssp. glareosa
 Carex gmelinii
 Carex granularis
 Carex gynocrates
@@ -3612,7 +3694,8 @@ Carex hystericina
 Carex illota
 Carex incurviformis
 Carex infirminervia
-Carex inops
+Carex inops ssp. heliophila
+Carex inops ssp. inops
 Carex interior
 Carex interrupta
 Carex jonesii
@@ -3630,19 +3713,19 @@ Carex limosa
 Carex livida
 Carex loliacea
 Carex longii
-Carex luzulina
+Carex luzulina var. ablata
 Carex lyngbyei
 Carex mackenziei
 Carex macloviana
 Carex macrocephala
 Carex macrochaeta
-Carex magellanica
+Carex magellanica ssp. irrigua
 Carex maritima
 Carex media
 Carex membranacea
 Carex mertensii
-Carex microchaeta
-Carex microglochin
+Carex microchaeta ssp. microchaeta
+Carex microglochin ssp. microglochin
 Carex micropoda
 Carex microptera
 Carex nardina
@@ -3661,7 +3744,7 @@ Carex pedunculata
 Carex pellita
 Carex pendula
 Carex petasata
-Carex petricosa
+Carex petricosa var. petricosa
 Carex phaeocephala
 Carex pluriflora
 Carex podocarpa
@@ -3678,28 +3761,30 @@ Carex rostrata
 Carex rupestris
 Carex sartwellii
 Carex saxatilis
-Carex scirpoidea
+Carex scirpoidea ssp. pseudoscirpoidea
+Carex scirpoidea ssp. scirpoidea
+Carex scirpoidea ssp. stenochlaena
 Carex scoparia
-Carex scopulorum
+Carex scopulorum var. bracteosa
+Carex scopulorum var. prionophylla
 Carex siccata
 Carex simulata
 Carex sitchensis
 Carex spectabilis
-Carex spp.
 Carex sprengelii
-Carex stipata
+Carex stipata var. stipata
 Carex stylosa
 Carex subbracteata
-Carex supina
+Carex supina ssp. spaniocarpa
 Carex swanii
 Carex sychnocephala
 Carex sylvatica
 Carex tahoensis
 Carex tenera
 Carex tenuiflora
-Carex tonsa
+Carex tonsa var. tonsa
 Carex torreyi
-Carex tribuloides
+Carex tribuloides var. tribuloides
 Carex trisperma
 Carex tumulicola
 Carex unilateralis
@@ -3707,7 +3792,7 @@ Carex utriculata
 Carex vaginata
 Carex vallicola
 Carex vesicaria
-Carex viridula
+Carex viridula ssp. viridula
 Carex vulpinoidea
 Carex xerantica
 Carex zikae
@@ -3737,6 +3822,9 @@ Carpophilus mutilatus
 Carrhydrus crassipes
 Carsia sororiata
 Carterocephalus palaemon
+Carterocephalus palaemon magnus
+Carterocephalus palaemon mandan
+Carterocephalus palaemon skada
 Carthamus tinctorius
 Cartodere constricta
 Cartodere nodifer
@@ -3753,28 +3841,33 @@ Caryophyllia alaskensis
 Caryophyllia arnoldi
 Cascadoperla trictura
 Cassida flaveola
-Cassiope lycopodioides
-Cassiope mertensiana
-Cassiope tetragona
+Cassiope lycopodioides ssp. cristapilosa
+Cassiope lycopodioides ssp. lycopodioides
+Cassiope mertensiana ssp. mertensiana
+Cassiope tetragona ssp. saximontana
+Cassiope tetragona ssp. tetragona
 Castanea dentata
 Castianeira alteranda
 Castianeira longipalpa
 Castianeira variata
 Castianeira walsinghami
-Castilleja ambigua
+Castilleja ambigua var. ambigua
 Castilleja attenuata
 Castilleja cervina
 Castilleja cusickii
 Castilleja elmeri
-Castilleja hispida
+Castilleja hispida var. hispida
 Castilleja hyperborea
 Castilleja levisecta
 Castilleja lutescens
-Castilleja miniata
-Castilleja minor
+Castilleja miniata var. dixonii
+Castilleja miniata var. fulva
+Castilleja miniata var. miniata
+Castilleja minor var. exilis
 Castilleja occidentalis
-Castilleja pallida
-Castilleja parviflora
+Castilleja pallida var. caudata
+Castilleja parviflora var. albida
+Castilleja parviflora var. parviflora
 Castilleja purpurascens
 Castilleja raupii
 Castilleja rhexiifolia
@@ -3849,7 +3942,7 @@ Catostomus catostomus
 Catostomus columbianus
 Catostomus commersonii
 Catostomus macrocheilus
-Catostomus sp.
+Catostomus sp. 4
 Cauchas cockerelli
 Cauchas simpliciella
 Caudatella heterocaudata
@@ -3860,7 +3953,8 @@ Cavernularia hultenii
 Cavernularia lophyrea
 Caviphantes saxetorum
 Ceanothus sanguineus
-Ceanothus velutinus
+Ceanothus velutinus var. laevigatus
+Ceanothus velutinus var. velutinus
 Celastrina echo
 Celastrina lucia
 Celypha cespitana
@@ -3876,7 +3970,7 @@ Centaurea montana
 Centaurea nigra
 Centaurea nigrescens
 Centaurea scabiosa
-Centaurea stoebe
+Centaurea stoebe ssp. australis
 Centaurea x moncktonii
 Centaurium erythraea
 Centranthus ruber
@@ -3896,7 +3990,8 @@ Cephaloon bicolor
 Cephaloon pacificum
 Cephaloon tenuicorne
 Cephalozia ambigua
-Cephaloziella divaricata
+Cephaloziella divaricata var. divaricata
+Cephaloziella divaricata var. scabra
 Cephaloziella hampeana
 Cephaloziella massalongoi
 Cephaloziella phyllacantha
@@ -3926,13 +4021,14 @@ Ceranemota fasciata
 Ceranemota improvisa
 Cerastis enigmatica
 Cerastis salicarum
-Cerastium arvense
-Cerastium beeringianum
+Cerastium arvense ssp. arvense
+Cerastium arvense ssp. strictum
+Cerastium beeringianum var. beeringianum
 Cerastium fischerianum
-Cerastium fontanum
+Cerastium fontanum ssp. vulgare
 Cerastium glomeratum
-Cerastium nutans
-Cerastium pumilum
+Cerastium nutans var. nutans
+Cerastium pumilum ssp. glutinosum
 Cerastium semidecandrum
 Cerastium tomentosum
 Ceratias holboelli
@@ -4008,9 +4104,11 @@ Cercyon tolfino
 Cercyon unipunctatus
 Cercyonis oetus
 Cercyonis pegala
+Cercyonis pegala ariane
+Cercyonis pegala incana
+Cercyonis pegala nephele
 Cercyonis sthenele
 Cerinomyces crustulinus
-Ceriodaphnia dubia
 Cerioporus leptocephalus
 Cerioporus mollis
 Cerioporus squamosus
@@ -4034,12 +4132,14 @@ Certhia americana
 Ceruchus punctatus
 Ceruchus striatus
 Cervus elaphus
+Cervus elaphus roosevelti
 Cerylon castaneum
 Cerylon unicolor
 Cetorhinus maximus
 Cetraria delisei
-Cetraria ericetorum
-Cetraria islandica
+Cetraria ericetorum ssp. reticulata
+Cetraria islandica ssp. crispiformis
+Cetraria islandica ssp. islandica
 Cetraria laevigata
 Cetraria nigricans
 Cetraria sepincola
@@ -4061,9 +4161,9 @@ Ceutorhynchus ovipennis
 Ceutorhynchus querceti
 Ceutorhynchus rapae
 Ceutorhynchus squamosulus
-Chaenactis douglasii
+Chaenactis douglasii var. douglasii
 Chaenophryne melanorhabdus
-Chaenorhinum minus
+Chaenorhinum minus ssp. minus
 Chaenotheca brachypoda
 Chaenotheca brunneola
 Chaenotheca chlorella
@@ -4161,9 +4261,9 @@ Chenopodiastrum murale
 Chenopodiastrum simplex
 Chenopodium album
 Chenopodium atrovirens
-Chenopodium berlandieri
-Chenopodium ficifolium
-Chenopodium fremontii
+Chenopodium berlandieri var. zschackei
+Chenopodium ficifolium ssp. ficifolium
+Chenopodium fremontii var. fremontii
 Chenopodium hians
 Chenopodium incognitum
 Chenopodium leptophyllum
@@ -4186,11 +4286,11 @@ Cheumatopsyche smithi
 Cheumatopsyche speciosa
 Chilocorus tricyclus
 Chiloscyphus pallescens
-Chiloscyphus polyanthos
+Chiloscyphus polyanthos var. polyanthos
 Chilostigmodes areolatus
 Chilothorax distinctus
 Chimaphila menziesii
-Chimaphila umbellata
+Chimaphila umbellata ssp. umbellata
 Chionodes abella
 Chionodes abitus
 Chionodes acerella
@@ -4295,6 +4395,7 @@ Christobella ornata
 Chroicocephalus philadelphia
 Chroicocephalus ridibundus
 Chromatochlamys muscorum
+Chromatochlamys muscorum var. muscorum
 Chromosera cyanophylla
 Chroogomphus leptocystis
 Chroogomphus ochraceus
@@ -4302,10 +4403,13 @@ Chroogomphus rutilus
 Chroogomphus tomentosus
 Chroogomphus vinicolor
 Chrosomus eos
+Chrosomus eos x Chrosomus neogaeus
 Chrosomus neogaeus
 Chrysanthrax juncturus
 Chrysanthrax vanus
 Chrysemys picta
+Chrysemys picta pop. 1
+Chrysemys picta pop. 2
 Chrysobothris azurea
 Chrysobothris breviloba
 Chrysobothris carinipennis
@@ -4382,7 +4486,7 @@ Chrysosplenium iowense
 Chrysosplenium tetrandrum
 Chrysosplenium wrightii
 Chrysoteuchia topiarius
-Chrysothamnus viscidiflorus
+Chrysothamnus viscidiflorus ssp. lanceolatus
 Chrysothrix candelaris
 Chrysothrix chlorina
 Chrysothrix chrysophthalma
@@ -4399,17 +4503,28 @@ Ciboria rufofusca
 Cichorium intybus
 Cicindela decemnotata
 Cicindela depressula
+Cicindela depressula depressula
+Cicindela depressula eureka
 Cicindela hirticollis
 Cicindela limbalis
 Cicindela longilabris
+Cicindela longilabris longilabris
+Cicindela longilabris perviridis
 Cicindela nebraskana
 Cicindela oregona
+Cicindela oregona guttifera
+Cicindela oregona oregona
 Cicindela parowana
 Cicindela pugetana
 Cicindela purpurea
+Cicindela purpurea audubonii
+Cicindela purpurea hatchi
 Cicindela repanda
+Cicindela repanda repanda
 Cicindela terricola
+Cicindela terricola imperfecta
 Cicindela tranquebarica
+Cicindela tranquebarica vibex
 Cicurina idahoana
 Cicurina intermedia
 Cicurina robusta
@@ -4417,7 +4532,7 @@ Cicurina simplex
 Cicurina tersa
 Cicuta bulbifera
 Cicuta douglasii
-Cicuta maculata
+Cicuta maculata var. angustifolia
 Cicuta virosa
 Cilea silphoides
 Cimberis bihirsuta
@@ -4443,7 +4558,8 @@ Cinygmula reticulata
 Cinygmula uniformis
 Ciocalypta penicillus
 Cipangopaludina chinensis
-Circaea alpina
+Circaea alpina ssp. alpina
+Circaea alpina ssp. pacifica
 Circinaria caesiocinerea
 Circinaria calcarea
 Circinaria contorta
@@ -4457,12 +4573,12 @@ Cirriphyllum piliferum
 Cirsium arvense
 Cirsium brevistylum
 Cirsium drummondii
-Cirsium edule
+Cirsium edule var. macounii
 Cirsium flodmanii
 Cirsium foliosum
 Cirsium hookerianum
 Cirsium palustre
-Cirsium scariosum
+Cirsium scariosum var. scariosum
 Cirsium undulatum
 Cirsium vulgare
 Cirsium x vancouverense
@@ -4487,7 +4603,7 @@ Citharichthys stigmaeus
 Claassenia sabulosa
 Cladara atroliturata
 Cladara limitaria
-Cladina arbuscula
+Cladina arbuscula ssp. beringiana
 Cladina ciliata
 Cladina mitis
 Cladina portentosa
@@ -4509,17 +4625,22 @@ Cladonia chlorophaea
 Cladonia coccifera
 Cladonia concinna
 Cladonia coniocraea
-Cladonia cornuta
-Cladonia crispata
+Cladonia cornuta ssp. cornuta
+Cladonia cornuta ssp. groenlandica
+Cladonia crispata var. cetrariiformis
+Cladonia crispata var. crispata
 Cladonia cyanipes
 Cladonia decorticata
 Cladonia deformis
 Cladonia digitata
 Cladonia dimorpha
-Cladonia ecmocyna
+Cladonia ecmocyna ssp. intermedia
+Cladonia ecmocyna ssp. occidentalis
 Cladonia fimbriata
 Cladonia furcata
-Cladonia gracilis
+Cladonia gracilis ssp. elongata
+Cladonia gracilis ssp. turbinata
+Cladonia gracilis ssp. vulnerata
 Cladonia homosekikaica
 Cladonia imbricarica
 Cladonia kanewskii
@@ -4554,7 +4675,8 @@ Cladonia symphycarpia
 Cladonia transcendens
 Cladonia trassii
 Cladonia umbricola
-Cladonia uncialis
+Cladonia uncialis ssp. biuncialis
+Cladonia uncialis ssp. uncialis
 Cladonia verruculosa
 Cladonia verticillata
 Cladonia wainioi
@@ -4567,9 +4689,10 @@ Claopodium bolanderi
 Claopodium crispifolium
 Claopodium pellucinerve
 Claopodium whippleanum
-Clarkia amoena
+Clarkia amoena ssp. caurina
+Clarkia amoena ssp. lindleyi
 Clarkia pulchella
-Clarkia purpurea
+Clarkia purpurea ssp. quadrivulnera
 Clarkia rhomboidea
 Clathria asodes
 Clathria brepha
@@ -4601,7 +4724,7 @@ Claviceps purpurea
 Clavicorona taxophila
 Clavilispinus rufescens
 Clavularia moresbii
-Clavularia sp.
+Clavularia sp. A
 Clavulicium macounii
 Clavulina castaneipes
 Clavulina cinerea
@@ -4615,21 +4738,24 @@ Clavulinopsis helvola
 Clavulinopsis laeticolor
 Clavulinopsis umbrinella
 Claytonia cordifolia
-Claytonia exigua
+Claytonia exigua ssp. exigua
+Claytonia exigua ssp. glauca
 Claytonia lanceolata
 Claytonia megarhiza
-Claytonia multiscapa
-Claytonia parviflora
-Claytonia perfoliata
-Claytonia rubra
+Claytonia multiscapa ssp. pacifica
+Claytonia parviflora ssp. parviflora
+Claytonia perfoliata ssp. intermontana
+Claytonia perfoliata ssp. perfoliata
+Claytonia rubra ssp. depressa
+Claytonia rubra ssp. rubra
 Claytonia sarmentosa
 Claytonia sibirica
 Claytonia tuberosa
 Claytonia washingtoniana
 Cleistocybe gomphidioides
 Clematis ligusticifolia
-Clematis occidentalis
-Clematis tangutica
+Clematis occidentalis var. grosseserrata
+Clematis tangutica var. tangutica
 Clematis vitalba
 Clemensia albata
 Clepsis clemensiana
@@ -4653,7 +4779,7 @@ Clinocottus acuticeps
 Clinocottus embryum
 Clinocottus globiceps
 Clinopodium douglasii
-Clinopodium vulgare
+Clinopodium vulgare ssp. vulgare
 Clintonia uniflora
 Cliona argus
 Cliona californiana
@@ -4841,11 +4967,16 @@ Coenochroa californiella
 Coenogonium luteum
 Coenogonium pineti
 Coenonympha tullia
+Coenonympha tullia ampelos
+Coenonympha tullia benjamini
+Coenonympha tullia columbiana
+Coenonympha tullia insulana
+Coenonympha tullia yukonensis
 Coenophila opacifrons
 Colacogloea peniophorae
 Colaptes auratus
 Coleanthus subtilis
-Coleataenia rigidula
+Coleataenia rigidula ssp. rigidula
 Colenis impunctata
 Coleomyia hinei
 Coleophora accordella
@@ -4902,17 +5033,25 @@ Coleotechnites starki
 Coleotechnites thujaella
 Coleothorpa vittigera
 Colias alexandra
+Colias alexandra columbiensis
+Colias alexandra pseudocolumbiensis
 Colias canadensis
 Colias christina
 Colias eurytheme
 Colias gigantea
+Colias gigantea gigantea
+Colias gigantea mayi
 Colias hecla
 Colias interior
 Colias meadii
 Colias nastes
+Colias nastes aliaska
+Colias nastes streckeri
 Colias occidentalis
 Colias palaeno
 Colias philodice
+Colias philodice eriphyle
+Colias philodice vitabunda
 Colias skinneri
 Collema auriforme
 Collema bachmanianum
@@ -4920,11 +5059,12 @@ Collema ceraniscum
 Collema coccophorum
 Collema coniophilum
 Collema crispum
-Collema cristatum
+Collema cristatum var. marginale
 Collema curtisporum
 Collema fecundum
 Collema flaccidum
-Collema furfuraceum
+Collema furfuraceum var. furfuraceum
+Collema furfuraceum var. luzonense
 Collema fuscovirens
 Collema glebulentum
 Collema limosum
@@ -4935,8 +5075,10 @@ Collema polycarpon
 Collema quadrifidum
 Collema subflaccidum
 Collema subparvum
-Collema tenax
-Collema undulatum
+Collema tenax var. corallinum
+Collema tenax var. crustaceum
+Collema tenax var. tenax
+Collema undulatum var. granulosum
 Collemopsidium foveolatum
 Collemopsidium sublitorale
 Colletes compactus
@@ -5012,7 +5154,8 @@ Colymbetes dolabratus
 Colymbetes exaratus
 Colymbetes paykulli
 Colymbetes sculptilis
-Comandra umbellata
+Comandra umbellata ssp. californica
+Comandra umbellata ssp. pallida
 Comantella pacifica
 Comaroma mendocino
 Comarum palustre
@@ -5125,9 +5268,11 @@ Coptotriche malifoliella
 Coptotriche splendida
 Coquillettidia perturbans
 Coragyps atratus
-Corallorhiza maculata
+Corallorhiza maculata var. maculata
+Corallorhiza maculata var. occidentalis
+Corallorhiza maculata var. ozettensis
 Corallorhiza mertensiana
-Corallorhiza striata
+Corallorhiza striata var. striata
 Corallorhiza trifida
 Coranarta luteola
 Coranarta macrostigma
@@ -5148,8 +5293,9 @@ Coreorgonal monoceros
 Coreorgonal petulcus
 Coriarachne brunneipes
 Coriolopsis gallica
-Corispermum americanum
-Corispermum hookeri
+Corispermum americanum var. americanum
+Corispermum hookeri var. hookeri
+Corispermum hookeri var. pseudodeclinatum
 Corispermum pacificum
 Corispermum pallasii
 Corispermum villosum
@@ -5161,7 +5307,7 @@ Cornus sanguinea
 Cornus sericea
 Cornus suecica
 Cornus unalaschkensis
-Corrigiola litoralis
+Corrigiola litoralis ssp. litoralis
 Corrodopsylla curvata
 Corticaria columbia
 Corticaria dentigera
@@ -5438,11 +5584,12 @@ Cortodera longicornis
 Cortodera subpilosa
 Corvus brachyrhynchos
 Corvus corax
-Corydalis aurea
+Corydalis aurea ssp. aurea
 Corydalis pauciflora
 Corydalis scouleri
 Corylus avellana
-Corylus cornuta
+Corylus cornuta ssp. californica
+Corylus cornuta ssp. cornuta
 Corymbitodes caricinus
 Corymbitodes moerens
 Corymbitodes pygmaeus
@@ -5491,17 +5638,20 @@ Cotoneaster salicifolius
 Cotoneaster simonsii
 Cotoneaster sternianus
 Cottus aleuticus
+Cottus aleuticus pop. 1
 Cottus asper
 Cottus cognatus
 Cottus confusus
 Cottus hubbsi
 Cottus rhotheus
 Cottus ricei
-Cottus sp.
+Cottus sp. 9
 Cotula coronopifolia
 Coturnicops noveboracensis
 Cotylidia diaphana
 Couesius plumbeus
+Couesius plumbeus pop. 2
+Couesius plumbeus pop. 3
 Crambidia casta
 Crambus ainsliellus
 Crambus alienellus
@@ -5532,17 +5682,21 @@ Crassula connata
 Crassula tillaea
 Crataegus atrovirens
 Crataegus castlegarensis
-Crataegus chrysocarpa
+Crataegus chrysocarpa var. chrysocarpa
+Crataegus chrysocarpa var. piperi
+Crataegus chrysocarpa var. vernonensis
 Crataegus douglasii
 Crataegus enderbyensis
 Crataegus gaylussacia
 Crataegus macracantha
-Crataegus monogyna
-Crataegus okanaganensis
+Crataegus monogyna var. monogyna
+Crataegus okanaganensis var. longispina
+Crataegus okanaganensis var. okanaganensis
+Crataegus okanaganensis var. wellsii
 Crataegus okennonii
 Crataegus orbicularis
 Crataegus phippsii
-Crataegus sheila-phippsiae
+Crataegus sheila-phippsiae var. sheila-phippsiae
 Crataegus shuswapensis
 Crataegus tenuior
 Crataraea suturalis
@@ -5586,15 +5740,21 @@ Crepidotus submollis
 Crepidotus subverrucisporus
 Crepidotus variabilis
 Crepidotus versutus
-Crepis acuminata
+Crepis acuminata ssp. acuminata
 Crepis atribarba
+Crepis atribarba ssp. atribarba
+Crepis atribarba ssp. originalis
 Crepis capillaris
 Crepis intermedia
-Crepis modocensis
-Crepis occidentalis
-Crepis runcinata
+Crepis modocensis ssp. modocensis
+Crepis modocensis ssp. rostrata
+Crepis occidentalis ssp. conjuncta
+Crepis occidentalis ssp. costata
+Crepis occidentalis ssp. occidentalis
+Crepis occidentalis ssp. pumila
+Crepis runcinata ssp. runcinata
 Crepis tectorum
-Crepis vesicaria
+Crepis vesicaria ssp. taraxacifolia
 Cresponea chloroconia
 Crinipellis piceae
 Crinipellis scabella
@@ -5634,7 +5794,7 @@ Cryptachaea blattea
 Cryptachaea canionis
 Cryptantha affinis
 Cryptantha ambigua
-Cryptantha torreyana
+Cryptantha torreyana var. torreyana
 Cryptantha watsonii
 Cryptarcha ampla
 Cryptarcha concinna
@@ -5760,10 +5920,11 @@ Cuscuta approximata
 Cuscuta campestris
 Cuscuta cephalanthi
 Cuscuta epithymum
-Cuscuta pacifica
+Cuscuta pacifica var. pacifica
 Cyanoboletus rainisiae
 Cyanocitta cristata
 Cyanocitta stelleri
+Cyanocitta stelleri carlottae
 Cyathicula cyathoidea
 Cyathus olla
 Cyathus stercoreus
@@ -5837,7 +5998,7 @@ Cylindroiulus vulnerarius
 Cymatodera decipiens
 Cymatodera ovipennis
 Cymatogaster aggregata
-Cymbalaria muralis
+Cymbalaria muralis ssp. muralis
 Cymbiodyta acuminata
 Cymbiodyta columbiana
 Cymbiodyta minima
@@ -5848,7 +6009,7 @@ Cymindis cribricollis
 Cymindis planipennis
 Cymindis unicolor
 Cynaeus angustus
-Cynodon dactylon
+Cynodon dactylon var. dactylon
 Cynodontium alpestre
 Cynodontium glaucescens
 Cynodontium jenneri
@@ -5862,7 +6023,7 @@ Cynosurus cristatus
 Cynosurus echinatus
 Cyperus acuminatus
 Cyperus erythrorhizos
-Cyperus esculentus
+Cyperus esculentus var. leptostachyus
 Cyperus rotundus
 Cyperus squarrosus
 Cyperus strigosus
@@ -5880,7 +6041,8 @@ Cyphon pusillus
 Cyphon variabilis
 Cyprinus carpio
 Cypripedium montanum
-Cypripedium parviflorum
+Cypripedium parviflorum var. makasin
+Cypripedium parviflorum var. pubescens
 Cypripedium passerinum
 Cypripedium x columbianum
 Cypseloides niger
@@ -5949,7 +6111,8 @@ Dacryobolus karstenii
 Dacryobolus sudans
 Dacryonaema rufum
 Dacryopinax spathularia
-Dactylina arctica
+Dactylina arctica ssp. arctica
+Dactylina arctica ssp. beringica
 Dactylina ramulosa
 Dactylis glomerata
 Dactylochelifer copiosus
@@ -5985,12 +6148,11 @@ Danosoma brevicorne
 Danosoma obtectum
 Danthonia californica
 Danthonia decumbens
-Danthonia intermedia
+Danthonia intermedia ssp. intermedia
 Danthonia spicata
 Danthonia unispicata
 Daphne laureola
 Daphne mezereum
-Daphnia magna
 Dargida diffusa
 Dargida procinctus
 Dargida terrapictalis
@@ -6038,11 +6200,11 @@ Dejongia lobidactylus
 Deleaster concolor
 Delotelis hollandi
 Delotelis telegoni
-Delphinium bicolor
+Delphinium bicolor ssp. bicolor
 Delphinium distichum
 Delphinium elatum
 Delphinium glaucum
-Delphinium menziesii
+Delphinium menziesii ssp. menziesii
 Delphinium nuttallianum
 Delphinium sutherlandii
 Delphinus delphis
@@ -6136,15 +6298,16 @@ Deroceras laeve
 Deroceras reticulatum
 Derocrepis oregoni
 Derodontus trisignatus
-Deschampsia cespitosa
+Deschampsia cespitosa ssp. beringensis
+Deschampsia cespitosa ssp. cespitosa
 Deschampsia danthonioides
 Deschampsia elongata
 Descolea albella
 Descurainia incana
-Descurainia incisa
+Descurainia incisa ssp. incisa
 Descurainia longepedicellata
 Descurainia nelsonii
-Descurainia pinnata
+Descurainia pinnata ssp. brachycarpa
 Descurainia sophia
 Descurainia sophioides
 Desmacella annexa
@@ -6178,9 +6341,9 @@ Dianthidium pudicum
 Dianthidium singulare
 Dianthidium subparvum
 Dianthidium ulkei
-Dianthus armeria
-Dianthus barbatus
-Dianthus deltoides
+Dianthus armeria ssp. armeria
+Dianthus barbatus ssp. barbatus
+Dianthus deltoides ssp. deltoides
 Diapensia obovata
 Diaphus theta
 Diapterna hamata
@@ -6201,7 +6364,7 @@ Dibaeis baeomyces
 Dibolia libonoti
 Dibolia penstemonis
 Dicamptodon tenebrosus
-Dicentra formosa
+Dicentra formosa ssp. formosa
 Dicentra uniflora
 Dicentrus bidentatus
 Dicentrus bluthneri
@@ -6215,8 +6378,8 @@ Dicerca sexualis
 Dicerca tenebrica
 Dicerca tenebrosa
 Dichagyris variabilis
-Dichanthelium acuminatum
-Dichanthelium oligosanthes
+Dichanthelium acuminatum var. fasciculatum
+Dichanthelium oligosanthes ssp. scribnerianum
 Dicheirotrichus cognatus
 Dicheirotrichus mannerheimii
 Dicheirus piceus
@@ -6300,11 +6463,13 @@ Dicranum brevifolium
 Dicranum elongatum
 Dicranum flagellare
 Dicranum fragilifolium
-Dicranum fuscescens
+Dicranum fuscescens var. flexicaule
+Dicranum fuscescens var. fuscescens
 Dicranum groenlandicum
 Dicranum howellii
 Dicranum leioneuron
-Dicranum majus
+Dicranum majus var. majus
+Dicranum majus var. orthophyllum
 Dicranum montanum
 Dicranum muehlenbeckii
 Dicranum pallidisetum
@@ -6350,16 +6515,20 @@ Didymodon nevadensis
 Didymodon nicholsonii
 Didymodon nigrescens
 Didymodon norrisii
-Didymodon rigidulus
+Didymodon rigidulus var. gracilis
+Didymodon rigidulus var. icmadophilus
+Didymodon rigidulus var. rigidulus
 Didymodon subandreaeoides
 Didymodon tophaceus
-Didymodon vinealis
+Didymodon vinealis var. rubiginosus
+Didymodon vinealis var. vinealis
 Dielis pilipes
 Dienerella filum
 Dienerella ruficollis
-Dieteria canescens
+Dieteria canescens var. canescens
 Dietzella zimmermanni
 Digitalis purpurea
+Digitalis purpurea ssp. purpurea
 Digitaria ischaemum
 Digitaria sanguinalis
 Digrammia californiaria
@@ -6424,7 +6593,7 @@ Diplocheila striatopunctata
 Diplomitoporus crustulinus
 Diplophyllum albicans
 Diplophyllum obtusifolium
-Diplophyllum taxifolium
+Diplophyllum taxifolium var. taxifolium
 Diploschistes actinostomus
 Diploschistes muscorum
 Diploschistes scruposus
@@ -6636,19 +6805,19 @@ Drunella flavilinea
 Drunella grandis
 Drunella pelosa
 Drunella spinifera
-Dryas ajanensis
+Dryas ajanensis ssp. beringensis
 Dryas drummondii
 Dryas hookeriana
 Dryas incisa
-Dryas integrifolia
-Dryas octopetala
-Dryas octopetala ssp. hookeriana Dwarf
+Dryas integrifolia ssp. integrifolia
+Dryas integrifolia ssp. sylvatica
 Drymocallis convallaria
-Drymocallis glandulosa
-Drymocallis pseudorupestris
+Drymocallis glandulosa var. glandulosa
+Drymocallis pseudorupestris var. saxicola
 Dryobates albolarvatus
 Dryobates pubescens
 Dryobates villosus
+Dryobates villosus picoideus
 Dryocoetes affaber
 Dryocoetes autographus
 Dryocoetes betulae
@@ -6665,13 +6834,14 @@ Dryopteris filix-mas
 Dryopteris fragrans
 Dryotype opina
 Duchesnea indica
+Duchesnea indica var. indica
 Ductifera sucina
 Dufourea dilatipes
 Dufourea holocyanea
 Dufourea marginata
 Dufourea maura
 Dufourea trochantera
-Dulichium arundinaceum
+Dulichium arundinaceum var. arundinaceum
 Dumetella carolinensis
 Durandiella pseudotsugae
 Durandiella seriata
@@ -6741,7 +6911,7 @@ Ecclisomyia conspersa
 Ecclisomyia maculosa
 Ecdyonurus simplicioides
 Echinochloa crus-galli
-Echinochloa muricata
+Echinochloa muricata var. microstachya
 Echinocrepis rostrata
 Echinocystis lobata
 Echinoderma asperum
@@ -6838,7 +7008,7 @@ Eleocharis erythropoda
 Eleocharis geniculata
 Eleocharis kamtschatica
 Eleocharis macrostachya
-Eleocharis mamillata
+Eleocharis mamillata ssp. mamillata
 Eleocharis nitida
 Eleocharis obtusa
 Eleocharis ovata
@@ -6883,15 +7053,22 @@ Elophila occidentalis
 Elymus alaskanus
 Elymus albicans
 Elymus canadensis
+Elymus canadensis var. brachystachys
+Elymus canadensis var. canadensis
 Elymus curvatus
-Elymus elymoides
-Elymus glaucus
+Elymus elymoides ssp. brevifolius
+Elymus elymoides ssp. californicus
+Elymus glaucus ssp. glaucus
+Elymus glaucus ssp. virescens
 Elymus hirsutus
-Elymus lanceolatus
+Elymus lanceolatus ssp. lanceolatus
+Elymus lanceolatus ssp. psammophilus
+Elymus lanceolatus ssp. riparius
 Elymus repens
 Elymus scribneri
 Elymus sibiricus
-Elymus trachycaulus
+Elymus trachycaulus ssp. subsecundus
+Elymus trachycaulus ssp. trachycaulus
 Elymus violaceus
 Elymus x hansenii
 Elymus x saundersii
@@ -6941,7 +7118,8 @@ Enargia decolor
 Enargia fausta
 Enargia infumata
 Enarmonia formosana
-Encalypta affinis
+Encalypta affinis ssp. affinis
+Encalypta affinis var. macounii
 Encalypta alpina
 Encalypta brevicollis
 Encalypta brevipes
@@ -7122,6 +7300,8 @@ Eopyrenula intermedia
 Eopyrenula parvispora
 Eosphoropteryx thyatyroides
 Epargyreus clarus
+Epargyreus clarus californicus
+Epargyreus clarus clarus
 Epelis truncataria
 Epeolus americanus
 Epeolus compactus
@@ -7166,15 +7346,18 @@ Epilichen scabrosus
 Epilobium anagallidifolium
 Epilobium brachycarpum
 Epilobium campestre
-Epilobium ciliatum
+Epilobium ciliatum ssp. ciliatum
+Epilobium ciliatum ssp. glandulosum
+Epilobium ciliatum ssp. watsonii
 Epilobium clavatum
 Epilobium davuricum
 Epilobium densiflorum
 Epilobium foliosum
-Epilobium glaberrimum
+Epilobium glaberrimum ssp. fastigiatum
 Epilobium hallianum
 Epilobium hirsutum
-Epilobium hornemannii
+Epilobium hornemannii ssp. behringianum
+Epilobium hornemannii ssp. hornemannii
 Epilobium lactiflorum
 Epilobium leptocarpum
 Epilobium leptophyllum
@@ -7188,7 +7371,7 @@ Epilobium palustre
 Epilobium parviflorum
 Epilobium saximontanum
 Epilobium smithii
-Epilobium tetragonum
+Epilobium tetragonum ssp. tetragonum
 Epilobium torreyi
 Epilobium x treleasianum
 Epimartyria auricrinella
@@ -7277,24 +7460,26 @@ Epuraea terminalis
 Epuraea truncatella
 Equisetum arvense
 Equisetum fluviatile
-Equisetum hyemale
+Equisetum hyemale ssp. affine
 Equisetum laevigatum
 Equisetum palustre
 Equisetum pratense
 Equisetum scirpoides
 Equisetum sylvaticum
-Equisetum telmateia
-Equisetum variegatum
+Equisetum telmateia ssp. braunii
+Equisetum variegatum ssp. alaskanum
+Equisetum variegatum ssp. variegatum
 Equisetum x ferrissii
 Equisetum x font-queri
 Equisetum x litorale
 Equisetum x mackaii
 Equus caballus
 Eragrostis cilianensis
-Eragrostis mexicana
+Eragrostis mexicana ssp. mexicana
+Eragrostis mexicana ssp. virescens
 Eragrostis minor
-Eragrostis pectinacea
-Eragrostis pilosa
+Eragrostis pectinacea var. pectinacea
+Eragrostis pilosa var. pilosa
 Erannis tiliaria
 Erannis vancouverensis
 Erastia salmonicolor
@@ -7302,6 +7487,9 @@ Eratigena agrestis
 Eratigena atrica
 Erebia discoidalis
 Erebia epipsodea
+Erebia epipsodea epipsodea
+Erebia epipsodea remingtoni
+Erebia epipsodea sineocellata
 Erebia mackinleyensis
 Erebia magdalena
 Erebia mancinus
@@ -7309,23 +7497,26 @@ Erebia pawloskii
 Erebia rossii
 Erebia vidleri
 Eremobates scaber
-Eremobates sp.
+Eremobates sp. 1
+Eremobates sp. 2
 Eremobina claudens
 Eremochrysa canadensis
 Eremochrysa fraterna
 Eremochrysa punctinervis
-Eremogone capillaris
+Eremogone capillaris var. americana
 Eremonotus myriocarpus
 Eremophila alpestris
+Eremophila alpestris merrilli
+Eremophila alpestris strigata
 Eremopyrum orientale
 Eremopyrum triticeum
 Erethizon dorsatum
 Ergodesmus compactus
 Ericameria bloomeri
-Ericameria nauseosa
+Ericameria nauseosa var. speciosa
 Erichsonius nanus
 Erichsonius pusio
-Erigeron acris
+Erigeron acris var. kamtschaticus
 Erigeron annuus
 Erigeron aureus
 Erigeron caespitosus
@@ -7336,8 +7527,8 @@ Erigeron divergens
 Erigeron elatus
 Erigeron filifolius
 Erigeron flagellaris
-Erigeron glabellus
-Erigeron glacialis
+Erigeron glabellus var. pubescens
+Erigeron glacialis var. glacialis
 Erigeron grandiflorus
 Erigeron humilis
 Erigeron lanatus
@@ -7347,15 +7538,16 @@ Erigeron lonchophyllus
 Erigeron nivalis
 Erigeron ochroleucus
 Erigeron pallens
-Erigeron peregrinus
-Erigeron philadelphicus
-Erigeron poliospermus
-Erigeron pumilus
+Erigeron peregrinus var. peregrinus
+Erigeron philadelphicus var. glaber
+Erigeron philadelphicus var. philadelphicus
+Erigeron poliospermus var. poliospermus
+Erigeron pumilus var. intermedius
 Erigeron salishii
 Erigeron speciosus
-Erigeron strigosus
+Erigeron strigosus var. strigosus
 Erigeron trifidus
-Erigeron uniflorus
+Erigeron uniflorus var. eriocephalus
 Erigone aletris
 Erigone alsaida
 Erigone arctica
@@ -7374,22 +7566,25 @@ Erinacellus dendroides
 Eriocrania semipurpurella
 Erioderma sorediatum
 Eriogonum androsaceum
-Eriogonum flavum
-Eriogonum heracleoides
+Eriogonum flavum var. piperi
+Eriogonum heracleoides var. heracleoides
+Eriogonum heracleoides var. leucophaeum
 Eriogonum niveum
-Eriogonum ovalifolium
-Eriogonum pyrolifolium
-Eriogonum umbellatum
-Eriophorum angustifolium
+Eriogonum ovalifolium var. nivale
+Eriogonum pyrolifolium var. coryphaeum
+Eriogonum umbellatum var. majus
+Eriogonum umbellatum var. umbellatum
+Eriophorum angustifolium ssp. angustifolium
 Eriophorum brachyantherum
 Eriophorum callitrix
-Eriophorum chamissonis
-Eriophorum gracile
+Eriophorum chamissonis var. albidum
+Eriophorum chamissonis var. chamissonis
+Eriophorum gracile ssp. gracile
 Eriophorum scheuchzeri
 Eriophorum vaginatum
 Eriophorum virginicum
 Eriophorum viridicarinatum
-Eriophyllum lanatum
+Eriophyllum lanatum var. leucophyllum
 Eris militaris
 Ernobius gentilis
 Ernobius nigrans
@@ -7398,11 +7593,11 @@ Ernobius punctulatus
 Ero canionis
 Ero leonina
 Ero tuberculata
-Erodium cicutarium
+Erodium cicutarium ssp. cicutarium
 Erodium moschatum
 Eronyxa pallida
 Errinopora pourtalesii
-Eruca vesicaria
+Eruca vesicaria ssp. sativa
 Erucastrum gallicum
 Erynephala puncticollis
 Eryngium planum
@@ -7412,7 +7607,7 @@ Erynnis pacuvius
 Erynnis persius
 Erynnis propertius
 Erysimum arenicola
-Erysimum capitatum
+Erysimum capitatum var. purshii
 Erysimum cheiranthoides
 Erysimum cheiri
 Erysimum coarctatum
@@ -7440,7 +7635,7 @@ Erythranthe sookensis
 Erythranthe suksdorfii
 Erythranthe tilingii
 Erythricium laetum
-Erythronium grandiflorum
+Erythronium grandiflorum ssp. grandiflorum
 Erythronium montanum
 Erythronium oregonum
 Erythronium revolutum
@@ -7498,6 +7693,9 @@ Euchlaena madusaria
 Euchlaena marginaria
 Euchlaena tigrinaria
 Euchloe ausonides
+Euchloe ausonides insulanus
+Euchloe ausonides mayi
+Euchloe ausonides ogilvia
 Euchloe creusa
 Euchloe lotta
 Euchloe naina
@@ -7623,7 +7821,7 @@ Euodynerus leucomelas
 Euodynerus planitarsis
 Euodynerus scudderi
 Euodynerus tempiferus
-Euonymus occidentalis
+Euonymus occidentalis var. occidentalis
 Euophrys monadnock
 Euopsis granatina
 Euopsis pulvinata
@@ -7642,14 +7840,18 @@ Euphorbia maculata
 Euphorbia myrsinites
 Euphorbia peplus
 Euphorbia serpens
-Euphorbia serpyllifolia
+Euphorbia serpyllifolia var. serpyllifolia
 Euphoria inda
 Euphrasia nemorosa
 Euphrasia stricta
 Euphrasia subarctica
 Euphydryas anicia
+Euphydryas anicia anicia
+Euphydryas anicia hopfingeri
 Euphydryas colon
 Euphydryas editha
+Euphydryas editha beani
+Euphydryas editha taylori
 Euphydryas gillettii
 Euphyes vestris
 Euphyia intermediata
@@ -7713,7 +7915,8 @@ Eupsilia fringata
 Eupsilia tristigmata
 Euptoieta claudia
 Eurhinosea flavaria
-Eurhynchiastrum pulchellum
+Eurhynchiastrum pulchellum var. barnesii
+Eurhynchiastrum pulchellum var. pulchellum
 Eurhynchium oreganum
 Eurhynchium praelongum
 Eurois astricta
@@ -7758,7 +7961,7 @@ Eutrema salsugineum
 Eutrichapion cavifrons
 Eutrichapion viciae
 Eutricopis nexilis
-Eutrochium maculatum
+Eutrochium maculatum var. bruneri
 Eutypa flavovirens
 Euvacusus coloradanus
 Euxoa aberrans
@@ -7911,6 +8114,9 @@ Falcipennis canadensis
 Falco columbarius
 Falco mexicanus
 Falco peregrinus
+Falco peregrinus anatum
+Falco peregrinus pealei
+Falco peregrinus tundrius
 Falco rusticolus
 Falco sparverius
 Falco tinnunculus
@@ -7947,13 +8153,23 @@ Festuca occidentalis
 Festuca ovina
 Festuca pseudovivipara
 Festuca roemeri
-Festuca rubra
-Festuca saximontana
+Festuca rubra ssp. arctica
+Festuca rubra ssp. aucta
+Festuca rubra ssp. commutata
+Festuca rubra ssp. fallax
+Festuca rubra ssp. mediana
+Festuca rubra ssp. pruinosa
+Festuca rubra ssp. rubra
+Festuca rubra ssp. secunda
+Festuca rubra ssp. vallicola
+Festuca saximontana var. purpusiana
+Festuca saximontana var. robertsiana
+Festuca saximontana var. saximontana
 Festuca subulata
 Festuca subuliflora
 Festuca trachyphylla
 Festuca viridula
-Festuca viviparoidea
+Festuca viviparoidea ssp. krajinae
 Festuca washingtonica
 Fibricium lapponicum
 Fibricium rude
@@ -8071,12 +8287,15 @@ Formicoxenus quebecensis
 Fossombronia longiseta
 Foveoscapha terracola
 Foxella ignota
-Fragaria chiloensis
-Fragaria vesca
-Fragaria virginiana
+Fragaria chiloensis ssp. lucida
+Fragaria chiloensis ssp. pacifica
+Fragaria vesca ssp. americana
+Fragaria vesca ssp. bracteata
+Fragaria virginiana ssp. glauca
+Fragaria virginiana ssp. platypetala
 Fragaria x ananassa ssp. ananassa
-Fragaria x ananassa ssp. Cuneifolia
-Frangula purshiana
+Fragaria x ananassa ssp. cuneifolia
+Frangula purshiana ssp. purshiana
 Fratercula cirrhata
 Fratercula corniculata
 Fraxinus excelsior
@@ -8120,7 +8339,7 @@ Fumaria reuteri
 Fumibotys fumalis
 Funaria hygrometrica
 Funaria muhlenbergii
-Funiculina sp.
+Funiculina sp. 1
 Furcula cinerea
 Furcula modesta
 Furcula occidentalis
@@ -8135,12 +8354,12 @@ Fuscidea praeruptorum
 Fuscidea pusilla
 Fuscidea recensa
 Fuscidea thomsonii
-Fuscocephaloziopsis albescens
+Fuscocephaloziopsis albescens var. albescens
 Fuscocephaloziopsis catenulata
 Fuscocephaloziopsis leucantha
 Fuscocephaloziopsis lunulifolia
 Fuscocephaloziopsis monticola
-Fuscocephaloziopsis pleniceps
+Fuscocephaloziopsis pleniceps var. pleniceps
 Fuscopannaria ahlneri
 Fuscopannaria aurita
 Fuscopannaria cheiroloba
@@ -8248,7 +8467,7 @@ Galeruca browni
 Galeruca rudis
 Galerucella nymphaeae
 Galgula partita
-Galinsoga parviflora
+Galinsoga parviflora var. parviflora
 Galinsoga quadriradiata
 Galium anglicum
 Galium aparine
@@ -8260,7 +8479,9 @@ Galium mollugo
 Galium odoratum
 Galium palustre
 Galium spurium
-Galium trifidum
+Galium trifidum ssp. columbianum
+Galium trifidum ssp. subbiflorum
+Galium trifidum ssp. trifidum
 Galium triflorum
 Galium verum
 Galleria mellonella
@@ -8275,7 +8496,20 @@ Ganoderma brownii
 Ganoderma oregonense
 Ganoderma tsugae
 Gasterosteus aculeatus
-Gasterosteus sp.
+Gasterosteus aculeatus pop. 1
+Gasterosteus aculeatus pop. 2
+Gasterosteus aculeatus pop. 3
+Gasterosteus sp. 1
+Gasterosteus sp. 12
+Gasterosteus sp. 13
+Gasterosteus sp. 16
+Gasterosteus sp. 17
+Gasterosteus sp. 18
+Gasterosteus sp. 19
+Gasterosteus sp. 2
+Gasterosteus sp. 3
+Gasterosteus sp. 4
+Gasterosteus sp. 5
 Gastrallus marginipennis
 Gastroboletus ruber
 Gastroboletus turbinatus
@@ -8293,7 +8527,7 @@ Gavia adamsii
 Gavia immer
 Gavia pacifica
 Gavia stellata
-Gayophytum diffusum
+Gayophytum diffusum ssp. parviflorum
 Gayophytum humile
 Gayophytum racemosum
 Gayophytum ramosissimum
@@ -8335,17 +8569,17 @@ Genea gardneri
 Genista monspessulana
 Genista tinctoria
 Genistogethes carinulatus
-Gentiana affinis
+Gentiana affinis var. affinis
 Gentiana calycosa
 Gentiana douglasiana
 Gentiana glauca
 Gentiana platypetala
 Gentiana prostrata
 Gentiana sceptrum
-Gentianella amarella
-Gentianella propinqua
-Gentianopsis detonsa
-Gentianopsis virgata
+Gentianella amarella ssp. acuta
+Gentianella propinqua ssp. propinqua
+Gentianopsis detonsa ssp. raupii
+Gentianopsis virgata ssp. macounii
 Genyonemus lineatus
 Geocalyx graveolens
 Geocaulon lividum
@@ -8378,7 +8612,7 @@ Geranium erianthum
 Geranium lucidum
 Geranium molle
 Geranium pusillum
-Geranium pyrenaicum
+Geranium pyrenaicum ssp. pyrenaicum
 Geranium richardsonii
 Geranium robertianum
 Geranium viscosissimum
@@ -8388,15 +8622,17 @@ Geron prosopidis
 Gesneria centuriella
 Geum aleppicum
 Geum calthifolium
-Geum macrophyllum
+Geum macrophyllum var. macrophyllum
+Geum macrophyllum var. perincisum
 Geum rivale
 Geum rossii
 Geum schofieldii
-Geum triflorum
+Geum triflorum var. ciliatum
+Geum triflorum var. triflorum
 Gibbonsia metzi
 Gibbonsia montereyensis
 Gilbertsonia angulopora
-Gilia capitata
+Gilia capitata ssp. capitata
 Gilia sinuata
 Gilkeya compacta
 Gillmeria albertae
@@ -8406,16 +8642,20 @@ Givira cornelia
 Glabellula crassicornis
 Glaresis medialis
 Glaucidium gnoma
+Glaucidium gnoma swarthi
 Glaucina spaldingata
 Glaucomys oregonensis
 Glaucomys sabrinus
 Glaucopsyche lygdamus
+Glaucopsyche lygdamus columbia
+Glaucopsyche lygdamus couperi
 Glaucopsyche piasus
 Glechoma hederacea
-Glehnia littoralis
+Glehnia littoralis ssp. leiocarpa
 Glena nigricaria
 Gliophorus laetus
 Gliophorus psittacinus
+Gliophorus psittacinus var. perplexus
 Glipostenoda ambusta
 Glischrochilus confluentus
 Glischrochilus fasciatus
@@ -8464,11 +8704,11 @@ Gluphisia septentrionis
 Gluphisia severa
 Glutinoglossum glutinosum
 Glyceria borealis
-Glyceria canadensis
+Glyceria canadensis var. canadensis
 Glyceria declinata
 Glyceria elata
 Glyceria fluitans
-Glyceria grandis
+Glyceria grandis var. grandis
 Glyceria leptostachya
 Glyceria maxima
 Glyceria pulchella
@@ -8646,8 +8886,8 @@ Grimmia teretinervis
 Grimmia torquata
 Grimmia trichophylla
 Grimmia unicolor
-Grindelia hirsutula
-Grindelia squarrosa
+Grindelia hirsutula var. hirsutula
+Grindelia squarrosa var. quasiperennis
 Grindelia stricta
 Grus americana
 Grylloblatta scudderi
@@ -8661,6 +8901,8 @@ Guepiniopsis alpina
 Guepiniopsis buccina
 Guitarra abbotti
 Gulo gulo
+Gulo gulo luscus
+Gulo gulo vancouverensis
 Gunnera tinctoria
 Gyalecta fagicola
 Gyalecta friesii
@@ -8686,7 +8928,7 @@ Gymnocarpium continentale
 Gymnocarpium disjunctum
 Gymnocarpium dryopteris
 Gymnocarpium x intermedium
-Gymnocolea inflata
+Gymnocolea inflata ssp. inflata
 Gymnomitrion alpinum
 Gymnomitrion brevissimum
 Gymnomitrion commutatum
@@ -8694,7 +8936,7 @@ Gymnomitrion concinnatum
 Gymnomitrion corallioides
 Gymnomitrion obtusum
 Gymnomitrion pacificum
-Gymnomitrion revolutum
+Gymnomitrion revolutum ssp. revolutum
 Gymnomyces brunnescens
 Gymnomyces subfulvus
 Gymnomyces subochraceus
@@ -8751,7 +8993,7 @@ Gyraulus circumstriatus
 Gyraulus crista
 Gyraulus deflectus
 Gyraulus parvus
-Gyrinomimus sp.
+Gyrinomimus sp. 1
 Gyrinus aeratus
 Gyrinus affinis
 Gyrinus bifarius
@@ -8806,8 +9048,8 @@ Habropoda miserabilis
 Habropoda murihirta
 Habrosyne scripta
 Hackelia ciliata
-Hackelia deflexa
-Hackelia diffusa
+Hackelia deflexa ssp. americana
+Hackelia diffusa var. diffusa
 Hackelia floribunda
 Hackelia micrantha
 Hackmania prominula
@@ -8847,7 +9089,7 @@ Hainesia borealis
 Halargyreus johnsonii
 Halecania alpivaga
 Halecania viridescens
-Halenia deflexa
+Halenia deflexa ssp. deflexa
 Halerpestes cymbalaria
 Halesochila taylori
 Haliaeetus leucocephalus
@@ -8978,20 +9220,22 @@ Hedya nubiferana
 Hedya ochroleucana
 Hedya separatana
 Hedysarum alpinum
-Hedysarum boreale
+Hedysarum boreale ssp. boreale
+Hedysarum boreale ssp. mackenzii
 Hedysarum occidentale
 Hedysarum sulphurescens
 Helcystogramma badia
 Helcystogramma casca
 Helcystogramma fernaldella
 Helcystogramma melanocarpa
-Helenium autumnale
+Helenium autumnale var. grandiflorum
+Helenium autumnale var. montanum
 Helenium flexuosum
-Helianthella uniflora
+Helianthella uniflora var. douglasii
 Helianthus annuus
 Helianthus maximiliani
-Helianthus nuttallii
-Helianthus pauciflorus
+Helianthus nuttallii ssp. rydbergii
+Helianthus pauciflorus ssp. subrhomboideus
 Helianthus tuberosus
 Helichus columbianus
 Helichus striatus
@@ -9005,7 +9249,7 @@ Helicopsyche borealis
 Helicoverpa zea
 Helictochloa hookeri
 Heliocheilus paradoxus
-Heliopsis helianthoides
+Heliopsis helianthoides var. scabra
 Heliothis borealis
 Heliothis ononis
 Heliothis oregonica
@@ -9093,7 +9337,7 @@ Hemerobius pinidumus
 Hemerobius simulans
 Hemerobius stigma
 Hemerotrecha denticulata
-Hemerotrecha sp.
+Hemerotrecha sp. 1
 Hemicoelus carinatus
 Hemicoelus defectus
 Hemicoelus gibbicollis
@@ -9200,7 +9444,10 @@ Herzogiella striatella
 Herzogiella turfacea
 Hesperia assiniboia
 Hesperia colorado
+Hesperia colorado harpalus
+Hesperia colorado oregonia
 Hesperia comma
+Hesperia comma manitoba
 Hesperia juba
 Hesperia nevada
 Hesperis matronalis
@@ -9211,7 +9458,8 @@ Hesperoperla pacifica
 Hesperophylax alaskensis
 Hesperophylax designatus
 Hesperophylax occidentalis
-Hesperostipa comata
+Hesperostipa comata ssp. comata
+Hesperostipa comata ssp. intermedia
 Hesperostipa curtiseta
 Hesperostipa spartea
 Hesperotettix viridis
@@ -9244,7 +9492,8 @@ Heterosilpha ramosa
 Heterostichus rostratus
 Heterostylum robustum
 Heterotextus luteus
-Heterotheca villosa
+Heterotheca villosa var. minor
+Heterotheca villosa var. villosa
 Heterothops asperatus
 Heterothops carbonatus
 Heterothops fraternus
@@ -9253,9 +9502,12 @@ Heterothops minor
 Heterothops pusio
 Heterothops sordidus
 Heuchera chlorantha
-Heuchera cylindrica
+Heuchera cylindrica var. cylindrica
+Heuchera cylindrica var. glabella
+Heuchera cylindrica var. orbicularis
+Heuchera cylindrica var. septentrionalis
 Heuchera glabra
-Heuchera micrantha
+Heuchera micrantha var. diversifolia
 Heuchera richardsonii
 Hexagenia limbata
 Hexagonia tenuis
@@ -9335,12 +9587,12 @@ Holcus lanatus
 Holcus mollis
 Holoarctia sordida
 Holobus vancouveri
-Holodiscus discolor
+Holodiscus discolor var. discolor
 Hololepta aequalis
 Holopleura marginata
 Holopogon albipilosus
 Holopogon stellatus
-Holosteum umbellatum
+Holosteum umbellatum ssp. umbellatum
 Holtbyrnia latifrons
 Homaeotarsus californicus
 Homaeotarsus cinctus
@@ -9374,7 +9626,7 @@ Homorthodes discreta
 Homorthodes fractura
 Homorthodes furfurata
 Homorthodes hanhami
-Honckenya peploides
+Honckenya peploides ssp. major
 Honora mellinella
 Honora montinatatella
 Honora perdubiella
@@ -9394,10 +9646,13 @@ Hoplitis sambuci
 Hoplitis spoliata
 Hoppingiana hudsonica
 Horcotes quadricristatus
-Hordeum brachyantherum
-Hordeum jubatum
-Hordeum marinum
-Hordeum murinum
+Hordeum brachyantherum ssp. brachyantherum
+Hordeum jubatum ssp. intermedium
+Hordeum jubatum ssp. jubatum
+Hordeum marinum ssp. gussoneanum
+Hordeum murinum ssp. glaucum
+Hordeum murinum ssp. leporinum
+Hordeum murinum ssp. murinum
 Hordeum vulgare
 Horisme incana
 Horisme intestinata
@@ -9411,7 +9666,7 @@ Hulteniella integrifolia
 Humaria hemisphaerica
 Humarina ochroleuca
 Humidicutis marginata
-Humulus lupulus
+Humulus lupulus var. lupulus
 Huperzia continentalis
 Huperzia miyoshiana
 Huperzia occidentalis
@@ -9441,6 +9696,8 @@ Hybauchenidium cymbadentatum
 Hybauchenidium gibbosum
 Hybodera tuberculata
 Hybognathus hankinsoni
+Hybognathus hankinsoni - Pacific group
+Hybognathus hankinsoni - western Arctic group
 Hybomitra aasa
 Hybomitra affinis
 Hybomitra arpadi
@@ -9549,8 +9806,8 @@ Hydrocolus stagnalis
 Hydrocotyle ranunculoides
 Hydrolagus colliei
 Hydrophilus triangularis
-Hydrophyllum capitatum
-Hydrophyllum fendleri
+Hydrophyllum capitatum var. capitatum
+Hydrophyllum fendleri var. albifrons
 Hydrophyllum tenuipes
 Hydroporus appalachius
 Hydroporus badiellus
@@ -9606,7 +9863,8 @@ Hydropunctaria scabra
 Hydropus atramentosus
 Hydropus marginellus
 Hygroamblystegium tenax
-Hygroamblystegium varium
+Hygroamblystegium varium ssp. noterophilum
+Hygroamblystegium varium var. varium
 Hygrobiella laxifolia
 Hygrocybe acutoconica
 Hygrocybe albifolia
@@ -9647,6 +9905,7 @@ Hygrophorus amarus
 Hygrophorus aurantiacus
 Hygrophorus bakerensis
 Hygrophorus camarophyllus
+Hygrophorus camarophyllus var. calophyllus
 Hygrophorus chrysodon
 Hygrophorus cremicolor
 Hygrophorus eburneus
@@ -9748,7 +10007,8 @@ Hymenoscyphus imberbis
 Hymenoscyphus phyllogenus
 Hymenoscyphus salicellus
 Hymenoscyphus scutula
-Hymenostylium recurvirostrum
+Hymenostylium recurvirostrum var. insigne
+Hymenostylium recurvirostrum var. recurvirostrum
 Hymeraphia stellifera
 Hyoscyamus niger
 Hypagyrtis piniata
@@ -9791,9 +10051,9 @@ Hypericum boreale
 Hypericum calycinum
 Hypericum canadense
 Hypericum ellipticum
-Hypericum maculatum
+Hypericum maculatum ssp. obtusiusculum
 Hypericum majus
-Hypericum perforatum
+Hypericum perforatum ssp. perforatum
 Hypericum scouleri
 Hyperplatys aspersa
 Hyperprosopon argenteum
@@ -9837,7 +10097,8 @@ Hypnoidus squalidus
 Hypnum bambergeri
 Hypnum callichroum
 Hypnum circinale
-Hypnum cupressiforme
+Hypnum cupressiforme var. cupressiforme
+Hypnum cupressiforme var. subjulaceum
 Hypnum dieckii
 Hypnum hamulosum
 Hypnum holmenii
@@ -9847,7 +10108,7 @@ Hypnum plicatulum
 Hypnum pratense
 Hypnum procerrimum
 Hypnum recurvatum
-Hypnum revolutum
+Hypnum revolutum var. revolutum
 Hypnum subimponens
 Hypnum vaucheri
 Hypocaccus acorni
@@ -9962,8 +10223,13 @@ Hystrichopsylla occidentalis
 Hystrichopsylla schefferi
 Iberis umbellata
 Icaricia icarioides
+Icaricia icarioides blackmorei
+Icaricia icarioides montis
+Icaricia icarioides pembina
 Icaricia lupini
 Icaricia saepiolus
+Icaricia saepiolus amica
+Icaricia saepiolus insulanus
 Icelinus borealis
 Icelinus burchami
 Icelinus filamentosus
@@ -10144,7 +10410,7 @@ Iphthiminus serratus
 Ipimorpha nanaimo
 Ipimorpha pleonectusa
 Ipimorpha viridipallida
-Ipomopsis aggregata
+Ipomopsis aggregata var. aggregata
 Ips borealis
 Ips emarginatus
 Ips integer
@@ -10216,7 +10482,7 @@ Isogenoides zionensis
 Isolepis cernua
 Isolepis setacea
 Isomira comstocki
-Isopaches bicrenatus
+Isopaches bicrenatus var. bicrenatus
 Isopaches decolorans
 Isoperla decolorata
 Isoperla fulva
@@ -10287,30 +10553,33 @@ Junco hyemalis
 Juncus acuminatus
 Juncus alpinoarticulatus
 Juncus anthelatus
-Juncus arcticus
+Juncus arcticus ssp. alaskanus
 Juncus articulatus
-Juncus balticus
+Juncus balticus ssp. ater
 Juncus biglumis
 Juncus bolanderi
 Juncus brevicaudatus
 Juncus breweri
-Juncus bufonius
+Juncus bufonius var. bufonius
+Juncus bufonius var. occidentalis
 Juncus bulbosus
 Juncus canadensis
-Juncus castaneus
+Juncus castaneus ssp. castaneus
 Juncus compressus
 Juncus confusus
 Juncus conglomeratus
 Juncus covillei
 Juncus drummondii
 Juncus dudleyi
-Juncus effusus
+Juncus effusus ssp. effusus
+Juncus effusus ssp. pacificus
+Juncus effusus ssp. solutus
 Juncus ensifolius
-Juncus falcatus
+Juncus falcatus ssp. sitchensis
 Juncus filiformis
-Juncus gerardii
+Juncus gerardii var. gerardii
 Juncus haenkei
-Juncus hemiendytus
+Juncus hemiendytus var. hemiendytus
 Juncus hesperius
 Juncus interior
 Juncus kelloggii
@@ -10318,7 +10587,8 @@ Juncus laccatus
 Juncus longistylis
 Juncus marginatus
 Juncus mertensianus
-Juncus nevadensis
+Juncus nevadensis var. inventus
+Juncus nevadensis var. nevadensis
 Juncus nodosus
 Juncus occidentalis
 Juncus oxymeris
@@ -10328,21 +10598,24 @@ Juncus pylaei
 Juncus regelii
 Juncus saximontanus
 Juncus squarrosus
-Juncus stygius
+Juncus stygius var. americanus
 Juncus supiniformis
 Juncus tenuis
 Juncus torreyi
-Juncus triglumis
+Juncus triglumis ssp. albescens
+Juncus triglumis ssp. triglumis
 Juncus vaseyi
 Jungermannia atrovirens
 Jungermannia borealis
-Jungermannia exsertifolia
+Jungermannia exsertifolia ssp. cordifolia
 Jungermannia polaris
 Jungermannia pumila
 Junghuhnia collabens
 Junghuhnia nitida
 Junghuhnia zonata
-Juniperus communis
+Juniperus communis var. charlottensis
+Juniperus communis var. depressa
+Juniperus communis var. kelleyi
 Juniperus horizontalis
 Juniperus maritima
 Juniperus scopulorum
@@ -10351,13 +10624,14 @@ Kaernefeltia merrillii
 Kaestneria pullata
 Kaestneria rufula
 Kalissus nitidus
-Kalmia microphylla
+Kalmia microphylla var. microphylla
+Kalmia microphylla var. occidentalis
 Kalmia procumbens
 Kalohydnobius strigilatus
 Kathroperla perdita
 Katsuwonus pelamis
 Kavinia alboviridis
-Keratoisis sp.
+Keratoisis sp. 1
 Kiaeria blyttii
 Kiaeria falcata
 Kiaeria glacialis
@@ -10539,6 +10813,7 @@ Laetisaria fuciformis
 Lagenorhynchus obliquidens
 Lagopus lagopus
 Lagopus leucura
+Lagopus leucura saxatilis
 Lagopus muta
 Lambdina fiscellaria
 Lambiella caeca
@@ -10547,11 +10822,13 @@ Lambiella impavida
 Lambiella insularis
 Lamium amplexicaule
 Lamium galeobdolon
-Lamium purpureum
+Lamium purpureum var. incisum
+Lamium purpureum var. purpureum
 Lamna ditropis
 Lampanyctus jordani
 Lampetra ayresii
 Lampetra richardsoni
+Lampetra richardsoni pop. 1
 Lampris guttatus
 Lamprochernes minor
 Lampronia aenescens
@@ -10601,7 +10878,8 @@ Laphria vultur
 Laphystia actius
 Lappula fremontii
 Lappula montana
-Lappula occidentalis
+Lappula occidentalis var. occidentalis
+Lappula occidentalis var. stricta
 Lappula squarrosa
 Lapsana communis
 Lapsus tristis
@@ -10730,7 +11008,7 @@ Lasiopogon monticola
 Lasiopogon pacificus
 Lasiopogon prima
 Lasiopogon quadrivittatus
-Lasiopogon sp.
+Lasiopogon sp. 1
 Lasiopogon trivittatus
 Lasiopogon willametti
 Lasiosphaeria ovina
@@ -10761,10 +11039,10 @@ Lathrobium tenue
 Lathrobium washingtoni
 Lathrocasis tenerrima
 Lathyrus japonicus
-Lathyrus lanszwertii
+Lathyrus lanszwertii var. bijugatus
 Lathyrus latifolius
 Lathyrus littoralis
-Lathyrus nevadensis
+Lathyrus nevadensis var. nevadensis
 Lathyrus ochroleucus
 Lathyrus palustris
 Lathyrus pratensis
@@ -10921,6 +11199,8 @@ Lecidea albohyalina
 Lecidea alpestris
 Lecidea atomaria
 Lecidea atrobrunnea
+Lecidea atrobrunnea ssp. atrobrunnea
+Lecidea atrobrunnea ssp. planaica
 Lecidea auriculata
 Lecidea betulicola
 Lecidea carnulenta
@@ -11036,11 +11316,11 @@ Lentinus arcularius
 Lentinus brumalis
 Lentoporia carbonica
 Lenzites betulinus
-Leontodon saxatilis
+Leontodon saxatilis ssp. saxatilis
 Leonurus cardiaca
 Leotia lubrica
 Lepidanthrax oribates
-Lepidisis sp.
+Lepidisis sp. 1
 Lepidium appelianum
 Lepidium campestre
 Lepidium chalepense
@@ -11054,7 +11334,7 @@ Lepidium perfoliatum
 Lepidium ramosissimum
 Lepidium ruderale
 Lepidium sativum
-Lepidium virginicum
+Lepidium virginicum ssp. menziesii
 Lepidochelys olivacea
 Lepidocyrtus aurantiacus
 Lepidocyrtus curvicollis
@@ -11214,6 +11494,7 @@ Lepturobosca chrysocoma
 Lepturopsis dolorosa
 Leptusa gatineauensis
 Lepus americanus
+Lepus americanus washingtonii
 Lepus townsendii
 Lepyrus gemellus
 Lepyrus nordenskioeldi
@@ -11277,7 +11558,7 @@ Leucophaeus atricilla
 Leucophaeus pipixcan
 Leucopholiota decorosa
 Leucopsacus scoliodocus
-Leucopsila cf.
+Leucopsila cf. stylifera
 Leucoptera laburnella
 Leucoptera pachystimella
 Leucoptera spartifoliella
@@ -11294,14 +11575,15 @@ Leucotrichia pictipes
 Leuroglossus schmidti
 Leuroglossus stilbius
 Leuronycus pacificus
-Lewisia columbiana
+Lewisia columbiana var. columbiana
+Lewisia columbiana var. rupicola
 Lewisia pygmaea
-Lewisia rediviva
+Lewisia rediviva var. rediviva
 Lewisia triphylla
 Lewisiopsis tweedyi
 Leymus cinereus
-Leymus innovatus
-Leymus mollis
+Leymus innovatus ssp. innovatus
+Leymus mollis ssp. mollis
 Leymus x vancouverensis
 Libellula forensis
 Libellula pulchella
@@ -11320,12 +11602,13 @@ Ligmargus funebris
 Lignoscripta atroalba
 Ligusticum calderi
 Ligusticum canbyi
-Ligusticum scoticum
+Ligusticum scoticum ssp. hultenii
 Ligustrum vulgare
 Lilaeopsis occidentalis
 Lilium columbianum
 Lilium philadelphicum
-Lillipathes sp.
+Lillipathes sp. A
+Lillipathes sp. B
 Lillipathes wingi
 Limacella delicata
 Limacella glischra
@@ -11337,6 +11620,8 @@ Limax maximus
 Limenitis archippus
 Limenitis arthemis
 Limenitis lorquini
+Limenitis lorquini burrisoni
+Limenitis lorquini ilgae
 Limnaecia phragmitella
 Limnanthes macounii
 Limnebius alutaceus
@@ -11413,19 +11698,21 @@ Limosa lapponica
 Limosella acaulis
 Limosella aquatica
 Linanthus pungens
-Linaria dalmatica
+Linaria dalmatica ssp. dalmatica
 Linaria purpurea
 Linaria vulgaris
-Lindernia dubia
+Lindernia dubia var. anagallidea
+Lindernia dubia var. dubia
 Lindtneria leucobryophila
 Linepithema humile
-Linnaea borealis
+Linnaea borealis ssp. borealis
+Linnaea borealis ssp. longiflora
 Linohesperus borealis
 Linohesperus cuspifer
 Linsleya sphaericollis
 Linum bienne
 Linum catharticum
-Linum lewisii
+Linum lewisii ssp. lewisii
 Linum perenne
 Linum usitatissimum
 Linyphantes aeronauticus
@@ -11465,7 +11752,7 @@ Liotrichus stricklandi
 Liotrichus umbricola
 Liotrichus umbripennis
 Liotrichus volitans
-Lipandra polysperma
+Lipandra polysperma var. acutifolia
 Liparis callyodon
 Liparis cyclopus
 Liparis dennyi
@@ -11581,7 +11868,7 @@ Lomamyia occidentalis
 Lomatium ambiguum
 Lomatium brandegeei
 Lomatium dissectum
-Lomatium foeniculaceum
+Lomatium foeniculaceum var. foeniculaceum
 Lomatium geyeri
 Lomatium macrocarpum
 Lomatium martindalei
@@ -11599,9 +11886,9 @@ Longitarsus flavicornis
 Longitarsus jacobaeae
 Longitarsus quadriguttatus
 Lonicera ciliosa
-Lonicera dioica
+Lonicera dioica var. glaucescens
 Lonicera hispidula
-Lonicera involucrata
+Lonicera involucrata var. involucrata
 Lonicera morrowii
 Lonicera periclymenum
 Lonicera tatarica
@@ -11632,10 +11919,10 @@ Lophopanopeus bellus
 Lophopogonius crinitus
 Lophozia schusteriana
 Lophozia silvicola
-Lophozia ventricosa
-Lophozia wenzelii
-Lophoziopsis excisa
-Lophoziopsis longidens
+Lophozia ventricosa var. longiflora
+Lophozia wenzelii var. wenzelii
+Lophoziopsis excisa var. excisa
+Lophoziopsis longidens ssp. longidens
 Lordithon cascadensis
 Lordithon conabilis
 Lordithon fungicola
@@ -11650,6 +11937,7 @@ Loreleia postii
 Loricera decempunctata
 Loricera pilicornis
 Lota lota
+Lota lota pop. 1
 Lotisma trigonana
 Lotus corniculatus
 Lotus krylovii
@@ -11680,36 +11968,41 @@ Lumpenus sagitta
 Lunaria annua
 Lunularia cruciata
 Lupinus arboreus
-Lupinus arcticus
+Lupinus arcticus ssp. arcticus
+Lupinus arcticus ssp. subalpinus
 Lupinus argenteus
 Lupinus bicolor
-Lupinus bingenensis
+Lupinus bingenensis var. subsaccatus
 Lupinus burkei
 Lupinus kuschei
-Lupinus latifolius
+Lupinus latifolius var. latifolius
 Lupinus lepidus
-Lupinus leucophyllus
+Lupinus leucophyllus var. leucophyllus
 Lupinus littoralis
 Lupinus lyallii
-Lupinus microcarpus
-Lupinus nanus
-Lupinus nootkatensis
-Lupinus oreganus
+Lupinus microcarpus var. microcarpus
+Lupinus nanus ssp. nanus
+Lupinus nootkatensis var. fruticosus
+Lupinus nootkatensis var. nootkatensis
+Lupinus oreganus var. kincaidii
 Lupinus polycarpus
-Lupinus polyphyllus
+Lupinus polyphyllus var. pallidipes
+Lupinus polyphyllus var. polyphyllus
 Lupinus rivularis
-Lupinus sericeus
+Lupinus sericeus var. sericeus
 Lupinus sulphureus
 Luvarus imperialis
-Luzula arcuata
-Luzula campestris
-Luzula comosa
+Luzula arcuata ssp. unalaschcensis
+Luzula campestris ssp. campestris
+Luzula comosa var. comosa
+Luzula comosa var. laxa
 Luzula confusa
 Luzula hitchcockii
 Luzula macrantha
-Luzula multiflora
+Luzula multiflora ssp. multiflora
 Luzula nivalis
-Luzula parviflora
+Luzula parviflora ssp. fastigiata
+Luzula parviflora ssp. parviflora
 Luzula piperi
 Luzula rufescens
 Luzula spicata
@@ -11722,6 +12015,9 @@ Lycaena helloides
 Lycaena heteronea
 Lycaena hyllus
 Lycaena mariposa
+Lycaena mariposa charlottensis
+Lycaena mariposa mariposa
+Lycaena mariposa penroseae
 Lycaena nivalis
 Lycaena phlaeas
 Lycenchelys camchatica
@@ -11875,7 +12171,7 @@ Mahonia nervosa
 Mahonia repens
 Maianthemum canadense
 Maianthemum dilatatum
-Maianthemum racemosum
+Maianthemum racemosum ssp. amplexicaule
 Maianthemum stellatum
 Maianthemum trifolium
 Malachius aeneus
@@ -11930,7 +12226,7 @@ Mamestra curialis
 Manduca quinquemaculata
 Manica hunteri
 Manica invidia
-Mannia fragrans
+Mannia fragrans ssp. fragrans
 Mannia gracilis
 Marah oregana
 Marasmiellus candidus
@@ -11952,7 +12248,9 @@ Marasmius tremulae
 Marasmius velutipes
 Marathyssa inficita
 Marcelleina persoonii
-Marchantia polymorpha
+Marchantia polymorpha ssp. montivagans
+Marchantia polymorpha ssp. polymorpha
+Marchantia polymorpha ssp. ruderalis
 Marchantia quadrata
 Marchantia romanica
 Mareca americana
@@ -11997,7 +12295,7 @@ Mastodia tessellata
 Matricaria chamomilla
 Matricaria discoidea
 Matriella teresa
-Matteuccia struthiopteris
+Matteuccia struthiopteris var. pensylvanica
 Matthiola incana
 Maulisia argipalla
 Mecaphesa asperata
@@ -12019,7 +12317,8 @@ Medialuna californiensis
 Medicago arabica
 Medicago lupulina
 Medicago polymorpha
-Medicago sativa
+Medicago sativa ssp. falcata
+Medicago sativa ssp. sativa
 Medon ctenophorum
 Medon guppyi
 Medon hatchi
@@ -12105,6 +12404,8 @@ Megarthrus pecki
 Megarthrus pictus
 Megarthrus smetanai
 Megascops kennicottii
+Megascops kennicottii kennicottii
+Megascops kennicottii macfarlanei
 Megasemum asperum
 Megaspora verrucosa
 Megasternum concinnum
@@ -12120,7 +12421,7 @@ Megocalea lemieuxi
 Meiotrichum lyallii
 Melalgus confertus
 Melamphaes lugubris
-Melampyrum lineare
+Melampyrum lineare var. lineare
 Melanchra adjuncta
 Melanchra assimilis
 Melanchra picta
@@ -12265,7 +12566,8 @@ Mentha x verticillata
 Mentha x villosa
 Mentzelia albicaulis
 Mentzelia dispersa
-Mentzelia laevicaulis
+Mentzelia laevicaulis var. laevicaulis
+Mentzelia laevicaulis var. parviflora
 Menyanthes trifoliata
 Menziesia ferruginea
 Meotica pallens
@@ -12292,9 +12594,10 @@ Mermessus trilobatus
 Meroptera abditiva
 Meroptera pravella
 Mertensia longiflora
-Mertensia maritima
+Mertensia maritima var. asiatica
 Mertensia oblongifolia
-Mertensia paniculata
+Mertensia paniculata var. borealis
+Mertensia paniculata var. paniculata
 Meruliporia incrassata
 Mesaphorura krausbaueri
 Mesaphorura pacifica
@@ -12319,7 +12622,7 @@ Mesoptychia badensis
 Mesoptychia bantriensis
 Mesoptychia collaris
 Mesoptychia gillmanii
-Mesoptychia heterocolpos
+Mesoptychia heterocolpos var. heterocolpos
 Mesoptychia sahlbergii
 Mesothea incertata
 Mesothuria murrayi
@@ -12352,8 +12655,8 @@ Metopobactrus pacificus
 Metretopus borealis
 Metrius contractus
 Metulodontia nivea
-Metzgeria conjugata
-Metzgeria leptoneura
+Metzgeria conjugata ssp. japonica
+Metzgeria leptoneura var. leptoneura
 Metzgeria pubescens
 Metzgeria temperata
 Metzneria lappella
@@ -12403,7 +12706,10 @@ Micranthes ferruginea
 Micranthes hieraciifolia
 Micranthes integrifolia
 Micranthes lyallii
-Micranthes nelsoniana
+Micranthes nelsoniana var. carlottae
+Micranthes nelsoniana var. cascadensis
+Micranthes nelsoniana var. pacifica
+Micranthes nelsoniana var. porsildiana
 Micranthes nidifica
 Micranthes nivalis
 Micranthes occidentalis
@@ -12416,7 +12722,7 @@ Micranthes tischii
 Micranthes tolmiei
 Micranurida spirillifera
 Micraphorura absoloni
-Micrargus nr.
+Micrargus nr. herbigradus
 Micrasema bactro
 Micrathous brevis
 Micrisotoma achromata
@@ -12490,6 +12796,7 @@ Microtus oregoni
 Microtus pennsylvanicus
 Microtus richardsoni
 Microtus townsendii
+Microtus townsendii cowani
 Microweisea misella
 Micrurapteryx salicifoliella
 Mielichhoferia elongata
@@ -12536,7 +12843,7 @@ Mocyta breviuscula
 Mocyta fungi
 Moehringia lateriflora
 Moehringia macrophylla
-Moenchia erecta
+Moenchia erecta ssp. erecta
 Moerckia blyttii
 Moerckia flotoviana
 Moerckia hibernica
@@ -12570,8 +12877,9 @@ Mompha unifasciella
 Monadenia fidelis
 Monanchora alaskensis
 Monanchora pulchra
-Monarda fistulosa
-Monardella odoratissima
+Monarda fistulosa var. menthaefolia
+Monarda fistulosa var. mollis
+Monardella odoratissima ssp. discolor
 Monarthrum scutellare
 Moneses uniflora
 Monilinia vaccinii-corymbosi
@@ -12664,7 +12972,7 @@ Muhlenbergia andina
 Muhlenbergia asperifolia
 Muhlenbergia filiformis
 Muhlenbergia glomerata
-Muhlenbergia mexicana
+Muhlenbergia mexicana var. mexicana
 Muhlenbergia racemosa
 Muhlenbergia richardsonis
 Muhlenbergia uniflora
@@ -12692,7 +13000,10 @@ Musculium partumeium
 Musculium securis
 Musculium transversum
 Mustela erminea
+Mustela erminea anguinae
+Mustela erminea haidarum
 Mustela frenata
+Mustela frenata altifrontalis
 Mustela nivalis
 Mutatoderma mutatum
 Mutinus caninus
@@ -12888,6 +13199,8 @@ Myochroidea porphyrospoda
 Myochroidea rufofusca
 Myochromella boudieri
 Myodes gapperi
+Myodes gapperi galei
+Myodes gapperi occidentalis
 Myodes rutilus
 Myodopsylla borealis
 Myodopsylla gentilis
@@ -12902,7 +13215,7 @@ Myosotis stricta
 Myosotis sylvatica
 Myosotis verna
 Myosoton aquaticum
-Myosurus apetalus
+Myosurus apetalus var. borealis
 Myosurus minimus
 Myotis californicus
 Myotis ciliolabrum
@@ -13001,7 +13314,7 @@ Nardia breidleri
 Nardia compressa
 Nardia geoscyphus
 Nardia japonica
-Nardia scalaris
+Nardia scalaris var. scalaris
 Narella bowersi
 Narpus concolor
 Nassella viridula
@@ -13020,7 +13333,7 @@ Naucoria suavis
 Naucrates ductor
 Nautichthys oculofasciatus
 Nautichthys robustus
-Navarretia divaricata
+Navarretia divaricata ssp. divaricata
 Navarretia intertexta
 Navarretia propinqua
 Navarretia squarrosa
@@ -13033,7 +13346,7 @@ Nearctopsylla brooksi
 Nearctopsylla hyrtaci
 Nearctopsylla jordani
 Nearctopsylla traubi
-Nearctula sp.
+Nearctula sp. 1
 Nebria acuta
 Nebria arkansana
 Nebria charlottae
@@ -13058,7 +13371,7 @@ Nebria schwarzi
 Nebrioporus macronychus
 Neckera douglasii
 Neckera menziesii
-Neckera pennata
+Neckera pennata var. pennata
 Necrobia ruficollis
 Necrobia rufipes
 Necrobia violacea
@@ -13101,7 +13414,7 @@ Nemognatha lutea
 Nemognatha soror
 Nemomydas pantherinus
 Nemophila breviflora
-Nemophila parviflora
+Nemophila parviflora var. parviflora
 Nemophila pedunculata
 Nemophora bellela
 Nemoria darwiniata
@@ -13182,7 +13495,7 @@ Neoorthocaulis binsteadii
 Neoorthocaulis floerkei
 Neopachylopus aeneipunctatus
 Neopachylopus sulcifrons
-Neopasites aff.
+Neopasites aff. fulviventris
 Neopetrosia vanilla
 Neophasia menapia
 Neophylax occidentis
@@ -13201,7 +13514,11 @@ Neoscutopterus hornii
 Neospondylis upiformis
 Neotamias amoenus
 Neotamias minimus
+Neotamias minimus oreocetes
+Neotamias minimus selkirki
 Neotamias ruficaudus
+Neotamias ruficaudus ruficaudus
+Neotamias ruficaudus simulans
 Neotamias townsendii
 Neotelphusa praefixa
 Neoterpes trianguliferata
@@ -13228,7 +13545,8 @@ Nephelodes minians
 Nephroma arcticum
 Nephroma bellum
 Nephroma expallidum
-Nephroma helveticum
+Nephroma helveticum ssp. helveticum
+Nephroma helveticum ssp. sipeanum
 Nephroma isidiosum
 Nephroma laevigatum
 Nephroma occultum
@@ -13276,7 +13594,8 @@ Nidularia deformis
 Nidularia pulvinata
 Niebla cephalota
 Nineta gravida
-Niphotrichum canescens
+Niphotrichum canescens ssp. canescens
+Niphotrichum canescens ssp. latifolium
 Niphotrichum elongatum
 Niphotrichum ericoides
 Niphotrichum pygmaeum
@@ -13386,7 +13705,6 @@ Numenius madagascariensis
 Numenius phaeopus
 Numenius tahitiensis
 Nuphar polysepala
-Nuphar spp.
 Nuphar variegata
 Nuttallanthus canadensis
 Nuttallanthus texanus
@@ -13402,7 +13720,7 @@ Nyctinomops macrotis
 Nyctiophylax affinis
 Nyctiophylax moestus
 Nymphaea leibergii
-Nymphaea odorata
+Nymphaea odorata ssp. odorata
 Nymphaea tetragona
 Nymphaea x marliacea
 Nymphalis antiopa
@@ -13435,7 +13753,8 @@ Ochrolechia oregonensis
 Ochrolechia pseudopallescens
 Ochrolechia subathallina
 Ochrolechia subpallescens
-Ochrolechia subplicans
+Ochrolechia subplicans ssp. hultenii
+Ochrolechia subplicans ssp. subplicans
 Ochrolechia szatalaensis
 Ochrolechia tartarea
 Ochrolechia turneri
@@ -13506,21 +13825,33 @@ Oenanthe oenanthe
 Oenanthe sarmentosa
 Oeneis alberta
 Oeneis bore
+Oeneis bore edwardsi
+Oeneis bore mckinleyensis
 Oeneis chryxus
+Oeneis chryxus caryi
+Oeneis chryxus chryxus
 Oeneis jutta
+Oeneis jutta alaskensis
+Oeneis jutta chermocki
+Oeneis jutta ridingiana
 Oeneis macounii
 Oeneis melissa
+Oeneis melissa atlinensis
+Oeneis melissa beanii
 Oeneis nevadensis
 Oeneis philipi
 Oeneis polixenes
+Oeneis polixenes beringianus
+Oeneis polixenes yukonensis
 Oeneis uhleri
 Oenothera biennis
 Oenothera glazioviana
 Oenothera oakesiana
-Oenothera pallida
+Oenothera pallida ssp. pallida
 Oenothera perennis
 Oenothera suffrutescens
-Oenothera villosa
+Oenothera villosa ssp. strigosa
+Oenothera villosa ssp. villosa
 Ohlertidion ohlerti
 Oidaematophorus balsamorrhizae
 Oidaematophorus brucei
@@ -13586,7 +13917,8 @@ Olophrum consimile
 Olophrum leechi
 Olophrum rotundicolle
 Olophrum stouti
-Olsynium douglasii
+Olsynium douglasii var. douglasii
+Olsynium douglasii var. inflatum
 Omalium algarum
 Omalium foraminosum
 Omalium rivulare
@@ -13610,11 +13942,42 @@ Omus dejeanii
 Oncophorus virens
 Oncophorus wahlenbergii
 Oncorhynchus clarkii
+Oncorhynchus clarkii clarkii
+Oncorhynchus clarkii lewisi
 Oncorhynchus gorbuscha
 Oncorhynchus keta
 Oncorhynchus kisutch
+Oncorhynchus kisutch pop. 7
 Oncorhynchus mykiss
+Oncorhynchus mykiss - coastal lineage
+Oncorhynchus mykiss - interior lineage
+Oncorhynchus mykiss - large lake piscivore ecotype
+Oncorhynchus mykiss pop. 46
+Oncorhynchus mykiss pop. 47
 Oncorhynchus nerka
+Oncorhynchus nerka pop. 10
+Oncorhynchus nerka pop. 11
+Oncorhynchus nerka pop. 12
+Oncorhynchus nerka pop. 13
+Oncorhynchus nerka pop. 14
+Oncorhynchus nerka pop. 15
+Oncorhynchus nerka pop. 16
+Oncorhynchus nerka pop. 17
+Oncorhynchus nerka pop. 18
+Oncorhynchus nerka pop. 19
+Oncorhynchus nerka pop. 20
+Oncorhynchus nerka pop. 21
+Oncorhynchus nerka pop. 22
+Oncorhynchus nerka pop. 23
+Oncorhynchus nerka pop. 24
+Oncorhynchus nerka pop. 25
+Oncorhynchus nerka pop. 26
+Oncorhynchus nerka pop. 27
+Oncorhynchus nerka pop. 28
+Oncorhynchus nerka pop. 29
+Oncorhynchus nerka pop. 7
+Oncorhynchus nerka pop. 8
+Oncorhynchus nerka pop. 9
 Oncorhynchus tshawytscha
 Ondatra zibethicus
 Oneirodes bulbosus
@@ -13623,7 +13986,7 @@ Onnia circinata
 Onnia tomentosa
 Onobrychis viciifolia
 Onocosmoecus unicolor
-Onopordum acanthium
+Onopordum acanthium ssp. acanthium
 Ontholestes cingulatus
 Onthophagus hecate
 Onthophagus nuchicornis
@@ -13696,6 +14059,10 @@ Orchopeas caedens
 Orchopeas leucopus
 Orchopeas nepos
 Orcinus orca
+Orcinus orca pop. 2
+Orcinus orca pop. 3
+Orcinus orca pop. 5
+Orcinus orca pop. 6
 Ordobrevia nubifera
 Oreamnos americanus
 Oreana unicolorella
@@ -13901,6 +14268,8 @@ Otophorus haemorrhoidalis
 Oulema melanopus
 Ovis canadensis
 Ovis dalli
+Ovis dalli dalli
+Ovis dalli stonei
 Oxalis corniculata
 Oxalis dillenii
 Oxalis montana
@@ -13908,9 +14277,11 @@ Oxalis oregana
 Oxalis stricta
 Oxidus gracilis
 Oxybasis chenopodioides
-Oxybasis glauca
+Oxybasis glauca ssp. glauca
+Oxybasis glauca ssp. salina
 Oxybasis macrosperma
-Oxybasis rubra
+Oxybasis rubra var. humilis
+Oxybasis rubra var. rubra
 Oxychilus alliarius
 Oxychilus cellarius
 Oxychilus draparnaudi
@@ -13957,15 +14328,21 @@ Oxystegus recurvifolius
 Oxytelus laqueatus
 Oxytelus montanus
 Oxytelus sculptus
-Oxytropis borealis
-Oxytropis campestris
-Oxytropis deflexa
+Oxytropis borealis var. viscida
+Oxytropis campestris var. cusickii
+Oxytropis campestris var. davisii
+Oxytropis campestris var. jordalii
+Oxytropis campestris var. spicata
+Oxytropis campestris var. varians
+Oxytropis deflexa var. foliolosa
+Oxytropis deflexa var. sericea
 Oxytropis huddelsonii
 Oxytropis maydelliana
-Oxytropis nigrescens
+Oxytropis nigrescens var. nigrescens
+Oxytropis nigrescens var. uniflora
 Oxytropis podocarpa
 Oxytropis scammaniana
-Oxytropis sericea
+Oxytropis sericea var. speciosa
 Oxytropis splendens
 Oxyura jamaicensis
 Ozodiceromyia levigata
@@ -14013,9 +14390,10 @@ Packera ogotorukensis
 Packera pauciflora
 Packera paupercula
 Packera plattensis
-Packera pseudaurea
+Packera pseudaurea var. pseudaurea
 Packera streptanthifolia
-Packera subnuda
+Packera subnuda var. moresbiensis
+Packera subnuda var. subnuda
 Pactopus hornii
 Paederus littorarius
 Paelopatides confundens
@@ -14092,8 +14470,9 @@ Panellus ringens
 Panellus serotinus
 Panellus stipticus
 Panicum capillare
-Panicum dichotomiflorum
-Panicum miliaceum
+Panicum dichotomiflorum ssp. dichotomiflorum
+Panicum miliaceum ssp. miliaceum
+Panicum miliaceum ssp. ruderale
 Pannaria rubiginella
 Pannaria rubiginosa
 Pannychia moseleyi
@@ -14139,6 +14518,11 @@ Papilio canadensis
 Papilio eurymedon
 Papilio indra
 Papilio machaon
+Papilio machaon aliaska
+Papilio machaon dodi
+Papilio machaon hudsonianus
+Papilio machaon oregonius
+Papilio machaon pikei
 Papilio multicaudata
 Papilio rutulus
 Papilio zelicaon
@@ -14202,7 +14586,7 @@ Parancistrocerus pensylvanicus
 Parancistrocerus vagus
 Paranonychus brunneus
 Paranthrene robiniae
-Parantipathes sp.
+Parantipathes sp. 1
 Paranura colorata
 Paranura sitchensis
 Parapagurus benedicti
@@ -14309,9 +14693,16 @@ Parnassia kotzebuei
 Parnassia palustris
 Parnassia parviflora
 Parnassius clodius
+Parnassius clodius altaurus
+Parnassius clodius claudianus
+Parnassius clodius pseudogallatinus
 Parnassius eversmanni
 Parnassius phoebus
 Parnassius smintheus
+Parnassius smintheus magnus
+Parnassius smintheus olympiannus
+Parnassius smintheus smintheus
+Parnassius smintheus yukonensis
 Paroligolophus agrestis
 Paromalus mancus
 Paronychiurus dentatus
@@ -14371,19 +14762,20 @@ Pediasia browerellus
 Pediasia dorsipunctellus
 Pediasia trisecta
 Pediasia truncatellus
-Pedicularis bracteosa
+Pedicularis bracteosa var. bracteosa
+Pedicularis bracteosa var. latifolia
 Pedicularis capitata
-Pedicularis contorta
+Pedicularis contorta var. contorta
 Pedicularis groenlandica
 Pedicularis labradorica
 Pedicularis lanata
-Pedicularis langsdorffii
+Pedicularis langsdorffii ssp. arctica
 Pedicularis oederi
 Pedicularis ornithorhyncha
 Pedicularis parviflora
 Pedicularis pennellii
 Pedicularis racemosa
-Pedicularis sudetica
+Pedicularis sudetica ssp. interior
 Pedicularis verticillata
 Pedilus flabellatus
 Pedilus inconspicuus
@@ -14395,6 +14787,8 @@ Pedostrangalia plagifera
 Pedostrangalia propinqua
 Pedostrangalia vitiosa
 Pekania pennanti
+Pekania pennanti pop. 4
+Pekania pennanti pop. 5
 Pelecanus erythrorhynchos
 Pelecanus occidentalis
 Pelecomalium puberulum
@@ -14417,7 +14811,8 @@ Pelenomus ventralis
 Pelioptera robustum
 Pellaea breweri
 Pellaea gastonyi
-Pellaea glabella
+Pellaea glabella ssp. occidentalis
+Pellaea glabella ssp. simplex
 Pellenes canadensis
 Pellenes ignifrons
 Pellenes lapponicus
@@ -14529,21 +14924,24 @@ Pennatula phosphorea
 Pennisetia marginatum
 Penstemon albertinus
 Penstemon confertus
-Penstemon davidsonii
+Penstemon davidsonii var. davidsonii
+Penstemon davidsonii var. menziesii
 Penstemon ellipticus
-Penstemon eriantherus
-Penstemon fruticosus
+Penstemon eriantherus var. eriantherus
+Penstemon fruticosus var. fruticosus
+Penstemon fruticosus var. scouleri
 Penstemon gormanii
 Penstemon gracilis
 Penstemon lyallii
-Penstemon nitidus
+Penstemon nitidus var. nitidus
 Penstemon ovatus
-Penstemon procerus
+Penstemon procerus var. procerus
+Penstemon procerus var. tolmiei
 Penstemon pruinosus
-Penstemon richardsonii
+Penstemon richardsonii var. richardsonii
 Penstemon serrulatus
 Pentaglottis sempervirens
-Pentagramma triangularis
+Pentagramma triangularis ssp. triangularis
 Pentamera lissoplaca
 Pentamera montereyensis
 Pentamera pediparva
@@ -14634,7 +15032,11 @@ Pertusaria suboculata
 Pertusaria subvelata
 Pertusaria trochiscea
 Pestalopezia brunneopruinosa
-Petasites frigidus
+Petasites frigidus var. frigidus
+Petasites frigidus var. nivalis
+Petasites frigidus var. palmatus
+Petasites frigidus var. sagittatus
+Petasites frigidus var. x vitifolius
 Petasites hybridus
 Petasites japonicus
 Petrochelidon fulva
@@ -14669,13 +15071,14 @@ Peziza violacea
 Pezizella alniella
 Pezizella subtilissima
 Phacelia franklinii
-Phacelia hastata
-Phacelia heterophylla
+Phacelia hastata var. hastata
+Phacelia heterophylla var. virgata
 Phacelia leptosepala
 Phacelia linearis
 Phacelia lyallii
-Phacelia ramosissima
-Phacelia sericea
+Phacelia ramosissima var. ramosissima
+Phacelia sericea var. ciliosa
+Phacelia sericea var. sericea
 Phaedon armoraciae
 Phaedon laevigatus
 Phaedon oviformis
@@ -14741,7 +15144,8 @@ Phalaenoptilus nuttallii
 Phalaenostola hanhami
 Phalaenostola metonalis
 Phalangium opilio
-Phalaris arundinacea
+Phalaris arundinacea var. arundinacea
+Phalaris arundinacea var. picta
 Phalaris canariensis
 Phalaropus fulicarius
 Phalaropus lobatus
@@ -14827,7 +15231,9 @@ Philodromus spectabilis
 Philodromus vulgaris
 Philolithus densicollis
 Philonotis capillaris
-Philonotis fontana
+Philonotis fontana var. americana
+Philonotis fontana var. fontana
+Philonotis fontana var. pumila
 Philonotis marchica
 Philonotis yezoana
 Philonthus aurulentus
@@ -14918,7 +15324,7 @@ Phlebiella inopinata
 Phlebiopsis gigantea
 Phlebiopsis ravenelii
 Phleum alpinum
-Phleum pratense
+Phleum pratense ssp. pratense
 Phloeomana minutula
 Phloeomana speirea
 Phloeonomus laesicollis
@@ -14937,9 +15343,9 @@ Phloeotribus lecontei
 Phloeotribus piceae
 Phlogophora periculosa
 Phlox caespitosa
-Phlox diffusa
+Phlox diffusa ssp. longistylis
 Phlox longifolia
-Phlox speciosa
+Phlox speciosa ssp. occidentalis
 Phlyctis argena
 Phlyctis speirea
 Phobetus comatus
@@ -15003,7 +15409,8 @@ Photinus obscurellus
 Photuris pennsylvanica
 Phragmatobia assimilans
 Phragmatobia fuliginosa
-Phragmites australis
+Phragmites australis ssp. americanus
+Phragmites australis ssp. australis
 Phratora frosti
 Phratora hudsonia
 Phratora interstitialis
@@ -15029,6 +15436,8 @@ Phtheochroa waracana
 Phthorimaea operculella
 Phyciodes batesii
 Phyciodes cocyta
+Phyciodes cocyta cocyta
+Phyciodes cocyta pascoensis
 Phyciodes mylitta
 Phyciodes pallida
 Phyciodes pulchella
@@ -15116,8 +15525,8 @@ Physa sibirica
 Physa skinneri
 Physalis philadelphica
 Physaria arctica
-Physaria didymocarpa
-Physaria douglasii
+Physaria didymocarpa ssp. didymocarpa
+Physaria douglasii ssp. douglasii
 Physcia adscendens
 Physcia aipolia
 Physcia alnophila
@@ -15158,11 +15567,9 @@ Phytobius leucogaster
 Pica hudsonia
 Piccolia ochrophora
 Picea engelmannii
-Picea engelmannii x glauca
 Picea glauca
 Picea mariana
 Picea sitchensis
-Picea spp.
 Picea x albertiana
 Picea x lutzii
 Picipes badius
@@ -15175,6 +15582,10 @@ Pidonia quadrata
 Pidonia scripta
 Pieris angelika
 Pieris marginalis
+Pieris marginalis guppyi
+Pieris marginalis marginalis
+Pieris marginalis reicheli
+Pieris marginalis tremblayi
 Pieris oleracea
 Pieris rapae
 Pigritia murtfeldtella
@@ -15194,6 +15605,7 @@ Pilosella flagellaris
 Pilosella glomerata
 Pilosella officinarum
 Pilosella piloselloides
+Pilosella piloselloides ssp. praealta
 Pilosella x floribunda
 Pima albocostalialis
 Pima boisduvaliella
@@ -15205,8 +15617,10 @@ Pimoa altioculata
 Pimoa curvata
 Pimoa haden
 Pinguicula villosa
-Pinguicula vulgaris
+Pinguicula vulgaris ssp. macroceras
+Pinguicula vulgaris ssp. vulgaris
 Pinicola enucleator
+Pinicola enucleator carlottae
 Pinnixa eburna
 Pinnixa faba
 Pinnixa littoralis
@@ -15218,10 +15632,12 @@ Pinnotheres taylori
 Pinodytes cryptophagoides
 Pinodytes haidagwaii
 Pinus albicaulis
-Pinus contorta
+Pinus contorta var. contorta
+Pinus contorta var. latifolia
 Pinus flexilis
 Pinus monticola
-Pinus ponderosa
+Pinus ponderosa var. ponderosa
+Pinus ponderosa var. scopulorum
 Pinus x murraybanksiana
 Piodes coriacea
 Pione gibraltarensis
@@ -15269,6 +15685,8 @@ Pissodes terminalis
 Pithya cupressina
 Pithya vulgaris
 Pituophis catenifer
+Pituophis catenifer catenifer
+Pituophis catenifer deserticola
 Pityogenes carinulatus
 Pityogenes fossifrons
 Pityogenes plagiatus
@@ -15341,22 +15759,23 @@ Placynthiella uliginosa
 Placynthium asperellum
 Placynthium flabellosum
 Placynthium nigrum
-Placynthium stenophyllum
+Placynthium stenophyllum var. isidiatum
 Placynthium subradiatum
 Placynthium tantaleum
 Plagiobothrys cognatus
 Plagiobothrys cusickii
-Plagiobothrys figuratus
+Plagiobothrys figuratus ssp. figuratus
 Plagiobothrys hispidulus
 Plagiobothrys scouleri
 Plagiobothrys tenellus
 Plagiobryum demissum
 Plagiobryum zierii
-Plagiochila arctica
+Plagiochila arctica var. arctica
 Plagiochila asplenioides
 Plagiochila gracilis
-Plagiochila porelloides
-Plagiochila semidecurrens
+Plagiochila porelloides var. porelloides
+Plagiochila semidecurrens var. alaskana
+Plagiochila semidecurrens var. semidecurrens
 Plagiomnium ciliare
 Plagiomnium cuspidatum
 Plagiomnium drummondii
@@ -15404,12 +15823,14 @@ Plantago psyllium
 Plataea trilinearia
 Platanthera aquilonis
 Platanthera chorisiana
-Platanthera dilatata
-Platanthera elegans
+Platanthera dilatata var. albiflora
+Platanthera dilatata var. dilatata
+Platanthera dilatata var. leucostachys
+Platanthera elegans ssp. elegans
 Platanthera elongata
 Platanthera ephemerantha
 Platanthera huronensis
-Platanthera obtusata
+Platanthera obtusata ssp. obtusata
 Platanthera orbiculata
 Platanthera stricta
 Platanthera transversa
@@ -15479,7 +15900,12 @@ Platysoma leconti
 Platysoma punctigerum
 Platystethus americanus
 Plebejus anna
+Plebejus anna ricei
+Plebejus anna vancouverensis
 Plebejus idas
+Plebejus idas alaskensis
+Plebejus idas atrapraetextus
+Plebejus idas scudderii
 Plebejus melissa
 Plectania melastoma
 Plectania milleri
@@ -15569,20 +15995,25 @@ Plutomurus wilkeyi
 Pluvialis dominica
 Pluvialis fulva
 Pluvialis squatarola
-Poa abbreviata
-Poa alpina
+Poa abbreviata ssp. pattersonii
+Poa alpina ssp. alpina
 Poa annua
-Poa arctica
-Poa bulbosa
+Poa arctica ssp. arctica
+Poa arctica ssp. lanata
+Poa bulbosa ssp. vivipara
 Poa compressa
 Poa confinis
-Poa cusickii
-Poa fendleriana
-Poa glauca
+Poa cusickii ssp. epilis
+Poa cusickii ssp. pallida
+Poa cusickii ssp. purpurascens
+Poa fendleriana ssp. fendleriana
+Poa fendleriana ssp. longiligula
+Poa glauca ssp. glauca
+Poa glauca ssp. rupicola
 Poa howellii
 Poa infirma
 Poa interior
-Poa laxa
+Poa laxa ssp. banffiana
 Poa laxiflora
 Poa leptocoma
 Poa lettermanii
@@ -15591,10 +16022,16 @@ Poa marcida
 Poa nemoralis
 Poa palustris
 Poa paucispicula
-Poa pratensis
+Poa pratensis ssp. agassizensis
+Poa pratensis ssp. alpigena
+Poa pratensis ssp. angustifolia
+Poa pratensis ssp. colpodea
+Poa pratensis ssp. irrigata
+Poa pratensis ssp. pratensis
 Poa pseudoabbreviata
-Poa secunda
-Poa stenantha
+Poa secunda ssp. juncifolia
+Poa secunda ssp. secunda
+Poa stenantha var. stenantha
 Poa suksdorfii
 Poa supina
 Poa trivialis
@@ -15695,7 +16132,7 @@ Polemonium californicum
 Polemonium elegans
 Polemonium micranthum
 Polemonium occidentale
-Polemonium pulcherrimum
+Polemonium pulcherrimum var. pulcherrimum
 Polemonium villosissimum
 Polemonium viscosum
 Polia discalis
@@ -15717,6 +16154,8 @@ Polites peckius
 Polites sabuleti
 Polites sonora
 Polites themistocles
+Polites themistocles themistocles
+Polites themistocles turneri
 Polix coloradella
 Polyacanthonotus challengeri
 Polyblastia albida
@@ -15731,7 +16170,7 @@ Polyblastia sendtneri
 Polyblastia septentrionalis
 Polyblastia viridescens
 Polycaon stoutii
-Polycarpon tetraphyllum
+Polycarpon tetraphyllum ssp. tetraphyllum
 Polycauliona bolacina
 Polycauliona flavogranulosa
 Polycauliona inconspecta
@@ -15760,6 +16199,8 @@ Polygala senega
 Polygonia faunus
 Polygonia gracilis
 Polygonia oreas
+Polygonia oreas silenus
+Polygonia oreas threatfuli
 Polygonia progne
 Polygonia satyrus
 Polygonum achoreum
@@ -15769,17 +16210,19 @@ Polygonum aviculare
 Polygonum buxiforme
 Polygonum douglasii
 Polygonum engelmannii
-Polygonum fowleri
-Polygonum humifusum
+Polygonum fowleri ssp. fowleri
+Polygonum humifusum ssp. caurianum
 Polygonum majus
 Polygonum minimum
 Polygonum neglectum
 Polygonum nuttallii
 Polygonum paronychia
-Polygonum polygaloides
-Polygonum ramosissimum
+Polygonum polygaloides ssp. confertiflorum
+Polygonum polygaloides ssp. kelloggii
+Polygonum ramosissimum ssp. prolificum
+Polygonum ramosissimum ssp. ramosissimum
 Polygonum rurivagum
-Polygonum sawatchense
+Polygonum sawatchense ssp. oblivium
 Polygonum spergulariiforme
 Polygraphus convexifrons
 Polygraphus rufipennis
@@ -15811,7 +16254,7 @@ Polysporina urceolata
 Polystichum andersonii
 Polystichum braunii
 Polystichum californicum
-Polystichum imbricans
+Polystichum imbricans ssp. imbricans
 Polystichum kruckebergii
 Polystichum lemmonii
 Polystichum lonchitis
@@ -15822,11 +16265,14 @@ Polysticta stelleri
 Polystictus lutescens
 Polystictus macounii
 Polystoechotes punctatus
-Polytrichastrum alpinum
+Polytrichastrum alpinum var. alpinum
+Polytrichastrum alpinum var. sylvaticum
 Polytrichastrum formosum
 Polytrichastrum longisetum
-Polytrichastrum sexangulare
-Polytrichum commune
+Polytrichastrum sexangulare var. sexangulare
+Polytrichastrum sexangulare var. vulcanicum
+Polytrichum commune var. commune
+Polytrichum commune var. perigoniale
 Polytrichum hyperboreum
 Polytrichum juniperinum
 Polytrichum piliferum
@@ -15841,12 +16287,18 @@ Ponometia semiflava
 Ponometia tortricina
 Pontia beckerii
 Pontia occidentalis
+Pontia occidentalis nelsoni
+Pontia occidentalis occidentalis
 Pontia protodice
 Pontia sisymbrii
+Pontia sisymbrii beringiensis
+Pontia sisymbrii flavitincta
 Pontomalota opaca
 Pooecetes gramineus
+Pooecetes gramineus affinis
 Populus balsamifera
-Populus deltoides
+Populus deltoides ssp. deltoides
+Populus deltoides ssp. monilifera
 Populus nigra
 Populus tremuloides
 Populus trichocarpa
@@ -15924,15 +16376,17 @@ Potamogeton nodosus
 Potamogeton oakesianus
 Potamogeton obtusifolius
 Potamogeton praelongus
-Potamogeton pusillus
+Potamogeton pusillus ssp. pusillus
+Potamogeton pusillus ssp. tenuissimus
 Potamogeton richardsonii
 Potamogeton robbinsii
 Potamogeton strictifolius
 Potamogeton zosteriformis
 Potamopyrgus antipodarum
 Potentilla anglica
-Potentilla anserina
-Potentilla arenosa
+Potentilla anserina ssp. anserina
+Potentilla anserina ssp. pacifica
+Potentilla arenosa ssp. arenosa
 Potentilla argentea
 Potentilla biennis
 Potentilla biflora
@@ -15943,18 +16397,23 @@ Potentilla drummondii
 Potentilla elegans
 Potentilla flabellifolia
 Potentilla furcata
-Potentilla glaucophylla
-Potentilla gracilis
+Potentilla glaucophylla var. glaucophylla
+Potentilla glaucophylla var. perdissecta
+Potentilla gracilis var. fastigiata
+Potentilla gracilis var. flabelliformis
+Potentilla gracilis var. gracilis
 Potentilla hippiana
 Potentilla hookeriana
-Potentilla hyparctica
+Potentilla hyparctica ssp. elatior
+Potentilla hyparctica ssp. hyparctica
 Potentilla inclinata
-Potentilla jepsonii
+Potentilla jepsonii var. kluanensis
 Potentilla litoralis
 Potentilla nana
 Potentilla nivea
 Potentilla norvegica
-Potentilla ovina
+Potentilla ovina var. decurrens
+Potentilla ovina var. ovina
 Potentilla pensylvanica
 Potentilla pulcherrima
 Potentilla recta
@@ -15963,11 +16422,11 @@ Potentilla rivalis
 Potentilla rubricaulis
 Potentilla subgorodkovii
 Potentilla subvahliana
-Potentilla supina
+Potentilla supina ssp. paradoxa
 Potentilla villosa
 Potentilla villosula
 Poteridium occidentale
-Poterium sanguisorba
+Poterium sanguisorba var. polygamum
 Praestigia kulczynskii
 Prasocuris boreella
 Prasocuris phellandrii
@@ -15979,8 +16438,8 @@ Prenanthes racemosa
 Prenanthes sagittata
 Priacma serrata
 Primnoa pacifica
-Primula conjugens
-Primula cuneifolia
+Primula conjugens var. viscida
+Primula cuneifolia ssp. saxifragifolia
 Primula egaliksensis
 Primula frigida
 Primula hendersonii
@@ -15988,7 +16447,9 @@ Primula incana
 Primula jeffreyi
 Primula latiloba
 Primula mistassinica
-Primula pauciflora
+Primula pauciflora var. cusickii
+Primula pauciflora var. macrocarpa
+Primula pauciflora var. pauciflora
 Priognathus monilicornis
 Prionace glauca
 Prionoxystus robiniae
@@ -16071,6 +16532,8 @@ Prosimulium shewelli
 Prosimulium travisi
 Prosimulium ursinum
 Prosopium coulterii
+Prosopium coulterii pop. 1
+Prosopium coulterii pop. 3
 Prosopium cylindraceum
 Prosopium williamsoni
 Prosternon bombycinum
@@ -16119,7 +16582,7 @@ Protoperigea anotha
 Protoperigea posticata
 Protoperigea umbricata
 Protoptila tenebrosa
-Protoptilum sp.
+Protoptilum sp. 1
 Protorthodes curtica
 Protorthodes oviduca
 Protorthodes rufula
@@ -16138,7 +16601,8 @@ Proxenus mendosa
 Proxenus mindara
 Proxenus miranda
 Prunella montanella
-Prunella vulgaris
+Prunella vulgaris ssp. lanceolata
+Prunella vulgaris ssp. vulgaris
 Prunus armeniaca
 Prunus avium
 Prunus cerasifera
@@ -16148,10 +16612,10 @@ Prunus lusitanica
 Prunus mahaleb
 Prunus padus
 Prunus pensylvanica
-Prunus serotina
+Prunus serotina var. serotina
 Prunus spinosa
 Prunus tomentosa
-Prunus virginiana
+Prunus virginiana var. demissa
 Prunus x pugetensis
 Psaltriparus minimus
 Psammopolia arietis
@@ -16293,9 +16757,14 @@ Pseudolaccaria pachyphylla
 Pseudolathra oregonensis
 Pseudoleskea atricha
 Pseudoleskea baileyi
-Pseudoleskea incurvata
+Pseudoleskea incurvata var. gigantea
+Pseudoleskea incurvata var. incurvata
+Pseudoleskea incurvata var. tenuiretis
 Pseudoleskea patens
-Pseudoleskea radicosa
+Pseudoleskea radicosa var. compacta
+Pseudoleskea radicosa var. denudata
+Pseudoleskea radicosa var. pallida
+Pseudoleskea radicosa var. radicosa
 Pseudoleskea stenophylla
 Pseudoleskeella tectorum
 Pseudoluperus longulus
@@ -16351,9 +16820,10 @@ Pseudotomentella nigra
 Pseudotomentella tristis
 Pseudotomentella vepallidospora
 Pseudotremella moriformis
-Pseudotsuga menziesii
+Pseudotsuga menziesii var. glauca
+Pseudotsuga menziesii var. menziesii
 Psilachnum chrysostigmum
-Psilocarphus brevissimus
+Psilocarphus brevissimus var. brevissimus
 Psilocarphus elatior
 Psilocarphus tenellus
 Psilocephala vicina
@@ -16401,7 +16871,7 @@ Psora vallesiaca
 Psoroglaena dictyospora
 Psoroglaena stigonemoides
 Psoroma hypnorum
-Psoroma tenue
+Psoroma tenue var. boreale
 Psoronactis dilleniana
 Psorula rufonigra
 Psyche casta
@@ -16430,7 +16900,8 @@ Ptenidium pusillum
 Ptenothrix atra
 Ptenothrix maculosa
 Ptenothrix unicolor
-Pteridium aquilinum
+Pteridium aquilinum var. latiusculum
+Pteridium aquilinum var. pubescens
 Pterigynandrum filiforme
 Pterocheilus morrisoni
 Pterocheilus provancheri
@@ -16605,10 +17076,13 @@ Pyrenula laevigata
 Pyrenula microtheca
 Pyrenula occidentalis
 Pyrgus centaureae
+Pyrgus centaureae freija
+Pyrgus centaureae loki
 Pyrgus communis
 Pyrgus ruralis
 Pyrola aphylla
-Pyrola asarifolia
+Pyrola asarifolia ssp. asarifolia
+Pyrola asarifolia ssp. bracteata
 Pyrola chlorantha
 Pyrola crypta
 Pyrola dentata
@@ -16622,7 +17096,7 @@ Pyrrhalta viburni
 Pyrrharctia isabella
 Pyrrhia exprimens
 Pyrrhospora quernea
-Pyrrocoma carthamoides
+Pyrrocoma carthamoides var. carthamoides
 Pyrus communis
 Pyrus nivalis
 Pytho americanus
@@ -16677,7 +17151,7 @@ Quedius transparens
 Quedius uteanus
 Quedius velox
 Quedius vilis
-Quercus garryana
+Quercus garryana var. garryana
 Quercus robur
 Quiscalus mexicanus
 Quiscalus quiscula
@@ -16691,7 +17165,7 @@ Radix auricularia
 Radula auriculata
 Radula bolanderi
 Radula complanata
-Radula obtusiloba
+Radula obtusiloba ssp. polyclada
 Radula prolifera
 Radulinus asprellus
 Radulinus boleoides
@@ -16763,34 +17237,49 @@ Rana aurora
 Rana luteiventris
 Rana pretiosa
 Rangifer tarandus
+Rangifer tarandus dawsoni
+Rangifer tarandus pop. 1
+Rangifer tarandus pop. 14
+Rangifer tarandus pop. 15
+Rangifer tarandus pop. 18
 Ranunculus abortivus
 Ranunculus acris
-Ranunculus alismifolius
-Ranunculus aquatilis
+Ranunculus alismifolius var. alismifolius
+Ranunculus aquatilis var. aquatilis
+Ranunculus aquatilis var. diffusus
 Ranunculus arcticus
 Ranunculus bulbosus
 Ranunculus californicus
 Ranunculus cardiophyllus
-Ranunculus eschscholtzii
+Ranunculus eschscholtzii var. eschscholtzii
+Ranunculus eschscholtzii var. eximius
+Ranunculus eschscholtzii var. suksdorfii
 Ranunculus flabellaris
-Ranunculus flammula
-Ranunculus glaberrimus
+Ranunculus flammula var. flammula
+Ranunculus flammula var. ovalis
+Ranunculus flammula var. reptans
+Ranunculus glaberrimus var. ellipticus
+Ranunculus glaberrimus var. glaberrimus
 Ranunculus gmelinii
 Ranunculus grayi
 Ranunculus hyperboreus
-Ranunculus inamoenus
+Ranunculus inamoenus var. inamoenus
 Ranunculus lobbii
 Ranunculus macounii
 Ranunculus nivalis
-Ranunculus occidentalis
-Ranunculus orthorhynchus
+Ranunculus occidentalis var. brevistylis
+Ranunculus occidentalis var. hexasepalus
+Ranunculus occidentalis var. occidentalis
+Ranunculus orthorhynchus var. orthorhynchus
+Ranunculus orthorhynchus var. platyphyllus
 Ranunculus parviflorus
 Ranunculus pensylvanicus
 Ranunculus pygmaeus
 Ranunculus repens
 Ranunculus rhomboideus
 Ranunculus sardous
-Ranunculus sceleratus
+Ranunculus sceleratus var. multifidus
+Ranunculus sceleratus var. sceleratus
 Ranunculus sulphureus
 Ranunculus uncinatus
 Ranunculus x heimburgerae
@@ -16840,7 +17329,7 @@ Retinia albicapitana
 Retinia burkeana
 Retinia metallica
 Retinia picicolana
-Reynoutria japonica
+Reynoutria japonica var. japonica
 Reynoutria sachalinensis
 Reynoutria x bohemica
 Rhabdocalyptus dawsoni
@@ -16874,8 +17363,10 @@ Rheumaptera subhastata
 Rheumaptera undulata
 Rhigognostis interrupta
 Rhigognostis poulella
-Rhinanthus minor
+Rhinanthus minor ssp. groenlandicus
+Rhinanthus minor ssp. minor
 Rhinichthys cataractae
+Rhinichthys cataractae - Chehalis lineage
 Rhinichthys falcatus
 Rhinichthys osculus
 Rhinichthys umatilla
@@ -17005,7 +17496,7 @@ Rhizopogon subcaerulescens
 Rhizopogon subsalmonius
 Rhizopogon villosulus
 Rhizopogon vinicolor
-Rhodiola integrifolia
+Rhodiola integrifolia ssp. integrifolia
 Rhodobryum roseum
 Rhodocollybia badiialba
 Rhodocollybia butyracea
@@ -17018,7 +17509,7 @@ Rhododendron columbianum
 Rhododendron groenlandicum
 Rhododendron lapponicum
 Rhododendron macrophyllum
-Rhododendron tomentosum
+Rhododendron tomentosum ssp. decumbens
 Rhodofomes cajanderi
 Rhodofomes carneus
 Rhodofomes roseus
@@ -17113,20 +17604,21 @@ Rhytisma punctatum
 Rhyzobius lophanthae
 Rhyzopertha dominica
 Ribes acerifolium
-Ribes aureum
+Ribes aureum var. villosum
 Ribes bracteosum
-Ribes cereum
+Ribes cereum var. cereum
 Ribes cognatum
-Ribes divaricatum
+Ribes divaricatum var. divaricatum
 Ribes glandulosum
-Ribes hudsonianum
-Ribes inerme
+Ribes hudsonianum var. hudsonianum
+Ribes hudsonianum var. petiolare
+Ribes inerme var. inerme
 Ribes lacustre
 Ribes laxiflorum
 Ribes lobbii
-Ribes oxyacanthoides
+Ribes oxyacanthoides var. oxyacanthoides
 Ribes rubrum
-Ribes sanguineum
+Ribes sanguineum var. sanguineum
 Ribes triste
 Ribes viscosissimum
 Riccardia chamedryfolia
@@ -17137,7 +17629,7 @@ Riccia beyrichiana
 Riccia cavernosa
 Riccia fluitans
 Riccia frostii
-Riccia glauca
+Riccia glauca var. glauca
 Riccia rhenana
 Riccia sorocarpa
 Ricciocarpos natans
@@ -17216,7 +17708,7 @@ Robertus borealis
 Robertus fuscus
 Robertus lividus
 Robertus vigerens
-Robinia hispida
+Robinia hispida var. hispida
 Robinia pseudoacacia
 Roellobryon roellii
 Romanzoffia sitchensis
@@ -17229,19 +17721,22 @@ Rorippa alpina
 Rorippa barbareifolia
 Rorippa curvipes
 Rorippa curvisiliqua
-Rorippa palustris
+Rorippa palustris ssp. hispida
+Rorippa palustris ssp. palustris
 Rorippa sylvestris
 Rorippa tenerrima
-Rosa acicularis
+Rosa acicularis ssp. sayi
 Rosa arkansana
 Rosa canina
-Rosa gymnocarpa
+Rosa gymnocarpa var. gymnocarpa
 Rosa multiflora
-Rosa nutkana
-Rosa pisocarpa
-Rosa rubiginosa
+Rosa nutkana ssp. macdougalii
+Rosa nutkana ssp. nutkana
+Rosa pisocarpa ssp. pisocarpa
+Rosa rubiginosa var. rubiginosa
 Rosa rugosa
-Rosa woodsii
+Rosa woodsii ssp. ultramontana
+Rosa woodsii ssp. woodsii
 Rosalia funebris
 Rosellinia diathrausta
 Rosellinia minor
@@ -17258,13 +17753,14 @@ Rotala ramosior
 Rubroboletus haematinus
 Rubroboletus pulcherrimus
 Rubus allegheniensis
-Rubus arcticus
+Rubus arcticus ssp. acaulis
+Rubus arcticus ssp. stellatus
 Rubus armeniacus
 Rubus chamaemorus
-Rubus idaeus
+Rubus idaeus ssp. strigosus
 Rubus laciniatus
 Rubus lasiococcus
-Rubus leucodermis
+Rubus leucodermis var. leucodermis
 Rubus nivalis
 Rubus parviflorus
 Rubus pedatus
@@ -17273,8 +17769,8 @@ Rubus pubescens
 Rubus spectabilis
 Rubus ursinus
 Rubus vestitus
-Rudbeckia hirta
-Rudbeckia laciniata
+Rudbeckia hirta var. pulcherrima
+Rudbeckia laciniata var. ampla
 Rugathodes aurantius
 Rugathodes sexpunctatus
 Rugilus orbiculatus
@@ -17416,7 +17912,7 @@ Sabulina austromontana
 Sabulina dawsonensis
 Sabulina elegans
 Sabulina macra
-Sabulina nuttallii
+Sabulina nuttallii var. nuttallii
 Sabulina pusilla
 Sabulina rubella
 Sabulina stricta
@@ -17428,9 +17924,10 @@ Sagaranella tylicolor
 Sagedia mastrucata
 Sagedia simoensis
 Sagina apetala
-Sagina decumbens
+Sagina decumbens ssp. occidentalis
 Sagina japonica
-Sagina maxima
+Sagina maxima ssp. crassicaulis
+Sagina maxima ssp. maxima
 Sagina nivalis
 Sagina procumbens
 Sagina saginoides
@@ -17442,7 +17939,8 @@ Saiulus setifer
 Salebius octodentatus
 Salicornia depressa
 Salicornia rubra
-Salix alaxensis
+Salix alaxensis var. alaxensis
+Salix alaxensis var. longistylis
 Salix amygdaloides
 Salix arbusculoides
 Salix arctica
@@ -17451,19 +17949,22 @@ Salix barclayi
 Salix barrattiana
 Salix bebbiana
 Salix boothii
-Salix brachycarpa
+Salix brachycarpa var. brachycarpa
 Salix candida
 Salix cascadensis
 Salix commutata
 Salix discolor
 Salix drummondiana
-Salix exigua
+Salix exigua var. exigua
+Salix exigua var. hindsiana
 Salix farriae
 Salix geyeriana
-Salix glauca
+Salix glauca var. acutifolia
+Salix glauca var. villosa
 Salix hookeriana
 Salix interior
-Salix lasiandra
+Salix lasiandra var. caudata
+Salix lasiandra var. lasiandra
 Salix maccalliana
 Salix melanopsis
 Salix myrtillifolia
@@ -17489,7 +17990,6 @@ Salix serissima
 Salix sessilifolia
 Salix setchelliana
 Salix sitchensis
-Salix spp.
 Salix stolonifera
 Salix tweedyi
 Salix vestita
@@ -17502,13 +18002,21 @@ Salpinctes obsoletus
 Salsola tragus
 Salticus scenicus
 Salvelinus confluentus
+Salvelinus confluentus pop. 10
+Salvelinus confluentus pop. 12
+Salvelinus confluentus pop. 26
+Salvelinus confluentus pop. 28
 Salvelinus fontinalis
 Salvelinus malma
+Salvelinus malma - northern lineage
+Salvelinus malma - southern lineage
 Salvelinus namaycush
 Salvia nemorosa
 Salvia officinalis
 Sambucus cerulea
-Sambucus racemosa
+Sambucus racemosa var. arborescens
+Sambucus racemosa var. leucocarpa
+Sambucus racemosa var. melanocarpa
 Sandbergia whitedii
 Sander vitreus
 Sanfilippodytes compertus
@@ -17529,7 +18037,7 @@ Sanicula tripartita
 Sanionia orthothecioides
 Sanionia symmetrica
 Sanionia uncinata
-Santessoniella arctophila
+Santessoniella arctophila var. arctophila
 Saperda calcarata
 Saperda horni
 Saperda populnea
@@ -17575,7 +18083,7 @@ Sarmentypnum sarmentosum
 Sarmentypnum trichophyllum
 Sarmentypnum tundrae
 Sarpedon scabrosus
-Sarracenia purpurea
+Sarracenia purpurea ssp. purpurea
 Sassacus papenhoei
 Sassacus vitis
 Satilatlas marxi
@@ -17586,10 +18094,13 @@ Satyrium saepium
 Satyrium semiluna
 Satyrium sylvinus
 Satyrium titus
+Satyrium titus immaculosus
+Satyrium titus titus
 Saucrobotys fumoferalis
 Saucrobotys futilalis
 Saussurea americana
-Saussurea angustifolia
+Saussurea angustifolia var. angustifolia
+Saussurea angustifolia var. yukonensis
 Saussurea nuda
 Sauteria alpina
 Saxifraga adscendens
@@ -17597,12 +18108,13 @@ Saxifraga aizoides
 Saxifraga austromontana
 Saxifraga cernua
 Saxifraga cespitosa
-Saxifraga flagellaris
+Saxifraga flagellaris ssp. setigera
 Saxifraga funstonii
 Saxifraga hirculus
 Saxifraga hyperborea
 Saxifraga mertensiana
-Saxifraga oppositifolia
+Saxifraga oppositifolia ssp. oppositifolia
+Saxifraga oppositifolia ssp. smalliana
 Saxifraga serpyllifolia
 Saxifraga taylorii
 Saxifraga tricuspidata
@@ -17614,25 +18126,26 @@ Sayornis saya
 Scapania americana
 Scapania apiculata
 Scapania bolanderi
-Scapania curta
-Scapania cuspiduligera
-Scapania glaucocephala
+Scapania curta var. curta
+Scapania cuspiduligera var. cuspiduligera
+Scapania glaucocephala var. glaucocephala
 Scapania gymnostomophila
-Scapania hians
+Scapania hians ssp. salishensis
 Scapania hollandiae
-Scapania irrigua
+Scapania irrigua ssp. irrigua
 Scapania kaurinii
 Scapania mucronata
 Scapania obscura
 Scapania ornithopodioides
-Scapania paludicola
+Scapania paludicola var. paludicola
 Scapania paludosa
-Scapania scandica
+Scapania scandica var. scandica
 Scapania spitzbergensis
-Scapania subalpina
+Scapania subalpina var. subalpina
 Scapania uliginosa
 Scapania umbrosa
-Scapania undulata
+Scapania undulata var. oakesii
+Scapania undulata var. undulata
 Scapanus orarius
 Scapanus townsendii
 Scaphidema aeneolum
@@ -17682,7 +18195,7 @@ Schismatomma graphidioides
 Schismatomma pericleum
 Schismatomma umbrinum
 Schistidium agassizii
-Schistidium apocarpum
+Schistidium apocarpum ssp. apocarpum
 Schistidium atrichum
 Schistidium boreale
 Schistidium confertum
@@ -17703,13 +18216,14 @@ Schistidium subjulaceum
 Schistidium tenerum
 Schistidium trichodon
 Schistidium venetum
-Schistochilopsis incisa
+Schistochilopsis incisa var. incisa
+Schistochilopsis incisa var. opacifolia
 Schistoglossa campbelli
 Schistoglossa carexiana
 Schistoglossa charlottae
 Schistostega pennata
 Schizachne purpurascens
-Schizachyrium scoparium
+Schizachyrium scoparium var. scoparium
 Schizocosa mccooki
 Schizocosa minnesotensis
 Schizogenius depressus
@@ -17722,11 +18236,11 @@ Schizura concinna
 Schizura ipomoeae
 Schizura unicornis
 Schljakovia kunzeana
-Schljakovianthus quadrilobus
+Schljakovianthus quadrilobus var. quadrilobus
 Schoenoplectiella saximontana
 Schoenoplectus acutus
 Schoenoplectus americanus
-Schoenoplectus pungens
+Schoenoplectus pungens var. longispicatus
 Schoenoplectus subterminalis
 Schoenoplectus tabernaemontani
 Schoenoplectus triqueter
@@ -17764,7 +18278,7 @@ Sciuro-hypnum reflexum
 Sciuro-hypnum starkei
 Sciurus carolinensis
 Sciurus niger
-Scleranthus annuus
+Scleranthus annuus ssp. annuus
 Sclerobunus nondimorphicus
 Sclerochloa dura
 Sclerocrangon boreas
@@ -17783,11 +18297,13 @@ Sclerophora coniophaea
 Sclerophora peronella
 Scleroplax granulata
 Scleropodium californicum
-Scleropodium cespitans
+Scleropodium cespitans var. cespitans
+Scleropodium cespitans var. sublaeve
 Scleropodium julaceum
 Scleropodium obtusifolium
 Scleropodium occidentale
-Scleropodium touretii
+Scleropodium touretii var. colpophyllum
+Scleropodium touretii var. touretii
 Scleropogon neglectus
 Sclerotinia sclerotiorum
 Sclerotinia veratri
@@ -17882,7 +18398,8 @@ Scrophularia lanceolata
 Scrophularia nodosa
 Scudderia furcata
 Scudderia pistillata
-Scutellaria angustifolia
+Scutellaria angustifolia ssp. angustifolia
+Scutellaria angustifolia ssp. micrantha
 Scutellaria galericulata
 Scutellaria lateriflora
 Scutellinia hirta
@@ -18000,8 +18517,10 @@ Sedum acre
 Sedum album
 Sedum divergens
 Sedum forsterianum
-Sedum lanceolatum
-Sedum oreganum
+Sedum lanceolatum var. lanceolatum
+Sedum lanceolatum var. nesioticum
+Sedum oreganum ssp. oreganum
+Sedum oreganum ssp. tenue
 Sedum rupestre
 Sedum spathulifolium
 Sedum stenopetalum
@@ -18059,11 +18578,12 @@ Semioscopis packardella
 Semisuberites cribrosa
 Semljicola obtusus
 Senecio elmeri
-Senecio eremophilus
-Senecio fremontii
+Senecio eremophilus var. eremophilus
+Senecio fremontii var. fremontii
 Senecio hydrophiloides
 Senecio hydrophilus
-Senecio integerrimus
+Senecio integerrimus var. exaltatus
+Senecio integerrimus var. ochroleucus
 Senecio lugens
 Senecio megacephalus
 Senecio pseudoarnica
@@ -18109,9 +18629,10 @@ Sesia tibiale
 Setagrotis pallidicollis
 Setaria faberi
 Setaria italica
-Setaria pumila
+Setaria pumila ssp. pumila
 Setaria verticillata
-Setaria viridis
+Setaria viridis var. major
+Setaria viridis var. viridis
 Setasomus aratus
 Setasomus nitidulus
 Setophaga americana
@@ -18149,6 +18670,7 @@ Sicya crocearia
 Sicya macularia
 Sidalcea hendersonii
 Sidalcea oregana
+Sidalcea oregana ssp. oregana
 Sidera lenis
 Sidera vulgaris
 Sideridis fuscolutea
@@ -18160,21 +18682,21 @@ Silene acaulis
 Silene antirrhina
 Silene coronaria
 Silene csereii
-Silene dichotoma
+Silene dichotoma ssp. dichotoma
 Silene dioica
-Silene douglasii
-Silene drummondii
+Silene douglasii var. douglasii
+Silene drummondii var. drummondii
 Silene gallica
-Silene involucrata
+Silene involucrata ssp. involucrata
 Silene latifolia
 Silene menziesii
 Silene noctiflora
 Silene ostenfeldii
 Silene parryi
 Silene repens
-Silene scouleri
+Silene scouleri ssp. scouleri
 Silene spaldingii
-Silene uralensis
+Silene uralensis ssp. attenuata
 Silene vulgaris
 Silis difficilis
 Silis insperata
@@ -18283,9 +18805,12 @@ Sisymbrium orientale
 Sisyra nigra
 Sisyra vicaria
 Sisyrinchium californicum
-Sisyrinchium idahoense
+Sisyrinchium idahoense var. idahoense
+Sisyrinchium idahoense var. macounii
+Sisyrinchium idahoense var. occidentale
+Sisyrinchium idahoense var. segetum
 Sisyrinchium littorale
-Sisyrinchium montanum
+Sisyrinchium montanum var. montanum
 Sisyrinchium septentrionale
 Sitochroa chortalis
 Sitona californicus
@@ -18327,7 +18852,8 @@ Solanum americanum
 Solanum dulcamara
 Solanum emulans
 Solanum lycopersicum
-Solanum nigrum
+Solanum nigrum ssp. nigrum
+Solanum nigrum ssp. schultesii
 Solanum physalifolium
 Solanum rostratum
 Solanum triflorum
@@ -18340,18 +18866,19 @@ Solenostoma obscurum
 Solenostoma rubrum
 Solenostoma schusterianum
 Solenostoma sphaerocarpum
-Solidago altissima
+Solidago altissima ssp. gilvocanescens
 Solidago bellidifolia
 Solidago canadensis
 Solidago elongata
-Solidago gigantea
+Solidago gigantea var. shinnersii
 Solidago glutinosa
-Solidago lepida
+Solidago lepida var. lepida
+Solidago lepida var. salebrosa
 Solidago missouriensis
 Solidago mollis
 Solidago multiradiata
-Solidago nemoralis
-Solidago rugosa
+Solidago nemoralis ssp. decemflora
+Solidago rugosa var. rugosa
 Solitaria chrysophthalma
 Soliva sessilis
 Solorina bispora
@@ -18375,7 +18902,8 @@ Somatochlora septentrionalis
 Somatochlora walshii
 Somatochlora whitehousei
 Somniosus pacificus
-Sonchus arvensis
+Sonchus arvensis ssp. arvensis
+Sonchus arvensis ssp. uliginosus
 Sonchus asper
 Sonchus oleraceus
 Sonoma cascadia
@@ -18387,13 +18915,15 @@ Sonoma squamishorum
 Sorbus aucuparia
 Sorbus intermedia
 Sorbus scopulina
-Sorbus sitchensis
+Sorbus sitchensis var. grayi
+Sorbus sitchensis var. sitchensis
 Sorex arcticus
 Sorex bendirii
 Sorex cinereus
 Sorex hoyi
 Sorex merriami
 Sorex navigator
+Sorex navigator brooksi
 Sorex obscurus
 Sorex palustris
 Sorex preblei
@@ -18401,7 +18931,7 @@ Sorex rohweri
 Sorex trowbridgii
 Sorex tundrensis
 Sorex vagrans
-Sorghum bicolor
+Sorghum bicolor ssp. bicolor
 Sorhagenia nimbosa
 Soronia guttulata
 Soucron arenarium
@@ -18458,21 +18988,38 @@ Speranza plumosata
 Speranza quadrilinearia
 Speranza simplex
 Spergula arvensis
-Spergularia canadensis
-Spergularia macrotheca
+Spergularia canadensis var. occidentalis
+Spergularia macrotheca var. macrotheca
 Spergularia rubra
 Spergularia rupicola
 Spergularia salina
 Sperosoma biseriatum
 Speyeria aphrodite
+Speyeria aphrodite columbia
+Speyeria aphrodite manitoba
+Speyeria aphrodite whitehousei
 Speyeria atlantis
 Speyeria callippe
+Speyeria callippe chilcotinensis
+Speyeria callippe semivirida
 Speyeria cybele
+Speyeria cybele leto
+Speyeria cybele pseudocarpenteri
 Speyeria hesperis
+Speyeria hesperis beani
+Speyeria hesperis helena
 Speyeria hydaspe
+Speyeria hydaspe minor
+Speyeria hydaspe rhodope
 Speyeria mormonia
+Speyeria mormonia bischoffii
+Speyeria mormonia erinna
+Speyeria mormonia eurynome
+Speyeria mormonia opis
 Speyeria zerene
-Sphaeralcea coccinea
+Speyeria zerene bremnerii
+Speyeria zerene picta
+Sphaeralcea coccinea var. coccinea
 Sphaeralcea munroana
 Sphaerellopsis filum
 Sphaericus pinguis
@@ -18515,7 +19062,7 @@ Sphagnum fuscum
 Sphagnum girgensohnii
 Sphagnum inundatum
 Sphagnum jensenii
-Sphagnum junghuhnianum
+Sphagnum junghuhnianum var. pseudomolle
 Sphagnum lindbergii
 Sphagnum majus
 Sphagnum mendocinum
@@ -18546,7 +19093,7 @@ Sphecodes pecosensis
 Sphecodes prosphorus
 Sphecodes solonis
 Sphenolobopsis pearsonii
-Sphenolobus minutus
+Sphenolobus minutus var. weberi
 Sphenolobus saxicola
 Sphenopholis intermedia
 Sphenopholis obtusata
@@ -18568,6 +19115,8 @@ Sphyraena argentea
 Sphyrapicus nuchalis
 Sphyrapicus ruber
 Sphyrapicus thyroideus
+Sphyrapicus thyroideus nataliae
+Sphyrapicus thyroideus thyroideus
 Sphyrapicus varius
 Spicata comis
 Spilodiscus instratus
@@ -18582,10 +19131,11 @@ Spilosoma virginica
 Spinus pinus
 Spinus psaltria
 Spinus tristis
-Spiraea douglasii
-Spiraea japonica
+Spiraea douglasii var. douglasii
+Spiraea douglasii var. menziesii
+Spiraea japonica var. fortunei
 Spiraea lucida
-Spiraea splendens
+Spiraea splendens var. splendens
 Spiraea stevenii
 Spiraea x pyramidata
 Spiramater lutra
@@ -18597,7 +19147,7 @@ Spirembolus demonologicus
 Spirembolus monticolens
 Spirembolus mundus
 Spirembolus prominens
-Spirinchus sp.
+Spirinchus sp. 1
 Spirinchus starksi
 Spirinchus thaleichthys
 Spiriverpa albiceps
@@ -18613,6 +19163,7 @@ Spirontocaris snyderi
 Spirontocaris truncata
 Spiza americana
 Spizella breweri
+Spizella breweri breweri
 Spizella pallida
 Spizella passerina
 Spizella pusilla
@@ -18630,10 +19181,10 @@ Sporastatia polyspora
 Sporastatia testudinea
 Sporobolomyces roseus
 Sporobolus airoides
-Sporobolus compositus
+Sporobolus compositus var. compositus
 Sporobolus cryptandrus
 Sporobolus neglectus
-Sporobolus vaginiflorus
+Sporobolus vaginiflorus var. vaginiflorus
 Sporodictyon cruentum
 Sporodictyon terrestre
 Squalus suckleyi
@@ -18646,9 +19197,9 @@ Staala gwaii
 Stachyptilum superbum
 Stachys arvensis
 Stachys byzantina
-Stachys chamissonis
+Stachys chamissonis var. cooleyae
 Stachys mexicana
-Stachys palustris
+Stachys palustris ssp. pilosa
 Stactobiella delira
 Stactobiella palmata
 Stagetus profundus
@@ -18698,7 +19249,8 @@ Stegopterna permutata
 Stegopterna xantha
 Steineropsis alaskana
 Steinia geophana
-Steiroxys cf.
+Steiroxys cf. strepens
+Steiroxys cf. trilineata
 Steiroxys strepens
 Stelgidopteryx serripennis
 Stelis ashmeadiellae
@@ -18716,14 +19268,15 @@ Stelis ricardonis
 Stelis rubi
 Stelis subemarginata
 Stellaria alsine
-Stellaria borealis
+Stellaria borealis ssp. borealis
+Stellaria borealis ssp. sitchana
 Stellaria calycantha
 Stellaria crassifolia
 Stellaria crispa
 Stellaria graminea
 Stellaria humifusa
 Stellaria longifolia
-Stellaria longipes
+Stellaria longipes ssp. longipes
 Stellaria media
 Stellaria nitens
 Stellaria obtusa
@@ -18960,7 +19513,7 @@ Strangospora pinicola
 Streptopelia decaocto
 Streptopelia orientalis
 Streptopus amplexifolius
-Streptopus lanceolatus
+Streptopus lanceolatus var. curvipes
 Streptopus streptopoides
 Stretchia muricina
 Stretchia plusiaeformis
@@ -18998,7 +19551,10 @@ Strophiona laeta
 Strophosoma melanogrammum
 Struthiopteris spicant
 Strymon melinus
-Stuckenia filiformis
+Strymon melinus atrofasciata
+Strymon melinus setonia
+Stuckenia filiformis ssp. alpina
+Stuckenia filiformis ssp. occidentalis
 Stuckenia pectinata
 Stuckenia vaginata
 Sturnella neglecta
@@ -19022,7 +19578,7 @@ Suberites concinnus
 Suberites lambei
 Suberites latus
 Subhaida ingrata
-Subularia aquatica
+Subularia aquatica ssp. americana
 Subulicystidium longisporum
 Succinea oregonensis
 Succinea rusticana
@@ -19129,10 +19685,12 @@ Sympherobius barberi
 Sympherobius californicus
 Sympherobius killingtoni
 Sympherobius perparvus
-Symphoricarpos albus
+Symphoricarpos albus var. albus
+Symphoricarpos albus var. laevigatus
 Symphoricarpos hesperius
 Symphoricarpos occidentalis
 Symphoricarpos oreophilus
+Symphoricarpos oreophilus var. utahensis
 Symphurus atricaudus
 Symphyotrichum boreale
 Symphyotrichum bracteolatum
@@ -19141,17 +19699,21 @@ Symphyotrichum chilense
 Symphyotrichum ciliatum
 Symphyotrichum ciliolatum
 Symphyotrichum cusickii
-Symphyotrichum ericoides
-Symphyotrichum falcatum
-Symphyotrichum foliaceum
+Symphyotrichum ericoides var. pansum
+Symphyotrichum falcatum var. commutatum
+Symphyotrichum falcatum var. falcatum
+Symphyotrichum foliaceum var. apricum
+Symphyotrichum foliaceum var. foliaceum
+Symphyotrichum foliaceum var. parryi
 Symphyotrichum frondosum
 Symphyotrichum hendersonii
-Symphyotrichum laeve
-Symphyotrichum lanceolatum
-Symphyotrichum novi-belgii
-Symphyotrichum pilosum
-Symphyotrichum puniceum
-Symphyotrichum spathulatum
+Symphyotrichum laeve var. geyeri
+Symphyotrichum lanceolatum var. hesperium
+Symphyotrichum lanceolatum var. lanceolatum
+Symphyotrichum novi-belgii var. novi-belgii
+Symphyotrichum pilosum var. pilosum
+Symphyotrichum puniceum var. puniceum
+Symphyotrichum spathulatum var. intermedium
 Symphyotrichum subspicatum
 Symphyotrichum x columbianum
 Symphytum asperum
@@ -19205,7 +19767,7 @@ Synageles leechi
 Synageles occidentalis
 Synageles venator
 Synalissa ramulosa
-Synallactes cf.
+Synallactes cf. challengeri
 Synanthedon albicornis
 Synanthedon bibionipennis
 Synanthedon bolteri
@@ -19224,6 +19786,7 @@ Synanthedon sequoiae
 Synanthedon tipuliformis
 Synaphaeta guexi
 Synaptomys borealis
+Synaptomys borealis artemisiae
 Synchirus gilli
 Synchlora aerata
 Synchlora bistriaria
@@ -19345,7 +19908,8 @@ Tachyporus stacesmithi
 Tachys vittiger
 Tachyta angulata
 Tachyta falli
-Tachyta nana
+Tachyta nana inornata
+Tachyta nana kirbyi
 Tachyusa americanoides
 Tachyusa cavicollis
 Tachyusa obsoleta
@@ -19363,7 +19927,7 @@ Talismania bifurcata
 Tamarix ramosissima
 Tamiasciurus douglasii
 Tamiasciurus hudsonicus
-Tanacetum bipinnatum
+Tanacetum bipinnatum ssp. huronense
 Tanacetum parthenium
 Tanacetum vulgare
 Tanaops ignitus
@@ -19416,7 +19980,7 @@ Taxus brevifolia
 Tayloria froelichiana
 Tayloria hornschuchii
 Tayloria lingulata
-Tayloria serrata
+Tayloria serrata var. serrata
 Tayloria splachnoides
 Tebenna balsamorrhizella
 Tebenna onustana
@@ -19445,7 +20009,7 @@ Tenebroides mauritanicus
 Tenebroides occidentalis
 Tenebroides sinuatus
 Tennesseellum formica
-Tentorium aff.
+Tentorium aff. semisuberites
 Tenuiphantes tenuis
 Tenuiphantes zebra
 Tenuiphantes zelatus
@@ -19525,11 +20089,14 @@ Tetropium cinnamopterum
 Tetropium parvulum
 Tetropium velutinum
 Teuchestes fossor
-Teucrium canadense
+Teucrium canadense var. occidentale
 Thalasselephas testaceus
 Thalassenchelys coheni
 Thalasseus elegans
 Thaleichthys pacificus
+Thaleichthys pacificus pop. 1
+Thaleichthys pacificus pop. 2
+Thaleichthys pacificus pop. 3
 Thaleria leechi
 Thalictrum alpinum
 Thalictrum dasycarpum
@@ -19648,7 +20215,8 @@ Thevenetimyia sodalis
 Thinobius frizzelli
 Thinodromus diffusus
 Thinopinus pictus
-Thinopyrum intermedium
+Thinopyrum intermedium ssp. barbulatum
+Thinopyrum intermedium ssp. intermedium
 Thinopyrum ponticum
 Thinusa fletcheri
 Thinusa maritima
@@ -19656,8 +20224,9 @@ Thlaspi arvense
 Tholera americana
 Tholurna dissimilis
 Thomomys talpoides
+Thomomys talpoides segregatus
 Thorybes pylades
-Thouarella sp.
+Thouarella sp. 1
 Thrassis acamantis
 Thrassis petiolatus
 Thrassis spenceri
@@ -19665,13 +20234,15 @@ Thricolema anomala
 Thrombium epigaeum
 Thrombophyton trachydermum
 Thryomanes bewickii
-Thuidium delicatulum
+Thuidium delicatulum var. radicans
 Thuidium recognitum
 Thuja plicata
 Thujacorticium mirabile
 Thunnus alalunga
 Thunnus orientalis
 Thymallus arcticus
+Thymallus arcticus - Nahanni lineage
+Thymallus arcticus - Southern Beringean lineage
 Thymalus marginicollis
 Thymelicus lineola
 Thymoites camano
@@ -19691,7 +20262,9 @@ Thyridanthrax pallida
 Thyris maculata
 Thysanocarpus curvipes
 Tia enervana
-Tiarella trifoliata
+Tiarella trifoliata var. laciniata
+Tiarella trifoliata var. trifoliata
+Tiarella trifoliata var. unifoliata
 Tibellus asiaticus
 Tibellus chamberlini
 Tibellus maritimus
@@ -19700,7 +20273,8 @@ Tilachlidium brachiatum
 Timarcha cerdo
 Timarcha intricata
 Timmia austriaca
-Timmia megapolitana
+Timmia megapolitana ssp. bavarica
+Timmia megapolitana ssp. megapolitana
 Timmia norvegica
 Timmia sibirica
 Timmiella crassinervis
@@ -19775,20 +20349,23 @@ Toninia opuntioides
 Toninia pennina
 Toninia philippea
 Toninia physaroides
-Toninia ruginosa
+Toninia ruginosa ssp. pacifica
+Toninia ruginosa ssp. ruginosa
 Toninia sedifolia
 Toninia squalida
-Toninia tristis
+Toninia tristis ssp. asiae-centralis
+Toninia tristis ssp. canadensis
 Topsentia disparilis
-Torilis arvensis
+Torilis arvensis ssp. arvensis
 Torilis japonica
 Toripalpus trabalis
 Torpedo californica
-Torreyochloa pallida
+Torreyochloa pallida var. pauciflora
 Tortella fragilis
 Tortella humilis
-Tortella inclinata
-Tortella tortuosa
+Tortella inclinata var. inclinata
+Tortella tortuosa var. arctica
+Tortella tortuosa var. tortuosa
 Tortricidia testacea
 Tortula acaulon
 Tortula amplexa
@@ -19812,7 +20389,8 @@ Townsendia hookeri
 Townsendia parryi
 Toxicodendron diversilobum
 Toxicodendron rydbergii
-Toxicoscordion venenosum
+Toxicoscordion venenosum var. gramineum
+Toxicoscordion venenosum var. venenosum
 Toxoleptura vexatrix
 Toxophora maxima
 Toxophora pellucida
@@ -19892,7 +20470,8 @@ Triaenodes marginatus
 Triaenodes nox
 Triaenodes tardus
 Triantha glutinosa
-Triantha occidentalis
+Triantha occidentalis ssp. brevistyla
+Triantha occidentalis ssp. montana
 Triarthron lecontei
 Triaxomera parasitella
 Tribolium audax
@@ -20021,10 +20600,10 @@ Trifolium arvense
 Trifolium aureum
 Trifolium campestre
 Trifolium cyathiferum
-Trifolium depauperatum
+Trifolium depauperatum var. depauperatum
 Trifolium dichotomum
 Trifolium dubium
-Trifolium fragiferum
+Trifolium fragiferum ssp. bonannii
 Trifolium glomeratum
 Trifolium hybridum
 Trifolium incarnatum
@@ -20038,7 +20617,8 @@ Trifolium subterraneum
 Trifolium variegatum
 Trifolium willdenovii
 Trifolium wormskioldii
-Triglochin concinna
+Triglochin concinna var. concinna
+Triglochin concinna var. debilis
 Triglochin maritima
 Triglochin palustris
 Triglochin scilloides
@@ -20054,7 +20634,7 @@ Trigonurus crotchi
 Trigonurus dilaticollis
 Trigonurus sharpi
 Trillium hibbersonii
-Trillium ovatum
+Trillium ovatum var. ovatum
 Trimerotropis fontana
 Trimerotropis gracilis
 Trimerotropis pallidipennis
@@ -20067,11 +20647,11 @@ Tringa incana
 Tringa melanoleuca
 Tringa semipalmata
 Tringa solitaria
-Triodanis perfoliata
+Triodanis perfoliata ssp. perfoliata
 Triphosa haesitata
 Triphyllia elongatus
 Triphysaria pusilla
-Triphysaria versicolor
+Triphysaria versicolor ssp. versicolor
 Triplax californica
 Triplax cuneata
 Tripleurospermum inodorum
@@ -20092,8 +20672,8 @@ Triteleia howellii
 Triteleia hyacinthina
 Triticum aestivum
 Tritomaria exsecta
-Tritomaria exsectiformis
-Tritomaria quinquedentata
+Tritomaria exsectiformis ssp. exsectiformis
+Tritomaria quinquedentata ssp. quinquedentata
 Tritomaria scitula
 Trixagus carinicollis
 Trixagus chevrolati
@@ -20203,6 +20783,7 @@ Tylothallia biformigera
 Tympanis prunastri
 Tympanophorus puncticollis
 Tympanuchus phasianellus
+Tympanuchus phasianellus columbianus
 Typha angustifolia
 Typha latifolia
 Typha x glauca
@@ -20309,7 +20890,8 @@ Urocitellus parryii
 Uropappus lindleyi
 Ursus americanus
 Ursus arctos
-Urtica dioica
+Urtica dioica ssp. dioica
+Urtica dioica ssp. gracilis
 Urtica urens
 Usnea cavernosa
 Usnea ceratina
@@ -20347,7 +20929,7 @@ Utricularia gibba
 Utricularia intermedia
 Utricularia minor
 Utricularia ochroleuca
-Utricularia vulgaris
+Utricularia vulgaris ssp. macrorhiza
 Uvarus subtilis
 Vaccaria hispanica
 Vaccinium alaskaense
@@ -20365,14 +20947,14 @@ Vaccinium oxycoccos
 Vaccinium parvifolium
 Vaccinium scoparium
 Vaccinium uliginosum
-Vaccinium vitis-idaea
+Vaccinium vitis-idaea ssp. minus
 Vacusus nigritulus
 Vahliella californica
 Vahliella leucophaea
 Vahliella saubinetii
 Vahlodea atropurpurea
-Valeriana dioica
-Valeriana edulis
+Valeriana dioica var. sylvatica
+Valeriana edulis var. edulis
 Valeriana occidentalis
 Valeriana officinalis
 Valeriana scouleri
@@ -20408,7 +20990,7 @@ Venusia duodecemlineata
 Venusia obsoleta
 Venusia pearsalli
 Veraphis lacuna
-Veratrum viride
+Veratrum viride var. eschscholzianum
 Verbascum blattaria
 Verbascum phlomoides
 Verbascum thapsus
@@ -20419,7 +21001,7 @@ Vermontia thoracica
 Veronica anagallis-aquatica
 Veronica arguteserrata
 Veronica arvensis
-Veronica beccabunga
+Veronica beccabunga var. americana
 Veronica catenata
 Veronica chamaedrys
 Veronica cusickii
@@ -20427,10 +21009,12 @@ Veronica filiformis
 Veronica hederifolia
 Veronica nutans
 Veronica officinalis
-Veronica peregrina
+Veronica peregrina var. peregrina
+Veronica peregrina var. xalapensis
 Veronica persica
 Veronica scutellata
-Veronica serpyllifolia
+Veronica serpyllifolia var. humifusa
+Veronica serpyllifolia var. serpyllifolia
 Veronica verna
 Verpa bohemica
 Verpa conica
@@ -20511,25 +21095,28 @@ Vezdaea acicularis
 Vezdaea aestivalis
 Vibrissea truncorum
 Viburnum edule
-Viburnum opulus
+Viburnum opulus var. americanum
+Viburnum opulus var. opulus
 Viburnum tinus
 Vicelva vandykei
 Vicia americana
-Vicia cracca
+Vicia cracca ssp. cracca
 Vicia hirsuta
 Vicia lathyroides
-Vicia nigricans
-Vicia sativa
+Vicia nigricans var. gigantea
+Vicia sativa var. angustifolia
+Vicia sativa var. sativa
 Vicia tetrasperma
-Vicia villosa
+Vicia villosa var. glabrescens
+Vicia villosa var. villosa
 Villa fulviana
 Vinca major
 Vinca minor
-Viola adunca
+Viola adunca var. adunca
 Viola arvensis
-Viola biflora
-Viola canadensis
-Viola epipsila
+Viola biflora var. carlottae
+Viola canadensis var. rugulosa
+Viola epipsila var. repens
 Viola glabella
 Viola howellii
 Viola lanceolata
@@ -20539,15 +21126,15 @@ Viola nephrophylla
 Viola odorata
 Viola orbiculata
 Viola palustris
-Viola praemorsa
-Viola purpurea
+Viola praemorsa var. praemorsa
+Viola purpurea var. venosa
 Viola renifolia
 Viola riviniana
 Viola selkirkii
 Viola sempervirens
 Viola sororia
-Viola tricolor
-Viola vallicola
+Viola tricolor var. tricolor
+Viola vallicola var. major
 Violella fucata
 Virbia ferruginosa
 Vireo atricapilla
@@ -20577,7 +21164,8 @@ Volvopluteus gloiocephalus
 Vrilletta decorata
 Vulpes vulpes
 Vulpia bromoides
-Vulpia microstachys
+Vulpia microstachys var. microstachys
+Vulpia microstachys var. pauciflora
 Vulpia myuros
 Vulpia octoflora
 Vulpicida canadensis
@@ -20640,8 +21228,9 @@ Wolfiporia cocos
 Woodsia alpina
 Woodsia glabella
 Woodsia ilvensis
-Woodsia oregana
-Woodsia scopulina
+Woodsia oregana ssp. oregana
+Woodsia scopulina ssp. laurentiana
+Woodsia scopulina ssp. scopulina
 Woodwardia fimbriata
 Wormaldia anilla
 Wormaldia clauseni
@@ -20655,6 +21244,12 @@ Wubana pacifica
 Wubana suprema
 Wynnella auricula
 Wynnella silvicola
+x Elyhordeum macounii
+x Elyhordeum stebbinsianum
+x Elyleymus mossii
+x Elyleymus ontariensis
+x Elyleymus uclueletensis
+x Pseudelymus saxicola
 Xanthia tatago
 Xanthippus corallipes
 Xanthium strumarium
@@ -20709,11 +21304,6 @@ Xanthoria parietina
 Xanthoria sorediata
 Xanthotype sospeta
 Xanthotype urticaria
-xElyhordeum macounii
-xElyhordeum stebbinsianum
-xElyleymus mossii
-xElyleymus ontariensis
-xElyleymus uclueletensis
 Xema sabini
 Xenasma praeteritum
 Xenasma pulverulentum
@@ -20782,7 +21372,6 @@ Xestospongia hispida
 Xiphias gladius
 Xiphister atropurpureus
 Xiphister mucosus
-xPseudelymus saxicola
 Xylaria hypoxylon
 Xylaria polymorpha
 Xyleborinus attenuatus
@@ -20904,6 +21493,7 @@ Zapada haysi
 Zapada oregonensis
 Zaprora silenus
 Zapus hudsonius
+Zapus hudsonius alascensis
 Zapus princeps
 Zapus trinotatus
 Zeiraphera canadensis
@@ -20939,8 +21529,9 @@ Zeugophora varians
 Zilora hispida
 Zilora occidentalis
 Ziphius cavirostris
-Zizania aquatica
-Zizania palustris
+Zizania aquatica var. aquatica
+Zizania palustris var. interior
+Zizania palustris var. palustris
 Zizia aptera
 Zodarion rubidum
 Zonitis vermiculata
@@ -20968,6 +21559,18 @@ Zygiella nearctica
 Zygiella x-notata
 Zygodon gracilis
 Zygodon reinwardtii
-Zygodon viridissimus
+Zygodon viridissimus var. rupestris
+Zygodon viridissimus var. viridissimus
 Zygottus corvallis
 Zyras obliquus
+Chironomus dilutus
+Chironomus tentans
+Chironomus plumosus
+Daphnia magna
+Daphnia pulex
+Gammarus lacustris
+Lemna gibba
+Lemna minor
+Lemna trisulca
+Myriophyllum verticillatum
+Physella gyrina
