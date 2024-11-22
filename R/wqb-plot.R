@@ -41,7 +41,6 @@ wqb_plot <- function(data) {
       latin_name = factor(.data$latin_name, levels = sort(unique(.data$latin_name))),
     )
 
-  
   if (length(unique(data$endpoint)) < 6) {
     gp <- ggplot2::ggplot(data = data) +
       ggplot2::geom_point(
