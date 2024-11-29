@@ -2,34 +2,7 @@
 
 # wqbench 0.3.1
 
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/51 (#51).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/50 (#50).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/49 (#49).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/47 (#47).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/46 (#46).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/45 (#45).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/44 (#44).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/43 (#43).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/40 (#40).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/39 (#39).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/29 (#29).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/32 (#32).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/23 (#23).
-
-- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/29 (#29).
-
+- Fixed bug in `wqb_check_add_data()` that was not allowing the "Planktonic Invertebrates" as an ecological group. 
 
 # wqbench 0.3.0
 
