@@ -1,5 +1,36 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# wqbench 0.3.1
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/51 (#51).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/50 (#50).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/49 (#49).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/47 (#47).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/46 (#46).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/45 (#45).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/44 (#44).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/43 (#43).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/40 (#40).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/39 (#39).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/29 (#29).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/32 (#32).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/23 (#23).
+
+- PLACEHOLDER https://github.com/poissonconsulting/wqbench/pull/29 (#29).
+
+
 # wqbench 0.3.0
 
 - fixed `read_bcg()` to work with updated data in BC Data Catalogue (#46)
