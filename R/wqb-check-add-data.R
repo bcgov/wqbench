@@ -44,7 +44,7 @@ wqb_check_add_data <- function(data, template) {
       simple_lifestage = stringr::str_to_lower(.data$simple_lifestage),
       endpoint = stringr::str_to_upper(.data$endpoint),
       trophic_group = stringr::str_to_sentence(.data$trophic_group),
-      ecological_group = stringr::str_to_sentence(.data$ecological_group)
+      ecological_group = stringr::str_to_title(.data$ecological_group)
     )
 
   check_simple_lifestage(data)

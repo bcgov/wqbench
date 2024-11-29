@@ -77,6 +77,31 @@ test_that("data passes with multiple rows of data", {
   )
 })
 
+test_that("Planktonic invertebrates group is accepted", {
+  data <- data.frame(
+    latin_name = c("a"),
+    endpoint = c("NOEL"),
+    effect = c("Mortality"),
+    lifestage = c("Post-spawning"),
+    simple_lifestage = c("adult"),
+    effect_conc_mg.L = c(1.1),
+    duration_hrs = c(1),
+    trophic_group = c("Invertebrate", "Invertebrate", "Invertebrate"),
+    ecological_group = c("Planktonic Invertebrate", "Planktonic invertebrate", "planktonic invertebrate"),
+    species_present_in_bc = c("TRUE")
+  )
+  output <- wqb_check_add_data(data, template)
+  expect_equal(
+    output,
+    data |>
+      dplyr::mutate(dplyr::across(species_present_in_bc, as.logical)) |>
+      dplyr::mutate(endpoint = stringr::str_to_upper(endpoint)) |>
+      dplyr::mutate(trophic_group = stringr::str_to_sentence(trophic_group)) |>
+      dplyr::mutate(ecological_group = stringr::str_to_title(ecological_group)) |>
+      dplyr::mutate(simple_lifestage = stringr::str_to_lower(simple_lifestage))
+  )
+})
+
 test_that("errors bad endpoint", {
   data <- data.frame(
     latin_name = c("a", "b", "c"),
