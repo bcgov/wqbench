@@ -12,7 +12,6 @@ output: github_document
 
 This package contains the functions and tools to generate aquatic life water quality benchmarks.
 
-
 ## Installation
 
 ```{r, eval=FALSE}
