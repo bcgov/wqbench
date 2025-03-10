@@ -2,40 +2,9 @@
 
 # wqbench 0.3.3
 
-- Merge pull request #55 from poissonconsulting/checks-jan.
-
-- Merge pull request #54 from poissonconsulting/checks-dec.
-
-- Merge pull request #53 from poissonconsulting/checks-nov.
-
-- Merge pull request #51 from bcgov/update-docs.
-
-- Merge pull request #50 from bcgov/update-species.
-
-- Merge pull request #49 from bcgov/update-09-12-2024.
-
-- Merge pull request #47 from bcgov/update-review-process.
-
-- Merge pull request #46 from bcgov/fix-read-bc-wqg.
-
-- Merge pull request #45 from poissonconsulting/main.
-
-- Merge pull request #44 from poissonconsulting/main.
-
-- Merge pull request #43 from poissonconsulting/dev.
-
-- Merge pull request #40 from bcgov/repo-mountie/add-compliance.
-
-- Merge pull request #39 from poissonconsulting/review.
-
-- Tied to issue #29.
-
-- Increase font size fixes #32 and add colour fixes #33.
-
-- Increasing font sizes #23.
-
-- Switching data plot x variable fixes #29.
-
+- Updated GitHub action scripts.
+- Changed the categorization of a few species in the trophic-group.csv file.
+- Updated file path listed in the developer-instructions.Rmd vignette. 
 
 # wqbench 0.3.2
 
