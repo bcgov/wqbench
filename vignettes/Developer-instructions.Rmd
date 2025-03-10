@@ -57,7 +57,7 @@ wqb_create_data_set(
     reviewed and updated to allow new values through the data cleaning steps.
   - At the top of the script you will need to set the file path for the database
     and the location to save the files that are generated. By defeault they
-    will save at: `"~/Poisson/Data/wqbench/[current-year]/review/to-be-reviewed/"`
+    will save at: `"~/Data/wqbench/[current-year]/review/to-be-reviewed/"`
 
 3. After the files are generated, they need to be [reviewed and updated](#review-process) by a
   technical expert.
@@ -66,7 +66,7 @@ wqb_create_data_set(
     have been updated.
 
 4. Once the files are reviewed they should be placed in:
-  `"~/Poisson/Data/wqbench/[current-year]/review/completed/"`
+  `"~/Data/wqbench/[current-year]/review/completed/"`
   - Then run the *scripts/update-reference-datasets-01.R* script.
   - Run this line by line - You will be shown several displays showing the
     updates that will be made to the internal data - ensure these look ok. If

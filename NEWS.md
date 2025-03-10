@@ -1,5 +1,11 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# wqbench 0.3.3
+
+- Updated GitHub action scripts.
+- Changed the categorization of a few species in the trophic-group.csv file.
+- Updated file path listed in the developer-instructions.Rmd vignette. 
+
 # wqbench 0.3.2
 
 - Internal changes. 
