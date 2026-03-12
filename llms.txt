@@ -1,0 +1,368 @@
+# wqbench
+
+This package contains the functions and tools to generate aquatic life
+water quality benchmarks.
+
+## Installation
+
+``` r
+# install.packages("devtools")
+devtools::install_github("bcgov/wqbench")
+```
+
+## Workflow
+
+``` r
+library(wqbench)
+```
+
+### Create Data Set for Shiny App
+
+The
+[`wqb_create_data_set()`](https://bcgov.github.io/wqbench/reference/wqb_create_data_set.md)
+function will download the US EPA ECOTOX¹ database, create a local
+.sqlite database, add other data sources and filter conditions, clean
+and process the data, classify the duration, standardize the effect and
+output the completed data set needed for the shinywqbench app. The
+function will create an RDS file of the data set as well. It takes a few
+minutes to download and create the data set.
+
+The default argument for:
+
+- `file_path` will save the raw text files at
+  `"~/Ecotoxicology/ecotox"`.
+- `folder_path` will save the .sqlite database and RDS file is at
+  `"~/Ecotoxicology/ecotox_db/"`.
+- `version` will download the most recent version of the data set
+  available on the website.
+
+``` r
+data_set <- wqb_create_data_set()
+```
+
+The data set can be read in after it has been created.
+
+``` r
+data_set <- readRDS("~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.rds")
+```
+
+### Generate Benchmark
+
+``` r
+set.seed(101)
+```
+
+#### Deterministic Example
+
+``` r
+data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "100016")
+data <- wqb_benchmark_method(data)
+
+data_agg <- wqb_aggregate(data)
+data_agg <- wqb_af(data_agg)
+
+ctv <- wqb_generate_ctv(data_agg)
+ctv
+```
+
+``` R
+## # A tibble: 1 × 3
+##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
+##          <dbl>        <dbl>        <dbl>
+## 1          2.5           NA           NA
+```
+
+To calculate the benchmark for the chemical, divide the critical
+toxicity value (ctv) by the assessment factors.
+
+``` r
+benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark
+```
+
+``` R
+##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
+## 1   0.04166667           NA           NA
+```
+
+*Deterministic* method only generates an estimate, the lcl and ucl
+columns will always be blank .
+
+``` r
+# Plot data set
+wqb_plot(data)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-8-1.png)
+
+``` r
+# Plot the results
+wqb_plot_det(data_agg)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)
+
+#### SSD Example
+
+``` r
+data <- wqb_filter_chemical(wqbenchdata::aquatic_data, "1071836")
+data <- wqb_benchmark_method(data)
+
+data_agg <- wqb_aggregate(data)
+data_agg <- wqb_af(data_agg)
+
+ctv <- wqb_generate_ctv(data_agg)
+ctv
+```
+
+``` R
+## # A tibble: 1 × 3
+##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
+##          <dbl>        <dbl>        <dbl>
+## 1      0.00981      0.00105       0.0543
+```
+
+To calculate the benchmark for the chemical, divide the critical
+toxicity value (ctv) by the assessment factors.
+
+``` r
+benchmark <- ctv / (data_agg$af_bc_species * data_agg$af_salmon * data_agg$af_planktonic * data_agg$af_variation)
+benchmark
+```
+
+``` R
+##   ctv_est_mg.L ctv_lcl_mg.L ctv_ucl_mg.L
+## 1  0.009808029  0.001050889   0.05426475
+```
+
+*SSD* method can generate a lower and upper confidence interval.
+
+``` r
+# Plot data set
+wqb_plot(data)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-12-1.png)
+
+``` r
+# Plot the results
+fit <- wqb_ssd_fit(data_agg)
+wqb_plot_ssd(data_agg, fit)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-13-1.png)
+
+#### Summary Tables
+
+``` r
+wqb_summary_trophic_species(data_agg)
+```
+
+``` R
+## # A tibble: 5 × 2
+##   `Trophic Group` `Number of Species`
+##   <fct>                         <int>
+## 1 Algae                             6
+## 2 Amphibian                         4
+## 3 Fish                             11
+## 4 Invertebrate                     12
+## 5 Plant                             8
+```
+
+``` r
+wqb_summary_trophic_groups(data_agg)
+```
+
+``` R
+## # A tibble: 4 × 2
+##   Consideration           Result                                                
+##   <chr>                   <chr>                                                 
+## 1 Trophic group(s)        Algae, Amphibian, Fish, Invertebrate, Plant           
+## 2 Salmonid(s)             Oncorhynchus kisutch, Oncorhynchus mykiss, Oncorhynch…
+## 3 Planktonic Invertebrate Artemia franciscana                                   
+## 4 B.C. species            Cyprinus carpio, Lemna minor, Myriophyllum aquaticum,…
+```
+
+``` r
+wqb_summary_af(data_agg)
+```
+
+``` R
+## # A tibble: 3 × 3
+##   Consideration                `Assessment Factor` Description                  
+##   <chr>                                      <int> <chr>                        
+## 1 Species variation factor                       1 Accounts for uncertainty due…
+## 2 Ecological assessment factor                   1 Accounts for uncertainty whe…
+## 3 B.C. species                                   1 Accounts for uncertainty of …
+```
+
+## Developer Instructions
+
+See the [Developer
+Instructions](https://bcgov.github.io/wqbench/articles/Developer-instructions.html)
+on the package website for instructions on updating the reference data
+for the database and updating the “Add Data” template
+
+See the [README in the shinywqbench
+repository](https://github.com/bcgov/shinywqbench?tab=readme-ov-file#shinywqbench)
+for instructions for updating and deploying the [shiny
+app](https://bcgov-env.shinyapps.io/shinywqbench/).
+
+## Getting Help or Reporting an Issue
+
+To report issues, bugs or enhancements, please file an
+[issue](https://github.com/bcgov/wqbench/issues). Check out the
+[support](https://github.com/bcgov/wqbench/blob/main/.github/SUPPORT.md)
+for more info.
+
+## Code of Conduct
+
+Please note that the shinywqbench project is released with a
+[Contributor Code of
+Conduct](https://github.com/bcgov/wqbench/CODE_OF_CONDUCT.md). By
+contributing to this project, you agree to abide by its terms.
+
+## License
+
+The code is released under the Apache License 2.0
+
+> Copyright 2023 Province of British Columbia
+>
+> Licensed under the Apache License, Version 2.0 (the “License”); you
+> may not use this file except in compliance with the License. You may
+> obtain a copy of the License at
+>
+> <https://www.apache.org/licenses/LICENSE-2.0>
+>
+> Unless required by applicable law or agreed to in writing, software
+> distributed under the License is distributed on an “AS IS” BASIS,
+> WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+> implied. See the License for the specific language governing
+> permissions and limitations under the License.
+
+## Reference
+
+1.  Olker, J. H., Elonen, C. M., Pilli, A., Anderson, A., Kinziger, B.,
+    Erickson, S., Skopinski, M., Pomplun, A., LaLone, C. A., Russom, C.
+    L., & Hoff, D. (2022). The ECOTOXicology Knowledgebase: A Curated
+    Database of Ecologically Relevant Toxicity Tests to Support
+    Environmental Research and Risk Assessment. Environmental Toxicology
+    and Chemistry, 41(6):1520-1539. <https://doi.org/10.1002/etc.5324>
+
+# Package index
+
+## All functions
+
+- [`combine_bc_species()`](https://bcgov.github.io/wqbench/reference/combine_bc_species.md)
+  : Combine BC Species and DB Species
+- [`combine_bc_wqg()`](https://bcgov.github.io/wqbench/reference/combine_bc_wqg.md)
+  : Combine BC Water Quality Guidelines with DB Chemicals
+- [`combine_conc_conversions()`](https://bcgov.github.io/wqbench/reference/combine_conc_conversions.md)
+  : Combine Concentration Unit Conversation Values with DB Concentration
+  Unit
+- [`combine_concentration_endpoints()`](https://bcgov.github.io/wqbench/reference/combine_concentration_endpoints.md)
+  : Combine the Concentration Endpoints list to db endpoints
+- [`combine_duration_conversions()`](https://bcgov.github.io/wqbench/reference/combine_duration_conversions.md)
+  : Combine Duration Unit Conversation Values and DB duration unit
+- [`combine_lifestage()`](https://bcgov.github.io/wqbench/reference/combine_lifestage.md)
+  : Combine Life Stage Groups and db life stage
+- [`combine_media()`](https://bcgov.github.io/wqbench/reference/combine_media.md)
+  : Combine Media Type Coding
+- [`combine_trophic_group()`](https://bcgov.github.io/wqbench/reference/combine_trophic_group.md)
+  : Combine Trophic Groups and DB species
+- [`join_data()`](https://bcgov.github.io/wqbench/reference/join_data.md)
+  : Join Data
+- [`read_bc_species()`](https://bcgov.github.io/wqbench/reference/read_bc_species.md)
+  : Read in BC Species CSV
+- [`read_bc_wqg()`](https://bcgov.github.io/wqbench/reference/read_bc_wqg.md)
+  : Read BC Water Quality Guidelines
+- [`read_conc_conversions()`](https://bcgov.github.io/wqbench/reference/read_conc_conversions.md)
+  : Read Concentration Unit Conversation Values
+- [`read_concentration_endpoints()`](https://bcgov.github.io/wqbench/reference/read_concentration_endpoints.md)
+  : Read the Concentration Endpoints
+- [`read_duration_conversions()`](https://bcgov.github.io/wqbench/reference/read_duration_conversions.md)
+  : Read Duration Unit Conversation
+- [`read_lifestage()`](https://bcgov.github.io/wqbench/reference/read_lifestage.md)
+  : Read Life Stage Groups
+- [`read_trophic_group()`](https://bcgov.github.io/wqbench/reference/read_trophic_group.md)
+  : Read Trophic Groups and DB species
+- [`template`](https://bcgov.github.io/wqbench/reference/template.md) :
+  Template for Adding your own Data
+- [`wqb_add_bc_species()`](https://bcgov.github.io/wqbench/reference/wqb_add_bc_species.md)
+  : Add BC Species
+- [`wqb_add_bc_wqg()`](https://bcgov.github.io/wqbench/reference/wqb_add_bc_wqg.md)
+  : Add BC Water Quality Guidelines
+- [`wqb_add_conc_conversions()`](https://bcgov.github.io/wqbench/reference/wqb_add_conc_conversions.md)
+  : Add Concentration Unit Conversation Values
+- [`wqb_add_concentration_endpoints()`](https://bcgov.github.io/wqbench/reference/wqb_add_concentration_endpoints.md)
+  : Add the Concentration Endpoints
+- [`wqb_add_duration_conversions()`](https://bcgov.github.io/wqbench/reference/wqb_add_duration_conversions.md)
+  : Add Duration Unit Conversation Values
+- [`wqb_add_lifestage()`](https://bcgov.github.io/wqbench/reference/wqb_add_lifestage.md)
+  : Add Life Stage Groups
+- [`wqb_add_media()`](https://bcgov.github.io/wqbench/reference/wqb_add_media.md)
+  : Add Media Type Coding of Salt or Fresh Water
+- [`wqb_add_trophic_group()`](https://bcgov.github.io/wqbench/reference/wqb_add_trophic_group.md)
+  : Add Trophic Groups to Database
+- [`wqb_af()`](https://bcgov.github.io/wqbench/reference/wqb_af.md) :
+  Determine the Assessment Factors
+- [`wqb_af_bc_species()`](https://bcgov.github.io/wqbench/reference/wqb_af_bc_species.md)
+  : Determine the BC Species Assessment Factor
+- [`wqb_af_ecological()`](https://bcgov.github.io/wqbench/reference/wqb_af_ecological.md)
+  : Determine the Ecological Assessment Factors
+- [`wqb_af_variation()`](https://bcgov.github.io/wqbench/reference/wqb_af_variation.md)
+  : Determine the Species Variation Assessment Factor
+- [`wqb_aggregate()`](https://bcgov.github.io/wqbench/reference/wqb_aggregate.md)
+  : Aggregate Data for each Species
+- [`wqb_benchmark_method()`](https://bcgov.github.io/wqbench/reference/wqb_benchmark_method.md)
+  : Determine Benchmark Method
+- [`wqb_check_add_data()`](https://bcgov.github.io/wqbench/reference/wqb_check_add_data.md)
+  : Check the Uploaded Data
+- [`wqb_classify_duration()`](https://bcgov.github.io/wqbench/reference/wqb_classify_duration.md)
+  : Classify Duration
+- [`wqb_clean_data()`](https://bcgov.github.io/wqbench/reference/wqb_clean_data.md)
+  : Compile Data
+- [`wqb_create_data_set()`](https://bcgov.github.io/wqbench/reference/wqb_create_data_set.md)
+  : Create the Data Set for the App
+- [`wqb_create_epa_ecotox()`](https://bcgov.github.io/wqbench/reference/wqb_create_epa_ecotox.md)
+  : Create the ECOTOX Database
+- [`wqb_download_epa_ecotox()`](https://bcgov.github.io/wqbench/reference/wqb_download_epa_ecotox.md)
+  : Download ECOTOX Data Files
+- [`wqb_filter_chemical()`](https://bcgov.github.io/wqbench/reference/wqb_filter_chemical.md)
+  : Filter to a Single Chemical
+- [`wqb_generate_ctv()`](https://bcgov.github.io/wqbench/reference/wqb_generate_ctv.md)
+  : Generate Critical Toxicity Value
+- [`wqb_join_data()`](https://bcgov.github.io/wqbench/reference/wqb_join_data.md)
+  : Join Data
+- [`wqb_method_det()`](https://bcgov.github.io/wqbench/reference/wqb_method_det.md)
+  : Deterministic Method to Generate Critical Toxicity Value for the
+  Chemical
+- [`wqb_method_ssd()`](https://bcgov.github.io/wqbench/reference/wqb_method_ssd.md)
+  : SSD Method to Calculate Critical Toxicity Value for the Chemical
+- [`wqb_plot()`](https://bcgov.github.io/wqbench/reference/wqb_plot.md)
+  : Plot Data
+- [`wqb_plot_det()`](https://bcgov.github.io/wqbench/reference/wqb_plot_det.md)
+  : Plot the Deterministic Method Results
+- [`wqb_plot_ssd()`](https://bcgov.github.io/wqbench/reference/wqb_plot_ssd.md)
+  : Plot Species Sensitivity Distribution
+- [`wqb_ssd_fit()`](https://bcgov.github.io/wqbench/reference/wqb_ssd_fit.md)
+  : Fit BCANZ Distributions
+- [`wqb_ssd_hc5()`](https://bcgov.github.io/wqbench/reference/wqb_ssd_hc5.md)
+  : Run SSD to get Hazard Concentrations
+- [`wqb_standardize_effect()`](https://bcgov.github.io/wqbench/reference/wqb_standardize_effect.md)
+  : Standardize type of Effect
+- [`wqb_summary_af()`](https://bcgov.github.io/wqbench/reference/wqb_summary_af.md)
+  : Summary Table of the Assessment Factor Values
+- [`wqb_summary_trophic_groups()`](https://bcgov.github.io/wqbench/reference/wqb_summary_trophic_groups.md)
+  : Summary Table of Assessment Factors Information
+- [`wqb_summary_trophic_species()`](https://bcgov.github.io/wqbench/reference/wqb_summary_trophic_species.md)
+  : Summary Table of Number of Species per Trophic Group
+
+# Articles
+
+### All vignettes
+
+- [Developer
+  Instructions](https://bcgov.github.io/wqbench/articles/Developer-instructions.md):
+- [Update the Add Data
+  Templates](https://bcgov.github.io/wqbench/articles/update-add-data-template.md):
