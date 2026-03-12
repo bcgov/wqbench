@@ -31,5 +31,5 @@ test_that("type matches ggplot", {
   )
   fit <- wqb_ssd_fit(df, dists = c("lnorm", "llogis"))
   output <- wqb_plot_ssd(df, fit)
-  expect_equal(class(output), c("gg", "ggplot"))
+  expect_s3_class(output, c("gg", "ggplot"))
 })
