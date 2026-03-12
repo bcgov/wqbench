@@ -53,5 +53,5 @@ test_that("check type is a plot type", {
     "effect" = rep(NA, reps)
   )
   output <- wqb_plot_det(df)
-  expect_equal(class(output), c("gg", "ggplot"))
+  expect_s3_class(output, c("gg", "ggplot"))
 })
