@@ -25,7 +25,6 @@ library(daff)
 reviewed_folder <-
   file.path(
     "~",
-    "Poisson",
     "Data",
     "wqbench",
     format(Sys.Date(), "%Y"),

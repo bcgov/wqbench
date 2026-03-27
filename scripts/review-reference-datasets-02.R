@@ -20,7 +20,7 @@ library(tidyverse)
 # need to pull in raw database data
 # update the file to the most recent version of the database stored locally on your computer
 list.files("~/Ecotoxicology/ecotox_db/", pattern = "\\.sqlite")
-database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_09_12_2024.sqlite"
+database <- "~/Ecotoxicology/ecotox_db/ecotox_ascii_03_12_2026.sqlite"
 
 con <- DBI::dbConnect(
   RSQLite::SQLite(),
@@ -30,7 +30,6 @@ con <- DBI::dbConnect(
 file_save_loc <-
   file.path(
     "~",
-    "Poisson",
     "Data",
     "wqbench",
     format(Sys.Date(), "%Y"),
@@ -88,7 +87,6 @@ DBI::dbDisconnect(con)
 dir.create(
   file.path(
     "~",
-    "Poisson",
     "Data",
     "wqbench",
     format(Sys.Date(), "%Y"),
