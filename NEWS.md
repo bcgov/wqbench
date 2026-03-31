@@ -1,43 +1,9 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# wqbench 0.3.4
+# wqbench 0.4.0
 
-- Merge pull request #56 from poissonconsulting/checks-feb.
-
-- Merge pull request #55 from poissonconsulting/checks-jan.
-
-- Merge pull request #54 from poissonconsulting/checks-dec.
-
-- Merge pull request #53 from poissonconsulting/checks-nov.
-
-- Merge pull request #51 from bcgov/update-docs.
-
-- Merge pull request #50 from bcgov/update-species.
-
-- Merge pull request #49 from bcgov/update-09-12-2024.
-
-- Merge pull request #47 from bcgov/update-review-process.
-
-- Merge pull request #46 from bcgov/fix-read-bc-wqg.
-
-- Merge pull request #45 from poissonconsulting/main.
-
-- Merge pull request #44 from poissonconsulting/main.
-
-- Merge pull request #43 from poissonconsulting/dev.
-
-- Merge pull request #40 from bcgov/repo-mountie/add-compliance.
-
-- Merge pull request #39 from poissonconsulting/review.
-
-- Tied to issue #29.
-
-- Increase font size fixes #32 and add colour fixes #33.
-
-- Increasing font sizes #23.
-
-- Switching data plot x variable fixes #29.
-
+- Updated the code to handle the newest ecotox dataset from March 2026. (#60)
+- Updated arguments for ssdtools functions because they now require `ci = TRUE` to generate the confidence intervals. (#60)
 
 # wqbench 0.3.3
 
