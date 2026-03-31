@@ -284,7 +284,8 @@ if (!vld_subset(
 
 # Combine new trophic groups with existing
 new_trophic_groups <- bind_rows(trophic_group_orig, add_trophic_groups) |>
-  distinct()
+  distinct() |>
+  arrange(phylum_division, class, order, family)
 
 if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
   abort_chk("There should be no duplicate values")
