@@ -17,13 +17,13 @@
 ## Citation
 
 Pearson A, Tillmanns A (2026). *wqbench: Calculate Aquatic Life
-Benchmarks*. R package version 0.3.3,
+Benchmarks*. R package version 0.4.0,
 <https://bcgov.github.io/wqbench/>.
 
     @Manual{,
       title = {wqbench: Calculate Aquatic Life Benchmarks},
       author = {Ayla Pearson and Angeline Tillmanns},
       year = {2026},
-      note = {R package version 0.3.3},
+      note = {R package version 0.4.0},
       url = {https://bcgov.github.io/wqbench/},
     }
