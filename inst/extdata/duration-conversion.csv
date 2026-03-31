@@ -1,6 +1,6 @@
 code,description,duration_units_to_keep,duration_value_multiplier_to_hours,comments
 --,Unspecified,FALSE,NA,NA
--X,"Pretreatment, time unknown",FALSE,NA,NA
+#NAME?,"Pretreatment, time unknown",FALSE,NA,NA
 BLM,Bloom stage,FALSE,NA,NA
 LSI,Larval stage index,FALSE,NA,NA
 MULT,Multiple durations (for terrestrial rollup),FALSE,NA,NA
@@ -46,6 +46,7 @@ dpp,Days post planting/sowing,TRUE,24,24 hours in a day
 dpr,Days post-release,TRUE,24,24 hours in a day
 dpref,Days pre-fertilization,TRUE,24,24 hours in a day
 dps,Days post-spawn,TRUE,24,24 hours in a day
+dpsy,Days post synchronization,TRUE,24,24 hours in a day
 dpu,Days post-swim up,TRUE,24,24 hours in a day
 dpw,Days post-swimming,TRUE,24,24 hours in a day
 dpys,Days post yolk sac absorption,TRUE,24,24 hours in a day

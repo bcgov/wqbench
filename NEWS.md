@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# wqbench 0.4.0
+
+- Updated the code to handle the newest ecotox dataset from March 2026. (#60)
+- Updated arguments for ssdtools functions because they now require `ci = TRUE` to generate the confidence intervals. (#60)
+
 # wqbench 0.3.3
 
 - Updated GitHub action scripts.

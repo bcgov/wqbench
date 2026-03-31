@@ -25,7 +25,6 @@ library(daff)
 reviewed_folder <-
   file.path(
     "~",
-    "Poisson",
     "Data",
     "wqbench",
     format(Sys.Date(), "%Y"),
@@ -60,7 +59,7 @@ concentration_std <- readr::read_csv(
 
 reviewed_conc_std_fp <- list.files(
   path = file.path(reviewed_folder),
-  pattern = "concentration-conversion",
+  pattern = "concentration-conversion.*csv",
   full.names = TRUE
 )
 
@@ -151,7 +150,7 @@ duration_std <- readr::read_csv(
 
 reviewed_duration_std <- list.files(
   path = file.path(reviewed_folder),
-  pattern = "duration-conversion",
+  pattern = "duration-conversion.*csv",
   full.names = TRUE
 )
 
@@ -244,7 +243,7 @@ reviewed_trophic_groups <- readr::read_csv(
     exclude_from_db = vapply(exclude_from_db, isTRUE, FUN.VALUE = TRUE)
   )
 
-  if (!vld_subset(
+if (!vld_subset(
     unique(reviewed_trophic_groups$exclude_from_db),
     c(TRUE, FALSE, NA)
   )) {
@@ -285,7 +284,8 @@ if (!vld_subset(
 
 # Combine new trophic groups with existing
 new_trophic_groups <- bind_rows(trophic_group_orig, add_trophic_groups) |>
-  distinct()
+  distinct() |>
+  arrange(phylum_division, class, order, family)
 
 if (!vld_equal(sum(duplicated(new_trophic_groups)), 0)) {
   abort_chk("There should be no duplicate values")
