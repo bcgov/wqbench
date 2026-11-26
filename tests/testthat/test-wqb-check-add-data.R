@@ -531,3 +531,58 @@ test_that("drops extra columns", {
     )
   )
 })
+
+test_that("squishes white space in latin_name", {
+  data <- data.frame(
+    latin_name = c(" Oncorhynchus   mykiss "),
+    endpoint = c("NOEL"),
+    effect = c("Mortality"),
+    lifestage = c("Post-spawning"),
+    simple_lifestage = c("adult"),
+    effect_conc_mg.L = c(1.1),
+    duration_hrs = c(1.1),
+    trophic_group = c("Fish"),
+    ecological_group = c("Salmonid"),
+    species_present_in_bc = c("TRUE")
+  )
+  output <- wqb_check_add_data(data, template)
+  expect_equal(output$latin_name, "Oncorhynchus mykiss")
+})
+
+test_that("errors when a species has more than one trophic group", {
+  data <- data.frame(
+    latin_name = c("Oncorhynchus mykiss", "oncorhynchus mykiss", "Danio rerio"),
+    endpoint = c("NOEL", "EC50", "LC50"),
+    effect = c("Mortality", "Reproduction", "Mortality"),
+    lifestage = c("Post-spawning"),
+    simple_lifestage = c("adult", "juvenile", "els"),
+    effect_conc_mg.L = c(1.1, 1.2, 1.3),
+    duration_hrs = c(1, 2, 3),
+    trophic_group = c("Fish", "Invertebrate", "Fish"),
+    ecological_group = c("Other", "Other", "Other"),
+    species_present_in_bc = c("TRUE", "TRUE", "FALSE")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "The following species have more than one: Oncorhynchus mykiss"
+  )
+})
+
+test_that("errors when a species has more than one species_present_in_bc", {
+  data <- data.frame(
+    latin_name = c("Oncorhynchus mykiss", "Oncorhynchus mykiss"),
+    endpoint = c("NOEL", "EC50"),
+    effect = c("Mortality", "Reproduction"),
+    lifestage = c("Post-spawning"),
+    simple_lifestage = c("adult", "juvenile"),
+    effect_conc_mg.L = c(1.1, 1.2),
+    duration_hrs = c(1, 2),
+    trophic_group = c("Fish", "Fish"),
+    ecological_group = c("Salmonid", "Salmonid"),
+    species_present_in_bc = c("TRUE", "FALSE")
+  )
+  expect_error(
+    wqb_check_add_data(data, template),
+    regexp = "The following species have more than one: Oncorhynchus mykiss"
+  )
+})
