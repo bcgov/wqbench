@@ -34,12 +34,14 @@ wqb_benchmark_method <- function(data) {
   chk::check_data(
     data,
     list(
-      trophic_group = factor("")
+      trophic_group = factor(""),
+      species_number = 1L
     )
   )
-
+  
   groups_species <-
     data |>
+    dplyr::distinct(.data$species_number, .data$trophic_group) |>
     dplyr::mutate(
       trophic_group = stringr::str_to_lower(.data$trophic_group),
       trophic_group = factor(
