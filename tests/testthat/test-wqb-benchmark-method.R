@@ -47,7 +47,7 @@ test_that("error if trophic group has missing values", {
 })
 
 # SSD ----
-test_that("SSD when more then 3 fish, more then 3 inverts and more then 1 plant", {
+test_that("SSD when 3 fish, 3 inverts and 1 plant", {
   reps <- 7
   df <- data.frame(
     "trophic_group" = factor(
@@ -76,7 +76,7 @@ test_that("SSD when more then 3 fish, more then 3 inverts and more then 1 plant"
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 5L, 6L, 7L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -87,7 +87,7 @@ test_that("SSD when more then 3 fish, more then 3 inverts and more then 1 plant"
   )
 })
 
-test_that("SSD when more then 4 fish, more then 3 inverts and more then 1 plant", {
+test_that("SSD when more then 4 fish, 3 inverts and 1 plant", {
   reps <- 8
   df <- data.frame(
     "trophic_group" = factor(
@@ -116,7 +116,7 @@ test_that("SSD when more then 4 fish, more then 3 inverts and more then 1 plant"
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -127,7 +127,7 @@ test_that("SSD when more then 4 fish, more then 3 inverts and more then 1 plant"
   )
 })
 
-test_that("SSD when more then 3 fish, more then 3 inverts and 1 algae", {
+test_that("SSD when 3 fish, 3 inverts and 1 algae", {
   reps <- 7
   df <- data.frame(
     "trophic_group" = factor(
@@ -156,7 +156,7 @@ test_that("SSD when more then 3 fish, more then 3 inverts and 1 algae", {
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 5L, 6L, 7L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -197,7 +197,7 @@ test_that("Deterministic when 2 fish, 3 inverts, 1 alage. Because need at least 
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 5L, 6L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -237,7 +237,7 @@ test_that("Deterministic when 2 fish, 4 inverts, 1 alage. Because need at least 
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 5L, 6L, 7L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -278,7 +278,7 @@ test_that("Deterministic when 1 fish, 5 inverts, 5 plants, 5 alage. Because need
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L:16L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -319,7 +319,7 @@ test_that("Deterministic when 3 fish, 2 inverts, 5 plants, 5 alage. Because need
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L:15L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -359,7 +359,7 @@ test_that("Deterministic when 10 fish, 10 inverts, 5 amphibians. Because need at
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L:25L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -401,7 +401,7 @@ test_that("Deterministic when 3 fish, 3 inverts. Because need at least 1 plant o
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L:6L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )
@@ -441,7 +441,87 @@ test_that("Deterministic when 3 fish, 2 plants+algae. Because need more or more 
     "source" = rep(NA, reps),
     "publication_year" = rep(NA, reps),
     "present_in_bc_wqg" = rep(NA, reps),
-    "species_number" = rep(NA, reps),
+    "species_number" = c(1L:5L),
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
+  )
+  output <- wqb_benchmark_method(df)
+  expect_equal(
+    unique(output$method),
+    "Deterministic"
+  )
+})
+
+test_that("Deterministic when 4 fish records from 2 species, 3 inverts and 1 plant", {
+  reps <- 8
+  df <- data.frame(
+    "trophic_group" = factor(
+      c(
+        rep("fish", 4),
+        rep("invertebrate", 3),
+        rep("plant", 1)
+      )
+    ),
+    "duration_class" = rep(NA, reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "sp_aggre_conc_mg.L" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "lifestage" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps),
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "present_in_bc_wqg" = rep(NA, reps),
+    "species_number" = c(1L, 1L, 2L, 2L, 5L, 6L, 7L, 8L),
+    "download_date" = rep(NA, reps),
+    "version" = rep(NA, reps)
+  )
+  output <- wqb_benchmark_method(df)
+  expect_equal(
+    unique(output$method),
+    "Deterministic"
+  )
+})
+
+test_that("Deterministic when 3 inverts records from 1 species, 3 fish and 1 plant", {
+  reps <- 7
+  df <- data.frame(
+    "trophic_group" = factor(
+      c(
+        rep("fish", 3),
+        rep("invertebrate", 3),
+        rep("plant", 1)
+      )
+    ),
+    "duration_class" = rep(NA, reps),
+    "chemical_name" = rep(NA, reps),
+    "cas" = rep(NA, reps),
+    "latin_name" = rep(NA, reps),
+    "common_name" = rep(NA, reps),
+    "effect" = rep(NA, reps),
+    "sp_aggre_conc_mg.L" = rep(NA, reps),
+    "effect_conc_mg.L" = rep(NA, reps),
+    "lifestage" = rep(NA, reps),
+    "effect_conc_std_mg.L" = rep(NA, reps),
+    "acr" = rep(NA, reps),
+    "media_type" = rep(NA, reps),
+    "ecological_group" = rep(NA, reps),
+    "species_present_in_bc" = rep(NA, reps),
+    "author" = rep(NA, reps),
+    "title" = rep(NA, reps),
+    "source" = rep(NA, reps),
+    "publication_year" = rep(NA, reps),
+    "present_in_bc_wqg" = rep(NA, reps),
+    "species_number" = c(1L, 2L, 3L, 4L, 4L, 4L, 7L),
     "download_date" = rep(NA, reps),
     "version" = rep(NA, reps)
   )

@@ -41,6 +41,7 @@ wqb_check_add_data <- function(data, template) {
 
   data <- data |>
     dplyr::mutate(
+      latin_name = stringr::str_squish(.data$latin_name),
       simple_lifestage = stringr::str_to_lower(.data$simple_lifestage),
       endpoint = stringr::str_to_upper(.data$endpoint),
       trophic_group = stringr::str_to_sentence(.data$trophic_group),
@@ -52,7 +53,8 @@ wqb_check_add_data <- function(data, template) {
   check_trophic_eco_group(data)
   check_species_present(data)
   data$species_present_in_bc <- as.logical(data$species_present_in_bc)
-
+  check_species_consistent(data)
+  
   data
 }
 
@@ -157,4 +159,27 @@ check_no_extra_cols <- function(data, template) {
   data <- data |>
     dplyr::select(dplyr::all_of(names(template)[-1]))
   data
+}
+
+check_species_consistent <- function(data) {
+  inconsistent <- data |>
+    dplyr::group_by(latin_key = stringr::str_to_lower(.data$latin_name)) |>
+    dplyr::filter(
+      dplyr::n_distinct(
+        .data$trophic_group,
+        .data$ecological_group,
+        .data$species_present_in_bc
+      ) > 1
+    ) |>
+    dplyr::slice(1) |>
+    dplyr::pull("latin_name")
+  
+  if (length(inconsistent) > 0) {
+    chk::abort_chk(
+      "Each species must have a single value for trophic_group, ",
+      "ecological_group, and species_present_in_bc. ",
+      "The following species have more than one: ",
+      paste(inconsistent, collapse = ", ")
+    )
+  }
 }

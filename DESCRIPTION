@@ -1,6 +1,6 @@
 Package: wqbench
 Title: Calculate Aquatic Life Benchmarks
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: c(
     person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = "aut",
            comment = c(ORCID = "0000-0001-7388-1222")),
@@ -50,9 +50,9 @@ Remotes:
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3.9000
 Depends:
     R (>= 4.1)
 LazyData: true
 VignetteBuilder: knitr
 URL: https://bcgov.github.io/wqbench/
+Config/roxygen2/version: 8.1.1

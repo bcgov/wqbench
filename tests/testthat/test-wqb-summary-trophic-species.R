@@ -58,7 +58,7 @@ test_that("error with character trophic groups", {
   )
   expect_error(
     wqb_summary_trophic_species(df),
-    regexp = "`data\\$trophic_group` must inherit from S3 class 'factor'"
+    regexp = "`data\\$trophic_group` must inherit from class 'factor'"
   )
 })
 
