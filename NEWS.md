@@ -1,5 +1,9 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# wqbench 0.4.1 (2026-11-25)
+
+- Fixed bug in `wqb_benchmark_method()` which selected wrong method when the same species was present multiple times and updates to `wqb_check_add_data()` to give an error if a species has more than one trophic_group, ecological_group, or species_present_in_bc value. (#61). 
+
 # wqbench 0.4.0
 
 - Updated the code to handle the newest ecotox dataset from March 2026. (#60)
